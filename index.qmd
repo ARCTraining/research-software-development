@@ -1,0 +1,105 @@
+---
+title: "Home page: Research Software Development"
+---
+
+This resource is intended to support researchers in embedding good software engineering practices into their workflows to make their computational research easier to manage, more reproducible, more reusable and sharable, and more robust.
+
+This course uses Python to build an example project, in order to discuss and try out dependency management, version control, and testing. The concepts will be useful and applicable even if you use another language; however, if you do not know Python, it may be more useful for you to use these notes to read through the concepts in your own time rather than attending the course.
+
+:::{.callout-warning}
+## Course Pre-requisites
+
+For this course, it is recommended that you have some basic familiarity with Bash/the Linux command line.
+
+If you haven't, please work through [these course materials](https://arctraining.github.io/rc-slides/linux101){target="_blank"} before attending the course to get the most out of the session. These course notes should take approximately 2 hour to work through.
+
+You can attend without this experience; however, you may find it difficult to keep up with the pace of the course.
+:::
+
+This resource is designed to be used in the following contexts:
+
+- As course notes for a guided, synchronous course (SWD3);
+- As independent course notes for a self-directed course;
+- As documentation to dip in and out of as needed.
+
+:::{.callout-tip}
+## There is no **one** answer
+
+One of the great things about research computing is that it's flexible, experimental, and should support *you* doing research in your areas of expertise.
+
+It's really important to keep these points in mind when working through this material:
+
+- **You are the domain expert:** you are the expert in your area, who knows the intricacies of how things are done and why they are done in a certain way. The information here may not be best approach for every discipline; these notes (or the facilitator guiding you through them) is *not* the font of all knowledge.
+    - If there is something that you feel could do with extra context, or if you'd like to clairfy how things work differently in a certain field, I would really appreciate your contributions to these materials! You can see the page [Contributing](#) to see how you can get involved.
+- **There are many different ways of doing things:** In these notes, I present one or two methods or ideas for how to solve common research issues. These are not the only ways to approach these, or even the best ways: they are simply ways that we have found useful.
+
+:::
+
+This course will use [Python](https://www.python.org/) as an example language, but the general concepts are language-agnostic. If you create or work through examples in a different language, please feel free to contribute notes on these!
+
+## Course Objectives
+
+The main objective of this specific iteration of the course is to introduce or showcase a selection of different tools and methods that can help to make your research more reproducible, and then (more importantly) provide you with some ideas and workflows to use these tools together.
+
+Lots of documentation exists online for each individual tool we introduce, but something that's missing is an idea of how all these different things fit together in a way that is easy to manage, doesn't take huge amounts of time, and that makes sense in the framework of the research process.
+
+This resource will provide you with a start-to-finish project template that you can use as-is, or you can pick and choose parts of this that are relevant to your work.
+
+This material touches on:
+
+- Version control: your computational lab notebook;
+- Dependency management and project organisation: keeping your digital lab clean and tidy;
+- Writing pseudo-code: translating research problems into computer-speak;
+- Testing and automated workflows: preventing your research from going up in flames;
+- Documentation: helping future you understand your work;
+- Creating releases: archiving your research set-up to ensure reproducibility.
+
+## Getting the most out of this course
+
+Everyone learns in different styles and in different ways; everyone brings different experience to the table when using research computing! This course is probably best used when moving at your own pace, following along with the step-by-step example project.
+
+- If solutions are hidden in dropdowns, it's a good idea to try to predict the answer before opening them to check;
+- Learning to read and predict the outcome of code is one of the best skills to practise to improve your programming and computational skills: before you ever run a line of code, try to predict the outcome!
+- To give you a safe sandbox to work in, there are links to a virtual cloud Linux machine for you to experiment in to your heart's content.
+
+## Course Content
+
+This course introduces a [reproducible project workflow](workflow.qmd) that you can take and use for any future coding project.
+
+| Session | Approximate duration | Key objectives |
+|---|---|---|
+| Introduction | 30 mins | Introduce reproducibility, replicability, and reusability in the context of research code. |
+| Practical 1 | 20 mins | Define requirements for a small example project as a group. |
+| Project organisation | 30 mins | Discuss ways of managing data files, code, scripts, results, and notes in a research project. |
+| Practical 2 | 20 mins | Set up a directory structure for the example project |
+| Version control | 50 mins | Introduce version control with git |
+| Practical 3 | 50 mins | Explore drafting pseudocode, notes, and comments, while using version control |
+| Dependency management | 30 mins | Introduce dependency management with Conda |
+| Practical 4 | 50 mins | Set up Python environment and begin drafting code |
+
+
+## Author's Note
+
+This material is an evolution of the original [SWD3: Software development practices for Research](https://arctraining.github.io/swd3-dev/welcome.html) course run by Research Computing at the University of Leeds, but has been extensively reworked and updated. 
+
+This material is licensed under the [Creative Commons Attribution-NonCommercial 4.0 International Public License](https://creativecommons.org/licenses/by-nc/4.0/), and is copyrighted by the University of Leeds.
+
+### Citation
+
+If you use or reference this material, please cite it.
+
+**BibTeX citation:**
+
+```text
+@online{murphy_quinlan2025,
+  author = {Murphy Quinlan, Maeve},
+  title = {Reproducibility, {Replicability,} \& {Reusability}},
+  date = {2025-06-16},
+  url = {https://url-here},
+  langid = {en}
+}
+```
+
+**Plain text citation:**
+
+Murphy Quinlan, Maeve. 2025. “Research Software Development in Python [Course materials]” June 16, 2025. https://url-here.

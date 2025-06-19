@@ -1,0 +1,43 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "Research Software Development in Python"
+  cookie-consent: true
+  sidebar:
+    style: "docked"
+    collapse-level: 1
+    contents:
+    - section: "0. Introduction"
+      contents:
+      - href: index.qmd
+        text: Course content
+      - introduction.qmd
+    - section: "1. First Steps"
+      contents:
+      - project_organisation.qmd
+      - version_control.qmd
+      - dependencies.qmd
+    - section: "2. Make your code robust"
+      contents:
+      - testing.qmd
+      - releases.qmd
+      - documentation.qmd
+  navbar:
+    left:
+      - href: workflow.qmd
+        text: "Project Workflow ↗"
+        target: "_blank"
+      - href: https://arctraining.github.io/glossary-swd3/
+        text: "Glossary ↗"
+        target: "_blank"
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+
+
+

@@ -1,0 +1,12 @@
+# Project organisation and layout
+
+:::{.callout-note}
+## Key Point
+
+In this section, we will explore different ways of organising our code, data, and notes.
+
+After finishing this section, you should have an idea of:
+
+- Different ways to organise your project;
+
+:::

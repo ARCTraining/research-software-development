@@ -1,0 +1,106 @@
+---
+title: "Introduction: Research Software Development in Python"
+format:
+    revealjs
+---
+
+## What is Research Software Development?
+
+---
+
+## Computing in research
+
+---
+
+We're going to discuss reproducibility, replicability, and reusability of research software.
+
+![Reproducibility, replicability and reusability are all interlinked.](assets/reproducibility_cycle.png){fig-alt="A cyclical graph with three equal-sized segments, and arrows cycling between them. The segments read 'Reproducibility', 'Replicability', and 'Reusability', showing how these concepts are linked"}
+
+---
+
+## Reproducibility
+
+::: {.callout-note}
+## Reproducibility...
+
+is when you or others are able to obtain the same results (within a certain tolerance) as the original study, when using the same input data, code, and coding environment, on the same computing platform as the original study.
+
+:::
+
+| Input | Aim | Ideal output |
+|---|---|---|
+| The *same* input data and code, on the same computer | Verify the results are real; catch mistakes, error, fradu | The same results! |
+
+---
+
+## Replicability
+
+::: {.callout-note}
+## Replicability...
+
+is when you or others are able to produce results that align with the results of the original study, while using different input data and different code, but using the original studies methods or theories.
+
+:::
+
+| Input | Aim | Ideal output |
+|---|---|---|
+| The methods used previously, but not the same code/data | To test the validity of the results and conclusions | Similar results |
+
+---
+
+## Reusability
+
+:::{.callout-note}
+## Reusability...
+
+is when you or others are able to **easily** use the code or data produced as part of the original study, and potentially rework it and extend it for new applications, contexts, or studies.
+:::
+
+| Input | Aim | Ideal output |
+|---|---|---|
+| The original code, expanded on, used with different data, modified | To continue doing research without reinventing the wheel, and instead recycle code | New results, in different contexts |
+
+---
+## The reproducibility crisis
+
+---
+
+# Content and format of this course
+
+---
+
+## Why this course exists
+
+---
+
+## Theory sessions
+
+- Introduce concepts;
+- Further notes and extra reading to expand upon ideas;
+- Set up for the practical sessions.
+
+---
+
+## Practicals
+
+- Self-directed step-by-step exercises;
+- Apply the concepts introduced in the theory sessions.
+
+---
+
+## Virtual machine
+
+
+---
+
+# Designing a code project
+
+---
+
+## Gathering requirements
+
+---
+
+## Creating a workflow
+
+- "What should I do next?"

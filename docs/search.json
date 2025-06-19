@@ -1,0 +1,225 @@
+[
+  {
+    "objectID": "dependencies.html",
+    "href": "dependencies.html",
+    "title": "Dependency Management",
+    "section": "",
+    "text": "Dependency Management\n\n\n\n\n\n\nNote",
+    "crumbs": [
+      "Project Workflow ↗",
+      "1. First Steps",
+      "Dependency Management"
+    ]
+  },
+  {
+    "objectID": "workflow.html#part-one-building-the-core-code",
+    "href": "workflow.html#part-one-building-the-core-code",
+    "title": "Research code workflow",
+    "section": "Part One: building the core code",
+    "text": "Part One: building the core code\n\nBrainstorm and gather requirements\nCreate your project directory structure in a repository\n\n\nSingle directory projectDual directory project\n\n\nContent\n\n\nContent\n\n\n\n\nCreate a development environment\nWrite your pseudocode, comments, and code\nWrite a test suite\nWrite documentation\n\n\nSingle directory projectDual directory project\n\n\nContent\n\n\nContent - including a pyproject.toml"
+  },
+  {
+    "objectID": "workflow.html#part-two-using-the-core-code",
+    "href": "workflow.html#part-two-using-the-core-code",
+    "title": "Research code workflow",
+    "section": "Part two: using the core code",
+    "text": "Part two: using the core code\n\nSetting up your folder structure\n\n\nSingle directory projectDual directory project\n\n\nContent - You’ve already done this bit\n\n\nContent\n\n\n\n\nCreating a research environment\n\n\nSingle directory projectDual directory project\n\n\nContent\n\n\nContent\n\n\n\n\nDo your research!\n\nAdvice on imports, advice on jupyter notebooks\n\nSingle directory projectDual directory project\n\n\nContent\n\n\nContent\n\n\n\nAdvice on updating core code, and re-running all output\n\nExport your environment\nCreate a release, synced with zenodo"
+  },
+  {
+    "objectID": "introduction.html",
+    "href": "introduction.html",
+    "title": "Introduction",
+    "section": "",
+    "text": "Session Objectives\n\n\n\n\nIntroduce reproducibility, replicability, and reusability in the context of research code;\nIntroduce the format of this course;\nDiscuss requirements and planning code projects.\nOpen introduction presentation ↗",
+    "crumbs": [
+      "Project Workflow ↗",
+      "0. Introduction",
+      "Introduction"
+    ]
+  },
+  {
+    "objectID": "introduction.html#research-software",
+    "href": "introduction.html#research-software",
+    "title": "Introduction",
+    "section": "Research Software",
+    "text": "Research Software",
+    "crumbs": [
+      "Project Workflow ↗",
+      "0. Introduction",
+      "Introduction"
+    ]
+  },
+  {
+    "objectID": "introduction.html#reproducibility-replicability-reusability-what-do-they-all-mean",
+    "href": "introduction.html#reproducibility-replicability-reusability-what-do-they-all-mean",
+    "title": "Introduction",
+    "section": "Reproducibility, Replicability, Reusability: what do they all mean?",
+    "text": "Reproducibility, Replicability, Reusability: what do they all mean?\nThese terms get used a lot in the context of writing code for research, but what do they all mean?\nThese notes (and the related sections in the presentation) are reproduced from Murphy Quinlan (2025); read this article to find out more after this session.\n\nReproducibility\n\nWhen you or others are able to obtain the same results (within a certain tolerance) as the original study, when using the same input data, code, and coding environment, on the same computing platform as the original study.\n\n\nThis is important for verifying the integrity of the work and avoiding mistakes, computational errors, and fraud.\nReproducibility requires the following (wherever possible) to be accessible/shared:\n\nThe exact code used;\nThe exact data used;\nThe exact computational environment used (so a copy of your exported conda environment with exact pinned versions of all dependencies, or a container, details of the platform used)\n\nAn example of this going wrong is when people run Jupyter notebook cells out of order, leading to unreproducible results: in a sample of 936 published notebooks that would be executable in principle, Wang et al. (2020) found that 73% of them would not be reproducible with straightforward approaches, requiring the reader to infer (and often guess) the order in which the authors created the cells (Wang et al. 2020).\n\n\n\nReplicability\n\nWhen you or others are able to produce results that align with the results of the original study, while using different input data and different code, but using the original studies methods or theories.\n\n\nThis is important for the validation of the results and conclusions of the study\nReplicability requires the following:\n\nClear and complete methodological documentation;\nDescription of assumptions and caveats.\n\nAn example of this going wrong is when people upload code without documentation, data without useful metadata, and environment files/containers without any guidelines as to how they were used, but haven’t compared their numerical outputs to an analytical case, and haven’t documented the maths they have used behind their code.\n\n\n\nReusability\n\nWhen you or others are able to easily use the code or data produced as part of the original study, and potentially rework it and extend it for new applications, contexts, or studies.\n\n\nThis is important for open research, for collaboration and building on previous work, and to support reproducibility and replicability (as it allows other groups to use your code to try to reproduce your results, or to test different parameter spaces and see if they can replicate the conclusions you drew from your work).\nFor research code to be reusable, you need:\n\nGood documentation on how to install/run/modify the code;\n\nThis does not have to be formal - it can just be useful comments - but adhering to formal syntax etc. for documentation makes it easier to read and more useful!\nProviding useful shareable environment files (for example, a Conda environment file);\n\nNote that this is often different to a environment file for reproducibility - please read the links in the reproducibility section to understand the distinction!\n\nIncluding appropriate licensing so that people can legally use the code.\nA testing or validation suite to make sure that users are getting the correct results on their own computational system.",
+    "crumbs": [
+      "Project Workflow ↗",
+      "0. Introduction",
+      "Introduction"
+    ]
+  },
+  {
+    "objectID": "version_control.html",
+    "href": "version_control.html",
+    "title": "Version Control",
+    "section": "",
+    "text": "Version Control",
+    "crumbs": [
+      "Project Workflow ↗",
+      "1. First Steps",
+      "Version Control"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Home page: Research Software Development",
+    "section": "",
+    "text": "This resource is intended to support researchers in embedding good software engineering practices into their workflows to make their computational research easier to manage, more reproducible, more reusable and sharable, and more robust.\nThis course uses Python to build an example project, in order to discuss and try out dependency management, version control, and testing. The concepts will be useful and applicable even if you use another language; however, if you do not know Python, it may be more useful for you to use these notes to read through the concepts in your own time rather than attending the course.\nThis resource is designed to be used in the following contexts:\nThis course will use Python as an example language, but the general concepts are language-agnostic. If you create or work through examples in a different language, please feel free to contribute notes on these!",
+    "crumbs": [
+      "Project Workflow ↗",
+      "0. Introduction",
+      "Course content"
+    ]
+  },
+  {
+    "objectID": "index.html#course-objectives",
+    "href": "index.html#course-objectives",
+    "title": "Home page: Research Software Development",
+    "section": "Course Objectives",
+    "text": "Course Objectives\nThe main objective of this specific iteration of the course is to introduce or showcase a selection of different tools and methods that can help to make your research more reproducible, and then (more importantly) provide you with some ideas and workflows to use these tools together.\nLots of documentation exists online for each individual tool we introduce, but something that’s missing is an idea of how all these different things fit together in a way that is easy to manage, doesn’t take huge amounts of time, and that makes sense in the framework of the research process.\nThis resource will provide you with a start-to-finish project template that you can use as-is, or you can pick and choose parts of this that are relevant to your work.\nThis material touches on:\n\nVersion control: your computational lab notebook;\nDependency management and project organisation: keeping your digital lab clean and tidy;\nWriting pseudo-code: translating research problems into computer-speak;\nTesting and automated workflows: preventing your research from going up in flames;\nDocumentation: helping future you understand your work;\nCreating releases: archiving your research set-up to ensure reproducibility.",
+    "crumbs": [
+      "Project Workflow ↗",
+      "0. Introduction",
+      "Course content"
+    ]
+  },
+  {
+    "objectID": "index.html#getting-the-most-out-of-this-course",
+    "href": "index.html#getting-the-most-out-of-this-course",
+    "title": "Home page: Research Software Development",
+    "section": "Getting the most out of this course",
+    "text": "Getting the most out of this course\nEveryone learns in different styles and in different ways; everyone brings different experience to the table when using research computing! This course is probably best used when moving at your own pace, following along with the step-by-step example project.\n\nIf solutions are hidden in dropdowns, it’s a good idea to try to predict the answer before opening them to check;\nLearning to read and predict the outcome of code is one of the best skills to practise to improve your programming and computational skills: before you ever run a line of code, try to predict the outcome!\nTo give you a safe sandbox to work in, there are links to a virtual cloud Linux machine for you to experiment in to your heart’s content.",
+    "crumbs": [
+      "Project Workflow ↗",
+      "0. Introduction",
+      "Course content"
+    ]
+  },
+  {
+    "objectID": "index.html#course-content",
+    "href": "index.html#course-content",
+    "title": "Home page: Research Software Development",
+    "section": "Course Content",
+    "text": "Course Content\nThis course introduces a reproducible project workflow that you can take and use for any future coding project.\n\n\n\n\n\n\n\n\nSession\nApproximate duration\nKey objectives\n\n\n\n\nIntroduction\n30 mins\nIntroduce reproducibility, replicability, and reusability in the context of research code.\n\n\nPractical 1\n20 mins\nDefine requirements for a small example project as a group.\n\n\nProject organisation\n30 mins\nDiscuss ways of managing data files, code, scripts, results, and notes in a research project.\n\n\nPractical 2\n20 mins\nSet up a directory structure for the example project\n\n\nVersion control\n50 mins\nIntroduce version control with git\n\n\nPractical 3\n50 mins\nExplore drafting pseudocode, notes, and comments, while using version control\n\n\nDependency management\n30 mins\nIntroduce dependency management with Conda\n\n\nPractical 4\n50 mins\nSet up Python environment and begin drafting code",
+    "crumbs": [
+      "Project Workflow ↗",
+      "0. Introduction",
+      "Course content"
+    ]
+  },
+  {
+    "objectID": "index.html#authors-note",
+    "href": "index.html#authors-note",
+    "title": "Home page: Research Software Development",
+    "section": "Author’s Note",
+    "text": "Author’s Note\nThis material is an evolution of the original SWD3: Software development practices for Research course run by Research Computing at the University of Leeds, but has been extensively reworked and updated.\nThis material is licensed under the Creative Commons Attribution-NonCommercial 4.0 International Public License, and is copyrighted by the University of Leeds.\n\nCitation\nIf you use or reference this material, please cite it.\nBibTeX citation:\n@online{murphy_quinlan2025,\n  author = {Murphy Quinlan, Maeve},\n  title = {Reproducibility, {Replicability,} \\& {Reusability}},\n  date = {2025-06-16},\n  url = {https://url-here},\n  langid = {en}\n}\nPlain text citation:\nMurphy Quinlan, Maeve. 2025. “Research Software Development in Python [Course materials]” June 16, 2025. https://url-here.",
+    "crumbs": [
+      "Project Workflow ↗",
+      "0. Introduction",
+      "Course content"
+    ]
+  },
+  {
+    "objectID": "project_organisation.html",
+    "href": "project_organisation.html",
+    "title": "Project organisation and layout",
+    "section": "",
+    "text": "Project organisation and layout\n\n\n\n\n\n\nKey Point\n\n\n\nIn this section, we will explore different ways of organising our code, data, and notes.\nAfter finishing this section, you should have an idea of:\n\nDifferent ways to organise your project;",
+    "crumbs": [
+      "Project Workflow ↗",
+      "1. First Steps",
+      "Project organisation and layout"
+    ]
+  },
+  {
+    "objectID": "introduction-presentation.html#what-is-research-software-development",
+    "href": "introduction-presentation.html#what-is-research-software-development",
+    "title": "Introduction: Research Software Development in Python",
+    "section": "What is Research Software Development?",
+    "text": "What is Research Software Development?"
+  },
+  {
+    "objectID": "introduction-presentation.html#computing-in-research",
+    "href": "introduction-presentation.html#computing-in-research",
+    "title": "Introduction: Research Software Development in Python",
+    "section": "Computing in research",
+    "text": "Computing in research"
+  },
+  {
+    "objectID": "introduction-presentation.html#reproducibility",
+    "href": "introduction-presentation.html#reproducibility",
+    "title": "Introduction: Research Software Development in Python",
+    "section": "Reproducibility",
+    "text": "Reproducibility\n\n\n\n\n\n\nReproducibility…\n\n\nis when you or others are able to obtain the same results (within a certain tolerance) as the original study, when using the same input data, code, and coding environment, on the same computing platform as the original study.\n\n\n\n\n\n\n\n\n\n\n\nInput\nAim\nIdeal output\n\n\n\n\nThe same input data and code, on the same computer\nVerify the results are real; catch mistakes, error, fradu\nThe same results!"
+  },
+  {
+    "objectID": "introduction-presentation.html#replicability",
+    "href": "introduction-presentation.html#replicability",
+    "title": "Introduction: Research Software Development in Python",
+    "section": "Replicability",
+    "text": "Replicability\n\n\n\n\n\n\nReplicability…\n\n\nis when you or others are able to produce results that align with the results of the original study, while using different input data and different code, but using the original studies methods or theories.\n\n\n\n\n\n\n\n\n\n\n\nInput\nAim\nIdeal output\n\n\n\n\nThe methods used previously, but not the same code/data\nTo test the validity of the results and conclusions\nSimilar results"
+  },
+  {
+    "objectID": "introduction-presentation.html#reusability",
+    "href": "introduction-presentation.html#reusability",
+    "title": "Introduction: Research Software Development in Python",
+    "section": "Reusability",
+    "text": "Reusability\n\n\n\n\n\n\nReusability…\n\n\nis when you or others are able to easily use the code or data produced as part of the original study, and potentially rework it and extend it for new applications, contexts, or studies.\n\n\n\n\n\n\n\n\n\n\n\nInput\nAim\nIdeal output\n\n\n\n\nThe original code, expanded on, used with different data, modified\nTo continue doing research without reinventing the wheel, and instead recycle code\nNew results, in different contexts"
+  },
+  {
+    "objectID": "introduction-presentation.html#why-this-course-exists",
+    "href": "introduction-presentation.html#why-this-course-exists",
+    "title": "Introduction: Research Software Development in Python",
+    "section": "Why this course exists",
+    "text": "Why this course exists"
+  },
+  {
+    "objectID": "introduction-presentation.html#theory-sessions",
+    "href": "introduction-presentation.html#theory-sessions",
+    "title": "Introduction: Research Software Development in Python",
+    "section": "Theory sessions",
+    "text": "Theory sessions\n\nIntroduce concepts;\nFurther notes and extra reading to expand upon ideas;\nSet up for the practical sessions."
+  },
+  {
+    "objectID": "introduction-presentation.html#practicals",
+    "href": "introduction-presentation.html#practicals",
+    "title": "Introduction: Research Software Development in Python",
+    "section": "Practicals",
+    "text": "Practicals\n\nSelf-directed step-by-step exercises;\nApply the concepts introduced in the theory sessions."
+  },
+  {
+    "objectID": "introduction-presentation.html#virtual-machine",
+    "href": "introduction-presentation.html#virtual-machine",
+    "title": "Introduction: Research Software Development in Python",
+    "section": "Virtual machine",
+    "text": "Virtual machine"
+  },
+  {
+    "objectID": "introduction-presentation.html#gathering-requirements",
+    "href": "introduction-presentation.html#gathering-requirements",
+    "title": "Introduction: Research Software Development in Python",
+    "section": "Gathering requirements",
+    "text": "Gathering requirements"
+  },
+  {
+    "objectID": "introduction-presentation.html#creating-a-workflow",
+    "href": "introduction-presentation.html#creating-a-workflow",
+    "title": "Introduction: Research Software Development in Python",
+    "section": "Creating a workflow",
+    "text": "Creating a workflow\n\n“What should I do next?”"
+  }
+]

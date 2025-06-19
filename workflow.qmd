@@ -1,0 +1,94 @@
+---
+title: "Research code workflow"
+---
+
+::: {.panel-tabset group="workflow"}
+## Single directory project
+
+If you select this tab, the instructions below will show information relevant to organising your project in a single project folder: this folder will contain all of your code, application, analysis, figures, and notes.
+
+## Dual directory project
+
+If you select this tab, the instructions below will show information relevant to organising your project in two project folders: one folder for your core code as an installable package, the other containing the application of this code, analysis, notes, figures etc. 
+
+:::
+
+## Part One: building the core code
+
+1. Brainstorm and gather requirements
+
+2. Create your project directory structure in a repository
+
+::: {.panel-tabset group="workflow"}
+## Single directory project
+
+Content
+
+## Dual directory project
+
+Content
+:::
+
+3. Create a development environment
+
+4. Write your pseudocode, comments, and code 
+
+5. Write a test suite
+
+6. Write documentation
+
+::: {.panel-tabset group="workflow"}
+## Single directory project
+
+Content
+
+## Dual directory project
+
+Content - including a `pyproject.toml`
+:::
+
+## Part two: using the core code
+
+1. Setting up your folder structure
+
+::: {.panel-tabset group="workflow"}
+## Single directory project
+
+Content - You've already done this bit
+
+## Dual directory project
+
+Content
+:::
+
+2. Creating a research environment
+
+::: {.panel-tabset group="workflow"}
+## Single directory project
+
+Content
+
+## Dual directory project
+
+Content
+:::
+
+3. Do your research!
+
+Advice on imports, advice on jupyter notebooks
+
+::: {.panel-tabset group="workflow"}
+## Single directory project
+
+Content
+
+## Dual directory project
+
+Content
+:::
+
+Advice on updating core code, and re-running all output
+
+4. Export your environment
+
+5. Create a release, synced with zenodo

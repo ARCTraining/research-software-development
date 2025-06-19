@@ -1,0 +1,60 @@
+---
+title: "Introduction"
+subtitle: "Making research code reproducible, replicable, and reproducible"
+bibliography: assets/refs.bib
+---
+
+:::{.callout-note}
+## Session Objectives
+
+- Introduce reproducibility, replicability, and reusability in the context of research code;
+- Introduce the format of this course;
+- Discuss requirements and planning code projects.
+:::
+
+[Open introduction presentation ↗](introduction-presentation.qmd){.btn .btn-outline-primary .btn role="button" data-toggle="tooltip" title="Open presentation in a new tab" target="_blank"}
+
+## Research Software
+
+
+
+## Reproducibility, Replicability, Reusability: what do they all mean?
+
+These terms get used a lot in the context of writing code for research, but what do they all mean?
+
+These notes (and the related sections in the presentation) are reproduced from @murphy_quinlan2025; read this article to find out more after this session.
+
+### Reproducibility
+
+> When you or others are able to obtain the same results (within a certain tolerance) as the original study, when using the same input data, code, and coding environment, on the same computing platform as the original study.
+
+- This is important for verifying the integrity of the work and avoiding mistakes, computational errors, and fraud.
+- Reproducibility requires the following (wherever possible) to be accessible/shared:
+  - The exact code used;
+  - The exact data used;
+  - The exact computational environment used (so a copy of your exported conda environment with exact pinned versions of all dependencies, or a container, details of the platform used)
+- An example of this *going wrong* is when people run Jupyter notebook cells out of order, leading to unreproducible results: in a sample of 936 published notebooks that would be executable in principle, @Wang2020-mr found that [73% of them would not be reproducible with straightforward approaches](https://cispa.de/en/research/publications/79418-assessing-and-restoring-reproducibility-of-jupyter-notebooks), requiring the reader to infer (and often guess) the order in which the authors created the cells [@Wang2020-mr].
+
+### Replicability
+
+> When you or others are able to produce results that align with the results of the original study, while using different input data and different code, but using the original studies methods or theories.
+
+- This is important for the validation of the results and conclusions of the study
+- Replicability requires the following:
+  - Clear and complete methodological documentation;
+  - Description of assumptions and caveats.
+- An example of this *going wrong* is when people upload code without documentation, data without useful metadata, and environment files/containers without any guidelines as to how they were used, but *haven't* compared their numerical outputs to an analytical case, and haven't documented the maths they have used behind their code.
+
+### Reusability
+
+> When you or others are able to **easily** use the code or data produced as part of the original study, and potentially rework it and extend it for new applications, contexts, or studies.
+
+- This is important for open research, for collaboration and building on previous work, and to support reproducibility and replicability (as it allows other groups to use your code to try to reproduce your results, or to test different parameter spaces and see if they can replicate the conclusions you drew from your work).
+- For research code to be reusable, you need:
+  - Good documentation on how to install/run/modify the code;
+    - This does not have to be formal - it can just be useful comments - but adhering to formal syntax etc. for documentation makes it easier to read and more useful!
+    - Providing useful shareable environment files (for example, a Conda environment file);  
+      - Note that **this is often different to a environment file for reproducibility** - please read the links in the reproducibility section to understand the distinction!
+    - Including appropriate licensing so that people can legally use the code.
+    - A testing or validation suite to make sure that users are getting the correct results on their own computational system.
+
