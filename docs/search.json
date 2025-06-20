@@ -1,14 +1,38 @@
 [
   {
-    "objectID": "dependencies.html",
-    "href": "dependencies.html",
-    "title": "Dependency Management",
+    "objectID": "introduction/introduction.html",
+    "href": "introduction/introduction.html",
+    "title": "Introduction",
     "section": "",
-    "text": "Dependency Management\n\n\n\n\n\n\nNote",
+    "text": "Each theory session will include a presentation, the presentation content all-in-one page for easier reading (Presentation content), and a further reading section.\nOpen introduction presentation ↗",
     "crumbs": [
       "Project Workflow ↗",
-      "1. First Steps",
-      "Dependency Management"
+      "0. Introduction",
+      "Introduction"
+    ]
+  },
+  {
+    "objectID": "introduction/introduction.html#presentation-content",
+    "href": "introduction/introduction.html#presentation-content",
+    "title": "Introduction",
+    "section": "Presentation content",
+    "text": "Presentation content\n\n\nWhat is Research Software Development?\n\nCreating tools, scripts, and applications that enable scientific discovery through data analysis, modeling, and simulation.\nWriting programs to process experimental data, automate repetitive tasks, implement mathematical models, and generate visualizations for scientific publications.\nEverything from simple data cleaning scripts in Python/R to complex simulation software, statistical analysis pipelines, workflows on High Performance Computing (HPC) platforms, and specialized scientific computing applications.\nThe goal is producing reliable, reproducible computational workflows that support research while enabling other scientists to verify and build upon the work.\n\n\n\n\nComputing in research\n\nNo longer just the domain of computer science: embedded across all disciplines\nA key skill area for your future as a researcher\n\n\n\nReproducibility, Replicability, and Reusability\n\n\n3 Rs of Research Software\n\n\n\nReproducibility, replicability and reusability are all interlinked.\n\n\n\n\n\n\n\n\n\nImportant\n\n\n\n\nThese terms have different meanings for different disciplines, and are constantly evolving over time\nThis presentation defines these terms based on Murphy Quinlan (2025) specifically with reference to research code being developed across disciplines\nThere are many different ways to think about these topics, and it’s an ongoing discussion: you are welcome to disagree!\n\n\n\n\n\n\nReproducibility\n\n\n\n\n\n\nReproducibility…\n\n\n\nis when you or others are able to obtain the same results (within a certain tolerance) as the original study, when using the same input data, code, and coding environment, on the same computing platform as the original study.\n\n\n\n\n\n\n\n\n\n\nInput\nAim\nIdeal output\n\n\n\n\nThe same input data and code, on the same computer\nVerify the results are real; catch mistakes, error, fraud\nThe same results!\n\n\n\n\n\n\nReproducibility\nWhat do you need for reproducibility?\n\nThe exact code used;\nThe exact data used;\nThe exact computational environment used:\n\nA record of the machine/operating system;\nA record of the exact versions of all libraries and dependencies used\n\n\n\n\n\nWhen reproducibility is missing\nWhat are some examples of this going wrong?\n\nNot recording the version of a library you used, and certain future backwards-incompatible changes being made\n\nThis means functions you used may no longer exist, or may take different input\nThe best-case scenario is your code will no longer run, but will output an error, meaning you/any user will be able to do detective work to figure out what version of the library works\nThe much worse outcome is that the code fails silently: it still runs, but the output changes because the way the libraries work has changed; it can be hard to spot that something has gone wrong!\n\nFor example, the default values for functions may change, or the assumed units/co-ordinate systems etc.\n\n\n\n\n\n\nWhen reproducibility is missing\n\nRunning Jupyter notebook cells out of order…\nIn a sample of 936 published notebooks that would be executable in principle, Wang et al. (2020) found that:\n\n73% of them would not be reproducible with straightforward approaches\nThe reader/user had to infer (and often guess) the order in which the authors created or ran the cells\n\n\n\n\n\nReplicability\n\n\n\n\n\n\nReplicability…\n\n\n\nis when you or others are able to produce results that align with the results of the original study, while using different input data and different code, but using the original studies methods or theories.\n\n\n\n\n\n\n\n\n\n\nInput\nAim\nIdeal output\n\n\n\n\nThe methods used previously, but not the same code/data\nTo test the validity of the results and conclusions\nSimilar results\n\n\n\n\n\n\nReplicability\nWhat is needed for replicability?\n\nClear and complete methodological documentation;\nDescription of assumptions and caveats;\nA test suite to ensure code is working as expected.\n\n\n\n\nWhen replicability is missing\n\nNot providing enough detail in publications about the exact methods used\n\nFor example, not providing all the maths used in your code\n\nUploading code without documentation, data without useful metadata, environment files and containers with no explanation of the contents: technically, one could run the code, but they may not be able to parse the methods used\nNot comparing your model to analytical results or other studies\n\nOnly testing that the code and not the science/theory/assumptions behind it\n\n\n\n\n\nReusability\n\n\n\n\n\n\nReusability…\n\n\n\nis when you or others are able to easily use the code or data produced as part of the original study, and potentially rework it and extend it for new applications, contexts, or studies.\n\n\n\n\n\n\n\n\n\n\nInput\nAim\nIdeal output\n\n\n\n\nThe original code, expanded on, used with different data, modified\nTo continue doing research without reinventing the wheel, and instead recycle code\nNew results, in different contexts\n\n\n\n\n\n\nReusability\nWhat is needed for reusability?\n\nGood documentation on how to install/run/modify the code;\n\nThis does not have to be formal - it can just be useful comments - but adhering to formal syntax etc. for documentation makes it easier to read and more useful!\n\nProviding useful shareable environment files (for example, a Conda environment file);\n\nNote that this is often different to a environment file for reproducibility - please read the links in the reproducibility section to understand the distinction!\n\nIncluding appropriate licensing so that people can legally use the code.\nA testing or validation suite to make sure that users are getting the correct results on their own computational system.\n\n\n\n\nReusability\nReusability oftentimes gets sidelined to let reproducibility take the main stage, but it is essential for research!\n\nBeing able to produce the same results on a different platform hints at far more robust research code than only being able to reproduce the results on a single machine\n\nWith the caveat that when it comes to floating point precision etc. systems, GPUs, builds, and compilers all will matter\n\nResearch builds on other research and is incrememntal: you and other researchers should be able to use your code for future work!\n\n\n\n\nReusability\nNature Computer Science editorial: “But is the code (re)usable?”:\n\nWhile it is crucial to guarantee the reproducibility of the results reported in a paper, let us also not forget about the importance of making research artifacts reusable for the scientific community.\n\n\nReusability […] entails obtaining consistent results with new data, and in some cases, in the context of a new scientific application. Making research artifacts, such as code, reusable allows other researchers to more easily investigate the same or similar scientific questions as new data become available and new ideas are developed, thus helping science progress at a faster pace.\n\nNature (2021)\n\nReproducibility, replicability and reusability are all interlinked.\n\nWhen we discuss reproducibility more broadly (for example, with the “reproducibility crisis”), it’s often implied that reusability and replicability are also included under this umbrella.\n\n\n\nThe reproducibility crisis\nMore than 70% of researchers have tried and failed to reproduce another scientist’s experiments, and more than half have failed to reproduce their own experiments.\n1,500 scientists lift the lid on reproducibility: Nature News Feature Baker (2016)\n\n\n\nSo how do we solve this?\n\n📁 Clear directory structure - Everything has a logical place\n📄 Comprehensive documentation - README files that actually help\n🔄 Version control - Git tracks every change and decision\n🧪 Organized data workflow - Raw → Processed → Results\n✅ Testing framework - Confidence that your code works correctly\n📦 Dependency management - Reproducible computational environment\n\n\n\n\nSo how do we solve this?\nWe’re going to work through each of these different topics using an example project\n\nYou will be able to replicate this workflow for future research projects\nIn our wrap-up section at the end of the course, we will also discuss how to apply these to existing, messy, legacy projects\n\n\n\n\nContent of this course\n\n\nFormat\n\nThis course contains these lecture slides, and also practical sessions.\nThere is also an attached “further reading” resource list for you to dig into after the course.\nThe aim is to introduce a toolbox of different methods to help you make your research code more reproducible, replicable, and reusable.\n\n\n\n\nWhy this course exists\n\nThere is plentiful documentation online for each of the individual tools and methods we will introduce in this course\nHowever, as a researcher, it is often difficult to know how to embed these in your research workflow, and how they all work together\nThis course aims to introduce these methods embedded in a practical and realistic workflow\n\n\n\n\nTheory sessions\n\nIntroduce concepts;\nFurther notes and extra reading to expand upon ideas;\nSet up for the practical sessions.\n\n\n\n\nPracticals\n\nSelf-directed step-by-step exercises;\nApply the concepts introduced in the theory sessions.\n\n\n\n\nVirtual machine\n\nWe will be using a virtual Linux machine hosted on GitHub codespaces\nThis gives us free reign in a sandbox where we can’t break anything!\nYou will be able to replicate these steps on your work machines\n\n\n\n\nCreating a workflow\n\n“What should I do next?” - it’s often difficult to know what the sensible next step is when facing a computing task\nDuring this course, we will use a workflow template, and follow it step by step\n\nNote: this is not the only way to organise your work!\n\nIn fact, we recommend that you take the workflow we suggest, and change it until it suits your research process!\nThe aim is for you to have a workflow that suits you, so when you’re in the midst of research, you at least have a direction of travel!\n\n\n\n\nDesigning a code project\n\n\nPractical 1: Gathering requirements\n\nFirst, we need to figure out what our code needs to do:\n\nWhat sort of input data will it take?\n\nHow big will the input data be?\nWhat file types will it take in?\n\nWhat will it do to that input data?\n\nHow big or complex will this processing be?\n\nHow will it output the data?\n\nWhat size will the output be?\nWhat file types will it save out?\n\n\n\n\n\n\nPractical 1: Gathering requirements\n\nThen, we can think a bit more about the specifics:\n\nWhat programming language will it use?\nWhere will it run?\n\nOn our laptops?\nOn a HPC system?\n\nWho will be running it?\n\nJust us?\nUs and some close collaborators?\nA wider research group?\nA larger research community?\n\n\n\n\n\n\nReferences",
+    "crumbs": [
+      "Project Workflow ↗",
+      "0. Introduction",
+      "Introduction"
+    ]
+  },
+  {
+    "objectID": "introduction/introduction.html#futher-reading",
+    "href": "introduction/introduction.html#futher-reading",
+    "title": "Introduction",
+    "section": "Futher reading",
+    "text": "Futher reading\n\nUtrecht University Computational Reproducibility Workshop\nImproving code reproducibility: Small steps with big impacts",
+    "crumbs": [
+      "Project Workflow ↗",
+      "0. Introduction",
+      "Introduction"
     ]
   },
   {
@@ -16,7 +40,7 @@
     "href": "workflow.html#part-one-building-the-core-code",
     "title": "Research code workflow",
     "section": "Part One: building the core code",
-    "text": "Part One: building the core code\n\nBrainstorm and gather requirements\nCreate your project directory structure in a repository\n\n\nSingle directory projectDual directory project\n\n\nContent\n\n\nContent\n\n\n\n\nCreate a development environment\nWrite your pseudocode, comments, and code\nWrite a test suite\nWrite documentation\n\n\nSingle directory projectDual directory project\n\n\nContent\n\n\nContent - including a pyproject.toml"
+    "text": "Part One: building the core code\n\nBrainstorm and gather requirements\nCreate your project directory structure in a repository\n\nProject name:   \n\nSingle directory projectDual directory project\n\n\n\n\n\n\n\n\n\n\n\nCreate a development environment\nWrite your pseudocode, comments, and code\nWrite a test suite\nWrite documentation\n\n\nSingle directory projectDual directory project\n\n\nContent\n\n\nContent - including a pyproject.toml"
   },
   {
     "objectID": "workflow.html#part-two-using-the-core-code",
@@ -26,57 +50,535 @@
     "text": "Part two: using the core code\n\nSetting up your folder structure\n\n\nSingle directory projectDual directory project\n\n\nContent - You’ve already done this bit\n\n\nContent\n\n\n\n\nCreating a research environment\n\n\nSingle directory projectDual directory project\n\n\nContent\n\n\nContent\n\n\n\n\nDo your research!\n\nAdvice on imports, advice on jupyter notebooks\n\nSingle directory projectDual directory project\n\n\nContent\n\n\nContent\n\n\n\nAdvice on updating core code, and re-running all output\n\nExport your environment\nCreate a release, synced with zenodo"
   },
   {
-    "objectID": "introduction.html",
-    "href": "introduction.html",
-    "title": "Introduction",
+    "objectID": "version_control/practical3.html",
+    "href": "version_control/practical3.html",
+    "title": "Practical 3: Writing pseudocode with version control",
     "section": "",
-    "text": "Session Objectives\n\n\n\n\nIntroduce reproducibility, replicability, and reusability in the context of research code;\nIntroduce the format of this course;\nDiscuss requirements and planning code projects.\nOpen introduction presentation ↗",
-    "crumbs": [
-      "Project Workflow ↗",
-      "0. Introduction",
-      "Introduction"
-    ]
-  },
-  {
-    "objectID": "introduction.html#research-software",
-    "href": "introduction.html#research-software",
-    "title": "Introduction",
-    "section": "Research Software",
-    "text": "Research Software",
-    "crumbs": [
-      "Project Workflow ↗",
-      "0. Introduction",
-      "Introduction"
-    ]
-  },
-  {
-    "objectID": "introduction.html#reproducibility-replicability-reusability-what-do-they-all-mean",
-    "href": "introduction.html#reproducibility-replicability-reusability-what-do-they-all-mean",
-    "title": "Introduction",
-    "section": "Reproducibility, Replicability, Reusability: what do they all mean?",
-    "text": "Reproducibility, Replicability, Reusability: what do they all mean?\nThese terms get used a lot in the context of writing code for research, but what do they all mean?\nThese notes (and the related sections in the presentation) are reproduced from Murphy Quinlan (2025); read this article to find out more after this session.\n\nReproducibility\n\nWhen you or others are able to obtain the same results (within a certain tolerance) as the original study, when using the same input data, code, and coding environment, on the same computing platform as the original study.\n\n\nThis is important for verifying the integrity of the work and avoiding mistakes, computational errors, and fraud.\nReproducibility requires the following (wherever possible) to be accessible/shared:\n\nThe exact code used;\nThe exact data used;\nThe exact computational environment used (so a copy of your exported conda environment with exact pinned versions of all dependencies, or a container, details of the platform used)\n\nAn example of this going wrong is when people run Jupyter notebook cells out of order, leading to unreproducible results: in a sample of 936 published notebooks that would be executable in principle, Wang et al. (2020) found that 73% of them would not be reproducible with straightforward approaches, requiring the reader to infer (and often guess) the order in which the authors created the cells (Wang et al. 2020).\n\n\n\nReplicability\n\nWhen you or others are able to produce results that align with the results of the original study, while using different input data and different code, but using the original studies methods or theories.\n\n\nThis is important for the validation of the results and conclusions of the study\nReplicability requires the following:\n\nClear and complete methodological documentation;\nDescription of assumptions and caveats.\n\nAn example of this going wrong is when people upload code without documentation, data without useful metadata, and environment files/containers without any guidelines as to how they were used, but haven’t compared their numerical outputs to an analytical case, and haven’t documented the maths they have used behind their code.\n\n\n\nReusability\n\nWhen you or others are able to easily use the code or data produced as part of the original study, and potentially rework it and extend it for new applications, contexts, or studies.\n\n\nThis is important for open research, for collaboration and building on previous work, and to support reproducibility and replicability (as it allows other groups to use your code to try to reproduce your results, or to test different parameter spaces and see if they can replicate the conclusions you drew from your work).\nFor research code to be reusable, you need:\n\nGood documentation on how to install/run/modify the code;\n\nThis does not have to be formal - it can just be useful comments - but adhering to formal syntax etc. for documentation makes it easier to read and more useful!\nProviding useful shareable environment files (for example, a Conda environment file);\n\nNote that this is often different to a environment file for reproducibility - please read the links in the reproducibility section to understand the distinction!\n\nIncluding appropriate licensing so that people can legally use the code.\nA testing or validation suite to make sure that users are getting the correct results on their own computational system.",
-    "crumbs": [
-      "Project Workflow ↗",
-      "0. Introduction",
-      "Introduction"
-    ]
-  },
-  {
-    "objectID": "version_control.html",
-    "href": "version_control.html",
-    "title": "Version Control",
-    "section": "",
-    "text": "Version Control",
+    "text": "Duration: 50 minutes\nGoal: Get to grips with using git and GitHub while drafting some pseudocode and documentation\n\n\n\n\n\n\ngit recap\n\n\n\n\n\n\n\ngit works for any files that are in plaintext. This includes:\n\n.py\n.txt\n.ipynb\n.csv\n.json\n.c, .cc\n.tex\n.bib\n.md\n\nand many, many more! Files that aren’t plain text might work, but are likely to be a bit of a mess and not particularly easy to work with.\n\n\n\nRemember our series of cycles:\n\nOur local git cycle:\n\nWe create/modify/edit files\nWe add our changes (once, twice, many times)\nWe commit our bundle of changes\nWe repeat this cycle!\n\nOur branch cycle\n\nWe can create a new branch and swap to it\nWe can make commits on this branch (following the cycle above)\nWhen we are happy, we can merge this branch back to main\n\nOur remote repository cycle\n\nWe can clone a remote repository locally, or upload a local repository to a remote\nWe push bundles of commits (which themselves are bundles of *added** edits) to the remote\n\n\n\n\n\ngit add: I tend to do this regularly as I’m working on a file.\ngit commit: when I’ve reached a checkpoint in a file I want to record, or I’ve made changes across a few files (in related things), I commit. I do this about once an hour.\ngit push: I push my changes to my remote before I head out for lunch, and before the end of the day, but you can do this more often.",
     "crumbs": [
       "Project Workflow ↗",
       "1. First Steps",
-      "Version Control"
+      "Practical 3: Writing pseudocode with version control"
+    ]
+  },
+  {
+    "objectID": "version_control/practical3.html#activity-overview",
+    "href": "version_control/practical3.html#activity-overview",
+    "title": "Practical 3: Writing pseudocode with version control",
+    "section": "",
+    "text": "Duration: 50 minutes\nGoal: Get to grips with using git and GitHub while drafting some pseudocode and documentation\n\n\n\n\n\n\ngit recap\n\n\n\n\n\n\n\ngit works for any files that are in plaintext. This includes:\n\n.py\n.txt\n.ipynb\n.csv\n.json\n.c, .cc\n.tex\n.bib\n.md\n\nand many, many more! Files that aren’t plain text might work, but are likely to be a bit of a mess and not particularly easy to work with.\n\n\n\nRemember our series of cycles:\n\nOur local git cycle:\n\nWe create/modify/edit files\nWe add our changes (once, twice, many times)\nWe commit our bundle of changes\nWe repeat this cycle!\n\nOur branch cycle\n\nWe can create a new branch and swap to it\nWe can make commits on this branch (following the cycle above)\nWhen we are happy, we can merge this branch back to main\n\nOur remote repository cycle\n\nWe can clone a remote repository locally, or upload a local repository to a remote\nWe push bundles of commits (which themselves are bundles of *added** edits) to the remote\n\n\n\n\n\ngit add: I tend to do this regularly as I’m working on a file.\ngit commit: when I’ve reached a checkpoint in a file I want to record, or I’ve made changes across a few files (in related things), I commit. I do this about once an hour.\ngit push: I push my changes to my remote before I head out for lunch, and before the end of the day, but you can do this more often.",
+    "crumbs": [
+      "Project Workflow ↗",
+      "1. First Steps",
+      "Practical 3: Writing pseudocode with version control"
+    ]
+  },
+  {
+    "objectID": "version_control/practical3.html#what-can-we-use-git-for",
+    "href": "version_control/practical3.html#what-can-we-use-git-for",
+    "title": "Practical 3: Writing pseudocode with version control",
+    "section": "",
+    "text": "git works for any files that are in plaintext. This includes:\n\n.py\n.txt\n.ipynb\n.csv\n.json\n.c, .cc\n.tex\n.bib\n.md\n\nand many, many more! Files that aren’t plain text might work, but are likely to be a bit of a mess and not particularly easy to work with.",
+    "crumbs": [
+      "Project Workflow ↗",
+      "1. First Steps",
+      "Practical 3: Writing pseudocode with version control"
+    ]
+  },
+  {
+    "objectID": "version_control/practical3.html#our-git-workflow",
+    "href": "version_control/practical3.html#our-git-workflow",
+    "title": "Practical 3: Writing pseudocode with version control",
+    "section": "",
+    "text": "Remember our series of cycles:\n\nOur local git cycle:\n\nWe create/modify/edit files\nWe add our changes (once, twice, many times)\nWe commit our bundle of changes\nWe repeat this cycle!\n\nOur branch cycle\n\nWe can create a new branch and swap to it\nWe can make commits on this branch (following the cycle above)\nWhen we are happy, we can merge this branch back to main\n\nOur remote repository cycle\n\nWe can clone a remote repository locally, or upload a local repository to a remote\nWe push bundles of commits (which themselves are bundles of *added** edits) to the remote\n\n\n\n\n\ngit add: I tend to do this regularly as I’m working on a file.\ngit commit: when I’ve reached a checkpoint in a file I want to record, or I’ve made changes across a few files (in related things), I commit. I do this about once an hour.\ngit push: I push my changes to my remote before I head out for lunch, and before the end of the day, but you can do this more often.",
+    "crumbs": [
+      "Project Workflow ↗",
+      "1. First Steps",
+      "Practical 3: Writing pseudocode with version control"
+    ]
+  },
+  {
+    "objectID": "version_control/practical3.html#round-1-edit-your-readme-file",
+    "href": "version_control/practical3.html#round-1-edit-your-readme-file",
+    "title": "Practical 3: Writing pseudocode with version control",
+    "section": "Round 1: Edit your README file",
+    "text": "Round 1: Edit your README file\nWe’re going to use your README as an example to start working with git\n\nClick on the README file in the file browser on the left, or use the command code README.md to open it in the editor\nUse Markdown to write a brief one-sentence description of what your project will do.\nSave the file\nFollow the “local git cycle” below\nMake another edit by adding your name and affiliation to the README, and follow the cycle again\n\n\n\n\n\n\n\nLocal git cycle\n\n\n\n\n\n\nCreate and edit files and folders\nRun git status to check what changes you’ve made and to see the state of the files\nRun git add filename to add the changes in a file\n\nYou can add files in sub-folders too: git add sub-folder/filename\nYou can also add multiple files: git add filename1 filename2 filename3 subfolder/filename4\n\nRun git status to check the state of the files\nCommit your bundle of files with a short message with git commit -m \"message goes here\"\nYou can also just run git commit and a text editor will open for you to write a commit message\nRun git status to check the state of the files\n\n\n\n\n\n\n\n\n\n\nWhat makes a good commit message?\n\n\n\nUsually, git messages sound like instructions for what you’ve done, like you would have in a to-do list. In fact, I often have a detailed to-do list for my coding work, and when I’ve done something from the list, in addition to checking it off I also copy and paste it as my commit message!\n\n“Add basic unit tests to the project”\n“Spellcheck project description file”\n“Fix error in flag type”\n\nCommit messages should be brief and descriptive.\n\n\nChallenge: what does the command git diff filename do?",
+    "crumbs": [
+      "Project Workflow ↗",
+      "1. First Steps",
+      "Practical 3: Writing pseudocode with version control"
+    ]
+  },
+  {
+    "objectID": "version_control/practical3.html#round-2-start-writing-pseudocode",
+    "href": "version_control/practical3.html#round-2-start-writing-pseudocode",
+    "title": "Practical 3: Writing pseudocode with version control",
+    "section": "Round 2: Start writing pseudocode",
+    "text": "Round 2: Start writing pseudocode\nWe’re going to use pseudocode as a place to start thinking about branching\nFollow the steps below to create a new branch called initial-code.\n\n\n\n\n\n\ngit branch cycle\n\n\n\n\n\n\nRun git status to check the state of the files\nRun git branch to see what branches already exist, and which one you are on\nRun git branch NAME to create a new branch called NAME (try git branch again)\nRun git checkout NAME to swap over to the branch called NAME (try git branch again)\n\n\n\n\nNow that you’re on the correct branch, write some pseudocode in your Python files.\n\n\n\n\n\n\nTips for writing pseudocode\n\n\n\n\n\nPseudocode simply means explaining the steps your code will take in plain language before writing the code\n\nUse # TODO: or # PSEUDOCODE: headers - Clearly mark sections that need implementation\nOne comment per logical step - Break complex operations into simple, sequential thoughts\nUse indentation to match code structure - Mirror your expected Python indentation in comments\nYou can use placeholder function names\n\n\nWriting Style\n\nStart with action verbs - “Load data”, “Calculate average”, “Filter results”\nBe specific but not technical - “Sort by date” not “Use datetime.strptime() and sorted()”\nUse plain language - Avoid programming jargon, write like you’re explaining to a colleague\nInclude decision points - “If data is missing, use default value”\n\n\n\nExample\n# PSEUDOCODE:\n# 1. Load the CSV file\n# 2. For each row:\n#    - Check if required columns exist\n#    - Convert date strings to datetime objects\n#    - Calculate derived metrics\n# 3. Save cleaned data to new file\n\ndef process_data(filename):\n    # TODO: Implement data loading\n    pass\n\n\n\n\nOnce you have added some pseudocode, follow your local git cycle to add and commit these changes to your current branch.\nOnce you’ve created some commits on the branch, you can either abandon it or merge it.\n\nTo abandon the branch:\n\nSimply check that you’ve no untracked changes (git status) - if you have untracked changes, try git stash and see what happens!\nThen checkout the branch you want to return to: git checkout main and keep working!\n\nTo keep the changes:\n\nCheck that you’ve no untracked changes (git status), and git add, git commit -m \"message!\" any that are untracked;\nCheckout the branch you want to merge with: git checkout main (or another branch instead of main!)\nMerge your branch called NAME onto main: git merge NAME\n\n\n\n\n\n\n\n\nNote\n\n\n\nBranches, abandoned commits, and merges can all get very messy.\nThankfully there are tools and plugins to help you visualise these, which tend to make it a bit easier!\nFor example, try using the GitGraph plugin in your virtual machine!\n\nClick on the “extensions” tab on the sidebar (the icon is four blocks stacked) or use the shortcut Ctrl + Shift + X\nSearch “GitGraph” and select the result published by “mhutchie”.\nRead through the details and click “install” if you want this available.",
+    "crumbs": [
+      "Project Workflow ↗",
+      "1. First Steps",
+      "Practical 3: Writing pseudocode with version control"
+    ]
+  },
+  {
+    "objectID": "version_control/practical3.html#round-3-push-to-your-remote-repository",
+    "href": "version_control/practical3.html#round-3-push-to-your-remote-repository",
+    "title": "Practical 3: Writing pseudocode with version control",
+    "section": "Round 3: Push to your remote repository",
+    "text": "Round 3: Push to your remote repository\nIf you swap browser tabs back to your repository page, you won’t see the changes that you’ve made in Codespaces (your virtual machine). This is because your virtual machine is acting as a local repository. You need to push your changes to the remote.\nSimply run git push origin main after completing your local git cycle.\nCheck your repository GitHub page again, and you will see your changes.",
+    "crumbs": [
+      "Project Workflow ↗",
+      "1. First Steps",
+      "Practical 3: Writing pseudocode with version control"
+    ]
+  },
+  {
+    "objectID": "version_control/practical3.html#try-this-cycle-again",
+    "href": "version_control/practical3.html#try-this-cycle-again",
+    "title": "Practical 3: Writing pseudocode with version control",
+    "section": "Try this cycle again",
+    "text": "Try this cycle again\nTry making further small changes to your files and practising these different cycles.",
+    "crumbs": [
+      "Project Workflow ↗",
+      "1. First Steps",
+      "Practical 3: Writing pseudocode with version control"
+    ]
+  },
+  {
+    "objectID": "version_control/presentation.html#what-is-version-control",
+    "href": "version_control/presentation.html#what-is-version-control",
+    "title": "Version control",
+    "section": "What is version control?",
+    "text": "What is version control?\n\n\nOften described as “track changes”, although that’s not quite right\nA super-powerful “undo” button\nA way of working collaboratively without over-writing each other’s work\nA way of recording exactly what you did and when"
+  },
+  {
+    "objectID": "version_control/presentation.html#what-is-version-control-1",
+    "href": "version_control/presentation.html#what-is-version-control-1",
+    "title": "Version control",
+    "section": "What is version control?",
+    "text": "What is version control?\n\nOne way of doing version control…"
+  },
+  {
+    "objectID": "version_control/presentation.html#what-is-version-control-2",
+    "href": "version_control/presentation.html#what-is-version-control-2",
+    "title": "Version control",
+    "section": "What is version control?",
+    "text": "What is version control?\n\nWe’re going to use git, which is a strangely named version control software\nWe’ll use this to explain how version control works, and why it matters\nThere are lots of other ways to do version control, but git is very widely used\n\nIf version control was word processing, git would be Microsoft Word"
+  },
+  {
+    "objectID": "version_control/presentation.html#what-does-git-do",
+    "href": "version_control/presentation.html#what-does-git-do",
+    "title": "Version control",
+    "section": "What does git do?",
+    "text": "What does git do?\n\ngit allows you to bundle up changes to various files, and give the group of changes a unique commit hash and an explanatory message.\ngit works on a project level, so you can make a bunch of changes to different files in a folder, and then commit all those changes with a descriptive message\nIt’s recorded that you made those changes, and there’s a unique commit hash that you can quote to point at the exact state of your folder when you added those changes."
+  },
+  {
+    "objectID": "version_control/presentation.html#what-does-git-do-1",
+    "href": "version_control/presentation.html#what-does-git-do-1",
+    "title": "Version control",
+    "section": "What does git do?",
+    "text": "What does git do?\n\ngit is a command line program\nThere are actually only a few commands you’ll really use regularly\nBut before we move on to learning what commands are needed, let’s try to build a mental model of git\nHopefully this will be useful to those of you who are already using git too!"
+  },
+  {
+    "objectID": "version_control/presentation.html#what-does-git-do-2",
+    "href": "version_control/presentation.html#what-does-git-do-2",
+    "title": "Version control",
+    "section": "What does git do?",
+    "text": "What does git do?\n\n\nOld version of python-file.py\n\n1 # This is a comment\n2 import matplotlib.pyplot as plt\n3 x = [1, 2, 3, 4, 5]\n4 y = [3, 4, 5, 6, 7]\n5 plt.scatter(x, y)\n\n\nNew version of python-file.py\n\n1 # This is a comment\n2 import matplotlib.pyplot as plt\n3 import numpy as np\n4 x = [1, 2, 3, 4, 5]\n5 y = [3, 4, 5, 6, 7]\n6 plt.scatter(x, y)\n6 plt.plot(x, y)\n\nLine 3 added, line 6 removed, line 6 added."
+  },
+  {
+    "objectID": "version_control/presentation.html#what-does-git-do-3",
+    "href": "version_control/presentation.html#what-does-git-do-3",
+    "title": "Version control",
+    "section": "What does git do?",
+    "text": "What does git do?\n\n\nNew version of python-file.py\n\n1 # This is a comment\n2 import matplotlib.pyplot as plt\n3 import numpy as np\n4 x = [1, 2, 3, 4, 5]\n5 y = [3, 4, 5, 6, 7]\n6 plt.scatter(x, y)\n6 plt.plot(x, y)\n\nLine 3 added, line 6 removed, line 6 added.\n\nAssociated git commit\n\nFile: python-file.py\nCommit hash: u87wy9o2\nCommit message: change plotting method\n+++ 3 import numpy as np\n- – 6 plt.scatter(x, y)\n+++ 6 plt.plot(x, y)"
+  },
+  {
+    "objectID": "version_control/presentation.html#what-does-git-do-4",
+    "href": "version_control/presentation.html#what-does-git-do-4",
+    "title": "Version control",
+    "section": "What does git do?",
+    "text": "What does git do?\n\nWhen we work with git, we bundle up changes in our project folder (/directory) and commit our changes.\nEach commit (bundle of changes) gets a unique id - a hexadecimal hash that’s 40 digits long (we’re just going to abbreviate to the first 7)\nThe commits are made to a “branch” - pause any thinking for a moment\n\n\n\n\n\n\n\n%%{\n  init: {\n    'theme': 'base',\n    'themeVariables': {\n      'primaryColor': '#9fe1ff',\n      'primaryTextColor': '#470044',\n      'primaryBorderColor': '#000000',\n      'lineColor': '#9158A2',\n      'secondaryColor': '#e79aff',\n      'tertiaryColor': '#fffc58'\n    }\n  }\n}%%\n\ngitGraph\n   commit id: \"a1b2c3d\""
+  },
+  {
+    "objectID": "version_control/presentation.html#what-does-git-do-5",
+    "href": "version_control/presentation.html#what-does-git-do-5",
+    "title": "Version control",
+    "section": "What does git do?",
+    "text": "What does git do?\n\nWhen we work with git, we bundle up changes in our project folder (/directory) and commit our changes.\nEach commit (bundle of changes) gets a unique id - a hexadecimal hash that’s 40 digits long (we’re just going to abbreviate to the first 7)\nThe commits are made to a “branch” - pause any thinking for a moment\n\n\n\n\n\n\n\n%%{\n  init: {\n    'theme': 'base',\n    'themeVariables': {\n      'primaryColor': '#9fe1ff',\n      'primaryTextColor': '#470044',\n      'primaryBorderColor': '#000000',\n      'lineColor': '#9158A2',\n      'secondaryColor': '#e79aff',\n      'tertiaryColor': '#fffc58'\n    }\n  }\n}%%\n\ngitGraph\n   commit id: \"a1b2c3d\"\n   commit id: \"4e5f678\""
+  },
+  {
+    "objectID": "version_control/presentation.html#what-does-git-do-6",
+    "href": "version_control/presentation.html#what-does-git-do-6",
+    "title": "Version control",
+    "section": "What does git do?",
+    "text": "What does git do?\n\n\n\n\n\n\n%%{\n  init: {\n    'theme': 'base',\n    'themeVariables': {\n      'primaryColor': '#9fe1ff',\n      'primaryTextColor': '#470044',\n      'primaryBorderColor': '#000000',\n      'lineColor': '#9158A2',\n      'secondaryColor': '#e79aff',\n      'tertiaryColor': '#fffc58'\n    }\n  }\n}%%\n\ngitGraph\n   commit id: \"a1b2c3d\"\n\n\n\n\n\n\n\n\nBecause each “bundle” of changes has been saved with a unique id, we can roll back our changes to a previous version if we want"
+  },
+  {
+    "objectID": "version_control/presentation.html#what-does-git-do-7",
+    "href": "version_control/presentation.html#what-does-git-do-7",
+    "title": "Version control",
+    "section": "What does git do?",
+    "text": "What does git do?\n\n\n\n\n\n\n%%{\n  init: {\n    'theme': 'base',\n    'themeVariables': {\n      'primaryColor': '#9fe1ff',\n      'primaryTextColor': '#470044',\n      'primaryBorderColor': '#000000',\n      'lineColor': '#9158A2',\n      'secondaryColor': '#e79aff',\n      'tertiaryColor': '#fffc58'\n    }\n  }\n}%%\n\ngitGraph\n   commit id: \"a1b2c3d\"\n   commit id: \"4e5f678\"\n\n\n\n\n\n\n\n\nBut let’s say we’re happy with how our code is working, but we want to try out a different way of doing something\nOr say we’ve written the conclusion section of our paper in a certain way, but our supervisor has some ideas for structuring it differently\n\nHow can we try this out without risking our current work that we’re happy with?"
+  },
+  {
+    "objectID": "version_control/presentation.html#what-does-git-do-8",
+    "href": "version_control/presentation.html#what-does-git-do-8",
+    "title": "Version control",
+    "section": "What does git do?",
+    "text": "What does git do?\n\n\n\n\n\n\n%%{\n  init: {\n    'theme': 'base',\n    'themeVariables': {\n      'primaryColor': '#9fe1ff',\n      'primaryTextColor': '#470044',\n      'primaryBorderColor': '#000000',\n      'lineColor': '#9158A2',\n      'secondaryColor': '#e79aff',\n      'tertiaryColor': '#fffc58'\n    }\n  }\n}%%\n\ngitGraph\n   commit id: \"a1b2c3d\"\n   commit id: \"4e5f678\"\n   branch experimental-1\n   checkout experimental-1\n   commit id: \"90abcde\"\n   commit id: \"7835cd3\"\n\n\n\n\n\n\n\nThe answer is branching\n\n\nWe mentioned earlier that your bundled changes (commits) were on the main branch\n\n\n\n\nWe can create other branches to try out experimental changes while keeping our main branch safe"
+  },
+  {
+    "objectID": "version_control/presentation.html#what-does-git-do-9",
+    "href": "version_control/presentation.html#what-does-git-do-9",
+    "title": "Version control",
+    "section": "What does git do?",
+    "text": "What does git do?\n\n\n\n\n\n\n%%{\n  init: {\n    'theme': 'base',\n    'themeVariables': {\n      'primaryColor': '#9fe1ff',\n      'primaryTextColor': '#470044',\n      'primaryBorderColor': '#000000',\n      'lineColor': '#9158A2',\n      'secondaryColor': '#e79aff',\n      'tertiaryColor': '#fffc58'\n    }\n  }\n}%%\n\ngitGraph\n   commit id: \"a1b2c3d\"\n   commit id: \"4e5f678\"\n   branch experimental-1\n   checkout experimental-1\n   commit id: \"90abcde\"\n   commit id: \"7835cd3\"\n\n\n\n\n\n\n\nThe answer is branching\n\nWhen we are happy with the changes we have made on the experimental branch, we can decide to mix them back in with our main branch\nWe can merge the changes with the main branch"
+  },
+  {
+    "objectID": "version_control/presentation.html#what-does-git-do-10",
+    "href": "version_control/presentation.html#what-does-git-do-10",
+    "title": "Version control",
+    "section": "What does git do?",
+    "text": "What does git do?\n\n\n\n\n\n\n%%{\n  init: {\n    'theme': 'base',\n    'themeVariables': {\n      'primaryColor': '#9fe1ff',\n      'primaryTextColor': '#470044',\n      'primaryBorderColor': '#000000',\n      'lineColor': '#9158A2',\n      'secondaryColor': '#e79aff',\n      'tertiaryColor': '#fffc58'\n    }\n  }\n}%%\n\ngitGraph\n   commit id: \"a1b2c3d\"\n   commit id: \"4e5f678\"\n   branch experimental-1\n   checkout experimental-1\n   commit id: \"90abcde\"\n   commit id: \"7835cd3\"\n   checkout main\n   merge experimental-1 id: \"df37ba1\"\n\n\n\n\n\n\n\nThe answer is branching\n\nWhen we are happy with the changes we have made on the experimental branch, we can decide to mix them back in with our main branch\nWe can merge the changes with the main branch\n\nThis merge get’s it’s own unique id\n\n\nRemember that you can always reverse to a previous commit, even across different branches!"
+  },
+  {
+    "objectID": "version_control/presentation.html#what-does-git-do-11",
+    "href": "version_control/presentation.html#what-does-git-do-11",
+    "title": "Version control",
+    "section": "What does git do?",
+    "text": "What does git do?\n\n\n\n\n\n\n%%{\n  init: {\n    'theme': 'base',\n    'themeVariables': {\n      'primaryColor': '#9fe1ff',\n      'primaryTextColor': '#470044',\n      'primaryBorderColor': '#000000',\n      'lineColor': '#9158A2',\n      'secondaryColor': '#e79aff',\n      'tertiaryColor': '#fffc58'\n    }\n  }\n}%%\n\ngitGraph\n   commit id: \"a1b2c3d\"\n   commit id: \"4e5f678\"\n   branch experimental-1\n   checkout experimental-1\n   commit id: \"90abcde\"\n   commit id: \"7835cd3\"\n   checkout main\n   merge experimental-1 id: \"df37ba1\"\n   commit id: \"34efc1a\"\n   commit id: \"32753bc\"\n   branch experimental-2\n   checkout experimental-2\n   commit id: \"cb45ad1\"\n\n\n\n\n\n\n\n\nWe can continue committing bundles of changes, and making new branches that support us taking risks with our work"
+  },
+  {
+    "objectID": "version_control/presentation.html#what-does-git-do-12",
+    "href": "version_control/presentation.html#what-does-git-do-12",
+    "title": "Version control",
+    "section": "What does git do?",
+    "text": "What does git do?\n\n\n\n\n\n\n%%{\n  init: {\n    'theme': 'base',\n    'themeVariables': {\n      'primaryColor': '#9fe1ff',\n      'primaryTextColor': '#470044',\n      'primaryBorderColor': '#000000',\n      'lineColor': '#9158A2',\n      'secondaryColor': '#e79aff',\n      'tertiaryColor': '#fffc58'\n    }\n  }\n}%%\n\ngitGraph\n   commit id: \"a1b2c3d\"\n   commit id: \"4e5f678\"\n   branch experimental-1\n   checkout experimental-1\n   commit id: \"90abcde\"\n   commit id: \"7835cd3\"\n   checkout main\n   merge experimental-1 id: \"df37ba1\"\n   commit id: \"34efc1a\"\n   commit id: \"32753bc\"\n   branch experimental-2\n   checkout experimental-2\n   commit id: \"cb45ad1\"\n   branch experimental-3\n   checkout experimental-3\n   commit id: \"456abc1\"\n\n\n\n\n\n\n\n\nWe can create branches from other branches, if we want to noodle around with changes"
+  },
+  {
+    "objectID": "version_control/presentation.html#what-does-git-do-13",
+    "href": "version_control/presentation.html#what-does-git-do-13",
+    "title": "Version control",
+    "section": "What does git do?",
+    "text": "What does git do?\n\n\n\n\n\n\n%%{\n  init: {\n    'theme': 'base',\n    'themeVariables': {\n      'primaryColor': '#9fe1ff',\n      'primaryTextColor': '#470044',\n      'primaryBorderColor': '#000000',\n      'lineColor': '#9158A2',\n      'secondaryColor': '#e79aff',\n      'tertiaryColor': '#fffc58'\n    }\n  }\n}%%\n\ngitGraph\n   commit id: \"a1b2c3d\"\n   commit id: \"4e5f678\"\n   branch experimental-1\n   checkout experimental-1\n   commit id: \"90abcde\"\n   commit id: \"7835cd3\"\n   checkout main\n   merge experimental-1 id: \"df37ba1\"\n   commit id: \"34efc1a\"\n   commit id: \"32753bc\"\n   branch experimental-2\n   checkout experimental-2\n   commit id: \"cb45ad1\"\n   branch experimental-3\n   checkout experimental-3\n   commit id: \"456abc1\"\n   checkout experimental-2\n   commit id: \"ad1cb45\"\n\n\n\n\n\n\n\n\nWe can create branches from other branches, if we want to noodle around with changes\n\nWe can then abandon those branches if we realise we made terrible choices, and keep working on the original branch like nothing happened…"
+  },
+  {
+    "objectID": "version_control/presentation.html#what-does-git-do-14",
+    "href": "version_control/presentation.html#what-does-git-do-14",
+    "title": "Version control",
+    "section": "What does git do?",
+    "text": "What does git do?\n\n\n\n\n\n\n%%{\n  init: {\n    'theme': 'base',\n    'themeVariables': {\n      'primaryColor': '#9fe1ff',\n      'primaryTextColor': '#470044',\n      'primaryBorderColor': '#000000',\n      'lineColor': '#9158A2',\n      'secondaryColor': '#e79aff',\n      'tertiaryColor': '#fffc58'\n    }\n  }\n}%%\n\ngitGraph\n   commit id: \"a1b2c3d\"\n   commit id: \"4e5f678\"\n   branch experimental-1\n   checkout experimental-1\n   commit id: \"90abcde\"\n   commit id: \"7835cd3\"\n   checkout main\n   merge experimental-1 id: \"df37ba1\"\n   commit id: \"34efc1a\"\n   commit id: \"32753bc\"\n   branch experimental-2\n   checkout experimental-2\n   commit id: \"cb45ad1\"\n   branch experimental-3\n   checkout experimental-3\n   commit id: \"456abc1\"\n   checkout experimental-2\n   commit id: \"ad1cb45\"\n   checkout main\n   merge experimental-2 id: \"be34af1\"\n   commit id: \"def134a\"\n   commit id: \"563bdef\"\n\n\n\n\n\n\n\n\nAnd we usually bring everything back to the main branch once we are happy with it"
+  },
+  {
+    "objectID": "version_control/presentation.html#what-does-git-do-15",
+    "href": "version_control/presentation.html#what-does-git-do-15",
+    "title": "Version control",
+    "section": "What does git do?",
+    "text": "What does git do?\n\n\n\n\n\n\n%%{\n  init: {\n    'theme': 'base',\n    'themeVariables': {\n      'primaryColor': '#9fe1ff',\n      'primaryTextColor': '#470044',\n      'primaryBorderColor': '#000000',\n      'lineColor': '#9158A2',\n      'secondaryColor': '#e79aff',\n      'tertiaryColor': '#fffc58'\n    }\n  }\n}%%\n\ngitGraph\n   commit id: \"a1b2c3d\"\n   commit id: \"4e5f678\"\n   branch experimental-1\n   checkout experimental-1\n   commit id: \"90abcde\"\n   commit id: \"7835cd3\"\n   checkout main\n   merge experimental-1 id: \"df37ba1\"\n   commit id: \"34efc1a\"\n   commit id: \"32753bc\" tag:\"v0.1.0 - preprint\" type: HIGHLIGHT\n   branch experimental-2\n   checkout experimental-2\n   commit id: \"cb45ad1\"\n   branch experimental-3\n   checkout experimental-3\n   commit id: \"456abc1\"\n   checkout experimental-2\n   commit id: \"ad1cb45\"\n   checkout main\n   merge experimental-2 id: \"be34af1\"\n   commit id: \"def134a\"\n   commit id: \"563bdef\" tag:\"v1.0.0 - published paper\" type: HIGHLIGHT\n\n\n\n\n\n\n\n\nWe can also tag specific commits if the code at that point in time is important!\n\nFor example, the version of the code you used to generate results for a preprint or the final paper!"
+  },
+  {
+    "objectID": "version_control/presentation.html#what-does-git-do-16",
+    "href": "version_control/presentation.html#what-does-git-do-16",
+    "title": "Version control",
+    "section": "What does git do?",
+    "text": "What does git do?\n\n\n\n\n\n\n%%{\n  init: {\n    'theme': 'base',\n    'themeVariables': {\n      'primaryColor': '#9fe1ff',\n      'primaryTextColor': '#470044',\n      'primaryBorderColor': '#000000',\n      'lineColor': '#9158A2',\n      'secondaryColor': '#e79aff',\n      'tertiaryColor': '#fffc58'\n    }\n  }\n}%%\n\ngitGraph\n   commit id: \"a1b2c3d\"\n   commit id: \"4e5f678\"\n   branch experimental-1\n   checkout experimental-1\n   commit id: \"90abcde\"\n   commit id: \"7835cd3\"\n   checkout main\n   merge experimental-1 id: \"df37ba1\"\n   commit id: \"34efc1a\"\n   commit id: \"32753bc\" tag:\"v0.1.0 - preprint\" type: HIGHLIGHT\n   branch experimental-2\n   checkout experimental-2\n   commit id: \"cb45ad1\"\n   branch experimental-3\n   checkout experimental-3\n   commit id: \"456abc1\"\n   checkout experimental-2\n   commit id: \"ad1cb45\"\n   checkout main\n   merge experimental-2 id: \"be34af1\"\n   commit id: \"def134a\"\n   commit id: \"563bdef\" tag:\"v1.0.0 - published paper\" type: HIGHLIGHT\n\n\n\n\n\n\n\n\nThese tags can also be called releases: (hopefully!) fairly complete, working, nice versions of your code\n\nCommits in between releases (merged to the main branch) are like patches to video games\nThe commit notes are like patch notes, telling you what’s changed"
+  },
+  {
+    "objectID": "version_control/presentation.html#the-git-cycle",
+    "href": "version_control/presentation.html#the-git-cycle",
+    "title": "Version control",
+    "section": "The git cycle",
+    "text": "The git cycle\nSo we’ve looked at the idea of bundling up changes as commits, but what does that actually involve?\nI think of it like packing a picnic basket:\n\n\n\nI make a sandwich and wrap it up\nI add it to the basket\nI chop up some fruit and put it in a lunchbox\nI add that to the basket\nI make a smoothie and bottle it\nI add that to the basket too\nFinally, I close over the top of the picnic basket and secure the latch"
+  },
+  {
+    "objectID": "version_control/presentation.html#the-git-cycle-1",
+    "href": "version_control/presentation.html#the-git-cycle-1",
+    "title": "Version control",
+    "section": "The git cycle",
+    "text": "The git cycle\nHow does this have anything to do with git?\n\n\nI make a sandwich and wrap it up\nI add it to the basket\nI chop up some fruit and put it in a lunchbox\nI add that to the basket\nI make a smoothie and bottle it\nI add that to the basket too\nFinally, I close over the top of the picnic basket and secure the latch"
+  },
+  {
+    "objectID": "version_control/presentation.html#the-git-cycle-2",
+    "href": "version_control/presentation.html#the-git-cycle-2",
+    "title": "Version control",
+    "section": "The git cycle",
+    "text": "The git cycle\nLet’s introduce the concept of add as well as commit.\n\n\nI make a sandwich and wrap it up -&gt; I make some edits to files/create new files in my project folder\nI add it to the basket -&gt; I add my changes\nI chop up some fruit and put it in a lunchbox -&gt; I make some more edits to files\nI add that to the basket -&gt; I add my changes\nI make a smoothie and bottle it -&gt; I make some more edits to files\nI add that to the basket too -&gt; I add my changes\nI close over the top of the picnic basket and secure the latch -&gt; I commit all these changes that I previously added"
+  },
+  {
+    "objectID": "version_control/presentation.html#the-git-cycle-3",
+    "href": "version_control/presentation.html#the-git-cycle-3",
+    "title": "Version control",
+    "section": "The git cycle",
+    "text": "The git cycle\nLet’s introduce the concept of add as well as commit.\n\n\nYou create or edit files, then\nYou add those changes, then\nYou either create/edit more files and repeat add or you commit all the added changes with a little message\n\n\n\nI think of git add as like a quick save, whereas git commit is a full, proper save."
+  },
+  {
+    "objectID": "version_control/presentation.html#the-git-cycle-4",
+    "href": "version_control/presentation.html#the-git-cycle-4",
+    "title": "Version control",
+    "section": "The git cycle",
+    "text": "The git cycle\ncreate/edit -&gt; add -&gt; commit\n\n\n\n\n\n\n\n\n\n%%{\n  init: {\n    'theme': 'base',\n    'themeVariables': {\n      'primaryColor': '#9fe1ff',\n      'primaryTextColor': '#470044',\n      'primaryBorderColor': '#000000',\n      'lineColor': '#9158A2',\n      'secondaryColor': '#e79aff',\n      'tertiaryColor': '#fffc58'\n    }\n  }\n}%%\n\nflowchart TD\n    Untracked --&gt;|**git add**| Staged\n    Staged --&gt;|**git commit**| Committed\n    Committed -.-&gt;|*edit files*| Untracked\n\n\n\n\n\n\n\n\n\n\n\nWe need to add everything to our picnic basket\nWhen we are happy with our bundle of changes, we close up the basket and commit the changes, and add a nice little label to it in the form of a commit message"
+  },
+  {
+    "objectID": "version_control/presentation.html#the-git-cycle-5",
+    "href": "version_control/presentation.html#the-git-cycle-5",
+    "title": "Version control",
+    "section": "The git cycle",
+    "text": "The git cycle\nSome new jargon - the state of the files in your repository\n\n\n\n\n\n\n\n\n%%{\n  init: {\n    'theme': 'base',\n    'themeVariables': {\n      'primaryColor': '#9fe1ff',\n      'primaryTextColor': '#470044',\n      'primaryBorderColor': '#000000',\n      'lineColor': '#9158A2',\n      'secondaryColor': '#e79aff',\n      'tertiaryColor': '#fffc58'\n    }\n  }\n}%%\n\nflowchart TD\n    Untracked --&gt;|**git add**| Staged\n    Staged --&gt;|**git commit**| Committed\n    Committed -.-&gt;|*edit files*| Untracked\n\n\n\n\n\n\n\n\n\nUntracked/modified: files that have been created or edited since the last cycle, that haven’t been added or committed\nStaged: files that have been added (put in the basket) but not committed yet.\nCommitted: files that have been added and committed and now have a unique id attached to their most recent changes (and have not been edited since the last commit)\n\nAs well as being able to “undo” entire commits, you can undo different stages of this cycle (e.g. you can unstage files so they go from being staged to untracked)"
+  },
+  {
+    "objectID": "version_control/presentation.html#where-does-the-git-cycle-fit-in",
+    "href": "version_control/presentation.html#where-does-the-git-cycle-fit-in",
+    "title": "Version control",
+    "section": "Where does the git cycle fit in?",
+    "text": "Where does the git cycle fit in?\n\n\nEvery node on this graph…\n\n\n\n\n\n\n%%{\n  init: {\n    'theme': 'base',\n    'themeVariables': {\n      'primaryColor': '#9fe1ff',\n      'primaryTextColor': '#470044',\n      'primaryBorderColor': '#000000',\n      'lineColor': '#9158A2',\n      'secondaryColor': '#e79aff',\n      'tertiaryColor': '#fffc58'\n    }\n  }\n}%%\n\ngitGraph\n   commit id: \"a1b2c3d\"\n   commit id: \"4e5f678\"\n   branch experimental-1\n   checkout experimental-1\n   commit id: \"90abcde\"\n   commit id: \"7835cd3\"\n   checkout main\n   merge experimental-1 id: \"df37ba1\"\n   commit id: \"34efc1a\"\n   commit id: \"32753bc\" tag:\"v0.1.0 - preprint\" type: HIGHLIGHT\n   branch experimental-2\n   checkout experimental-2\n   commit id: \"cb45ad1\"\n   branch experimental-3\n   checkout experimental-3\n   commit id: \"456abc1\"\n   checkout experimental-2\n   commit id: \"ad1cb45\"\n   checkout main\n   merge experimental-2 id: \"be34af1\"\n   commit id: \"def134a\"\n   commit id: \"563bdef\" tag:\"v1.0.0 - published paper\" type: HIGHLIGHT\n\n\n\n\n\n\n\n\ncontains this cycle\n\n\n\n\n\n\n%%{\n  init: {\n    'theme': 'base',\n    'themeVariables': {\n      'primaryColor': '#9fe1ff',\n      'primaryTextColor': '#470044',\n      'primaryBorderColor': '#000000',\n      'lineColor': '#9158A2',\n      'secondaryColor': '#e79aff',\n      'tertiaryColor': '#fffc58'\n    }\n  }\n}%%\n\nflowchart TD\n    Untracked --&gt;|**git add**| Staged\n    Staged --&gt;|**git commit**| Committed\n    Committed -.-&gt;|*edit files*| Untracked\n\n\n\n\n\n\n\n\nIf you understand this, then actually using git is just a matter of googling the right commands."
+  },
+  {
+    "objectID": "version_control/presentation.html#back-up-your-work",
+    "href": "version_control/presentation.html#back-up-your-work",
+    "title": "Version control",
+    "section": "Back up your work!",
+    "text": "Back up your work!\nWhen doing research, or back in undergrad, we all heard the common refrain “back up your work!”\n\n\nThis sometimes involved floppy disks, usb sticks, external harddrives;\nAlso now likely to include cloud platforms and storage options (Dropbox, OneDrive, etc.)"
+  },
+  {
+    "objectID": "version_control/presentation.html#back-up-your-work-1",
+    "href": "version_control/presentation.html#back-up-your-work-1",
+    "title": "Version control",
+    "section": "Back up your work!",
+    "text": "Back up your work!\nSo, we have the history of our work saved in our git repository (which is just the folder that our files are stored in) - but it’s just as vulnerable to loss as any other files on our pc.\nWe need a back-up!\n\nThe “backup” of our local git repository is called a remote repository."
+  },
+  {
+    "objectID": "version_control/presentation.html#remote-repository",
+    "href": "version_control/presentation.html#remote-repository",
+    "title": "Version control",
+    "section": "Remote repository",
+    "text": "Remote repository\nThe remote repository can be:\n\non a different computer\non an external harddrive\non a cloud service like GitHub"
+  },
+  {
+    "objectID": "version_control/presentation.html#remote-repository-1",
+    "href": "version_control/presentation.html#remote-repository-1",
+    "title": "Version control",
+    "section": "Remote repository",
+    "text": "Remote repository\n\n\n\n\n\n\n\n\n%%{\n  init: {\n    'theme': 'base',\n    'themeVariables': {\n      'primaryColor': '#9fe1ff',\n      'primaryTextColor': '#470044',\n      'primaryBorderColor': '#000000',\n      'lineColor': '#9158A2',\n      'secondaryColor': '#e79aff',\n      'tertiaryColor': '#fffc58'\n    }\n  }\n}%%\n\nflowchart TD\n    Untracked --&gt;|**git add**| Staged\n    Staged --&gt;|**git commit**| Committed\n    Committed -.-&gt;|*edit files*| Untracked\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n%%{\n  init: {\n    'theme': 'base',\n    'themeVariables': {\n      'primaryColor': '#9fe1ff',\n      'primaryTextColor': '#470044',\n      'primaryBorderColor': '#000000',\n      'lineColor': '#9158A2',\n      'secondaryColor': '#e79aff',\n      'tertiaryColor': '#fffc58'\n    }\n  }\n}%%\n\ngitGraph\n   commit id: \"a1b2c3d\"\n   commit id: \"4e5f678\"\n   branch experimental-1\n   checkout experimental-1\n   commit id: \"90abcde\"\n   commit id: \"7835cd3\"\n   checkout main\n   merge experimental-1 id: \"df37ba1\"\n   commit id: \"34efc1a\"\n   commit id: \"32753bc\" tag:\"v0.1.0 - preprint\" type: HIGHLIGHT\n   branch experimental-2\n   checkout experimental-2\n   commit id: \"cb45ad1\"\n   branch experimental-3\n   checkout experimental-3\n   commit id: \"456abc1\"\n   checkout experimental-2\n   commit id: \"ad1cb45\"\n   checkout main\n   merge experimental-2 id: \"be34af1\"\n   commit id: \"def134a\"\n   commit id: \"563bdef\" tag:\"v1.0.0 - published paper\" type: HIGHLIGHT\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n%%{\n  init: {\n    'theme': 'base',\n    'themeVariables': {\n      'primaryColor': '#9fe1ff',\n      'primaryTextColor': '#470044',\n      'primaryBorderColor': '#000000',\n      'lineColor': '#9158A2',\n      'secondaryColor': '#e79aff',\n      'tertiaryColor': '#fffc58'\n    }\n  }\n}%%\n\nflowchart TD\n    Local --&gt;|**git push**| Remote\n    Remote -.-&gt;|**pull**| Local\n\n\n\n\n\n\n\n\n\nYou can push bundles of commits to your remote repository\nYou can also pull changes from the remote repository to your local…\n\nYou can have different “local” repositories on different machines…"
+  },
+  {
+    "objectID": "version_control/presentation.html#remote-repository-2",
+    "href": "version_control/presentation.html#remote-repository-2",
+    "title": "Version control",
+    "section": "Remote repository",
+    "text": "Remote repository\n\n\n\n\n\n\n\n\n\n\n%%{\n  init: {\n    'theme': 'base',\n    'themeVariables': {\n      'primaryColor': '#9fe1ff',\n      'primaryTextColor': '#470044',\n      'primaryBorderColor': '#000000',\n      'lineColor': '#9158A2',\n      'secondaryColor': '#e79aff',\n      'tertiaryColor': '#fffc58'\n    }\n  }\n}%%\n\nflowchart TD\n    Local-1 --&gt;|**push**| Remote\n    Remote -.-&gt;|**pull**| Local-1"
+  },
+  {
+    "objectID": "version_control/presentation.html#remote-repository-3",
+    "href": "version_control/presentation.html#remote-repository-3",
+    "title": "Version control",
+    "section": "Remote repository",
+    "text": "Remote repository\n\n\n\n\n\n\n\n\n\n\n%%{\n  init: {\n    'theme': 'base',\n    'themeVariables': {\n      'primaryColor': '#9fe1ff',\n      'primaryTextColor': '#470044',\n      'primaryBorderColor': '#000000',\n      'lineColor': '#9158A2',\n      'secondaryColor': '#e79aff',\n      'tertiaryColor': '#fffc58'\n    }\n  }\n}%%\n\nflowchart TD\n    Local-1 --&gt;|**push**| Remote\n    Remote -.-&gt;|**pull**| Local-1\n    Remote -.-&gt;|**pull**| Local-2"
+  },
+  {
+    "objectID": "version_control/presentation.html#remote-repository-4",
+    "href": "version_control/presentation.html#remote-repository-4",
+    "title": "Version control",
+    "section": "Remote repository",
+    "text": "Remote repository\n\n\n\n\n\n\n\n\n\n\n%%{\n  init: {\n    'theme': 'base',\n    'themeVariables': {\n      'primaryColor': '#9fe1ff',\n      'primaryTextColor': '#470044',\n      'primaryBorderColor': '#000000',\n      'lineColor': '#9158A2',\n      'secondaryColor': '#e79aff',\n      'tertiaryColor': '#fffc58'\n    }\n  }\n}%%\n\nflowchart TD\n    Local-1 --&gt;|**push**| Remote\n    Remote -.-&gt;|**pull**| Local-1\n    Remote -.-&gt;|**pull**| Local-2\n    Local-2 --&gt;|**push**| Remote\n\n\n\n\n\n\n\n\n\n\n\nYou can use a remote repository to sync repositories across different machines\nFor yourself, or for collaborators"
+  },
+  {
+    "objectID": "version_control/presentation.html#remote-git",
+    "href": "version_control/presentation.html#remote-git",
+    "title": "Version control",
+    "section": "Remote git",
+    "text": "Remote git\n\n\n\n\n\n\n%%{\n  init: {\n    'theme': 'base',\n    'themeVariables': {\n      'primaryColor': '#9fe1ff',\n      'primaryTextColor': '#470044',\n      'primaryBorderColor': '#000000',\n      'lineColor': '#9158A2',\n      'secondaryColor': '#e79aff',\n      'tertiaryColor': '#fffc58'\n    },\n    'gitGraph': {\n      'showBranches': true,\n      'showCommitLabel': false,\n      'mainBranchName': 'main (remote)',\n      'mainBranchOrder': 2}\n  }\n}%%\n\ngitGraph\n   commit\n   commit\n   branch 'mmq-patch-01 (remote)' order: 1\n   branch 'mmq-patch-01 (local)' order: 0\n   checkout 'mmq-patch-01 (local)'\n   commit\n   commit\n   checkout 'mmq-patch-01 (remote)'\n   merge 'mmq-patch-01 (local)'\n   checkout 'main (remote)'\n   merge 'mmq-patch-01 (remote)'\n   branch 'pt-patch-01 (local)' order:4\n   branch 'pt-patch-01 (remote)' order:3\n   checkout 'pt-patch-01 (local)'\n   commit\n   commit\n   checkout 'pt-patch-01 (remote)'\n   merge 'pt-patch-01 (local)'\n   checkout 'main (remote)'\n   merge 'pt-patch-01 (remote)'\n\n\n\n\n\n\n\n\nThis allows us to collaborate with others"
+  },
+  {
+    "objectID": "version_control/presentation.html#remote-git-1",
+    "href": "version_control/presentation.html#remote-git-1",
+    "title": "Version control",
+    "section": "Remote git",
+    "text": "Remote git\n\n\n\n\n\n\n%%{\n  init: {\n    'theme': 'base',\n    'themeVariables': {\n      'primaryColor': '#9fe1ff',\n      'primaryTextColor': '#470044',\n      'primaryBorderColor': '#000000',\n      'lineColor': '#9158A2',\n      'secondaryColor': '#e79aff',\n      'tertiaryColor': '#fffc58'\n    },\n    'gitGraph': {\n      'showBranches': true,\n      'showCommitLabel': false,\n      'mainBranchName': 'main (remote)',\n      'mainBranchOrder': 2}\n  }\n}%%\n\ngitGraph\n   commit\n   commit\n   branch 'mmq-patch-01 (remote)' order: 1\n   branch 'mmq-patch-01 (local)' order: 0\n   checkout 'mmq-patch-01 (local)'\n   commit\n   commit\n   checkout 'mmq-patch-01 (remote)'\n   merge 'mmq-patch-01 (local)'\n   checkout 'main (remote)'\n   merge 'mmq-patch-01 (remote)'\n   branch 'pt-patch-01 (local)' order:4\n   branch 'pt-patch-01 (remote)' order:3\n   checkout 'pt-patch-01 (local)'\n   commit\n   commit\n   checkout 'pt-patch-01 (remote)'\n   merge 'pt-patch-01 (local)'\n   checkout 'main (remote)'\n   merge 'pt-patch-01 (remote)'\n   commit tag: 'v1.0.0'\n\n\n\n\n\n\n\n\nWhen using a cloud-based remote, we can mint a DOI for the release for a snapshot of the code"
+  },
+  {
+    "objectID": "version_control/presentation.html#remote-git-2",
+    "href": "version_control/presentation.html#remote-git-2",
+    "title": "Version control",
+    "section": "Remote git",
+    "text": "Remote git\n\nIf we compare version control to a tool such as a word processor\nThen git is Microsoft Word (but there are other options)\nAnd GitHub is Microsoft365 (and again, there are other options!)\n\n(funnily enough GitHub is owned by Microsoft)"
+  },
+  {
+    "objectID": "version_control/presentation.html#github",
+    "href": "version_control/presentation.html#github",
+    "title": "Version control",
+    "section": "GitHub",
+    "text": "GitHub\nIn the same way that we are focussing on Git, we are going to focus on GitHub for this course\n\nThere are lots of things we can get GitHub to do that are not “version control” specific; we will look at these tomorrow!\nFor now, lets think of it as a remote repository for git."
+  },
+  {
+    "objectID": "project_org/project_org_presentation.html#keeping-your-projects-tidy",
+    "href": "project_org/project_org_presentation.html#keeping-your-projects-tidy",
+    "title": "Organizing Your Research Coding Project",
+    "section": "Keeping your projects tidy",
+    "text": "Keeping your projects tidy\n\nIt’s not always obvious the best way of keeping your code, notes, and data nice and tidy\nResearch tends to be very fluid and experimental, creating lots of scripts and notebooks that can easily become a tangled mess\nWe want to be able to easily find the right piece of code, the write snippet of notes!"
+  },
+  {
+    "objectID": "project_org/project_org_presentation.html#your-future-self-will-thank-you-when-you-can",
+    "href": "project_org/project_org_presentation.html#your-future-self-will-thank-you-when-you-can",
+    "title": "Organizing Your Research Coding Project",
+    "section": "Your future self will thank you when you can:",
+    "text": "Your future self will thank you when you can:\n\nFind your analysis code from 6 months ago\nUnderstand what each script actually does\nReproduce your results without panic\nShare your work with collaborators confidently\nBuild on your previous work instead of starting over"
+  },
+  {
+    "objectID": "project_org/project_org_presentation.html#poor-organization-leads-to",
+    "href": "project_org/project_org_presentation.html#poor-organization-leads-to",
+    "title": "Organizing Your Research Coding Project",
+    "section": "Poor organization leads to:",
+    "text": "Poor organization leads to:\n\nLost time searching for the “final” version\nIrreproducible results, mistakes, and embarrassing retractions\nCollaboration nightmares and frustrated colleagues\nThesis chapters that can’t be verified"
+  },
+  {
+    "objectID": "project_org/project_org_presentation.html#a-well-organized-research-project",
+    "href": "project_org/project_org_presentation.html#a-well-organized-research-project",
+    "title": "Organizing Your Research Coding Project",
+    "section": "A Well-Organized Research Project",
+    "text": "A Well-Organized Research Project\nEssential Components:\n\n📁 Clear directory structure - Everything has a logical place\n📄 Comprehensive documentation - README files that actually help\n🔄 Version control - Git tracks every change and decision\n🧪 Organized data workflow - Raw → Processed → Results\n✅ Testing framework - Confidence that your code works correctly\n📦 Dependency management - Reproducible computational environment"
+  },
+  {
+    "objectID": "project_org/project_org_presentation.html#research-data",
+    "href": "project_org/project_org_presentation.html#research-data",
+    "title": "Organizing Your Research Coding Project",
+    "section": "Research data",
+    "text": "Research data\nWhere should it live?\n\nOn backed-up University Storage (appropriate for its tier) mounted on your workstation\n(Temporarily) on $SCRATCH storage on HPC systems\nNot mixed in with your code!\n\nLots of project structure templates online suggest having a data sub-folder\nIn general, it’s often better practise to keep your data in a separate folder:\n\nIt may be sensitive data, but you want your code to be shareable\nIt may be far too large to store on your desktop permanently alongside your code\nIt will cause issues when version-controlling your code"
+  },
+  {
+    "objectID": "project_org/project_org_presentation.html#research-data-rules",
+    "href": "project_org/project_org_presentation.html#research-data-rules",
+    "title": "Organizing Your Research Coding Project",
+    "section": "Research data rules",
+    "text": "Research data rules\n1. Raw data is read-only:\n\nNever edit original data files directly\nAll modifications happen through documented code\nKeep multiple backups of irreplaceable data"
+  },
+  {
+    "objectID": "project_org/project_org_presentation.html#research-data-rules-1",
+    "href": "project_org/project_org_presentation.html#research-data-rules-1",
+    "title": "Organizing Your Research Coding Project",
+    "section": "Research data rules",
+    "text": "Research data rules\n2. Document data provenance:\n\nWhere did each dataset come from?\nWhat processing steps were applied?\nWhat are the known limitations or biases?"
+  },
+  {
+    "objectID": "project_org/project_org_presentation.html#research-data-rules-2",
+    "href": "project_org/project_org_presentation.html#research-data-rules-2",
+    "title": "Organizing Your Research Coding Project",
+    "section": "Research data rules",
+    "text": "Research data rules\n3. Separate processing stages:\n\nRaw → Cleaned → Analysis-ready → Results\nEach stage produces documented intermediate files\nClear scripts connect each transformation step"
+  },
+  {
+    "objectID": "project_org/project_org_presentation.html#research-data-1",
+    "href": "project_org/project_org_presentation.html#research-data-1",
+    "title": "Organizing Your Research Coding Project",
+    "section": "Research data",
+    "text": "Research data\nWhere should it live?\ndata/\n├── raw/\n├── processed/\n└── results/\nYou can set the permissions on the data/raw/ directory to read and execute only: chmod -R 500 raw/\n\nMake sure to pick the correct permissions: chmod command\nYou can always undo these later"
+  },
+  {
+    "objectID": "project_org/project_org_presentation.html#research-data-2",
+    "href": "project_org/project_org_presentation.html#research-data-2",
+    "title": "Organizing Your Research Coding Project",
+    "section": "Research data",
+    "text": "Research data\nWhere should it live?\nWe will talk later in more depth about releasing and sharing code, but open data should be saved and shared in a data repository if at all possible:\n\nYour funder may have specific repositories for research data\nPublications may have requirements about sharing output data\nUse the University’s data deposit service"
+  },
+  {
+    "objectID": "project_org/project_org_presentation.html#research-code",
+    "href": "project_org/project_org_presentation.html#research-code",
+    "title": "Organizing Your Research Coding Project",
+    "section": "Research code",
+    "text": "Research code\n\nThere are lots of different ways of organising your research code\nThere is no one “correct” way"
+  },
+  {
+    "objectID": "project_org/project_org_presentation.html#single-folder-layout",
+    "href": "project_org/project_org_presentation.html#single-folder-layout",
+    "title": "Organizing Your Research Coding Project",
+    "section": "Single Folder Layout",
+    "text": "Single Folder Layout\nmy-research-project/\n├── README.md                # Project overview and setup\n├── environment.yml          # Dependencies\n├── data/                    # Possibly some minor output data\n├── src/                     # Your source code\n│   ├── data_processing/\n│   ├── analysis/\n│   └── visualization/\n├── tests/                   # Unit tests for your functions\n├── notebooks/               # Jupyter notebooks for exploration\n├── results/                 # Figures, tables, model outputs\n├── docs/                    # Additional documentation\n└── scripts/                 # Standalone utility scripts\n\nThis is one way of keeping your code organised\nThe source code (in src) and analysis, notes, and notebooks are all in the same high-level project folder"
+  },
+  {
+    "objectID": "project_org/project_org_presentation.html#two-folder-layout",
+    "href": "project_org/project_org_presentation.html#two-folder-layout",
+    "title": "Organizing Your Research Coding Project",
+    "section": "Two Folder Layout",
+    "text": "Two Folder Layout\nOften research work involves:\n\nBuilding some form of numerical model, analysis pipeline, or other code that is somewhat generic or modular\nApplying that model to specific parameters and testing various inputs and outputs, using tools like Jupyter notebooks to explore output and write notes"
+  },
+  {
+    "objectID": "project_org/project_org_presentation.html#two-folder-layout-1",
+    "href": "project_org/project_org_presentation.html#two-folder-layout-1",
+    "title": "Organizing Your Research Coding Project",
+    "section": "Two Folder Layout",
+    "text": "Two Folder Layout\n\nI tended to bump into a few questions or problems that I didn’t see an obvious solution to:\n\nI want to keep my codebase nice and tidy and comprehensible, but I also tend to produce lots and lots of analysis scripts, notebooks and figures as I analyse my results;\nI want to compare my models to analytical cases to check their validity, again producing lots of various outputs, figures etc.;\nI don’t want to accidentally modify some of my numerical model code when trying to analyse my results at a later stage;\nI want to update my core code, fix some problems and add some functionality; how do I keep track of what results I produced with which version of my code?\nOther people would probably be able to use my model, or adapt it for their own projects, but they won’t want to sift through all my iterative work in the meantime."
+  },
+  {
+    "objectID": "project_org/project_org_presentation.html#two-folder-layout-2",
+    "href": "project_org/project_org_presentation.html#two-folder-layout-2",
+    "title": "Organizing Your Research Coding Project",
+    "section": "Two Folder Layout",
+    "text": "Two Folder Layout\nSometimes a single project folder can become unwieldy:\n\nIt can be difficult to separate out your methods and core code from various experiments and tests\nImportant information and code snippets can go missing in Jupyter Notebooks\nOne folder for “core code”; the functions you will re-use\nOne folder for the “application” - whether that’s running experiments, writing a paper or a thesis chapter, etc."
+  },
+  {
+    "objectID": "project_org/project_org_presentation.html#folder-1-the-core-code-or-package-folder",
+    "href": "project_org/project_org_presentation.html#folder-1-the-core-code-or-package-folder",
+    "title": "Organizing Your Research Coding Project",
+    "section": "Folder 1: the “core code” or “package” folder",
+    "text": "Folder 1: the “core code” or “package” folder\nplanet-evolution/            \n├── src/  \n│   └── planet_evolution/     \n│       ├── __init__.py      Makes the folder a package.\n│       └── source.py        An example module containing source code.\n├── tests/\n|   ├── __init__.py          Sets up the test suite.\n│   └── test_source.py       A file containing tests for the code in source.py.\n├── README.md                README with information about the project.\n├── docs                     Package documentation\n├── pyproject.toml           Allows me to install this as a package\n├── LICENSE                  License text to allow for reuse\n└── CITATION.cff             Citation file that makes it easy for people to cite you!\nThis will contain the code that you will import as a library in your project!"
+  },
+  {
+    "objectID": "project_org/project_org_presentation.html#folder-2-the-application-repository",
+    "href": "project_org/project_org_presentation.html#folder-2-the-application-repository",
+    "title": "Organizing Your Research Coding Project",
+    "section": "Folder 2: the “application” repository",
+    "text": "Folder 2: the “application” repository\npallasite-parent-body-evolution/    \n├── LICENSE\n├── README.md\n├── env.yml or requirements.txt     The libraries I need for analysis (including planet_evolution!)\n├── data                            I usually load in large data from storage elsewhere\n│   ├── interim                     But sometimes do keep small summary datafiles in the repository\n│   ├── processed\n│   └── raw\n├── docs                            Notes on analysis, process etc.\n├── notebooks                       Jupyter notebooks used for analysis\n├── reports                         For a manuscript source, e.g., LaTeX, Markdown, etc., or any project reports\n│   └── figures                     Figures for the manuscript or reports\n├── src                             Source code for this project\n│   ├── data                        Scripts and programs to process data\n│   ├── tools                       Any helper scripts go here\n│   └── visualization               Scripts for visualisation of your results, e.g., matplotlib, ggplot2 related.\n└── tests                           Test code for this project, benchmarking, comparison to analytical models"
+  },
+  {
+    "objectID": "project_org/project_org_presentation.html#deciding-on-a-folder-layout",
+    "href": "project_org/project_org_presentation.html#deciding-on-a-folder-layout",
+    "title": "Organizing Your Research Coding Project",
+    "section": "Deciding on a folder layout",
+    "text": "Deciding on a folder layout\nIf you opt for a single folder layout, but keep it tidy and organised, it is easy to split it into two separate directories at a later point!\n\nIn this course, we’re going to stick with a single folder set-up since we are building a basic project\nIt’s less important to choose the perfect layout, and more important to be intentional, tidy, and consistent about where you save things!"
+  },
+  {
+    "objectID": "project_org/project_org_presentation.html#common-pitfalls",
+    "href": "project_org/project_org_presentation.html#common-pitfalls",
+    "title": "Organizing Your Research Coding Project",
+    "section": "Common pitfalls",
+    "text": "Common pitfalls\nThe “I’ll organize it later” trap:\n\nStart with basic structure from day one\nOrganization gets harder as projects grow\nGood habits compound over time\n\nThe “only I will use this” fallacy:\n\nYou are your most important collaborator\nFuture you has forgotten current you’s logic\nA clear and tidy directory structure will help you down the line"
+  },
+  {
+    "objectID": "project_org/project_org_presentation.html#preparing-for-practical-2",
+    "href": "project_org/project_org_presentation.html#preparing-for-practical-2",
+    "title": "Organizing Your Research Coding Project",
+    "section": "Preparing for practical 2",
+    "text": "Preparing for practical 2\n\nWe are going to set up a virtual machine on GitHub codespaces\nWe are going to use our project workflow to set up a coding environment"
+  },
+  {
+    "objectID": "dependencies/dependencies.html",
+    "href": "dependencies/dependencies.html",
+    "title": "Dependency management",
+    "section": "",
+    "text": "Session Objectives\n\n\n\n\nIntroduce dependency management\nDiscuss using Conda as a way of managing dependencies\nOpen introduction presentation ↗",
+    "crumbs": [
+      "Project Workflow ↗",
+      "1. First Steps",
+      "Dependency management"
+    ]
+  },
+  {
+    "objectID": "dependencies/dependencies.html#presentation-content",
+    "href": "dependencies/dependencies.html#presentation-content",
+    "title": "Dependency management",
+    "section": "Presentation content",
+    "text": "Presentation content\n\n\nWhat are dependencies?\nDependencies are the versions of various different modules, packages, or software that your research code depends on: all of your imports.\n\n\n\n\nDon’t be like Ruby and Avi! Record your dependencies.\n\nImage CC BY Candace Savonen, retrieved from Reproducibility in Cancer Informatics.\n\n\n\n\n\nGeneral Rules for Dependencies\nManaging dependencies is something many, many people find complicated and difficult. Let’s start with some key ideas to simplify things.\nNYU Libraries provide some straightforward guidance that is language agnostic:\n\nUse dependencies wisely and sparingly: don’t import dependencies you don’t actually use, and try to stick to libraries that have robust and stable releases.\nUse a package manager of some form: package management software, virtual environments and containers help to avoid conflicts and incompatibility errors between packages.\nRecord your dependencies in a metadata file: package managers will often do this automatically for you; this file should be both human and machine readable.\n\n\n\nWhere to begin?\n\nPackage management software\nPackage management software usually:\n\n\nProvides a way for you to create an environment:\n\nA code project environment will contain a selection of relevant libraries, with specific versions.\nThis is kept separate from other project environments.\nThis allows you to use different versions of libraries for different projects.\n\nProvides a way for you to export your environment:\n\nThis allows you to specify the exact libraries and library versions that were used to generate a set of results.\nThis makes it easier for others to use your work and built on it, and reproduce your code environment.\nThis saves you having to manually record library versions that you are using.\n\n\n\n\n\n\n\nPackage management software might also:\n\n\nHelp you to solve dependency conflicts:\n\nConflicts can arise when different packages depend on different versions of other packages in the background.\nThis can be tricky to resolve.\nRemember the guideline “use dependencies wisely and sparingly” to minimise this issue.\n\nProvide a way for you to package your own code into a library:\n\nIn addition to helping you juggle external dependencies, some package management solutions also provide a framework for turning your code into an installable package.\n\n\n\n\nDepending on the language you are using, there may be many different options available. For example, for Python, you may have heard of:\n\npip\nconda\npixi\nuv\npoetry\n\n\n\nHow do you pick?\n\n1. License\n\nDoes the package manager have an open-source license?\n\n\n\n2. Community\n\nWhat solution does your research group use? Does your supervisor have suggestions?\nWhat option can you find support for?\nWhat do researchers in your field use?\n\n\n\n\n3. Documentation\n\nDoes the package manager have easy-to-understand instructions and tutorials available?\n\n\n\n4. Use-case\n\nAre you managing all external libraries, or are you building your own packages?\nAre you going to be pinning dependencies (like for a web-app)?\n\n\n\n\n\nConda\n\n\nWhat is conda?\n\nConda is a widely used package management system\nThis allows you to isolate different Python “environments” from each other, allowing you to use different versions of libraries or modules for different projects.\nHowever, mismanagement of packages can lead to dependency hell with tangled environments and incompatible versions of different modules.\n\n\n\nDependency hell\n\n\n\nPython dependencies can get very messy…\n\n\n\n\nInstalling conda: fun licensing details\n\nIn order to use conda on your machine, I recommend you use the MiniForge installer, which by default loads packages from conda-forge.\n\nIf you are using Anaconda (provided by Anaconda.com), ensure you are not using the defaults channel to install packages as this falls under the recent Anaconda repository licensing changes.\n\nTl;dr: stick to open source to avoid licensing issues, by using a tool such as Miniforge which by default downloads packages from conda-forge and not proprietary channels.\n\n\n\n\nYaml files: the solution to all your problems\n\nThe key to conda: the .yml file\n\nDespite the fact conda is very widely used, especially in research, science, and data science fields, people often neglect the real magic of the system: the environment.yml file.\nThis file is the recipe or configuration for your environment.\n\n\nWho here regularly uses environment.yml files in their workflow?\n\n\n\nWhat’s Yaml or yml?\n\nYAML is a human readable format for plain text files (usually with the file ending .yml), often used for configuration of other programs.\nIt’s the format environment.yml files are written in.\n\n\n\nWhat’s in a yml file?\nWhat does a .yml file look like?\nname: my-env-name\n\ndependencies:\n  - python=3.12\n  - pytest\n  - setuptools\n  - blackd\n  - isort\n  - numpy\n  - matplotlib\n  - pandas\nWe just need to create a plain text file called environment.yml or something else sensible, and list the packages we need!\n\n\nCreate a new environment\nWe can then turn this into a conda environment:\n\nOpen up the terminal in the folder with our environment.yml file\nrun the following command:\n\nconda env create -f environment.yml\nYou’ll get a lot of output, as it finds the various packages online and goes about solving all your dependencies in the background.\n\n\nWhy use a .yml file?\nCan’t I just create a fresh environment from the command line like this?\nconda create -n ENV-NAME python=3.12 numpy\nAnd then activate it and add dependencies like this?\nconda install pytest\nYou absolutely can, but theres a few reasons why you shouldn’t.\n\n\nWhy not?\n\nThings you install later (e.g. pytest on the last slide) will be pinned by the versions of libraries installed at an earlier stage (so the base python version and numpy), which can lead to dependency conflicts.\nYou can end up with a lot of crud and old unneeded libraries that you no longer used bloating your environment.\nYou don’t have a nice, tidy record of what you installed and when.\n\n\n\nSo how do we add things?\nIf you want to add a new package that you didn’t include in your original environment.yml file, or pin a package to a specific version, you can go and do so within the environment.yml.\n\nJust add any new packages to the list of dependencies, and pin libraries with the = notation as in the first example.\nOnce your environment.yml file is up to date, you can apply the changes to your conda environment:\n\n\nconda env update --file environment.yml --prune\n\n\n\nThe --prune argument here clears out old unused libraries and is key to keeping your .conda folder a reasonable size.\n\n\n\nWhy does this work?\n\nRunning conda install package-name from within your environment can lead to dependency conflicts (say your env has an older version of numpy and you’ve tried to conda install another package that can’t support this)\nUpdating the environment from the .yml file allows the solver to work through the dependencies at the same time. There may still be conflicts, but many easily avoidable issues will disappear.\n\n\n\nMyth: the env.yml is too prescriptive\n\nYou may have struggled building a conda environment from a yml file before\nThis yml file may have had lots of pinned dependencies that don’t work on the system you are trying to install on\nThis leads people to think that environment files are too prescriptive/restrictive and not useful for sharing environments\nThis conda environment file may have been built with the conda env export command - let’s learn about it!\n\n\n\nExporting a conda env\nSay you have a conda environment file similar to the one shown below, with very minimal pinned dependencies. For the sake of reproducibility, you want a better record of exactly what libraries you used, right?\nname: my-env-name\n\ndependencies:\n  - python=3.12\n  - pytest\n  - setuptools\n  - blackd\n  - isort\n  - numpy\n  - matplotlib\n  - pandas\n\n\nExporting a conda env\nThis is where the export option comes in. From inside your active environment, simply run:\n\nconda env export &gt; env-record.yml\n\n\n\nThe command above will export an extremely detailed list of everything in your environment (including background dependencies and their exact version numbers) to the file env-record.yml.\nSometimes, you might find it appropriate to export this to a filename with the date, for example 2024-11-27-env-record.yml.\n\n\n\n\nenv.yml files being restrictive\nThis is where the myth of the conda env.yml being prohibitively restrictive comes in:\n\npeople often try to use this exported file to build a replica of the same environment on a different machine\nhowever this exported file contains specific details of backends and builds that will likely not be transferrable across different computers.\n\nThis is why I prefer to export it into a file name like env-record instead of just environment: it makes it very obvious this is recording the state of the environment as opposed to building a recipe to rebuild it.\n\n\nExporting conda environments\n\nThis exported environment file is mainly useful as a record for the sake of reproducibility, not for reusability.\nIf you produce results with your code that are being used in some form of research output (e.g. a paper), export your environment at the time when the results are being generated, so you have a record of the versions of different libraries you used.\n\n\nThis is why I said it is good to build and update your environment from your environment.yml file: that way you have a reusable recipe that you can share and use to rebuild your environment, but you can also use export to get a super detailed snapshot for any sets of results!\n\n\n\nMore exporting\nIf you ignored all my advice about not building a haphazard environment incrementally with conda install, there is still hope: you can use the --from-history flag comes in to play:\n\nconda env export --from-history &gt; environment.yml # again, from inside the activated env\n\nThis will produce a clean conda environment file similar to the example we gave at the start of this post, listing only the packages directly explicitly installed (without background dependencies or build details).\nHowever, things will get messy if you start adding in pip dependencies…\n\n\nMixing in pip\nUsing a conda environment.yml makes working with pip and conda together less painful.\n\nYou will have heard (or experienced first hand) that once you install pip in a conda env, everything from that point on must be pip, or you will break the environment.\nThis is true, but you can get around this by adding your pip dependencies to your environment.yml file.\n\n\n\nMixing in pip\nJust add your pip dependencies to your environment file, then run conda env update --file environment.yml --prune as previously described:\nname: env-with-pip-dependencies\ndependencies:\n### Whatever packages you need for your project\n  - python=3.12\n  - numpy\n  - matplotlib\n  - pandas\n  - pip\n  - pip:\n    - black\n    - https://github.com/YOUR-USERNAME/YOUR-REPO-NAME/releases/download/YOUR-VERSION-NAME/PACKAGENAME-VERSION.tar.gz # you can even install your own packages that you host on GitHub\nYou can update this as described above.\n\n\nExporting with pip\nExporting the full record works the same if you have pip dependencies:\nconda env export &gt; env-record.yml\nHowever, --from-history will not include pip dependencies…\n\n\nExporting with pip - advanced\nHowever, --from-history will not include pip dependencies…\nIf you’ve followed our advice until now (and built your conda environment from a file), this won’t be an issue.\nBut if you ignored us or are trying to salvage old code, thankfully, there are a few different workarounds!\nThis is outside of the scope of the talk today, but the instructions for exporting are here:\nModified from this conversation on GitHub, this code snippet will export your conda and pip dependencies without version numbers (so that the environment.yml file can be used to build a new environment):\n### Extract installed pip packages\npip_packages=$(conda env export | grep -A9999 \".*- pip:\" | grep -v \"^prefix: \" | cut -f1 -d\"=\")\n\n### Export conda environment without builds, and append pip packages\nconda env export --from-history | grep -v \"^prefix: \" &gt; new-environment.yml\necho \"$pip_packages\" &gt;&gt; new-environment.yml\nBut remember: it is better to keep your environment.yml file current, and update your conda env from this file, as opposed to adding packages using conda install and then trying to export details to your environment file to track these changes.\n\n\nA general workflow\n\nCreate your conda environment from an environment file, and update/add packages to your environment by using this file. You can keep this environment file version controlled with git alongside your code.\nExport your conda environment to a record file when you change it and produce results with it. You can keep this environment record file version controlled with git alongside your results.\n\n\n\nReproducibility vs reusability\nRemember that for reusability, you want:\n\nAn easy-to install conda environment, that works across different computers.\nYou can share this with your code to make your work more open\n\nFor reproducibility, you need the code to be reusable, but also:\n\nYou want an exact record of the environment as it was when you produced your results.\n\nEnvironments should be treated as disposable and easily rebuildable, we can use version control and tests to make sure that’s true.\n\n\n\nIn Conclusion\n\nIf you are using conda, use your conda environment.yml to keep control of the packages you have installed.\nUse conda env export &gt; env-record.yml to export records of your environments for reproducibility, but use the --from-history tag to make it more reusable.",
+    "crumbs": [
+      "Project Workflow ↗",
+      "1. First Steps",
+      "Dependency management"
     ]
   },
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Home page: Research Software Development",
+    "title": "Course Content: Research Software Development",
     "section": "",
     "text": "This resource is intended to support researchers in embedding good software engineering practices into their workflows to make their computational research easier to manage, more reproducible, more reusable and sharable, and more robust.\nThis course uses Python to build an example project, in order to discuss and try out dependency management, version control, and testing. The concepts will be useful and applicable even if you use another language; however, if you do not know Python, it may be more useful for you to use these notes to read through the concepts in your own time rather than attending the course.\nThis resource is designed to be used in the following contexts:\nThis course will use Python as an example language, but the general concepts are language-agnostic. If you create or work through examples in a different language, please feel free to contribute notes on these!",
     "crumbs": [
@@ -88,7 +590,7 @@
   {
     "objectID": "index.html#course-objectives",
     "href": "index.html#course-objectives",
-    "title": "Home page: Research Software Development",
+    "title": "Course Content: Research Software Development",
     "section": "Course Objectives",
     "text": "Course Objectives\nThe main objective of this specific iteration of the course is to introduce or showcase a selection of different tools and methods that can help to make your research more reproducible, and then (more importantly) provide you with some ideas and workflows to use these tools together.\nLots of documentation exists online for each individual tool we introduce, but something that’s missing is an idea of how all these different things fit together in a way that is easy to manage, doesn’t take huge amounts of time, and that makes sense in the framework of the research process.\nThis resource will provide you with a start-to-finish project template that you can use as-is, or you can pick and choose parts of this that are relevant to your work.\nThis material touches on:\n\nVersion control: your computational lab notebook;\nDependency management and project organisation: keeping your digital lab clean and tidy;\nWriting pseudo-code: translating research problems into computer-speak;\nTesting and automated workflows: preventing your research from going up in flames;\nDocumentation: helping future you understand your work;\nCreating releases: archiving your research set-up to ensure reproducibility.",
     "crumbs": [
@@ -100,7 +602,7 @@
   {
     "objectID": "index.html#getting-the-most-out-of-this-course",
     "href": "index.html#getting-the-most-out-of-this-course",
-    "title": "Home page: Research Software Development",
+    "title": "Course Content: Research Software Development",
     "section": "Getting the most out of this course",
     "text": "Getting the most out of this course\nEveryone learns in different styles and in different ways; everyone brings different experience to the table when using research computing! This course is probably best used when moving at your own pace, following along with the step-by-step example project.\n\nIf solutions are hidden in dropdowns, it’s a good idea to try to predict the answer before opening them to check;\nLearning to read and predict the outcome of code is one of the best skills to practise to improve your programming and computational skills: before you ever run a line of code, try to predict the outcome!\nTo give you a safe sandbox to work in, there are links to a virtual cloud Linux machine for you to experiment in to your heart’s content.",
     "crumbs": [
@@ -112,9 +614,9 @@
   {
     "objectID": "index.html#course-content",
     "href": "index.html#course-content",
-    "title": "Home page: Research Software Development",
+    "title": "Course Content: Research Software Development",
     "section": "Course Content",
-    "text": "Course Content\nThis course introduces a reproducible project workflow that you can take and use for any future coding project.\n\n\n\n\n\n\n\n\nSession\nApproximate duration\nKey objectives\n\n\n\n\nIntroduction\n30 mins\nIntroduce reproducibility, replicability, and reusability in the context of research code.\n\n\nPractical 1\n20 mins\nDefine requirements for a small example project as a group.\n\n\nProject organisation\n30 mins\nDiscuss ways of managing data files, code, scripts, results, and notes in a research project.\n\n\nPractical 2\n20 mins\nSet up a directory structure for the example project\n\n\nVersion control\n50 mins\nIntroduce version control with git\n\n\nPractical 3\n50 mins\nExplore drafting pseudocode, notes, and comments, while using version control\n\n\nDependency management\n30 mins\nIntroduce dependency management with Conda\n\n\nPractical 4\n50 mins\nSet up Python environment and begin drafting code",
+    "text": "Course Content\nThis course introduces a reproducible project workflow that you can take and use for any future coding project.\n\n\n\n\n\n\n\n\nSession\nApproximate duration\nKey objectives\n\n\n\n\nIntroduction\n30 mins\nIntroduce reproducibility, replicability, and reusability in the context of research code.\n\n\nPractical 1\n30 mins\nDefine requirements for a small example project as a group.\n\n\nProject organisation\n30 mins\nDiscuss ways of managing data files, code, scripts, results, and notes in a research project.\n\n\nPractical 2\n20 mins\nSet up a directory structure for the example project\n\n\nVersion control\n50 mins\nIntroduce version control with git\n\n\nPractical 3\n50 mins\nExplore drafting pseudocode, notes, and comments, while using version control\n\n\nDependency management\n50 mins\nIntroduce dependency management with Conda\n\n\nPractical 4\n50 mins\nSet up Python environment and begin drafting code",
     "crumbs": [
       "Project Workflow ↗",
       "0. Introduction",
@@ -124,7 +626,7 @@
   {
     "objectID": "index.html#authors-note",
     "href": "index.html#authors-note",
-    "title": "Home page: Research Software Development",
+    "title": "Course Content: Research Software Development",
     "section": "Author’s Note",
     "text": "Author’s Note\nThis material is an evolution of the original SWD3: Software development practices for Research course run by Research Computing at the University of Leeds, but has been extensively reworked and updated.\nThis material is licensed under the Creative Commons Attribution-NonCommercial 4.0 International Public License, and is copyrighted by the University of Leeds.\n\nCitation\nIf you use or reference this material, please cite it.\nBibTeX citation:\n@online{murphy_quinlan2025,\n  author = {Murphy Quinlan, Maeve},\n  title = {Reproducibility, {Replicability,} \\& {Reusability}},\n  date = {2025-06-16},\n  url = {https://url-here},\n  langid = {en}\n}\nPlain text citation:\nMurphy Quinlan, Maeve. 2025. “Research Software Development in Python [Course materials]” June 16, 2025. https://url-here.",
     "crumbs": [
@@ -134,92 +636,597 @@
     ]
   },
   {
-    "objectID": "project_organisation.html",
-    "href": "project_organisation.html",
-    "title": "Project organisation and layout",
+    "objectID": "dependencies/presentation.html#what-are-dependencies",
+    "href": "dependencies/presentation.html#what-are-dependencies",
+    "title": "Dependency management",
+    "section": "What are dependencies?",
+    "text": "What are dependencies?\nDependencies are the versions of various different modules, packages, or software that your research code depends on: all of your imports.\n\n\n\n\nDon’t be like Ruby and Avi! Record your dependencies.\n\nImage CC BY Candace Savonen, retrieved from Reproducibility in Cancer Informatics."
+  },
+  {
+    "objectID": "dependencies/presentation.html#general-rules-for-dependencies",
+    "href": "dependencies/presentation.html#general-rules-for-dependencies",
+    "title": "Dependency management",
+    "section": "General Rules for Dependencies",
+    "text": "General Rules for Dependencies\nManaging dependencies is something many, many people find complicated and difficult. Let’s start with some key ideas to simplify things.\nNYU Libraries provide some straightforward guidance that is language agnostic:\n\nUse dependencies wisely and sparingly: don’t import dependencies you don’t actually use, and try to stick to libraries that have robust and stable releases.\nUse a package manager of some form: package management software, virtual environments and containers help to avoid conflicts and incompatibility errors between packages.\nRecord your dependencies in a metadata file: package managers will often do this automatically for you; this file should be both human and machine readable."
+  },
+  {
+    "objectID": "dependencies/presentation.html#package-management-software",
+    "href": "dependencies/presentation.html#package-management-software",
+    "title": "Dependency management",
+    "section": "Package management software",
+    "text": "Package management software\nPackage management software usually:\n\n\nProvides a way for you to create an environment:\n\nA code project environment will contain a selection of relevant libraries, with specific versions.\nThis is kept separate from other project environments.\nThis allows you to use different versions of libraries for different projects.\n\nProvides a way for you to export your environment:\n\nThis allows you to specify the exact libraries and library versions that were used to generate a set of results.\nThis makes it easier for others to use your work and built on it, and reproduce your code environment.\nThis saves you having to manually record library versions that you are using."
+  },
+  {
+    "objectID": "dependencies/presentation.html#section",
+    "href": "dependencies/presentation.html#section",
+    "title": "Dependency management",
     "section": "",
-    "text": "Project organisation and layout\n\n\n\n\n\n\nKey Point\n\n\n\nIn this section, we will explore different ways of organising our code, data, and notes.\nAfter finishing this section, you should have an idea of:\n\nDifferent ways to organise your project;",
+    "text": "Package management software might also:\n\n\nHelp you to solve dependency conflicts:\n\nConflicts can arise when different packages depend on different versions of other packages in the background.\nThis can be tricky to resolve.\nRemember the guideline “use dependencies wisely and sparingly” to minimise this issue.\n\nProvide a way for you to package your own code into a library:\n\nIn addition to helping you juggle external dependencies, some package management solutions also provide a framework for turning your code into an installable package."
+  },
+  {
+    "objectID": "dependencies/presentation.html#how-do-you-pick",
+    "href": "dependencies/presentation.html#how-do-you-pick",
+    "title": "Dependency management",
+    "section": "How do you pick?",
+    "text": "How do you pick?\n1. License\n\nDoes the package manager have an open-source license?\n\n2. Community\n\nWhat solution does your research group use? Does your supervisor have suggestions?\nWhat option can you find support for?\nWhat do researchers in your field use?"
+  },
+  {
+    "objectID": "dependencies/presentation.html#what-is-conda",
+    "href": "dependencies/presentation.html#what-is-conda",
+    "title": "Dependency management",
+    "section": "What is conda?",
+    "text": "What is conda?\n\nConda is a widely used package management system\nThis allows you to isolate different Python “environments” from each other, allowing you to use different versions of libraries or modules for different projects.\nHowever, mismanagement of packages can lead to dependency hell with tangled environments and incompatible versions of different modules."
+  },
+  {
+    "objectID": "dependencies/presentation.html#dependency-hell",
+    "href": "dependencies/presentation.html#dependency-hell",
+    "title": "Dependency management",
+    "section": "Dependency hell",
+    "text": "Dependency hell\n\nPython dependencies can get very messy…"
+  },
+  {
+    "objectID": "dependencies/presentation.html#installing-conda-fun-licensing-details",
+    "href": "dependencies/presentation.html#installing-conda-fun-licensing-details",
+    "title": "Dependency management",
+    "section": "Installing conda: fun licensing details",
+    "text": "Installing conda: fun licensing details\n\nIn order to use conda on your machine, I recommend you use the MiniForge installer, which by default loads packages from conda-forge.\n\nIf you are using Anaconda (provided by Anaconda.com), ensure you are not using the defaults channel to install packages as this falls under the recent Anaconda repository licensing changes.\n\nTl;dr: stick to open source to avoid licensing issues, by using a tool such as Miniforge which by default downloads packages from conda-forge and not proprietary channels."
+  },
+  {
+    "objectID": "dependencies/presentation.html#the-key-to-conda-the-.yml-file",
+    "href": "dependencies/presentation.html#the-key-to-conda-the-.yml-file",
+    "title": "Dependency management",
+    "section": "The key to conda: the .yml file",
+    "text": "The key to conda: the .yml file\n\nDespite the fact conda is very widely used, especially in research, science, and data science fields, people often neglect the real magic of the system: the environment.yml file.\nThis file is the recipe or configuration for your environment.\n\n\nWho here regularly uses environment.yml files in their workflow?"
+  },
+  {
+    "objectID": "dependencies/presentation.html#whats-yaml-or-yml",
+    "href": "dependencies/presentation.html#whats-yaml-or-yml",
+    "title": "Dependency management",
+    "section": "What’s Yaml or yml?",
+    "text": "What’s Yaml or yml?\n\nYAML is a human readable format for plain text files (usually with the file ending .yml), often used for configuration of other programs.\nIt’s the format environment.yml files are written in."
+  },
+  {
+    "objectID": "dependencies/presentation.html#whats-in-a-yml-file",
+    "href": "dependencies/presentation.html#whats-in-a-yml-file",
+    "title": "Dependency management",
+    "section": "What’s in a yml file?",
+    "text": "What’s in a yml file?\nWhat does a .yml file look like?\nname: my-env-name\n\ndependencies:\n  - python=3.12\n  - pytest\n  - setuptools\n  - blackd\n  - isort\n  - numpy\n  - matplotlib\n  - pandas\nWe just need to create a plain text file called environment.yml or something else sensible, and list the packages we need!"
+  },
+  {
+    "objectID": "dependencies/presentation.html#create-a-new-environment",
+    "href": "dependencies/presentation.html#create-a-new-environment",
+    "title": "Dependency management",
+    "section": "Create a new environment",
+    "text": "Create a new environment\nWe can then turn this into a conda environment:\n\nOpen up the terminal in the folder with our environment.yml file\nrun the following command:\n\nconda env create -f environment.yml\nYou’ll get a lot of output, as it finds the various packages online and goes about solving all your dependencies in the background."
+  },
+  {
+    "objectID": "dependencies/presentation.html#why-use-a-.yml-file",
+    "href": "dependencies/presentation.html#why-use-a-.yml-file",
+    "title": "Dependency management",
+    "section": "Why use a .yml file?",
+    "text": "Why use a .yml file?\nCan’t I just create a fresh environment from the command line like this?\nconda create -n ENV-NAME python=3.12 numpy\nAnd then activate it and add dependencies like this?\nconda install pytest\nYou absolutely can, but theres a few reasons why you shouldn’t."
+  },
+  {
+    "objectID": "dependencies/presentation.html#why-not",
+    "href": "dependencies/presentation.html#why-not",
+    "title": "Dependency management",
+    "section": "Why not?",
+    "text": "Why not?\n\nThings you install later (e.g. pytest on the last slide) will be pinned by the versions of libraries installed at an earlier stage (so the base python version and numpy), which can lead to dependency conflicts.\nYou can end up with a lot of crud and old unneeded libraries that you no longer used bloating your environment.\nYou don’t have a nice, tidy record of what you installed and when."
+  },
+  {
+    "objectID": "dependencies/presentation.html#so-how-do-we-add-things",
+    "href": "dependencies/presentation.html#so-how-do-we-add-things",
+    "title": "Dependency management",
+    "section": "So how do we add things?",
+    "text": "So how do we add things?\nIf you want to add a new package that you didn’t include in your original environment.yml file, or pin a package to a specific version, you can go and do so within the environment.yml.\n\nJust add any new packages to the list of dependencies, and pin libraries with the = notation as in the first example.\nOnce your environment.yml file is up to date, you can apply the changes to your conda environment:\n\n\nconda env update --file environment.yml --prune\n\n\n\nThe --prune argument here clears out old unused libraries and is key to keeping your .conda folder a reasonable size."
+  },
+  {
+    "objectID": "dependencies/presentation.html#why-does-this-work",
+    "href": "dependencies/presentation.html#why-does-this-work",
+    "title": "Dependency management",
+    "section": "Why does this work?",
+    "text": "Why does this work?\n\nRunning conda install package-name from within your environment can lead to dependency conflicts (say your env has an older version of numpy and you’ve tried to conda install another package that can’t support this)\nUpdating the environment from the .yml file allows the solver to work through the dependencies at the same time. There may still be conflicts, but many easily avoidable issues will disappear."
+  },
+  {
+    "objectID": "dependencies/presentation.html#myth-the-env.yml-is-too-prescriptive",
+    "href": "dependencies/presentation.html#myth-the-env.yml-is-too-prescriptive",
+    "title": "Dependency management",
+    "section": "Myth: the env.yml is too prescriptive",
+    "text": "Myth: the env.yml is too prescriptive\n\nYou may have struggled building a conda environment from a yml file before\nThis yml file may have had lots of pinned dependencies that don’t work on the system you are trying to install on\nThis leads people to think that environment files are too prescriptive/restrictive and not useful for sharing environments\nThis conda environment file may have been built with the conda env export command - let’s learn about it!"
+  },
+  {
+    "objectID": "dependencies/presentation.html#exporting-a-conda-env",
+    "href": "dependencies/presentation.html#exporting-a-conda-env",
+    "title": "Dependency management",
+    "section": "Exporting a conda env",
+    "text": "Exporting a conda env\nSay you have a conda environment file similar to the one shown below, with very minimal pinned dependencies. For the sake of reproducibility, you want a better record of exactly what libraries you used, right?\nname: my-env-name\n\ndependencies:\n  - python=3.12\n  - pytest\n  - setuptools\n  - blackd\n  - isort\n  - numpy\n  - matplotlib\n  - pandas"
+  },
+  {
+    "objectID": "dependencies/presentation.html#exporting-a-conda-env-1",
+    "href": "dependencies/presentation.html#exporting-a-conda-env-1",
+    "title": "Dependency management",
+    "section": "Exporting a conda env",
+    "text": "Exporting a conda env\nThis is where the export option comes in. From inside your active environment, simply run:\n\nconda env export &gt; env-record.yml\n\n\n\nThe command above will export an extremely detailed list of everything in your environment (including background dependencies and their exact version numbers) to the file env-record.yml.\nSometimes, you might find it appropriate to export this to a filename with the date, for example 2024-11-27-env-record.yml."
+  },
+  {
+    "objectID": "dependencies/presentation.html#env.yml-files-being-restrictive",
+    "href": "dependencies/presentation.html#env.yml-files-being-restrictive",
+    "title": "Dependency management",
+    "section": "env.yml files being restrictive",
+    "text": "env.yml files being restrictive\nThis is where the myth of the conda env.yml being prohibitively restrictive comes in:\n\npeople often try to use this exported file to build a replica of the same environment on a different machine\nhowever this exported file contains specific details of backends and builds that will likely not be transferrable across different computers.\n\nThis is why I prefer to export it into a file name like env-record instead of just environment: it makes it very obvious this is recording the state of the environment as opposed to building a recipe to rebuild it."
+  },
+  {
+    "objectID": "dependencies/presentation.html#exporting-conda-environments",
+    "href": "dependencies/presentation.html#exporting-conda-environments",
+    "title": "Dependency management",
+    "section": "Exporting conda environments",
+    "text": "Exporting conda environments\n\nThis exported environment file is mainly useful as a record for the sake of reproducibility, not for reusability.\nIf you produce results with your code that are being used in some form of research output (e.g. a paper), export your environment at the time when the results are being generated, so you have a record of the versions of different libraries you used.\n\n\nThis is why I said it is good to build and update your environment from your environment.yml file: that way you have a reusable recipe that you can share and use to rebuild your environment, but you can also use export to get a super detailed snapshot for any sets of results!"
+  },
+  {
+    "objectID": "dependencies/presentation.html#more-exporting",
+    "href": "dependencies/presentation.html#more-exporting",
+    "title": "Dependency management",
+    "section": "More exporting",
+    "text": "More exporting\nIf you ignored all my advice about not building a haphazard environment incrementally with conda install, there is still hope: you can use the --from-history flag comes in to play:\n\nconda env export --from-history &gt; environment.yml # again, from inside the activated env\n\nThis will produce a clean conda environment file similar to the example we gave at the start of this post, listing only the packages directly explicitly installed (without background dependencies or build details).\nHowever, things will get messy if you start adding in pip dependencies…"
+  },
+  {
+    "objectID": "dependencies/presentation.html#mixing-in-pip",
+    "href": "dependencies/presentation.html#mixing-in-pip",
+    "title": "Dependency management",
+    "section": "Mixing in pip",
+    "text": "Mixing in pip\nUsing a conda environment.yml makes working with pip and conda together less painful.\n\nYou will have heard (or experienced first hand) that once you install pip in a conda env, everything from that point on must be pip, or you will break the environment.\nThis is true, but you can get around this by adding your pip dependencies to your environment.yml file."
+  },
+  {
+    "objectID": "dependencies/presentation.html#mixing-in-pip-1",
+    "href": "dependencies/presentation.html#mixing-in-pip-1",
+    "title": "Dependency management",
+    "section": "Mixing in pip",
+    "text": "Mixing in pip\nJust add your pip dependencies to your environment file, then run conda env update --file environment.yml --prune as previously described:\nname: env-with-pip-dependencies\ndependencies:\n# Whatever packages you need for your project\n  - python=3.12\n  - numpy\n  - matplotlib\n  - pandas\n  - pip\n  - pip:\n    - black\n    - https://github.com/YOUR-USERNAME/YOUR-REPO-NAME/releases/download/YOUR-VERSION-NAME/PACKAGENAME-VERSION.tar.gz # you can even install your own packages that you host on GitHub\nYou can update this as described above."
+  },
+  {
+    "objectID": "dependencies/presentation.html#exporting-with-pip",
+    "href": "dependencies/presentation.html#exporting-with-pip",
+    "title": "Dependency management",
+    "section": "Exporting with pip",
+    "text": "Exporting with pip\nExporting the full record works the same if you have pip dependencies:\nconda env export &gt; env-record.yml\nHowever, --from-history will not include pip dependencies…"
+  },
+  {
+    "objectID": "dependencies/presentation.html#exporting-with-pip---advanced",
+    "href": "dependencies/presentation.html#exporting-with-pip---advanced",
+    "title": "Dependency management",
+    "section": "Exporting with pip - advanced",
+    "text": "Exporting with pip - advanced\nHowever, --from-history will not include pip dependencies…\nIf you’ve followed our advice until now (and built your conda environment from a file), this won’t be an issue.\nBut if you ignored us or are trying to salvage old code, thankfully, there are a few different workarounds!\nThis is outside of the scope of the talk today, but the instructions for exporting are here:\nModified from this conversation on GitHub, this code snippet will export your conda and pip dependencies without version numbers (so that the environment.yml file can be used to build a new environment):\n# Extract installed pip packages\npip_packages=$(conda env export | grep -A9999 \".*- pip:\" | grep -v \"^prefix: \" | cut -f1 -d\"=\")\n\n# Export conda environment without builds, and append pip packages\nconda env export --from-history | grep -v \"^prefix: \" &gt; new-environment.yml\necho \"$pip_packages\" &gt;&gt; new-environment.yml\nBut remember: it is better to keep your environment.yml file current, and update your conda env from this file, as opposed to adding packages using conda install and then trying to export details to your environment file to track these changes."
+  },
+  {
+    "objectID": "dependencies/presentation.html#a-general-workflow",
+    "href": "dependencies/presentation.html#a-general-workflow",
+    "title": "Dependency management",
+    "section": "A general workflow",
+    "text": "A general workflow\n\nCreate your conda environment from an environment file, and update/add packages to your environment by using this file. You can keep this environment file version controlled with git alongside your code.\nExport your conda environment to a record file when you change it and produce results with it. You can keep this environment record file version controlled with git alongside your results."
+  },
+  {
+    "objectID": "dependencies/presentation.html#reproducibility-vs-reusability",
+    "href": "dependencies/presentation.html#reproducibility-vs-reusability",
+    "title": "Dependency management",
+    "section": "Reproducibility vs reusability",
+    "text": "Reproducibility vs reusability\nRemember that for reusability, you want:\n\nAn easy-to install conda environment, that works across different computers.\nYou can share this with your code to make your work more open\n\nFor reproducibility, you need the code to be reusable, but also:\n\nYou want an exact record of the environment as it was when you produced your results.\n\nEnvironments should be treated as disposable and easily rebuildable, we can use version control and tests to make sure that’s true."
+  },
+  {
+    "objectID": "project_org/project_organisation.html",
+    "href": "project_org/project_organisation.html",
+    "title": "Organizing Your Research Coding Project",
+    "section": "",
+    "text": "Session Objectives\n\n\n\nIn this section, we will explore different ways of organising our code, data, and notes.\nAfter finishing this section, you should have an idea of:\n\nDifferent ways to organise your project\nSensible ways to store/access your code\nOpen introduction presentation ↗",
     "crumbs": [
       "Project Workflow ↗",
       "1. First Steps",
-      "Project organisation and layout"
+      "Organizing Your Research Coding Project"
     ]
   },
   {
-    "objectID": "introduction-presentation.html#what-is-research-software-development",
-    "href": "introduction-presentation.html#what-is-research-software-development",
+    "objectID": "project_org/project_organisation.html#presentation-content",
+    "href": "project_org/project_organisation.html#presentation-content",
+    "title": "Organizing Your Research Coding Project",
+    "section": "Presentation content",
+    "text": "Presentation content\n\n\n\nKeeping your projects tidy\n\nIt’s not always obvious the best way of keeping your code, notes, and data nice and tidy\nResearch tends to be very fluid and experimental, creating lots of scripts and notebooks that can easily become a tangled mess\nWe want to be able to easily find the right piece of code, the write snippet of notes!\n\n\n\nWhy Project Organization Matters\n\n\nYour future self will thank you when you can:\n\nFind your analysis code from 6 months ago\nUnderstand what each script actually does\nReproduce your results without panic\nShare your work with collaborators confidently\nBuild on your previous work instead of starting over\n\n\n\n\nPoor organization leads to:\n\nLost time searching for the “final” version\nIrreproducible results, mistakes, and embarrassing retractions\nCollaboration nightmares and frustrated colleagues\nThesis chapters that can’t be verified\n\n\n\n\nA Well-Organized Research Project\nEssential Components:\n\n📁 Clear directory structure - Everything has a logical place\n📄 Comprehensive documentation - README files that actually help\n🔄 Version control - Git tracks every change and decision\n🧪 Organized data workflow - Raw → Processed → Results\n✅ Testing framework - Confidence that your code works correctly\n📦 Dependency management - Reproducible computational environment\n\n\n\n\nThe first step: 📁 Clear directory structure\n\n\nResearch data\nWhere should it live?\n\nOn backed-up University Storage (appropriate for its tier) mounted on your workstation\n(Temporarily) on $SCRATCH storage on HPC systems\nNot mixed in with your code!\n\nLots of project structure templates online suggest having a data sub-folder\nIn general, it’s often better practise to keep your data in a separate folder:\n\nIt may be sensitive data, but you want your code to be shareable\nIt may be far too large to store on your desktop permanently alongside your code\nIt will cause issues when version-controlling your code\n\n\n\n\n\n\nResearch data rules\n1. Raw data is read-only:\n\nNever edit original data files directly\nAll modifications happen through documented code\nKeep multiple backups of irreplaceable data\n\n\n\n\nResearch data rules\n2. Document data provenance:\n\nWhere did each dataset come from?\nWhat processing steps were applied?\nWhat are the known limitations or biases?\n\n\n\n\nResearch data rules\n3. Separate processing stages:\n\nRaw → Cleaned → Analysis-ready → Results\nEach stage produces documented intermediate files\nClear scripts connect each transformation step\n\n\n\n\nResearch data\nWhere should it live?\ndata/\n├── raw/\n├── processed/\n└── results/\nYou can set the permissions on the data/raw/ directory to read and execute only: chmod -R 500 raw/\n\nMake sure to pick the correct permissions: chmod command\nYou can always undo these later\n\n\n\n\nResearch data\nWhere should it live?\nWe will talk later in more depth about releasing and sharing code, but open data should be saved and shared in a data repository if at all possible:\n\nYour funder may have specific repositories for research data\nPublications may have requirements about sharing output data\nUse the University’s data deposit service\n\n\n\n\nResearch code\n\nThere are lots of different ways of organising your research code\nThere is no one “correct” way\n\n\n\n\nSingle Folder Layout\nmy-research-project/\n├── README.md                # Project overview and setup\n├── environment.yml          # Dependencies\n├── data/                    # Possibly some minor output data\n├── src/                     # Your source code\n│   ├── data_processing/\n│   ├── analysis/\n│   └── visualization/\n├── tests/                   # Unit tests for your functions\n├── notebooks/               # Jupyter notebooks for exploration\n├── results/                 # Figures, tables, model outputs\n├── docs/                    # Additional documentation\n└── scripts/                 # Standalone utility scripts\n\n\nThis is one way of keeping your code organised\nThe source code (in src) and analysis, notes, and notebooks are all in the same high-level project folder\n\n\n\n\nTwo Folder Layout\nOften research work involves:\n\nBuilding some form of numerical model, analysis pipeline, or other code that is somewhat generic or modular\nApplying that model to specific parameters and testing various inputs and outputs, using tools like Jupyter notebooks to explore output and write notes\n\n\n\n\nTwo Folder Layout\n\nI tended to bump into a few questions or problems that I didn’t see an obvious solution to:\n\nI want to keep my codebase nice and tidy and comprehensible, but I also tend to produce lots and lots of analysis scripts, notebooks and figures as I analyse my results;\nI want to compare my models to analytical cases to check their validity, again producing lots of various outputs, figures etc.;\nI don’t want to accidentally modify some of my numerical model code when trying to analyse my results at a later stage;\nI want to update my core code, fix some problems and add some functionality; how do I keep track of what results I produced with which version of my code?\nOther people would probably be able to use my model, or adapt it for their own projects, but they won’t want to sift through all my iterative work in the meantime.\n\n\n\n\n\nTwo Folder Layout\nSometimes a single project folder can become unwieldy:\n\nIt can be difficult to separate out your methods and core code from various experiments and tests\nImportant information and code snippets can go missing in Jupyter Notebooks\nOne folder for “core code”; the functions you will re-use\nOne folder for the “application” - whether that’s running experiments, writing a paper or a thesis chapter, etc.\n\n\n\n\nFolder 1: the “core code” or “package” folder\nplanet-evolution/            \n├── src/  \n│   └── planet_evolution/     \n│       ├── __init__.py      Makes the folder a package.\n│       └── source.py        An example module containing source code.\n├── tests/\n|   ├── __init__.py          Sets up the test suite.\n│   └── test_source.py       A file containing tests for the code in source.py.\n├── README.md                README with information about the project.\n├── docs                     Package documentation\n├── pyproject.toml           Allows me to install this as a package\n├── LICENSE                  License text to allow for reuse\n└── CITATION.cff             Citation file that makes it easy for people to cite you!\nThis will contain the code that you will import as a library in your project!\n\n\n\nFolder 2: the “application” repository\npallasite-parent-body-evolution/    \n├── LICENSE\n├── README.md\n├── env.yml or requirements.txt     The libraries I need for analysis (including planet_evolution!)\n├── data                            I usually load in large data from storage elsewhere\n│   ├── interim                     But sometimes do keep small summary datafiles in the repository\n│   ├── processed\n│   └── raw\n├── docs                            Notes on analysis, process etc.\n├── notebooks                       Jupyter notebooks used for analysis\n├── reports                         For a manuscript source, e.g., LaTeX, Markdown, etc., or any project reports\n│   └── figures                     Figures for the manuscript or reports\n├── src                             Source code for this project\n│   ├── data                        Scripts and programs to process data\n│   ├── tools                       Any helper scripts go here\n│   └── visualization               Scripts for visualisation of your results, e.g., matplotlib, ggplot2 related.\n└── tests                           Test code for this project, benchmarking, comparison to analytical models\n\n\n\n\nDeciding on a folder layout\nIf you opt for a single folder layout, but keep it tidy and organised, it is easy to split it into two separate directories at a later point!\n\nIn this course, we’re going to stick with a single folder set-up since we are building a basic project\nIt’s less important to choose the perfect layout, and more important to be intentional, tidy, and consistent about where you save things!\n\n\n\n\nCommon pitfalls\nThe “I’ll organize it later” trap:\n\nStart with basic structure from day one\nOrganization gets harder as projects grow\nGood habits compound over time\n\nThe “only I will use this” fallacy:\n\nYou are your most important collaborator\nFuture you has forgotten current you’s logic\nA clear and tidy directory structure will help you down the line\n\n\n\nPreparing for practical 2\n\nWe are going to set up a virtual machine on GitHub codespaces\nWe are going to use our project workflow to set up a coding environment",
+    "crumbs": [
+      "Project Workflow ↗",
+      "1. First Steps",
+      "Organizing Your Research Coding Project"
+    ]
+  },
+  {
+    "objectID": "project_org/project_organisation.html#futher-reading",
+    "href": "project_org/project_organisation.html#futher-reading",
+    "title": "Organizing Your Research Coding Project",
+    "section": "Futher reading",
+    "text": "Futher reading\n\nThe Good Research Code Handbook",
+    "crumbs": [
+      "Project Workflow ↗",
+      "1. First Steps",
+      "Organizing Your Research Coding Project"
+    ]
+  },
+  {
+    "objectID": "project_org/practical2.html",
+    "href": "project_org/practical2.html",
+    "title": "Practical 2: Folder organisation",
+    "section": "",
+    "text": "Duration: 20 minutes\nGoal: Set up a sensible and tidy project folder structure\n\n\n\n\n\n\nNote\n\n\n\nThe terms repository, directory and folder are used almost interchangeably in this course.\nIn the context of reproducible code, we can define these terms more clearly:\n\nDirectory is just the term used for folders on Linux systems\nRepository is just the term used for a folder or directory that has some form of version control working inside it - we will dive into that in a later session!",
+    "crumbs": [
+      "Project Workflow ↗",
+      "1. First Steps",
+      "Practical 2: Folder organisation"
+    ]
+  },
+  {
+    "objectID": "project_org/practical2.html#activity-overview",
+    "href": "project_org/practical2.html#activity-overview",
+    "title": "Practical 2: Folder organisation",
+    "section": "",
+    "text": "Duration: 20 minutes\nGoal: Set up a sensible and tidy project folder structure\n\n\n\n\n\n\nNote\n\n\n\nThe terms repository, directory and folder are used almost interchangeably in this course.\nIn the context of reproducible code, we can define these terms more clearly:\n\nDirectory is just the term used for folders on Linux systems\nRepository is just the term used for a folder or directory that has some form of version control working inside it - we will dive into that in a later session!",
+    "crumbs": [
+      "Project Workflow ↗",
+      "1. First Steps",
+      "Practical 2: Folder organisation"
+    ]
+  },
+  {
+    "objectID": "project_org/practical2.html#our-project-structure",
+    "href": "project_org/practical2.html#our-project-structure",
+    "title": "Practical 2: Folder organisation",
+    "section": "Our project structure",
+    "text": "Our project structure\nWe are going to create a project in a single folder.\nThis folder will contain:\n\nA source code folder that will allow us to import the code as a library\nFolders for analysis and experimentation\nA testing suite\nVersion control\n\nBut for now, we simply want to create the folder structure.",
+    "crumbs": [
+      "Project Workflow ↗",
+      "1. First Steps",
+      "Practical 2: Folder organisation"
+    ]
+  },
+  {
+    "objectID": "project_org/practical2.html#round-1-pick-a-project-name-5-mins",
+    "href": "project_org/practical2.html#round-1-pick-a-project-name-5-mins",
+    "title": "Practical 2: Folder organisation",
+    "section": "Round 1: Pick a project name (5 mins)",
+    "text": "Round 1: Pick a project name (5 mins)\nWe need a simple name for our project folder and the Python package we are going to create\n\nFolder and file names should contain no spaces\nIn general, projects often follow this convention:\n\nThe top level folder is called something with lowercase words separated by hyphens: example-project\nThe Python library inside is called the same but with underscores: example_project (as hyphens are read as subtraction by Python and can make things complicated for imports)",
+    "crumbs": [
+      "Project Workflow ↗",
+      "1. First Steps",
+      "Practical 2: Folder organisation"
+    ]
+  },
+  {
+    "objectID": "project_org/practical2.html#round-2-create-a-repository-5-mins",
+    "href": "project_org/practical2.html#round-2-create-a-repository-5-mins",
+    "title": "Practical 2: Folder organisation",
+    "section": "Round 2: Create a repository (5 mins)",
+    "text": "Round 2: Create a repository (5 mins)\n\nGo to GitHub.com and sign up or log in.\nClick the “+” button to Create a new repository\n\nNo template\nType your chosen project name in the “Repository name” box, using a hyphen to separate words\nYou can tick “Add a README file” and skip the other options\nClick “Create repository” at the bottom of the page\n\nYou’ll now be directed to your new repository page",
+    "crumbs": [
+      "Project Workflow ↗",
+      "1. First Steps",
+      "Practical 2: Folder organisation"
+    ]
+  },
+  {
+    "objectID": "project_org/practical2.html#round-3-launch-virtual-machine-5-mins",
+    "href": "project_org/practical2.html#round-3-launch-virtual-machine-5-mins",
+    "title": "Practical 2: Folder organisation",
+    "section": "Round 3: Launch virtual machine (5 mins)",
+    "text": "Round 3: Launch virtual machine (5 mins)\n\nOn your new repository page, click the green “&lt; &gt; Code” button, then select the sub-option “Codespaces”, and finally hit “Create codespace on main” or the “+” button.\nThis will launch a new screen\n\nThis is setting up a Linux machine in the cloud for you\nJust let it set itself up, it will take a minute: content will be displayed in the terminal as it installs software\n\nThe interface is modelled on VSCode. You will have access to a terminal at the bottom of the screen (the prompt is highlighted with your username and a “$” symbol)",
+    "crumbs": [
+      "Project Workflow ↗",
+      "1. First Steps",
+      "Practical 2: Folder organisation"
+    ]
+  },
+  {
+    "objectID": "project_org/practical2.html#round-4-create-directory-structure-10-mins",
+    "href": "project_org/practical2.html#round-4-create-directory-structure-10-mins",
+    "title": "Practical 2: Folder organisation",
+    "section": "Round 4: Create directory structure (10 mins)",
+    "text": "Round 4: Create directory structure (10 mins)\nWe’re going to create a repository structure that looks like this:\nexample-project/            The package git repository\n├── src/  \n│   └── example_project/     \n│       ├── __init__.py      Makes the folder a package.\n│       └── example.py       An example module.\n├── tests/\n|   ├── __init__.py          Sets up the test suite.\n│   └── test_source.py       A file containing tests for the code in source.py.\n├── README.md                README with information about the project.\n├── docs                     Package documentation\n├── pyproject.toml           Allows you to install this as a package and use elsewhere\n├── LICENSE                  License text to allow for reuse\n├── CITATION.cff             Citation file that makes it easy for people to cite you!\n├── data/                    For the sake of this example project\n|   ├── raw \n│   └── results  \n├── notebooks\n└── reports                  For a manuscript source, e.g., LaTeX, Markdown, etc., or any project reports/notes\n\n\nEnter your project name:\n\nPackage name (remember: only letters and underscores):   \n\nUse the following code output to generate the file structure:\n\n\n\n\n\nCopy and paste this block of code into the terminal from inside your project folder\nCheck that the structure is as expected using the folder navigation on the left or the commands cd folder-name and ls\n\nYou should now have an organised folder structure in your virtual machine.",
+    "crumbs": [
+      "Project Workflow ↗",
+      "1. First Steps",
+      "Practical 2: Folder organisation"
+    ]
+  },
+  {
+    "objectID": "version_control/version_control.html",
+    "href": "version_control/version_control.html",
+    "title": "Version Control",
+    "section": "",
+    "text": "Session Objectives\n\n\n\nIn this section, we will learn about version control, and using git with GitHub to track our research.\nOpen introduction presentation ↗",
+    "crumbs": [
+      "Project Workflow ↗",
+      "1. First Steps",
+      "Version Control"
+    ]
+  },
+  {
+    "objectID": "version_control/version_control.html#presentation-content",
+    "href": "version_control/version_control.html#presentation-content",
+    "title": "Version Control",
+    "section": "Presentation content",
+    "text": "Presentation content\n\n\nWhat is version control?\n\n\nOften described as “track changes”, although that’s not quite right\nA super-powerful “undo” button\nA way of working collaboratively without over-writing each other’s work\nA way of recording exactly what you did and when\n\n\n\n\nWhat is version control?\n\n\n\nOne way of doing version control…\n\n\n\n\nWhat is version control?\n\nWe’re going to use git, which is a strangely named version control software\nWe’ll use this to explain how version control works, and why it matters\nThere are lots of other ways to do version control, but git is very widely used\n\nIf version control was word processing, git would be Microsoft Word\n\n\n\n\nPart 1: local git\n\nWhat does git do?\n\ngit allows you to bundle up changes to various files, and give the group of changes a unique commit hash and an explanatory message.\ngit works on a project level, so you can make a bunch of changes to different files in a folder, and then commit all those changes with a descriptive message\nIt’s recorded that you made those changes, and there’s a unique commit hash that you can quote to point at the exact state of your folder when you added those changes.\n\n\n\nWhat does git do?\n\ngit is a command line program\nThere are actually only a few commands you’ll really use regularly\nBut before we move on to learning what commands are needed, let’s try to build a mental model of git\nHopefully this will be useful to those of you who are already using git too!\n\n\n\nWhat does git do?\n\n\nOld version of python-file.py\n\n1 # This is a comment\n2 import matplotlib.pyplot as plt\n3 x = [1, 2, 3, 4, 5]\n4 y = [3, 4, 5, 6, 7]\n5 plt.scatter(x, y)\n\n\nNew version of python-file.py\n\n1 # This is a comment\n2 import matplotlib.pyplot as plt\n3 import numpy as np\n4 x = [1, 2, 3, 4, 5]\n5 y = [3, 4, 5, 6, 7]\n6 plt.scatter(x, y)\n6 plt.plot(x, y)\n\nLine 3 added, line 6 removed, line 6 added.\n\n\n\n\nWhat does git do?\n\n\nNew version of python-file.py\n\n1 # This is a comment\n2 import matplotlib.pyplot as plt\n3 import numpy as np\n4 x = [1, 2, 3, 4, 5]\n5 y = [3, 4, 5, 6, 7]\n6 plt.scatter(x, y)\n6 plt.plot(x, y)\n\nLine 3 added, line 6 removed, line 6 added.\n\nAssociated git commit\n\nFile: python-file.py\nCommit hash: u87wy9o2\nCommit message: change plotting method\n+++ 3 import numpy as np\n- – 6 plt.scatter(x, y)\n+++ 6 plt.plot(x, y)\n\n\n\n\n\nWhat does git do?\n\nWhen we work with git, we bundle up changes in our project folder (/directory) and commit our changes.\nEach commit (bundle of changes) gets a unique id - a hexadecimal hash that’s 40 digits long (we’re just going to abbreviate to the first 7)\nThe commits are made to a “branch” - pause any thinking for a moment\n\n\n\n\n\n\n\n%%{\n  init: {\n    'theme': 'base',\n    'themeVariables': {\n      'primaryColor': '#9fe1ff',\n      'primaryTextColor': '#470044',\n      'primaryBorderColor': '#000000',\n      'lineColor': '#9158A2',\n      'secondaryColor': '#e79aff',\n      'tertiaryColor': '#fffc58'\n    }\n  }\n}%%\n\ngitGraph\n   commit id: \"a1b2c3d\"\n\n\n\n\n\n\n\n\n\nWhat does git do?\n\nWhen we work with git, we bundle up changes in our project folder (/directory) and commit our changes.\nEach commit (bundle of changes) gets a unique id - a hexadecimal hash that’s 40 digits long (we’re just going to abbreviate to the first 7)\nThe commits are made to a “branch” - pause any thinking for a moment\n\n\n\n\n\n\n\n%%{\n  init: {\n    'theme': 'base',\n    'themeVariables': {\n      'primaryColor': '#9fe1ff',\n      'primaryTextColor': '#470044',\n      'primaryBorderColor': '#000000',\n      'lineColor': '#9158A2',\n      'secondaryColor': '#e79aff',\n      'tertiaryColor': '#fffc58'\n    }\n  }\n}%%\n\ngitGraph\n   commit id: \"a1b2c3d\"\n   commit id: \"4e5f678\"\n\n\n\n\n\n\n\n\n\nWhat does git do?\n\n\n\n\n\n\n%%{\n  init: {\n    'theme': 'base',\n    'themeVariables': {\n      'primaryColor': '#9fe1ff',\n      'primaryTextColor': '#470044',\n      'primaryBorderColor': '#000000',\n      'lineColor': '#9158A2',\n      'secondaryColor': '#e79aff',\n      'tertiaryColor': '#fffc58'\n    }\n  }\n}%%\n\ngitGraph\n   commit id: \"a1b2c3d\"\n\n\n\n\n\n\n\n\nBecause each “bundle” of changes has been saved with a unique id, we can roll back our changes to a previous version if we want\n\n\n\nWhat does git do?\n\n\n\n\n\n\n%%{\n  init: {\n    'theme': 'base',\n    'themeVariables': {\n      'primaryColor': '#9fe1ff',\n      'primaryTextColor': '#470044',\n      'primaryBorderColor': '#000000',\n      'lineColor': '#9158A2',\n      'secondaryColor': '#e79aff',\n      'tertiaryColor': '#fffc58'\n    }\n  }\n}%%\n\ngitGraph\n   commit id: \"a1b2c3d\"\n   commit id: \"4e5f678\"\n\n\n\n\n\n\n\n\nBut let’s say we’re happy with how our code is working, but we want to try out a different way of doing something\nOr say we’ve written the conclusion section of our paper in a certain way, but our supervisor has some ideas for structuring it differently\n\nHow can we try this out without risking our current work that we’re happy with?\n\n\nWhat does git do?\n\n\n\n\n\n\n%%{\n  init: {\n    'theme': 'base',\n    'themeVariables': {\n      'primaryColor': '#9fe1ff',\n      'primaryTextColor': '#470044',\n      'primaryBorderColor': '#000000',\n      'lineColor': '#9158A2',\n      'secondaryColor': '#e79aff',\n      'tertiaryColor': '#fffc58'\n    }\n  }\n}%%\n\ngitGraph\n   commit id: \"a1b2c3d\"\n   commit id: \"4e5f678\"\n   branch experimental-1\n   checkout experimental-1\n   commit id: \"90abcde\"\n   commit id: \"7835cd3\"\n\n\n\n\n\n\n\nThe answer is branching\n\n\nWe mentioned earlier that your bundled changes (commits) were on the main branch\n\n\n\n\nWe can create other branches to try out experimental changes while keeping our main branch safe\n\n\n\n\nWhat does git do?\n\n\n\n\n\n\n%%{\n  init: {\n    'theme': 'base',\n    'themeVariables': {\n      'primaryColor': '#9fe1ff',\n      'primaryTextColor': '#470044',\n      'primaryBorderColor': '#000000',\n      'lineColor': '#9158A2',\n      'secondaryColor': '#e79aff',\n      'tertiaryColor': '#fffc58'\n    }\n  }\n}%%\n\ngitGraph\n   commit id: \"a1b2c3d\"\n   commit id: \"4e5f678\"\n   branch experimental-1\n   checkout experimental-1\n   commit id: \"90abcde\"\n   commit id: \"7835cd3\"\n\n\n\n\n\n\n\nThe answer is branching\n\nWhen we are happy with the changes we have made on the experimental branch, we can decide to mix them back in with our main branch\nWe can merge the changes with the main branch\n\n\n\nWhat does git do?\n\n\n\n\n\n\n%%{\n  init: {\n    'theme': 'base',\n    'themeVariables': {\n      'primaryColor': '#9fe1ff',\n      'primaryTextColor': '#470044',\n      'primaryBorderColor': '#000000',\n      'lineColor': '#9158A2',\n      'secondaryColor': '#e79aff',\n      'tertiaryColor': '#fffc58'\n    }\n  }\n}%%\n\ngitGraph\n   commit id: \"a1b2c3d\"\n   commit id: \"4e5f678\"\n   branch experimental-1\n   checkout experimental-1\n   commit id: \"90abcde\"\n   commit id: \"7835cd3\"\n   checkout main\n   merge experimental-1 id: \"df37ba1\"\n\n\n\n\n\n\n\nThe answer is branching\n\nWhen we are happy with the changes we have made on the experimental branch, we can decide to mix them back in with our main branch\nWe can merge the changes with the main branch\n\nThis merge get’s it’s own unique id\n\n\nRemember that you can always reverse to a previous commit, even across different branches!\n\n\nWhat does git do?\n\n\n\n\n\n\n%%{\n  init: {\n    'theme': 'base',\n    'themeVariables': {\n      'primaryColor': '#9fe1ff',\n      'primaryTextColor': '#470044',\n      'primaryBorderColor': '#000000',\n      'lineColor': '#9158A2',\n      'secondaryColor': '#e79aff',\n      'tertiaryColor': '#fffc58'\n    }\n  }\n}%%\n\ngitGraph\n   commit id: \"a1b2c3d\"\n   commit id: \"4e5f678\"\n   branch experimental-1\n   checkout experimental-1\n   commit id: \"90abcde\"\n   commit id: \"7835cd3\"\n   checkout main\n   merge experimental-1 id: \"df37ba1\"\n   commit id: \"34efc1a\"\n   commit id: \"32753bc\"\n   branch experimental-2\n   checkout experimental-2\n   commit id: \"cb45ad1\"\n\n\n\n\n\n\n\n\nWe can continue committing bundles of changes, and making new branches that support us taking risks with our work\n\n\n\nWhat does git do?\n\n\n\n\n\n\n%%{\n  init: {\n    'theme': 'base',\n    'themeVariables': {\n      'primaryColor': '#9fe1ff',\n      'primaryTextColor': '#470044',\n      'primaryBorderColor': '#000000',\n      'lineColor': '#9158A2',\n      'secondaryColor': '#e79aff',\n      'tertiaryColor': '#fffc58'\n    }\n  }\n}%%\n\ngitGraph\n   commit id: \"a1b2c3d\"\n   commit id: \"4e5f678\"\n   branch experimental-1\n   checkout experimental-1\n   commit id: \"90abcde\"\n   commit id: \"7835cd3\"\n   checkout main\n   merge experimental-1 id: \"df37ba1\"\n   commit id: \"34efc1a\"\n   commit id: \"32753bc\"\n   branch experimental-2\n   checkout experimental-2\n   commit id: \"cb45ad1\"\n   branch experimental-3\n   checkout experimental-3\n   commit id: \"456abc1\"\n\n\n\n\n\n\n\n\nWe can create branches from other branches, if we want to noodle around with changes\n\n\n\nWhat does git do?\n\n\n\n\n\n\n%%{\n  init: {\n    'theme': 'base',\n    'themeVariables': {\n      'primaryColor': '#9fe1ff',\n      'primaryTextColor': '#470044',\n      'primaryBorderColor': '#000000',\n      'lineColor': '#9158A2',\n      'secondaryColor': '#e79aff',\n      'tertiaryColor': '#fffc58'\n    }\n  }\n}%%\n\ngitGraph\n   commit id: \"a1b2c3d\"\n   commit id: \"4e5f678\"\n   branch experimental-1\n   checkout experimental-1\n   commit id: \"90abcde\"\n   commit id: \"7835cd3\"\n   checkout main\n   merge experimental-1 id: \"df37ba1\"\n   commit id: \"34efc1a\"\n   commit id: \"32753bc\"\n   branch experimental-2\n   checkout experimental-2\n   commit id: \"cb45ad1\"\n   branch experimental-3\n   checkout experimental-3\n   commit id: \"456abc1\"\n   checkout experimental-2\n   commit id: \"ad1cb45\"\n\n\n\n\n\n\n\n\nWe can create branches from other branches, if we want to noodle around with changes\n\nWe can then abandon those branches if we realise we made terrible choices, and keep working on the original branch like nothing happened…\n\n\n\n\nWhat does git do?\n\n\n\n\n\n\n%%{\n  init: {\n    'theme': 'base',\n    'themeVariables': {\n      'primaryColor': '#9fe1ff',\n      'primaryTextColor': '#470044',\n      'primaryBorderColor': '#000000',\n      'lineColor': '#9158A2',\n      'secondaryColor': '#e79aff',\n      'tertiaryColor': '#fffc58'\n    }\n  }\n}%%\n\ngitGraph\n   commit id: \"a1b2c3d\"\n   commit id: \"4e5f678\"\n   branch experimental-1\n   checkout experimental-1\n   commit id: \"90abcde\"\n   commit id: \"7835cd3\"\n   checkout main\n   merge experimental-1 id: \"df37ba1\"\n   commit id: \"34efc1a\"\n   commit id: \"32753bc\"\n   branch experimental-2\n   checkout experimental-2\n   commit id: \"cb45ad1\"\n   branch experimental-3\n   checkout experimental-3\n   commit id: \"456abc1\"\n   checkout experimental-2\n   commit id: \"ad1cb45\"\n   checkout main\n   merge experimental-2 id: \"be34af1\"\n   commit id: \"def134a\"\n   commit id: \"563bdef\"\n\n\n\n\n\n\n\n\nAnd we usually bring everything back to the main branch once we are happy with it\n\n\n\nWhat does git do?\n\n\n\n\n\n\n%%{\n  init: {\n    'theme': 'base',\n    'themeVariables': {\n      'primaryColor': '#9fe1ff',\n      'primaryTextColor': '#470044',\n      'primaryBorderColor': '#000000',\n      'lineColor': '#9158A2',\n      'secondaryColor': '#e79aff',\n      'tertiaryColor': '#fffc58'\n    }\n  }\n}%%\n\ngitGraph\n   commit id: \"a1b2c3d\"\n   commit id: \"4e5f678\"\n   branch experimental-1\n   checkout experimental-1\n   commit id: \"90abcde\"\n   commit id: \"7835cd3\"\n   checkout main\n   merge experimental-1 id: \"df37ba1\"\n   commit id: \"34efc1a\"\n   commit id: \"32753bc\" tag:\"v0.1.0 - preprint\" type: HIGHLIGHT\n   branch experimental-2\n   checkout experimental-2\n   commit id: \"cb45ad1\"\n   branch experimental-3\n   checkout experimental-3\n   commit id: \"456abc1\"\n   checkout experimental-2\n   commit id: \"ad1cb45\"\n   checkout main\n   merge experimental-2 id: \"be34af1\"\n   commit id: \"def134a\"\n   commit id: \"563bdef\" tag:\"v1.0.0 - published paper\" type: HIGHLIGHT\n\n\n\n\n\n\n\n\nWe can also tag specific commits if the code at that point in time is important!\n\nFor example, the version of the code you used to generate results for a preprint or the final paper!\n\n\n\n\nWhat does git do?\n\n\n\n\n\n\n%%{\n  init: {\n    'theme': 'base',\n    'themeVariables': {\n      'primaryColor': '#9fe1ff',\n      'primaryTextColor': '#470044',\n      'primaryBorderColor': '#000000',\n      'lineColor': '#9158A2',\n      'secondaryColor': '#e79aff',\n      'tertiaryColor': '#fffc58'\n    }\n  }\n}%%\n\ngitGraph\n   commit id: \"a1b2c3d\"\n   commit id: \"4e5f678\"\n   branch experimental-1\n   checkout experimental-1\n   commit id: \"90abcde\"\n   commit id: \"7835cd3\"\n   checkout main\n   merge experimental-1 id: \"df37ba1\"\n   commit id: \"34efc1a\"\n   commit id: \"32753bc\" tag:\"v0.1.0 - preprint\" type: HIGHLIGHT\n   branch experimental-2\n   checkout experimental-2\n   commit id: \"cb45ad1\"\n   branch experimental-3\n   checkout experimental-3\n   commit id: \"456abc1\"\n   checkout experimental-2\n   commit id: \"ad1cb45\"\n   checkout main\n   merge experimental-2 id: \"be34af1\"\n   commit id: \"def134a\"\n   commit id: \"563bdef\" tag:\"v1.0.0 - published paper\" type: HIGHLIGHT\n\n\n\n\n\n\n\n\nThese tags can also be called releases: (hopefully!) fairly complete, working, nice versions of your code\n\nCommits in between releases (merged to the main branch) are like patches to video games\nThe commit notes are like patch notes, telling you what’s changed\n\n\n\n\n\nPart 2: the git cycle\n\nThe git cycle\nSo we’ve looked at the idea of bundling up changes as commits, but what does that actually involve?\nI think of it like packing a picnic basket:\n\n\n\nI make a sandwich and wrap it up\nI add it to the basket\nI chop up some fruit and put it in a lunchbox\nI add that to the basket\nI make a smoothie and bottle it\nI add that to the basket too\nFinally, I close over the top of the picnic basket and secure the latch\n\n\n\n\n\nThe git cycle\nHow does this have anything to do with git?\n\n\nI make a sandwich and wrap it up\nI add it to the basket\nI chop up some fruit and put it in a lunchbox\nI add that to the basket\nI make a smoothie and bottle it\nI add that to the basket too\nFinally, I close over the top of the picnic basket and secure the latch\n\n\n\n\nThe git cycle\nLet’s introduce the concept of add as well as commit.\n\n\nI make a sandwich and wrap it up -&gt; I make some edits to files/create new files in my project folder\nI add it to the basket -&gt; I add my changes\nI chop up some fruit and put it in a lunchbox -&gt; I make some more edits to files\nI add that to the basket -&gt; I add my changes\nI make a smoothie and bottle it -&gt; I make some more edits to files\nI add that to the basket too -&gt; I add my changes\nI close over the top of the picnic basket and secure the latch -&gt; I commit all these changes that I previously added\n\n\n\n\nThe git cycle\nLet’s introduce the concept of add as well as commit.\n\n\nYou create or edit files, then\nYou add those changes, then\nYou either create/edit more files and repeat add or you commit all the added changes with a little message\n\n\n\nI think of git add as like a quick save, whereas git commit is a full, proper save.\n\n\n\nThe git cycle\ncreate/edit -&gt; add -&gt; commit\n\n\n\n\n\n\n\n\n\n%%{\n  init: {\n    'theme': 'base',\n    'themeVariables': {\n      'primaryColor': '#9fe1ff',\n      'primaryTextColor': '#470044',\n      'primaryBorderColor': '#000000',\n      'lineColor': '#9158A2',\n      'secondaryColor': '#e79aff',\n      'tertiaryColor': '#fffc58'\n    }\n  }\n}%%\n\nflowchart TD\n    Untracked --&gt;|**git add**| Staged\n    Staged --&gt;|**git commit**| Committed\n    Committed -.-&gt;|*edit files*| Untracked\n\n\n\n\n\n\n\n\n\n\n\nWe need to add everything to our picnic basket\nWhen we are happy with our bundle of changes, we close up the basket and commit the changes, and add a nice little label to it in the form of a commit message\n\n\n\n\n\n\nThe git cycle\nSome new jargon - the state of the files in your repository\n\n\n\n\n\n\n\n\n%%{\n  init: {\n    'theme': 'base',\n    'themeVariables': {\n      'primaryColor': '#9fe1ff',\n      'primaryTextColor': '#470044',\n      'primaryBorderColor': '#000000',\n      'lineColor': '#9158A2',\n      'secondaryColor': '#e79aff',\n      'tertiaryColor': '#fffc58'\n    }\n  }\n}%%\n\nflowchart TD\n    Untracked --&gt;|**git add**| Staged\n    Staged --&gt;|**git commit**| Committed\n    Committed -.-&gt;|*edit files*| Untracked\n\n\n\n\n\n\n\n\n\nUntracked/modified: files that have been created or edited since the last cycle, that haven’t been added or committed\nStaged: files that have been added (put in the basket) but not committed yet.\nCommitted: files that have been added and committed and now have a unique id attached to their most recent changes (and have not been edited since the last commit)\n\nAs well as being able to “undo” entire commits, you can undo different stages of this cycle (e.g. you can unstage files so they go from being staged to untracked)\n\n\n\n\nWhere does the git cycle fit in?\n\n\nEvery node on this graph…\n\n\n\n\n\n\n%%{\n  init: {\n    'theme': 'base',\n    'themeVariables': {\n      'primaryColor': '#9fe1ff',\n      'primaryTextColor': '#470044',\n      'primaryBorderColor': '#000000',\n      'lineColor': '#9158A2',\n      'secondaryColor': '#e79aff',\n      'tertiaryColor': '#fffc58'\n    }\n  }\n}%%\n\ngitGraph\n   commit id: \"a1b2c3d\"\n   commit id: \"4e5f678\"\n   branch experimental-1\n   checkout experimental-1\n   commit id: \"90abcde\"\n   commit id: \"7835cd3\"\n   checkout main\n   merge experimental-1 id: \"df37ba1\"\n   commit id: \"34efc1a\"\n   commit id: \"32753bc\" tag:\"v0.1.0 - preprint\" type: HIGHLIGHT\n   branch experimental-2\n   checkout experimental-2\n   commit id: \"cb45ad1\"\n   branch experimental-3\n   checkout experimental-3\n   commit id: \"456abc1\"\n   checkout experimental-2\n   commit id: \"ad1cb45\"\n   checkout main\n   merge experimental-2 id: \"be34af1\"\n   commit id: \"def134a\"\n   commit id: \"563bdef\" tag:\"v1.0.0 - published paper\" type: HIGHLIGHT\n\n\n\n\n\n\n\n\ncontains this cycle\n\n\n\n\n\n\n%%{\n  init: {\n    'theme': 'base',\n    'themeVariables': {\n      'primaryColor': '#9fe1ff',\n      'primaryTextColor': '#470044',\n      'primaryBorderColor': '#000000',\n      'lineColor': '#9158A2',\n      'secondaryColor': '#e79aff',\n      'tertiaryColor': '#fffc58'\n    }\n  }\n}%%\n\nflowchart TD\n    Untracked --&gt;|**git add**| Staged\n    Staged --&gt;|**git commit**| Committed\n    Committed -.-&gt;|*edit files*| Untracked\n\n\n\n\n\n\n\n\n\nIf you understand this, then actually using git is just a matter of googling the right commands.\n\n\n\nPart 3: remote git\n\nBack up your work!\nWhen doing research, or back in undergrad, we all heard the common refrain “back up your work!”\n\n\nThis sometimes involved floppy disks, usb sticks, external harddrives;\nAlso now likely to include cloud platforms and storage options (Dropbox, OneDrive, etc.)\n\n\n\n\nBack up your work!\nSo, we have the history of our work saved in our git repository (which is just the folder that our files are stored in) - but it’s just as vulnerable to loss as any other files on our pc.\nWe need a back-up!\n\nThe “backup” of our local git repository is called a remote repository.\n\n\n\nRemote repository\nThe remote repository can be:\n\non a different computer\non an external harddrive\non a cloud service like GitHub\n\n\n\nRemote repository\n\n\n\n\n\n\n\n\n%%{\n  init: {\n    'theme': 'base',\n    'themeVariables': {\n      'primaryColor': '#9fe1ff',\n      'primaryTextColor': '#470044',\n      'primaryBorderColor': '#000000',\n      'lineColor': '#9158A2',\n      'secondaryColor': '#e79aff',\n      'tertiaryColor': '#fffc58'\n    }\n  }\n}%%\n\nflowchart TD\n    Untracked --&gt;|**git add**| Staged\n    Staged --&gt;|**git commit**| Committed\n    Committed -.-&gt;|*edit files*| Untracked\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n%%{\n  init: {\n    'theme': 'base',\n    'themeVariables': {\n      'primaryColor': '#9fe1ff',\n      'primaryTextColor': '#470044',\n      'primaryBorderColor': '#000000',\n      'lineColor': '#9158A2',\n      'secondaryColor': '#e79aff',\n      'tertiaryColor': '#fffc58'\n    }\n  }\n}%%\n\ngitGraph\n   commit id: \"a1b2c3d\"\n   commit id: \"4e5f678\"\n   branch experimental-1\n   checkout experimental-1\n   commit id: \"90abcde\"\n   commit id: \"7835cd3\"\n   checkout main\n   merge experimental-1 id: \"df37ba1\"\n   commit id: \"34efc1a\"\n   commit id: \"32753bc\" tag:\"v0.1.0 - preprint\" type: HIGHLIGHT\n   branch experimental-2\n   checkout experimental-2\n   commit id: \"cb45ad1\"\n   branch experimental-3\n   checkout experimental-3\n   commit id: \"456abc1\"\n   checkout experimental-2\n   commit id: \"ad1cb45\"\n   checkout main\n   merge experimental-2 id: \"be34af1\"\n   commit id: \"def134a\"\n   commit id: \"563bdef\" tag:\"v1.0.0 - published paper\" type: HIGHLIGHT\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n%%{\n  init: {\n    'theme': 'base',\n    'themeVariables': {\n      'primaryColor': '#9fe1ff',\n      'primaryTextColor': '#470044',\n      'primaryBorderColor': '#000000',\n      'lineColor': '#9158A2',\n      'secondaryColor': '#e79aff',\n      'tertiaryColor': '#fffc58'\n    }\n  }\n}%%\n\nflowchart TD\n    Local --&gt;|**git push**| Remote\n    Remote -.-&gt;|**pull**| Local\n\n\n\n\n\n\n\n\n\n\nYou can push bundles of commits to your remote repository\nYou can also pull changes from the remote repository to your local…\n\nYou can have different “local” repositories on different machines…\n\n\n\n\nRemote repository\n\n\n\n\n\n\n\n\n\n\n%%{\n  init: {\n    'theme': 'base',\n    'themeVariables': {\n      'primaryColor': '#9fe1ff',\n      'primaryTextColor': '#470044',\n      'primaryBorderColor': '#000000',\n      'lineColor': '#9158A2',\n      'secondaryColor': '#e79aff',\n      'tertiaryColor': '#fffc58'\n    }\n  }\n}%%\n\nflowchart TD\n    Local-1 --&gt;|**push**| Remote\n    Remote -.-&gt;|**pull**| Local-1\n\n\n\n\n\n\n\n\n\n\n\n\n\nRemote repository\n\n\n\n\n\n\n\n\n\n\n%%{\n  init: {\n    'theme': 'base',\n    'themeVariables': {\n      'primaryColor': '#9fe1ff',\n      'primaryTextColor': '#470044',\n      'primaryBorderColor': '#000000',\n      'lineColor': '#9158A2',\n      'secondaryColor': '#e79aff',\n      'tertiaryColor': '#fffc58'\n    }\n  }\n}%%\n\nflowchart TD\n    Local-1 --&gt;|**push**| Remote\n    Remote -.-&gt;|**pull**| Local-1\n    Remote -.-&gt;|**pull**| Local-2\n\n\n\n\n\n\n\n\n\n\n\n\n\nRemote repository\n\n\n\n\n\n\n\n\n\n\n%%{\n  init: {\n    'theme': 'base',\n    'themeVariables': {\n      'primaryColor': '#9fe1ff',\n      'primaryTextColor': '#470044',\n      'primaryBorderColor': '#000000',\n      'lineColor': '#9158A2',\n      'secondaryColor': '#e79aff',\n      'tertiaryColor': '#fffc58'\n    }\n  }\n}%%\n\nflowchart TD\n    Local-1 --&gt;|**push**| Remote\n    Remote -.-&gt;|**pull**| Local-1\n    Remote -.-&gt;|**pull**| Local-2\n    Local-2 --&gt;|**push**| Remote\n\n\n\n\n\n\n\n\n\n\n\n\nYou can use a remote repository to sync repositories across different machines\nFor yourself, or for collaborators\n\n\n\nRemote git\n\n\n\n\n\n\n%%{\n  init: {\n    'theme': 'base',\n    'themeVariables': {\n      'primaryColor': '#9fe1ff',\n      'primaryTextColor': '#470044',\n      'primaryBorderColor': '#000000',\n      'lineColor': '#9158A2',\n      'secondaryColor': '#e79aff',\n      'tertiaryColor': '#fffc58'\n    },\n    'gitGraph': {\n      'showBranches': true,\n      'showCommitLabel': false,\n      'mainBranchName': 'main (remote)',\n      'mainBranchOrder': 2}\n  }\n}%%\n\ngitGraph\n   commit\n   commit\n   branch 'mmq-patch-01 (remote)' order: 1\n   branch 'mmq-patch-01 (local)' order: 0\n   checkout 'mmq-patch-01 (local)'\n   commit\n   commit\n   checkout 'mmq-patch-01 (remote)'\n   merge 'mmq-patch-01 (local)'\n   checkout 'main (remote)'\n   merge 'mmq-patch-01 (remote)'\n   branch 'pt-patch-01 (local)' order:4\n   branch 'pt-patch-01 (remote)' order:3\n   checkout 'pt-patch-01 (local)'\n   commit\n   commit\n   checkout 'pt-patch-01 (remote)'\n   merge 'pt-patch-01 (local)'\n   checkout 'main (remote)'\n   merge 'pt-patch-01 (remote)'\n\n\n\n\n\n\n\n\nThis allows us to collaborate with others\n\n\nRemote git\n\n\n\n\n\n\n%%{\n  init: {\n    'theme': 'base',\n    'themeVariables': {\n      'primaryColor': '#9fe1ff',\n      'primaryTextColor': '#470044',\n      'primaryBorderColor': '#000000',\n      'lineColor': '#9158A2',\n      'secondaryColor': '#e79aff',\n      'tertiaryColor': '#fffc58'\n    },\n    'gitGraph': {\n      'showBranches': true,\n      'showCommitLabel': false,\n      'mainBranchName': 'main (remote)',\n      'mainBranchOrder': 2}\n  }\n}%%\n\ngitGraph\n   commit\n   commit\n   branch 'mmq-patch-01 (remote)' order: 1\n   branch 'mmq-patch-01 (local)' order: 0\n   checkout 'mmq-patch-01 (local)'\n   commit\n   commit\n   checkout 'mmq-patch-01 (remote)'\n   merge 'mmq-patch-01 (local)'\n   checkout 'main (remote)'\n   merge 'mmq-patch-01 (remote)'\n   branch 'pt-patch-01 (local)' order:4\n   branch 'pt-patch-01 (remote)' order:3\n   checkout 'pt-patch-01 (local)'\n   commit\n   commit\n   checkout 'pt-patch-01 (remote)'\n   merge 'pt-patch-01 (local)'\n   checkout 'main (remote)'\n   merge 'pt-patch-01 (remote)'\n   commit tag: 'v1.0.0'\n\n\n\n\n\n\n\n\nWhen using a cloud-based remote, we can mint a DOI for the release for a snapshot of the code\n\n\nRemote git\n\nIf we compare version control to a tool such as a word processor\nThen git is Microsoft Word (but there are other options)\nAnd GitHub is Microsoft365 (and again, there are other options!)\n\n(funnily enough GitHub is owned by Microsoft)\n\n\nGitHub\nIn the same way that we are focussing on Git, we are going to focus on GitHub for this course\n\nThere are lots of things we can get GitHub to do that are not “version control” specific; we will look at these tomorrow!\nFor now, lets think of it as a remote repository for git.",
+    "crumbs": [
+      "Project Workflow ↗",
+      "1. First Steps",
+      "Version Control"
+    ]
+  },
+  {
+    "objectID": "introduction/introduction-presentation.html#what-is-research-software-development",
+    "href": "introduction/introduction-presentation.html#what-is-research-software-development",
     "title": "Introduction: Research Software Development in Python",
     "section": "What is Research Software Development?",
-    "text": "What is Research Software Development?"
+    "text": "What is Research Software Development?\n\nCreating tools, scripts, and applications that enable scientific discovery through data analysis, modeling, and simulation.\nWriting programs to process experimental data, automate repetitive tasks, implement mathematical models, and generate visualizations for scientific publications.\nEverything from simple data cleaning scripts in Python/R to complex simulation software, statistical analysis pipelines, workflows on High Performance Computing (HPC) platforms, and specialized scientific computing applications.\nThe goal is producing reliable, reproducible computational workflows that support research while enabling other scientists to verify and build upon the work."
   },
   {
-    "objectID": "introduction-presentation.html#computing-in-research",
-    "href": "introduction-presentation.html#computing-in-research",
+    "objectID": "introduction/introduction-presentation.html#computing-in-research",
+    "href": "introduction/introduction-presentation.html#computing-in-research",
     "title": "Introduction: Research Software Development in Python",
     "section": "Computing in research",
-    "text": "Computing in research"
+    "text": "Computing in research\n\nNo longer just the domain of computer science: embedded across all disciplines\nA key skill area for your future as a researcher"
   },
   {
-    "objectID": "introduction-presentation.html#reproducibility",
-    "href": "introduction-presentation.html#reproducibility",
+    "objectID": "introduction/introduction-presentation.html#rs-of-research-software",
+    "href": "introduction/introduction-presentation.html#rs-of-research-software",
+    "title": "Introduction: Research Software Development in Python",
+    "section": "3 Rs of Research Software",
+    "text": "3 Rs of Research Software\n\nReproducibility, replicability and reusability are all interlinked."
+  },
+  {
+    "objectID": "introduction/introduction-presentation.html#reproducibility",
+    "href": "introduction/introduction-presentation.html#reproducibility",
     "title": "Introduction: Research Software Development in Python",
     "section": "Reproducibility",
-    "text": "Reproducibility\n\n\n\n\n\n\nReproducibility…\n\n\nis when you or others are able to obtain the same results (within a certain tolerance) as the original study, when using the same input data, code, and coding environment, on the same computing platform as the original study.\n\n\n\n\n\n\n\n\n\n\n\nInput\nAim\nIdeal output\n\n\n\n\nThe same input data and code, on the same computer\nVerify the results are real; catch mistakes, error, fradu\nThe same results!"
+    "text": "Reproducibility\n\n\n\n\n\n\nReproducibility…\n\n\nis when you or others are able to obtain the same results (within a certain tolerance) as the original study, when using the same input data, code, and coding environment, on the same computing platform as the original study.\n\n\n\n\n\n\n\n\n\n\n\nInput\nAim\nIdeal output\n\n\n\n\nThe same input data and code, on the same computer\nVerify the results are real; catch mistakes, error, fraud\nThe same results!"
   },
   {
-    "objectID": "introduction-presentation.html#replicability",
-    "href": "introduction-presentation.html#replicability",
+    "objectID": "introduction/introduction-presentation.html#reproducibility-2",
+    "href": "introduction/introduction-presentation.html#reproducibility-2",
+    "title": "Introduction: Research Software Development in Python",
+    "section": "Reproducibility",
+    "text": "Reproducibility\nWhat do you need for reproducibility?\n\nThe exact code used;\nThe exact data used;\nThe exact computational environment used:\n\nA record of the machine/operating system;\nA record of the exact versions of all libraries and dependencies used"
+  },
+  {
+    "objectID": "introduction/introduction-presentation.html#when-reproducibility-is-missing",
+    "href": "introduction/introduction-presentation.html#when-reproducibility-is-missing",
+    "title": "Introduction: Research Software Development in Python",
+    "section": "When reproducibility is missing",
+    "text": "When reproducibility is missing\nWhat are some examples of this going wrong?\n\nNot recording the version of a library you used, and certain future backwards-incompatible changes being made\n\nThis means functions you used may no longer exist, or may take different input\nThe best-case scenario is your code will no longer run, but will output an error, meaning you/any user will be able to do detective work to figure out what version of the library works\nThe much worse outcome is that the code fails silently: it still runs, but the output changes because the way the libraries work has changed; it can be hard to spot that something has gone wrong!\n\nFor example, the default values for functions may change, or the assumed units/co-ordinate systems etc."
+  },
+  {
+    "objectID": "introduction/introduction-presentation.html#when-reproducibility-is-missing-1",
+    "href": "introduction/introduction-presentation.html#when-reproducibility-is-missing-1",
+    "title": "Introduction: Research Software Development in Python",
+    "section": "When reproducibility is missing",
+    "text": "When reproducibility is missing\n\nRunning Jupyter notebook cells out of order…\nIn a sample of 936 published notebooks that would be executable in principle, Wang et al. (2020) found that:\n\n73% of them would not be reproducible with straightforward approaches\nThe reader/user had to infer (and often guess) the order in which the authors created or ran the cells"
+  },
+  {
+    "objectID": "introduction/introduction-presentation.html#replicability",
+    "href": "introduction/introduction-presentation.html#replicability",
     "title": "Introduction: Research Software Development in Python",
     "section": "Replicability",
     "text": "Replicability\n\n\n\n\n\n\nReplicability…\n\n\nis when you or others are able to produce results that align with the results of the original study, while using different input data and different code, but using the original studies methods or theories.\n\n\n\n\n\n\n\n\n\n\n\nInput\nAim\nIdeal output\n\n\n\n\nThe methods used previously, but not the same code/data\nTo test the validity of the results and conclusions\nSimilar results"
   },
   {
-    "objectID": "introduction-presentation.html#reusability",
-    "href": "introduction-presentation.html#reusability",
+    "objectID": "introduction/introduction-presentation.html#replicability-2",
+    "href": "introduction/introduction-presentation.html#replicability-2",
+    "title": "Introduction: Research Software Development in Python",
+    "section": "Replicability",
+    "text": "Replicability\nWhat is needed for replicability?\n\nClear and complete methodological documentation;\nDescription of assumptions and caveats;\nA test suite to ensure code is working as expected."
+  },
+  {
+    "objectID": "introduction/introduction-presentation.html#when-replicability-is-missing",
+    "href": "introduction/introduction-presentation.html#when-replicability-is-missing",
+    "title": "Introduction: Research Software Development in Python",
+    "section": "When replicability is missing",
+    "text": "When replicability is missing\n\nNot providing enough detail in publications about the exact methods used\n\nFor example, not providing all the maths used in your code\n\nUploading code without documentation, data without useful metadata, environment files and containers with no explanation of the contents: technically, one could run the code, but they may not be able to parse the methods used\nNot comparing your model to analytical results or other studies\n\nOnly testing that the code and not the science/theory/assumptions behind it"
+  },
+  {
+    "objectID": "introduction/introduction-presentation.html#reusability",
+    "href": "introduction/introduction-presentation.html#reusability",
     "title": "Introduction: Research Software Development in Python",
     "section": "Reusability",
     "text": "Reusability\n\n\n\n\n\n\nReusability…\n\n\nis when you or others are able to easily use the code or data produced as part of the original study, and potentially rework it and extend it for new applications, contexts, or studies.\n\n\n\n\n\n\n\n\n\n\n\nInput\nAim\nIdeal output\n\n\n\n\nThe original code, expanded on, used with different data, modified\nTo continue doing research without reinventing the wheel, and instead recycle code\nNew results, in different contexts"
   },
   {
-    "objectID": "introduction-presentation.html#why-this-course-exists",
-    "href": "introduction-presentation.html#why-this-course-exists",
+    "objectID": "introduction/introduction-presentation.html#reusability-2",
+    "href": "introduction/introduction-presentation.html#reusability-2",
     "title": "Introduction: Research Software Development in Python",
-    "section": "Why this course exists",
-    "text": "Why this course exists"
+    "section": "Reusability",
+    "text": "Reusability\nWhat is needed for reusability?\n\nGood documentation on how to install/run/modify the code;\n\nThis does not have to be formal - it can just be useful comments - but adhering to formal syntax etc. for documentation makes it easier to read and more useful!\n\nProviding useful shareable environment files (for example, a Conda environment file);\n\nNote that this is often different to a environment file for reproducibility - please read the links in the reproducibility section to understand the distinction!\n\nIncluding appropriate licensing so that people can legally use the code.\nA testing or validation suite to make sure that users are getting the correct results on their own computational system."
   },
   {
-    "objectID": "introduction-presentation.html#theory-sessions",
-    "href": "introduction-presentation.html#theory-sessions",
+    "objectID": "introduction/introduction-presentation.html#reusability-3",
+    "href": "introduction/introduction-presentation.html#reusability-3",
+    "title": "Introduction: Research Software Development in Python",
+    "section": "Reusability",
+    "text": "Reusability\nReusability oftentimes gets sidelined to let reproducibility take the main stage, but it is essential for research!\n\nBeing able to produce the same results on a different platform hints at far more robust research code than only being able to reproduce the results on a single machine\n\nWith the caveat that when it comes to floating point precision etc. systems, GPUs, builds, and compilers all will matter\n\nResearch builds on other research and is incrememntal: you and other researchers should be able to use your code for future work!"
+  },
+  {
+    "objectID": "introduction/introduction-presentation.html#reusability-4",
+    "href": "introduction/introduction-presentation.html#reusability-4",
+    "title": "Introduction: Research Software Development in Python",
+    "section": "Reusability",
+    "text": "Reusability\nNature Computer Science editorial: “But is the code (re)usable?”:\n\nWhile it is crucial to guarantee the reproducibility of the results reported in a paper, let us also not forget about the importance of making research artifacts reusable for the scientific community.\n\n\nReusability […] entails obtaining consistent results with new data, and in some cases, in the context of a new scientific application. Making research artifacts, such as code, reusable allows other researchers to more easily investigate the same or similar scientific questions as new data become available and new ideas are developed, thus helping science progress at a faster pace.\n\nNature (2021)"
+  },
+  {
+    "objectID": "introduction/introduction-presentation.html#the-reproducibility-crisis",
+    "href": "introduction/introduction-presentation.html#the-reproducibility-crisis",
+    "title": "Introduction: Research Software Development in Python",
+    "section": "The reproducibility crisis",
+    "text": "The reproducibility crisis\nMore than 70% of researchers have tried and failed to reproduce another scientist’s experiments, and more than half have failed to reproduce their own experiments.\n1,500 scientists lift the lid on reproducibility: Nature News Feature Baker (2016)"
+  },
+  {
+    "objectID": "introduction/introduction-presentation.html#so-how-do-we-solve-this",
+    "href": "introduction/introduction-presentation.html#so-how-do-we-solve-this",
+    "title": "Introduction: Research Software Development in Python",
+    "section": "So how do we solve this?",
+    "text": "So how do we solve this?\n\n📁 Clear directory structure - Everything has a logical place\n📄 Comprehensive documentation - README files that actually help\n🔄 Version control - Git tracks every change and decision\n🧪 Organized data workflow - Raw → Processed → Results\n✅ Testing framework - Confidence that your code works correctly\n📦 Dependency management - Reproducible computational environment"
+  },
+  {
+    "objectID": "introduction/introduction-presentation.html#so-how-do-we-solve-this-1",
+    "href": "introduction/introduction-presentation.html#so-how-do-we-solve-this-1",
+    "title": "Introduction: Research Software Development in Python",
+    "section": "So how do we solve this?",
+    "text": "So how do we solve this?\nWe’re going to work through each of these different topics using an example project\n\nYou will be able to replicate this workflow for future research projects\nIn our wrap-up section at the end of the course, we will also discuss how to apply these to existing, messy, legacy projects"
+  },
+  {
+    "objectID": "introduction/introduction-presentation.html#format",
+    "href": "introduction/introduction-presentation.html#format",
+    "title": "Introduction: Research Software Development in Python",
+    "section": "Format",
+    "text": "Format\n\nThis course contains these lecture slides, and also practical sessions.\nThere is also an attached “further reading” resource list for you to dig into after the course.\nThe aim is to introduce a toolbox of different methods to help you make your research code more reproducible, replicable, and reusable."
+  },
+  {
+    "objectID": "introduction/introduction-presentation.html#why-this-course-exists",
+    "href": "introduction/introduction-presentation.html#why-this-course-exists",
+    "title": "Introduction: Research Software Development in Python",
+    "section": "Why this course exists",
+    "text": "Why this course exists\n\nThere is plentiful documentation online for each of the individual tools and methods we will introduce in this course\nHowever, as a researcher, it is often difficult to know how to embed these in your research workflow, and how they all work together\nThis course aims to introduce these methods embedded in a practical and realistic workflow"
+  },
+  {
+    "objectID": "introduction/introduction-presentation.html#theory-sessions",
+    "href": "introduction/introduction-presentation.html#theory-sessions",
     "title": "Introduction: Research Software Development in Python",
     "section": "Theory sessions",
     "text": "Theory sessions\n\nIntroduce concepts;\nFurther notes and extra reading to expand upon ideas;\nSet up for the practical sessions."
   },
   {
-    "objectID": "introduction-presentation.html#practicals",
-    "href": "introduction-presentation.html#practicals",
+    "objectID": "introduction/introduction-presentation.html#practicals",
+    "href": "introduction/introduction-presentation.html#practicals",
     "title": "Introduction: Research Software Development in Python",
     "section": "Practicals",
     "text": "Practicals\n\nSelf-directed step-by-step exercises;\nApply the concepts introduced in the theory sessions."
   },
   {
-    "objectID": "introduction-presentation.html#virtual-machine",
-    "href": "introduction-presentation.html#virtual-machine",
+    "objectID": "introduction/introduction-presentation.html#virtual-machine",
+    "href": "introduction/introduction-presentation.html#virtual-machine",
     "title": "Introduction: Research Software Development in Python",
     "section": "Virtual machine",
-    "text": "Virtual machine"
+    "text": "Virtual machine\n\nWe will be using a virtual Linux machine hosted on GitHub codespaces\nThis gives us free reign in a sandbox where we can’t break anything!\nYou will be able to replicate these steps on your work machines"
   },
   {
-    "objectID": "introduction-presentation.html#gathering-requirements",
-    "href": "introduction-presentation.html#gathering-requirements",
-    "title": "Introduction: Research Software Development in Python",
-    "section": "Gathering requirements",
-    "text": "Gathering requirements"
-  },
-  {
-    "objectID": "introduction-presentation.html#creating-a-workflow",
-    "href": "introduction-presentation.html#creating-a-workflow",
+    "objectID": "introduction/introduction-presentation.html#creating-a-workflow",
+    "href": "introduction/introduction-presentation.html#creating-a-workflow",
     "title": "Introduction: Research Software Development in Python",
     "section": "Creating a workflow",
-    "text": "Creating a workflow\n\n“What should I do next?”"
+    "text": "Creating a workflow\n\n“What should I do next?” - it’s often difficult to know what the sensible next step is when facing a computing task\nDuring this course, we will use a workflow template, and follow it step by step\n\nNote: this is not the only way to organise your work!\n\nIn fact, we recommend that you take the workflow we suggest, and change it until it suits your research process!\nThe aim is for you to have a workflow that suits you, so when you’re in the midst of research, you at least have a direction of travel!"
+  },
+  {
+    "objectID": "introduction/introduction-presentation.html#practical-1-gathering-requirements",
+    "href": "introduction/introduction-presentation.html#practical-1-gathering-requirements",
+    "title": "Introduction: Research Software Development in Python",
+    "section": "Practical 1: Gathering requirements",
+    "text": "Practical 1: Gathering requirements\n\nFirst, we need to figure out what our code needs to do:\n\nWhat sort of input data will it take?\n\nHow big will the input data be?\nWhat file types will it take in?\n\nWhat will it do to that input data?\n\nHow big or complex will this processing be?\n\nHow will it output the data?\n\nWhat size will the output be?\nWhat file types will it save out?"
+  },
+  {
+    "objectID": "introduction/introduction-presentation.html#practical-1-gathering-requirements-1",
+    "href": "introduction/introduction-presentation.html#practical-1-gathering-requirements-1",
+    "title": "Introduction: Research Software Development in Python",
+    "section": "Practical 1: Gathering requirements",
+    "text": "Practical 1: Gathering requirements\n\nThen, we can think a bit more about the specifics:\n\nWhat programming language will it use?\nWhere will it run?\n\nOn our laptops?\nOn a HPC system?\n\nWho will be running it?\n\nJust us?\nUs and some close collaborators?\nA wider research group?\nA larger research community?"
+  },
+  {
+    "objectID": "introduction/introduction-presentation.html#references",
+    "href": "introduction/introduction-presentation.html#references",
+    "title": "Introduction: Research Software Development in Python",
+    "section": "References",
+    "text": "References\n\n\n\n\nBaker, Monya. 2016. “1,500 scientists lift the lid on reproducibility.” Nature 533 (7604): 452–54. https://doi.org/10.1038/533452a.\n\n\nMurphy Quinlan, Maeve. 2025. “Reproducibility, Replicability, & Reusability.” June 16, 2025. https://murphyqm.github.io/work-notes/posts/reproducibility/.\n\n\nNature. 2021. “But is the code (re)usable?” Nat. Comput. Sci. 1 (7): 449. https://doi.org/10.1038/s43588-021-00109-9.\n\n\nWang, Jianqiang, Tzu-Yang Kuo, Li Li, and Andreas Zeller. 2020. “Assessing and Restoring Reproducibility of Jupyter Notebooks.” In ASE ’20: Proceedings of the 35th IEEE/ACM International Conference on Automated Software Engineering. CISPA Helmholtz Center for Information Security."
+  },
+  {
+    "objectID": "introduction/practical_1.html",
+    "href": "introduction/practical_1.html",
+    "title": "Practical 1: Gathering Requirements",
+    "section": "",
+    "text": "Duration: 30 minutes\nGoal: Practice translating research needs into clear software requirements\nWhy Requirements Matter in Research: - Prevents scope creep and endless revisions - Helps identify what you actually need vs. what would be “nice to have” - Makes collaboration with others much easier - Saves time by planning before coding",
+    "crumbs": [
+      "Project Workflow ↗",
+      "0. Introduction",
+      "Practical 1: Gathering Requirements"
+    ]
+  },
+  {
+    "objectID": "introduction/practical_1.html#activity-overview",
+    "href": "introduction/practical_1.html#activity-overview",
+    "title": "Practical 1: Gathering Requirements",
+    "section": "",
+    "text": "Duration: 30 minutes\nGoal: Practice translating research needs into clear software requirements\nWhy Requirements Matter in Research: - Prevents scope creep and endless revisions - Helps identify what you actually need vs. what would be “nice to have” - Makes collaboration with others much easier - Saves time by planning before coding",
+    "crumbs": [
+      "Project Workflow ↗",
+      "0. Introduction",
+      "Practical 1: Gathering Requirements"
+    ]
+  },
+  {
+    "objectID": "introduction/practical_1.html#round-1-pick-a-project-5-mins",
+    "href": "introduction/practical_1.html#round-1-pick-a-project-5-mins",
+    "title": "Practical 1: Gathering Requirements",
+    "section": "Round 1: Pick a project (5 mins)",
+    "text": "Round 1: Pick a project (5 mins)\nPick one of these simple research-relevant projects to work with:\n\nOption A: Data File Processor\nA tool that takes raw data files (CSV/Excel) and produces standardized, cleaned versions for analysis.\n\n\nOption B: Survey Response Analyzer\nA simple tool that reads survey data and generates basic summary statistics and visualizations.\n\n\nOption C: Literature Database Manager\nA command-line tool for managing a collection of research papers (titles, authors, keywords, notes).\n\n\nOption D: Experimental Results Tracker\nA tool for logging and organizing results from repeated experiments or trials.",
+    "crumbs": [
+      "Project Workflow ↗",
+      "0. Introduction",
+      "Practical 1: Gathering Requirements"
+    ]
+  },
+  {
+    "objectID": "introduction/practical_1.html#round-2-requirements-gathering-15-minutes",
+    "href": "introduction/practical_1.html#round-2-requirements-gathering-15-minutes",
+    "title": "Practical 1: Gathering Requirements",
+    "section": "Round 2: Requirements Gathering (15 minutes)",
+    "text": "Round 2: Requirements Gathering (15 minutes)\n\nFunctional Requirements\nWhat must the software DO?\nCore Functions: 1. 2. 3. 4.\nInput/Output Specifications:\n\nInput formats:\nOutput formats:\nExpected data size:\n\n\n\nNon-Functional Requirements\nHow should it work/behave?\nPerformance:\n\nHow fast does it need to be?\nHow much data should it handle?\nWill it run on a laptop, desktop, HPC?\n\nUsability:\n\nWho will use it? (just you, your lab, other researchers?)\nWhat’s their technical level?\nCommand line or GUI?\n\nReliability:\n\nHow critical is accuracy?\nWhat happens if it crashes?\n\n\n\nConstraints & Assumptions\nWhat are the limitations and assumptions?\nTechnical Constraints:\n\nProgramming language:\nDependencies/libraries:\nOperating system:\n\nResource Constraints:\n\nTime to develop:\nMaintenance time:\nBudget for tools:\n\nAssumptions:\n\nAbout the data:\nAbout users:\nAbout usage patterns:",
+    "crumbs": [
+      "Project Workflow ↗",
+      "0. Introduction",
+      "Practical 1: Gathering Requirements"
+    ]
+  },
+  {
+    "objectID": "introduction/practical_1.html#round-3-prioritization-planning-5-minutes",
+    "href": "introduction/practical_1.html#round-3-prioritization-planning-5-minutes",
+    "title": "Practical 1: Gathering Requirements",
+    "section": "Round 3: Prioritization & Planning (5 minutes)",
+    "text": "Round 3: Prioritization & Planning (5 minutes)\n\nMoSCoW Method\nCategorize each requirement:\nMust Have (Essential for basic functionality):\n\n\n\n\nShould Have (Important but not critical):\n\n\n\n\nCould Have (Nice to have if time allows):\n\n\n\n\nWon’t Have This Time (Explicitly out of scope):",
+    "crumbs": [
+      "Project Workflow ↗",
+      "0. Introduction",
+      "Practical 1: Gathering Requirements"
+    ]
+  },
+  {
+    "objectID": "introduction/practical_1.html#notes-for-discussion",
+    "href": "introduction/practical_1.html#notes-for-discussion",
+    "title": "Practical 1: Gathering Requirements",
+    "section": "Notes for discussion",
+    "text": "Notes for discussion\nWith research code, you’re often the developer and user all on your lonesome. While development of research code is very different to that in industry, it’s still useful to follow certain design patterns.\nBelow are some notes on gathering code requirements, limitations, and issues that may arise. Where questions are listed, these are useful to ask yourself, or of your collaborators, supervisor, or research group.\n\nCommon Research Code Requirements Patterns\n\nData Processing Projects\nTypical requirements:\n\nHandle multiple file formats\nValidate data quality\nGenerate processing logs\nExport results in standard formats\n\nQuestions to ask:\n\nWhat data validation is needed?\nHow should errors be handled?\nWhat metadata needs to be preserved?\n\n\n\nAnalysis Tools\nTypical requirements:\n\nConfigurable parameters\nReproducible results\nStatistical summaries\nVisualization outputs\n\nQuestions to ask:\n\nWhat parameters need to be adjustable?\nHow should results be documented?\nWhat statistical methods are needed?\n\n\n\nWorkflow Automation\nTypical requirements:\n\nBatch processing capabilities\nProgress tracking\nError recovery\nIntegration with existing tools\n\nQuestions to ask:\n\nWhat steps are currently manual?\nWhere do errors typically occur?\nWhat tools are already in use?\n\n\n\n\nRequirements Red Flags for Research Code\nIt’s good to recognise issues that could cause you pain down the line. Of course, research is ever evolving and things will change as you discover new things, but it’s still good to be aware and plan for these.\nParticularly for PhD students, it’s key to be aware of projects expanding beyond your time limits. For the questions below, if might often be a case of you deciding on an answer and checking in with your supervisor that it’s a sensible suggestion.\n🚩 Vague Requirements:\n\n“Make it flexible” → Specify what needs to be configurable\n“Handle all data types” → Define supported formats explicitly\n“Make it fast” → Quantify performance needs\n\n🚩 Scope Creep Indicators:\n\n“While we’re at it, let’s also…”\n“It would be cool if it could…”\n“Eventually we might want to…”\n\n🚩 Missing Context:\n\nNo mention of who will use it\nNo specification of data size/volume\nNo discussion of error handling",
+    "crumbs": [
+      "Project Workflow ↗",
+      "0. Introduction",
+      "Practical 1: Gathering Requirements"
+    ]
   }
 ]

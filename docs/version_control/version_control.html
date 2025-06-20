@@ -1,0 +1,2134 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.39">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Version Control – Research Software Development in Python</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-b7f89880cdd1b89d7a091c93646a2531.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+<script type="text/javascript" charset="UTF-8">
+document.addEventListener('DOMContentLoaded', function () {
+cookieconsent.run({
+  "notice_banner_type":"simple",
+  "consent_type":"implied",
+  "palette":"light",
+  "language":"en",
+  "page_load_consent_levels":["strictly-necessary","functionality","tracking","targeting"],
+  "notice_banner_reject_button_hide":false,
+  "preferences_center_close_button_hide":false,
+  "website_name":""
+  ,
+"language":"en"
+  });
+});
+</script> 
+  
+<script src="../site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="../site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-sidebar docked nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Research Software Development in Python</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../workflow.html" target="_blank"> 
+<span class="menu-text">Project Workflow ↗</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://arctraining.github.io/glossary-swd3/" target="_blank"> 
+<span class="menu-text">Glossary ↗</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../project_org/project_organisation.html">1. First Steps</a></li><li class="breadcrumb-item"><a href="../version_control/version_control.html">Version Control</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+ <span class="menu-text">0. Introduction</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Course content</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../introduction/introduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../introduction/practical_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practical 1: Gathering Requirements</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">1. First Steps</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../project_org/project_organisation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Organizing Your Research Coding Project</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../project_org/practical2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practical 2: Folder organisation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../version_control/version_control.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Version Control</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../version_control/practical3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practical 3: Writing pseudocode with version control</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../dependencies/dependencies.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Dependency management</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">2. Make your code robust</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../testing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Testing</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../releases.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Creating releases and automated workflows</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../documentation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Documentation</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#presentation-content" id="toc-presentation-content" class="nav-link active" data-scroll-target="#presentation-content">Presentation content</a>
+  <ul class="collapse">
+  <li><a href="#part-1-local-git" id="toc-part-1-local-git" class="nav-link" data-scroll-target="#part-1-local-git">Part 1: local <code>git</code></a></li>
+  <li><a href="#part-2-the-git-cycle" id="toc-part-2-the-git-cycle" class="nav-link" data-scroll-target="#part-2-the-git-cycle">Part 2: the <code>git</code> cycle</a></li>
+  <li><a href="#part-3-remote-git" id="toc-part-3-remote-git" class="nav-link" data-scroll-target="#part-3-remote-git">Part 3: remote <code>git</code></a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../project_org/project_organisation.html">1. First Steps</a></li><li class="breadcrumb-item"><a href="../version_control/version_control.html">Version Control</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Version Control</h1>
+<p class="subtitle lead">Your digital lab notebook</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Session Objectives
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In this section, we will learn about version control, and using git with GitHub to track our research.</p>
+</div>
+</div>
+<p><a href="../version_control/presentation.html" class="btn btn-outline-primary" role="button" data-toggle="tooltip" title="Open presentation in a new tab" target="_blank">Open introduction presentation ↗</a></p>
+<section id="presentation-content" class="level2">
+<h2 class="anchored" data-anchor-id="presentation-content">Presentation content</h2>
+<!-- Content included and converted from _content.qmd -->
+<section id="what-is-version-control" class="level4">
+<h4 class="anchored" data-anchor-id="what-is-version-control">What is version control?</h4>
+<div class="incremental">
+<ul class="incremental">
+<li>Often described as “track changes”, although that’s not <em>quite</em> right</li>
+<li>A super-powerful “undo” button</li>
+<li>A way of working collaboratively without over-writing each other’s work</li>
+<li>A way of <span class="extra">recording exactly what you did and when</span></li>
+</ul>
+</div>
+</section>
+<section id="what-is-version-control-1" class="level4" data-background-color="white">
+<h4 data-background-color="white" class="anchored" data-anchor-id="what-is-version-control-1">What is version control?</h4>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://phdcomics.com/comics/archive/phd101212s.gif" class="img-fluid figure-img"></p>
+<figcaption>One way of doing version control…</figcaption>
+</figure>
+</div>
+</section>
+<section id="what-is-version-control-2" class="level4">
+<h4 class="anchored" data-anchor-id="what-is-version-control-2">What is version control?</h4>
+<ul>
+<li>We’re going to use <code>git</code>, which is a strangely named version control software</li>
+<li>We’ll use this to explain how version control works, and why it matters</li>
+<li>There are lots of other ways to do version control, but <code>git</code> is very widely used
+<ul>
+<li>If <em>version control</em> was <em>word processing</em>, <code>git</code> would be <em>Microsoft Word</em></li>
+</ul></li>
+</ul>
+</section>
+<section id="part-1-local-git" class="level3">
+<h3 class="anchored" data-anchor-id="part-1-local-git">Part 1: local <code>git</code></h3>
+<section id="what-does-git-do" class="level4">
+<h4 class="anchored" data-anchor-id="what-does-git-do">What does <code>git</code> do?</h4>
+<ul>
+<li><code>git</code> allows you to bundle up changes to various files, and give the group of changes a unique <span class="extra">commit hash</span> and an explanatory message.</li>
+<li><code>git</code> works on a project level, so you can make a bunch of changes to different files in a folder, and then <span class="extra">commit</span> all those changes with a descriptive message</li>
+<li>It’s recorded that <em>you</em> made those changes, and there’s a unique <span class="extra">commit hash</span> that you can quote to point at the exact state of your folder when you added those changes.</li>
+</ul>
+</section>
+<section id="what-does-git-do-1" class="level4">
+<h4 class="anchored" data-anchor-id="what-does-git-do-1">What does <code>git</code> do?</h4>
+<ul>
+<li><code>git</code> is a command line program</li>
+<li>There are actually only a few commands you’ll really use regularly</li>
+<li>But before we move on to learning what commands are needed, let’s try to build a <span class="extra">mental model</span> of <code>git</code></li>
+<li>Hopefully this will be useful to those of you who are already using <code>git</code> too!</li>
+</ul>
+</section>
+<section id="what-does-git-do-2" class="level4 smaller">
+<h4 class="smaller anchored" data-anchor-id="what-does-git-do-2">What does git do?</h4>
+<div class="columns">
+<div class="column">
+<p>Old version of <code>python-file.py</code></p>
+<div class="box-pb" style="font-family:monospace; font-size:0.9em">
+<p>1 # This is a comment</p>
+<p>2 import matplotlib.pyplot as plt</p>
+<p>3 x = [1, 2, 3, 4, 5]</p>
+<p>4 y = [3, 4, 5, 6, 7]</p>
+<p>5 plt.scatter(x, y)</p>
+</div>
+</div><div class="column">
+<p>New version of <code>python-file.py</code></p>
+<div class="box-pb" style="font-family:monospace; font-size:0.9em">
+<p>1 # This is a comment</p>
+<p>2 import matplotlib.pyplot as plt</p>
+<p><span style="color:green">3 import numpy as np</span></p>
+<p>4 x = [1, 2, 3, 4, 5]</p>
+<p>5 y = [3, 4, 5, 6, 7]</p>
+<p><span style="color:red; text-decoration: underline wavy">6 plt.scatter(x, y)</span></p>
+<p><span style="color:green">6 plt.plot(x, y)</span></p>
+</div>
+<p><span style="color:green">Line 3 added,</span> <span style="color:red; text-decoration: underline wavy">line 6 removed,</span> <span style="color:green">line 6 added.</span></p>
+</div>
+</div>
+</section>
+<section id="what-does-git-do-3" class="level4 smaller">
+<h4 class="smaller anchored" data-anchor-id="what-does-git-do-3">What does git do?</h4>
+<div class="columns">
+<div class="column">
+<p>New version of <code>python-file.py</code></p>
+<div class="box-pb" style="font-family:monospace; font-size:0.9em">
+<p>1 # This is a comment</p>
+<p>2 import matplotlib.pyplot as plt</p>
+<p><span style="color:green">3 import numpy as np</span></p>
+<p>4 x = [1, 2, 3, 4, 5]</p>
+<p>5 y = [3, 4, 5, 6, 7]</p>
+<p><span style="color:red; text-decoration: underline wavy">6 plt.scatter(x, y)</span></p>
+<p><span style="color:green">6 plt.plot(x, y)</span></p>
+</div>
+<p><span style="color:green">Line 3 added,</span> <span style="color:red; text-decoration: underline wavy">line 6 removed,</span> <span style="color:green">line 6 added.</span></p>
+</div><div class="column">
+<p>Associated git commit</p>
+<div class="box-ly" style="font-family:monospace; font-size:0.9em">
+<p>File: python-file.py</p>
+<p>Commit hash: u87wy9o2</p>
+<p>Commit message: change plotting method</p>
+<p><span style="color:green">+++ 3 import numpy as np</span></p>
+<p><span style="color:red; text-decoration: underline wavy">-&nbsp;– 6 plt.scatter(x, y)</span></p>
+<p><span style="color:green">+++ 6 plt.plot(x, y)</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="what-does-git-do-4" class="level4 smaller">
+<h4 class="smaller anchored" data-anchor-id="what-does-git-do-4">What does git do?</h4>
+<ul>
+<li>When we work with <code>git</code>, we bundle up changes in our project folder (/directory) and <span class="extra">commit</span> our changes.</li>
+<li>Each <span class="extra">commit</span> (bundle of changes) gets a unique <span class="extra">id</span> - a hexadecimal hash that’s 40 digits long (we’re just going to abbreviate to the first 7)</li>
+<li>The <span class="extra">commits</span> are made to a “branch” - pause any thinking for a moment</li>
+</ul>
+<div data-fig-alt="A simple GitGraph chart illustrating git commits as points on a line that represents the working branch. Two branches diverge at different points from the 'main' branch, before re-merging.">
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">%%{
+  init: {
+    'theme': 'base',
+    'themeVariables': {
+      'primaryColor': '#9fe1ff',
+      'primaryTextColor': '#470044',
+      'primaryBorderColor': '#000000',
+      'lineColor': '#9158A2',
+      'secondaryColor': '#e79aff',
+      'tertiaryColor': '#fffc58'
+    }
+  }
+}%%
+
+gitGraph
+   commit id: "a1b2c3d"
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="what-does-git-do-5" class="level4 smaller">
+<h4 class="smaller anchored" data-anchor-id="what-does-git-do-5">What does git do?</h4>
+<ul>
+<li>When we work with <code>git</code>, we bundle up changes in our project folder (/directory) and <span class="extra">commit</span> our changes.</li>
+<li>Each <span class="extra">commit</span> (bundle of changes) gets a unique <span class="extra">id</span> - a hexadecimal hash that’s 40 digits long (we’re just going to abbreviate to the first 7)</li>
+<li>The <span class="extra">commits</span> are made to a “branch” - pause any thinking for a moment</li>
+</ul>
+<div data-fig-alt="A simple GitGraph chart illustrating git commits as points on a line that represents the working branch. Two branches diverge at different points from the 'main' branch, before re-merging.">
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">%%{
+  init: {
+    'theme': 'base',
+    'themeVariables': {
+      'primaryColor': '#9fe1ff',
+      'primaryTextColor': '#470044',
+      'primaryBorderColor': '#000000',
+      'lineColor': '#9158A2',
+      'secondaryColor': '#e79aff',
+      'tertiaryColor': '#fffc58'
+    }
+  }
+}%%
+
+gitGraph
+   commit id: "a1b2c3d"
+   commit id: "4e5f678"
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="what-does-git-do-6" class="level4 smaller">
+<h4 class="smaller anchored" data-anchor-id="what-does-git-do-6">What does git do?</h4>
+<div data-fig-alt="A simple GitGraph chart illustrating git commits as points on a line that represents the working branch. Two branches diverge at different points from the 'main' branch, before re-merging.">
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">%%{
+  init: {
+    'theme': 'base',
+    'themeVariables': {
+      'primaryColor': '#9fe1ff',
+      'primaryTextColor': '#470044',
+      'primaryBorderColor': '#000000',
+      'lineColor': '#9158A2',
+      'secondaryColor': '#e79aff',
+      'tertiaryColor': '#fffc58'
+    }
+  }
+}%%
+
+gitGraph
+   commit id: "a1b2c3d"
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</div>
+<ul>
+<li>Because each “bundle” of changes has been saved with a unique id, we can <span class="extra">roll back</span> our changes to a previous version if we want</li>
+</ul>
+</section>
+<section id="what-does-git-do-7" class="level4 smaller">
+<h4 class="smaller anchored" data-anchor-id="what-does-git-do-7">What does git do?</h4>
+<div data-fig-alt="A simple GitGraph chart illustrating git commits as points on a line that represents the working branch. Two branches diverge at different points from the 'main' branch, before re-merging.">
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">%%{
+  init: {
+    'theme': 'base',
+    'themeVariables': {
+      'primaryColor': '#9fe1ff',
+      'primaryTextColor': '#470044',
+      'primaryBorderColor': '#000000',
+      'lineColor': '#9158A2',
+      'secondaryColor': '#e79aff',
+      'tertiaryColor': '#fffc58'
+    }
+  }
+}%%
+
+gitGraph
+   commit id: "a1b2c3d"
+   commit id: "4e5f678"
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</div>
+<ul>
+<li>But let’s say we’re happy with how our code is working, but we want to try out a different way of doing something</li>
+<li>Or say we’ve written the conclusion section of our paper in a certain way, but our supervisor has some ideas for structuring it differently</li>
+</ul>
+<p><span class="extra">How can we try this out without risking our current work that we’re happy with?</span></p>
+</section>
+<section id="what-does-git-do-8" class="level4 smaller">
+<h4 class="smaller anchored" data-anchor-id="what-does-git-do-8">What does git do?</h4>
+<div data-fig-alt="A simple GitGraph chart illustrating git commits as points on a line that represents the working branch. Two branches diverge at different points from the 'main' branch, before re-merging.">
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">%%{
+  init: {
+    'theme': 'base',
+    'themeVariables': {
+      'primaryColor': '#9fe1ff',
+      'primaryTextColor': '#470044',
+      'primaryBorderColor': '#000000',
+      'lineColor': '#9158A2',
+      'secondaryColor': '#e79aff',
+      'tertiaryColor': '#fffc58'
+    }
+  }
+}%%
+
+gitGraph
+   commit id: "a1b2c3d"
+   commit id: "4e5f678"
+   branch experimental-1
+   checkout experimental-1
+   commit id: "90abcde"
+   commit id: "7835cd3"
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</div>
+<p><strong>The answer is</strong> <span class="extra">branching</span></p>
+<div class="fragment">
+<ul>
+<li>We mentioned earlier that your bundled changes (<em>commits</em>) were on the <span class="extra">main branch</span></li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>We can create other branches to try out experimental changes while keeping our <span class="extra">main branch</span> safe</li>
+</ul>
+</div>
+</section>
+<section id="what-does-git-do-9" class="level4 smaller">
+<h4 class="smaller anchored" data-anchor-id="what-does-git-do-9">What does git do?</h4>
+<div data-fig-alt="A simple GitGraph chart illustrating git commits as points on a line that represents the working branch. Two branches diverge at different points from the 'main' branch, before re-merging.">
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">%%{
+  init: {
+    'theme': 'base',
+    'themeVariables': {
+      'primaryColor': '#9fe1ff',
+      'primaryTextColor': '#470044',
+      'primaryBorderColor': '#000000',
+      'lineColor': '#9158A2',
+      'secondaryColor': '#e79aff',
+      'tertiaryColor': '#fffc58'
+    }
+  }
+}%%
+
+gitGraph
+   commit id: "a1b2c3d"
+   commit id: "4e5f678"
+   branch experimental-1
+   checkout experimental-1
+   commit id: "90abcde"
+   commit id: "7835cd3"
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</div>
+<p><strong>The answer is</strong> <span class="extra">branching</span></p>
+<ul>
+<li>When we are happy with the changes we have made on the experimental branch, we can decide to mix them back in with our main branch</li>
+<li>We can <span class="extra">merge</span> the changes with the main branch</li>
+</ul>
+</section>
+<section id="what-does-git-do-10" class="level4 smaller">
+<h4 class="smaller anchored" data-anchor-id="what-does-git-do-10">What does git do?</h4>
+<div data-fig-alt="A simple GitGraph chart illustrating git commits as points on a line that represents the working branch. Two branches diverge at different points from the 'main' branch, before re-merging.">
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">%%{
+  init: {
+    'theme': 'base',
+    'themeVariables': {
+      'primaryColor': '#9fe1ff',
+      'primaryTextColor': '#470044',
+      'primaryBorderColor': '#000000',
+      'lineColor': '#9158A2',
+      'secondaryColor': '#e79aff',
+      'tertiaryColor': '#fffc58'
+    }
+  }
+}%%
+
+gitGraph
+   commit id: "a1b2c3d"
+   commit id: "4e5f678"
+   branch experimental-1
+   checkout experimental-1
+   commit id: "90abcde"
+   commit id: "7835cd3"
+   checkout main
+   merge experimental-1 id: "df37ba1"
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</div>
+<p><strong>The answer is</strong> <span class="extra">branching</span></p>
+<ul>
+<li>When we are happy with the changes we have made on the experimental branch, we can decide to mix them back in with our main branch</li>
+<li>We can <span class="extra">merge</span> the changes with the main branch
+<ul>
+<li>This <span class="extra">merge</span> get’s it’s own unique id</li>
+</ul></li>
+</ul>
+<p><span class="extra">Remember that you can always reverse to a previous commit, even across different branches!</span></p>
+</section>
+<section id="what-does-git-do-11" class="level4 smaller">
+<h4 class="smaller anchored" data-anchor-id="what-does-git-do-11">What does git do?</h4>
+<div data-fig-alt="A simple GitGraph chart illustrating git commits as points on a line that represents the working branch. Two branches diverge at different points from the 'main' branch, before re-merging.">
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">%%{
+  init: {
+    'theme': 'base',
+    'themeVariables': {
+      'primaryColor': '#9fe1ff',
+      'primaryTextColor': '#470044',
+      'primaryBorderColor': '#000000',
+      'lineColor': '#9158A2',
+      'secondaryColor': '#e79aff',
+      'tertiaryColor': '#fffc58'
+    }
+  }
+}%%
+
+gitGraph
+   commit id: "a1b2c3d"
+   commit id: "4e5f678"
+   branch experimental-1
+   checkout experimental-1
+   commit id: "90abcde"
+   commit id: "7835cd3"
+   checkout main
+   merge experimental-1 id: "df37ba1"
+   commit id: "34efc1a"
+   commit id: "32753bc"
+   branch experimental-2
+   checkout experimental-2
+   commit id: "cb45ad1"
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</div>
+<ul>
+<li>We can continue committing bundles of changes, and making new branches that support us taking risks with our work</li>
+</ul>
+</section>
+<section id="what-does-git-do-12" class="level4 smaller">
+<h4 class="smaller anchored" data-anchor-id="what-does-git-do-12">What does git do?</h4>
+<div data-fig-alt="A simple GitGraph chart illustrating git commits as points on a line that represents the working branch. Two branches diverge at different points from the 'main' branch, before re-merging.">
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">%%{
+  init: {
+    'theme': 'base',
+    'themeVariables': {
+      'primaryColor': '#9fe1ff',
+      'primaryTextColor': '#470044',
+      'primaryBorderColor': '#000000',
+      'lineColor': '#9158A2',
+      'secondaryColor': '#e79aff',
+      'tertiaryColor': '#fffc58'
+    }
+  }
+}%%
+
+gitGraph
+   commit id: "a1b2c3d"
+   commit id: "4e5f678"
+   branch experimental-1
+   checkout experimental-1
+   commit id: "90abcde"
+   commit id: "7835cd3"
+   checkout main
+   merge experimental-1 id: "df37ba1"
+   commit id: "34efc1a"
+   commit id: "32753bc"
+   branch experimental-2
+   checkout experimental-2
+   commit id: "cb45ad1"
+   branch experimental-3
+   checkout experimental-3
+   commit id: "456abc1"
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</div>
+<ul>
+<li>We can create branches <em>from</em> other branches, if we want to noodle around with changes</li>
+</ul>
+</section>
+<section id="what-does-git-do-13" class="level4 smaller">
+<h4 class="smaller anchored" data-anchor-id="what-does-git-do-13">What does git do?</h4>
+<div data-fig-alt="A simple GitGraph chart illustrating git commits as points on a line that represents the working branch. Two branches diverge at different points from the 'main' branch, before re-merging.">
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">%%{
+  init: {
+    'theme': 'base',
+    'themeVariables': {
+      'primaryColor': '#9fe1ff',
+      'primaryTextColor': '#470044',
+      'primaryBorderColor': '#000000',
+      'lineColor': '#9158A2',
+      'secondaryColor': '#e79aff',
+      'tertiaryColor': '#fffc58'
+    }
+  }
+}%%
+
+gitGraph
+   commit id: "a1b2c3d"
+   commit id: "4e5f678"
+   branch experimental-1
+   checkout experimental-1
+   commit id: "90abcde"
+   commit id: "7835cd3"
+   checkout main
+   merge experimental-1 id: "df37ba1"
+   commit id: "34efc1a"
+   commit id: "32753bc"
+   branch experimental-2
+   checkout experimental-2
+   commit id: "cb45ad1"
+   branch experimental-3
+   checkout experimental-3
+   commit id: "456abc1"
+   checkout experimental-2
+   commit id: "ad1cb45"
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</div>
+<ul>
+<li>We can create branches <em>from</em> other branches, if we want to noodle around with changes
+<ul>
+<li>We can then abandon those branches if we realise we made terrible choices, and keep working on the original branch like nothing happened…</li>
+</ul></li>
+</ul>
+</section>
+<section id="what-does-git-do-14" class="level4 smaller">
+<h4 class="smaller anchored" data-anchor-id="what-does-git-do-14">What does git do?</h4>
+<div data-fig-alt="A simple GitGraph chart illustrating git commits as points on a line that represents the working branch. Two branches diverge at different points from the 'main' branch, before re-merging.">
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">%%{
+  init: {
+    'theme': 'base',
+    'themeVariables': {
+      'primaryColor': '#9fe1ff',
+      'primaryTextColor': '#470044',
+      'primaryBorderColor': '#000000',
+      'lineColor': '#9158A2',
+      'secondaryColor': '#e79aff',
+      'tertiaryColor': '#fffc58'
+    }
+  }
+}%%
+
+gitGraph
+   commit id: "a1b2c3d"
+   commit id: "4e5f678"
+   branch experimental-1
+   checkout experimental-1
+   commit id: "90abcde"
+   commit id: "7835cd3"
+   checkout main
+   merge experimental-1 id: "df37ba1"
+   commit id: "34efc1a"
+   commit id: "32753bc"
+   branch experimental-2
+   checkout experimental-2
+   commit id: "cb45ad1"
+   branch experimental-3
+   checkout experimental-3
+   commit id: "456abc1"
+   checkout experimental-2
+   commit id: "ad1cb45"
+   checkout main
+   merge experimental-2 id: "be34af1"
+   commit id: "def134a"
+   commit id: "563bdef"
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</div>
+<ul>
+<li>And we usually bring everything back to the main branch once we are happy with it</li>
+</ul>
+</section>
+<section id="what-does-git-do-15" class="level4 smaller">
+<h4 class="smaller anchored" data-anchor-id="what-does-git-do-15">What does git do?</h4>
+<div data-fig-alt="A simple GitGraph chart illustrating git commits as points on a line that represents the working branch. Two branches diverge at different points from the 'main' branch, before re-merging.">
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">%%{
+  init: {
+    'theme': 'base',
+    'themeVariables': {
+      'primaryColor': '#9fe1ff',
+      'primaryTextColor': '#470044',
+      'primaryBorderColor': '#000000',
+      'lineColor': '#9158A2',
+      'secondaryColor': '#e79aff',
+      'tertiaryColor': '#fffc58'
+    }
+  }
+}%%
+
+gitGraph
+   commit id: "a1b2c3d"
+   commit id: "4e5f678"
+   branch experimental-1
+   checkout experimental-1
+   commit id: "90abcde"
+   commit id: "7835cd3"
+   checkout main
+   merge experimental-1 id: "df37ba1"
+   commit id: "34efc1a"
+   commit id: "32753bc" tag:"v0.1.0 - preprint" type: HIGHLIGHT
+   branch experimental-2
+   checkout experimental-2
+   commit id: "cb45ad1"
+   branch experimental-3
+   checkout experimental-3
+   commit id: "456abc1"
+   checkout experimental-2
+   commit id: "ad1cb45"
+   checkout main
+   merge experimental-2 id: "be34af1"
+   commit id: "def134a"
+   commit id: "563bdef" tag:"v1.0.0 - published paper" type: HIGHLIGHT
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</div>
+<ul>
+<li>We can also <span class="extra">tag</span> specific commits if the code at that point in time is important!
+<ul>
+<li>For example, the version of the code you used to generate results for a preprint or the final paper!</li>
+</ul></li>
+</ul>
+</section>
+<section id="what-does-git-do-16" class="level4 smaller">
+<h4 class="smaller anchored" data-anchor-id="what-does-git-do-16">What does git do?</h4>
+<div data-fig-alt="A simple GitGraph chart illustrating git commits as points on a line that represents the working branch. Two branches diverge at different points from the 'main' branch, before re-merging.">
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">%%{
+  init: {
+    'theme': 'base',
+    'themeVariables': {
+      'primaryColor': '#9fe1ff',
+      'primaryTextColor': '#470044',
+      'primaryBorderColor': '#000000',
+      'lineColor': '#9158A2',
+      'secondaryColor': '#e79aff',
+      'tertiaryColor': '#fffc58'
+    }
+  }
+}%%
+
+gitGraph
+   commit id: "a1b2c3d"
+   commit id: "4e5f678"
+   branch experimental-1
+   checkout experimental-1
+   commit id: "90abcde"
+   commit id: "7835cd3"
+   checkout main
+   merge experimental-1 id: "df37ba1"
+   commit id: "34efc1a"
+   commit id: "32753bc" tag:"v0.1.0 - preprint" type: HIGHLIGHT
+   branch experimental-2
+   checkout experimental-2
+   commit id: "cb45ad1"
+   branch experimental-3
+   checkout experimental-3
+   commit id: "456abc1"
+   checkout experimental-2
+   commit id: "ad1cb45"
+   checkout main
+   merge experimental-2 id: "be34af1"
+   commit id: "def134a"
+   commit id: "563bdef" tag:"v1.0.0 - published paper" type: HIGHLIGHT
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</div>
+<ul>
+<li>These <span class="extra">tags</span> can also be called <span class="extra">releases</span>: (hopefully!) fairly complete, working, <em>nice</em> versions of your code
+<ul>
+<li>Commits in between releases (merged to the main branch) are like <em>patches</em> to video games</li>
+<li>The commit notes are like patch notes, telling you what’s changed</li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="part-2-the-git-cycle" class="level3">
+<h3 class="anchored" data-anchor-id="part-2-the-git-cycle">Part 2: the <code>git</code> cycle</h3>
+<section id="the-git-cycle" class="level4 smaller">
+<h4 class="smaller anchored" data-anchor-id="the-git-cycle">The <code>git</code> cycle</h4>
+<p>So we’ve looked at the idea of bundling up changes as <span class="extra">commits</span>, but what does that actually involve?</p>
+<p>I think of it like packing a picnic basket:</p>
+<div class="box-ly">
+<div class="incremental">
+<ol class="incremental" type="1">
+<li>I make a sandwich and wrap it up</li>
+<li>I add it to the basket</li>
+<li>I chop up some fruit and put it in a lunchbox</li>
+<li>I add <em>that</em> to the basket</li>
+<li>I make a smoothie and bottle it</li>
+<li>I add <em>that</em> to the basket too</li>
+<li>Finally, I close over the top of the picnic basket and secure the latch</li>
+</ol>
+</div>
+</div>
+</section>
+<section id="the-git-cycle-1" class="level4 smaller">
+<h4 class="smaller anchored" data-anchor-id="the-git-cycle-1">The <code>git</code> cycle</h4>
+<p>How does this have anything to do with <code>git</code>?</p>
+<div class="box-ly">
+<ol type="1">
+<li>I make a sandwich and wrap it up</li>
+<li>I add it to the basket</li>
+<li>I chop up some fruit and put it in a lunchbox</li>
+<li>I add <em>that</em> to the basket</li>
+<li>I make a smoothie and bottle it</li>
+<li>I add <em>that</em> to the basket too</li>
+<li>Finally, I close over the top of the picnic basket and secure the latch</li>
+</ol>
+</div>
+</section>
+<section id="the-git-cycle-2" class="level4 smaller">
+<h4 class="smaller anchored" data-anchor-id="the-git-cycle-2">The <code>git</code> cycle</h4>
+<p>Let’s introduce the concept of <code>add</code> as well as <code>commit</code>.</p>
+<div class="box-ly">
+<ol type="1">
+<li>I make a sandwich and wrap it up -&gt; <strong>I make some edits to files/create new files in my project folder</strong></li>
+<li>I add it to the basket -&gt; <strong>I <code>add</code> my changes</strong></li>
+<li>I chop up some fruit and put it in a lunchbox -&gt; <strong>I make some more edits to files</strong></li>
+<li>I add <em>that</em> to the basket -&gt; <strong>I <code>add</code> my changes</strong></li>
+<li>I make a smoothie and bottle it -&gt; <strong>I make some more edits to files</strong></li>
+<li>I add <em>that</em> to the basket too -&gt; <strong>I <code>add</code> my changes</strong></li>
+<li>I close over the top of the picnic basket and secure the latch -&gt; <strong>I <code>commit</code> all these changes that I previously <code>added</code></strong></li>
+</ol>
+</div>
+</section>
+<section id="the-git-cycle-3" class="level4">
+<h4 class="anchored" data-anchor-id="the-git-cycle-3">The <code>git</code> cycle</h4>
+<p>Let’s introduce the concept of <code>add</code> as well as <code>commit</code>.</p>
+<div class="incremental">
+<ul class="incremental">
+<li>You create or edit files, <em>then</em></li>
+<li>You <code>add</code> those changes, <em>then</em></li>
+<li>You either create/edit more files and repeat <code>add</code> <em>or</em> you <code>commit</code> all the added changes with a little message</li>
+</ul>
+</div>
+<div class="box-lp">
+<p>I think of <code>git add</code> as like a quick save, whereas <code>git commit</code> is a full, proper save.</p>
+</div>
+</section>
+<section id="the-git-cycle-4" class="level4">
+<h4 class="anchored" data-anchor-id="the-git-cycle-4">The <code>git</code> cycle</h4>
+<p><span class="extra">create/edit -&gt; add -&gt; commit</span></p>
+<div class="columns">
+<div class="column" style="width:40%;">
+<div class="fragment">
+<div data-fig-align="center" data-fig-alt="A simple diagram showing the git workflow loop of untracked files to staged files (using git add) to committed files (using git commit) back to untracked files (by editing or adding files).">
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">%%{
+  init: {
+    'theme': 'base',
+    'themeVariables': {
+      'primaryColor': '#9fe1ff',
+      'primaryTextColor': '#470044',
+      'primaryBorderColor': '#000000',
+      'lineColor': '#9158A2',
+      'secondaryColor': '#e79aff',
+      'tertiaryColor': '#fffc58'
+    }
+  }
+}%%
+
+flowchart TD
+    Untracked --&gt;|**git add**| Staged
+    Staged --&gt;|**git commit**| Committed
+    Committed -.-&gt;|*edit files*| Untracked
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:60%;">
+<div class="fragment">
+<ul>
+<li>We need to <code>add</code> everything to our picnic basket</li>
+<li>When we are happy with our bundle of changes, we close up the basket and <code>commit</code> the changes, and add a nice little label to it in the form of a commit message</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="the-git-cycle-5" class="level4 smaller">
+<h4 class="smaller anchored" data-anchor-id="the-git-cycle-5">The <code>git</code> cycle</h4>
+<p>Some new jargon - the <em>state</em> of the files in your repository</p>
+<div class="columns">
+<div class="column" style="width:40%;">
+<div data-fig-align="center" data-fig-alt="A simple diagram showing the git workflow loop of untracked files to staged files (using git add) to committed files (using git commit) back to untracked files (by editing or adding files).">
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">%%{
+  init: {
+    'theme': 'base',
+    'themeVariables': {
+      'primaryColor': '#9fe1ff',
+      'primaryTextColor': '#470044',
+      'primaryBorderColor': '#000000',
+      'lineColor': '#9158A2',
+      'secondaryColor': '#e79aff',
+      'tertiaryColor': '#fffc58'
+    }
+  }
+}%%
+
+flowchart TD
+    Untracked --&gt;|**git add**| Staged
+    Staged --&gt;|**git commit**| Committed
+    Committed -.-&gt;|*edit files*| Untracked
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:60%;">
+<ul>
+<li><span class="extra">Untracked/modified</span>: files that have been created or edited since the last cycle, that haven’t been <strong>added</strong> or <strong>committed</strong></li>
+<li><span class="extra">Staged</span>: files that have been <strong>added</strong> (put in the basket) but <strong>not committed</strong> yet.</li>
+<li><span class="extra">Committed</span>: files that have been <strong>added and committed</strong> and now have a unique id attached to their most recent changes (and have not been edited since the last commit)</li>
+</ul>
+<p>As well as being able to “undo” entire commits, you can undo different stages of this cycle (e.g.&nbsp;you can <em>unstage</em> files so they go from being <span class="extra">staged</span> to <span class="extra">untracked</span>)</p>
+</div>
+</div>
+</section>
+<section id="where-does-the-git-cycle-fit-in" class="level4 smaller">
+<h4 class="smaller anchored" data-anchor-id="where-does-the-git-cycle-fit-in">Where does the <code>git</code> cycle fit in?</h4>
+<div class="columns">
+<div class="column" style="width:70%;">
+<p>Every node on this graph…</p>
+<div data-fig-alt="A simple GitGraph chart illustrating git commits as points on a line that represents the working branch. Two branches diverge at different points from the 'main' branch, before re-merging.">
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">%%{
+  init: {
+    'theme': 'base',
+    'themeVariables': {
+      'primaryColor': '#9fe1ff',
+      'primaryTextColor': '#470044',
+      'primaryBorderColor': '#000000',
+      'lineColor': '#9158A2',
+      'secondaryColor': '#e79aff',
+      'tertiaryColor': '#fffc58'
+    }
+  }
+}%%
+
+gitGraph
+   commit id: "a1b2c3d"
+   commit id: "4e5f678"
+   branch experimental-1
+   checkout experimental-1
+   commit id: "90abcde"
+   commit id: "7835cd3"
+   checkout main
+   merge experimental-1 id: "df37ba1"
+   commit id: "34efc1a"
+   commit id: "32753bc" tag:"v0.1.0 - preprint" type: HIGHLIGHT
+   branch experimental-2
+   checkout experimental-2
+   commit id: "cb45ad1"
+   branch experimental-3
+   checkout experimental-3
+   commit id: "456abc1"
+   checkout experimental-2
+   commit id: "ad1cb45"
+   checkout main
+   merge experimental-2 id: "be34af1"
+   commit id: "def134a"
+   commit id: "563bdef" tag:"v1.0.0 - published paper" type: HIGHLIGHT
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:30%;">
+<p>contains this cycle</p>
+<div data-fig-align="center" data-fig-alt="A simple diagram showing the git workflow loop of untracked files to staged files (using git add) to committed files (using git commit) back to untracked files (by editing or adding files).">
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">%%{
+  init: {
+    'theme': 'base',
+    'themeVariables': {
+      'primaryColor': '#9fe1ff',
+      'primaryTextColor': '#470044',
+      'primaryBorderColor': '#000000',
+      'lineColor': '#9158A2',
+      'secondaryColor': '#e79aff',
+      'tertiaryColor': '#fffc58'
+    }
+  }
+}%%
+
+flowchart TD
+    Untracked --&gt;|**git add**| Staged
+    Staged --&gt;|**git commit**| Committed
+    Committed -.-&gt;|*edit files*| Untracked
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>If you understand this, then actually <em>using</em> <code>git</code> is just a matter of googling the right commands.</p>
+</section>
+</section>
+<section id="part-3-remote-git" class="level3">
+<h3 class="anchored" data-anchor-id="part-3-remote-git">Part 3: remote <code>git</code></h3>
+<section id="back-up-your-work" class="level4">
+<h4 class="anchored" data-anchor-id="back-up-your-work">Back up your work!</h4>
+<p>When doing research, or back in undergrad, we all heard the common refrain “back up your work!”</p>
+<div class="incremental">
+<ul class="incremental">
+<li>This sometimes involved floppy disks, usb sticks, external harddrives;</li>
+<li>Also now likely to include cloud platforms and storage options (Dropbox, OneDrive, etc.)</li>
+</ul>
+</div>
+</section>
+<section id="back-up-your-work-1" class="level4">
+<h4 class="anchored" data-anchor-id="back-up-your-work-1">Back up your work!</h4>
+<p>So, we have the <em>history</em> of our work saved in our <code>git</code> repository (which is just the folder that our files are stored in) - but it’s just as vulnerable to loss as any other files on our pc.</p>
+<p>We need a back-up!</p>
+<div class="fragment">
+<p>The “backup” of our <em>local git repository</em> is called a <span class="extra">remote repository</span>.</p>
+</div>
+</section>
+<section id="remote-repository" class="level4">
+<h4 class="anchored" data-anchor-id="remote-repository">Remote repository</h4>
+<p>The <span class="extra">remote</span> repository can be:</p>
+<ul>
+<li>on a different computer</li>
+<li>on an external harddrive</li>
+<li><strong>on a cloud service</strong> like GitHub</li>
+</ul>
+</section>
+<section id="remote-repository-1" class="level4 smaller">
+<h4 class="smaller anchored" data-anchor-id="remote-repository-1">Remote repository</h4>
+<div class="columns">
+<div class="column" style="width:20%;">
+<div data-fig-align="center" data-fig-alt="A simple diagram showing the git workflow loop of untracked files to staged files (using git add) to committed files (using git commit) back to untracked files (by editing or adding files).">
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">%%{
+  init: {
+    'theme': 'base',
+    'themeVariables': {
+      'primaryColor': '#9fe1ff',
+      'primaryTextColor': '#470044',
+      'primaryBorderColor': '#000000',
+      'lineColor': '#9158A2',
+      'secondaryColor': '#e79aff',
+      'tertiaryColor': '#fffc58'
+    }
+  }
+}%%
+
+flowchart TD
+    Untracked --&gt;|**git add**| Staged
+    Staged --&gt;|**git commit**| Committed
+    Committed -.-&gt;|*edit files*| Untracked
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:60%;">
+<div data-fig-alt="A simple GitGraph chart illustrating git commits as points on a line that represents the working branch. Two branches diverge at different points from the 'main' branch, before re-merging.">
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">%%{
+  init: {
+    'theme': 'base',
+    'themeVariables': {
+      'primaryColor': '#9fe1ff',
+      'primaryTextColor': '#470044',
+      'primaryBorderColor': '#000000',
+      'lineColor': '#9158A2',
+      'secondaryColor': '#e79aff',
+      'tertiaryColor': '#fffc58'
+    }
+  }
+}%%
+
+gitGraph
+   commit id: "a1b2c3d"
+   commit id: "4e5f678"
+   branch experimental-1
+   checkout experimental-1
+   commit id: "90abcde"
+   commit id: "7835cd3"
+   checkout main
+   merge experimental-1 id: "df37ba1"
+   commit id: "34efc1a"
+   commit id: "32753bc" tag:"v0.1.0 - preprint" type: HIGHLIGHT
+   branch experimental-2
+   checkout experimental-2
+   commit id: "cb45ad1"
+   branch experimental-3
+   checkout experimental-3
+   commit id: "456abc1"
+   checkout experimental-2
+   commit id: "ad1cb45"
+   checkout main
+   merge experimental-2 id: "be34af1"
+   commit id: "def134a"
+   commit id: "563bdef" tag:"v1.0.0 - published paper" type: HIGHLIGHT
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:20%;">
+<div data-fig-align="center" data-fig-alt="A simple diagram showing the git workflow loop of untracked files to staged files (using git add) to committed files (using git commit) back to untracked files (by editing or adding files).">
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">%%{
+  init: {
+    'theme': 'base',
+    'themeVariables': {
+      'primaryColor': '#9fe1ff',
+      'primaryTextColor': '#470044',
+      'primaryBorderColor': '#000000',
+      'lineColor': '#9158A2',
+      'secondaryColor': '#e79aff',
+      'tertiaryColor': '#fffc58'
+    }
+  }
+}%%
+
+flowchart TD
+    Local --&gt;|**git push**| Remote
+    Remote -.-&gt;|**pull**| Local
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<ul>
+<li>You can <code>push</code> bundles of commits to your <span class="extra">remote repository</span></li>
+<li>You can also <code>pull</code> changes from the remote repository to your local…
+<ul>
+<li>You can have different “local” repositories on different machines…</li>
+</ul></li>
+</ul>
+</section>
+<section id="remote-repository-2" class="level4">
+<h4 class="anchored" data-anchor-id="remote-repository-2">Remote repository</h4>
+<div class="columns">
+<div class="column" style="width:40%;">
+
+</div><div class="column" style="width:20%;">
+<div data-fig-align="center" data-fig-alt="A simple diagram showing the git workflow loop of untracked files to staged files (using git add) to committed files (using git commit) back to untracked files (by editing or adding files).">
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">%%{
+  init: {
+    'theme': 'base',
+    'themeVariables': {
+      'primaryColor': '#9fe1ff',
+      'primaryTextColor': '#470044',
+      'primaryBorderColor': '#000000',
+      'lineColor': '#9158A2',
+      'secondaryColor': '#e79aff',
+      'tertiaryColor': '#fffc58'
+    }
+  }
+}%%
+
+flowchart TD
+    Local-1 --&gt;|**push**| Remote
+    Remote -.-&gt;|**pull**| Local-1
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:40%;">
+
+</div>
+</div>
+</section>
+<section id="remote-repository-3" class="level4">
+<h4 class="anchored" data-anchor-id="remote-repository-3">Remote repository</h4>
+<div class="columns">
+<div class="column" style="width:40%;">
+
+</div><div class="column" style="width:20%;">
+<div data-fig-align="center" data-fig-alt="A simple diagram showing the git workflow loop of untracked files to staged files (using git add) to committed files (using git commit) back to untracked files (by editing or adding files).">
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">%%{
+  init: {
+    'theme': 'base',
+    'themeVariables': {
+      'primaryColor': '#9fe1ff',
+      'primaryTextColor': '#470044',
+      'primaryBorderColor': '#000000',
+      'lineColor': '#9158A2',
+      'secondaryColor': '#e79aff',
+      'tertiaryColor': '#fffc58'
+    }
+  }
+}%%
+
+flowchart TD
+    Local-1 --&gt;|**push**| Remote
+    Remote -.-&gt;|**pull**| Local-1
+    Remote -.-&gt;|**pull**| Local-2
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:40%;">
+
+</div>
+</div>
+</section>
+<section id="remote-repository-4" class="level4">
+<h4 class="anchored" data-anchor-id="remote-repository-4">Remote repository</h4>
+<div class="columns">
+<div class="column" style="width:40%;">
+
+</div><div class="column" style="width:20%;">
+<div data-fig-align="center" data-fig-alt="A simple diagram showing the git workflow loop of untracked files to staged files (using git add) to committed files (using git commit) back to untracked files (by editing or adding files).">
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">%%{
+  init: {
+    'theme': 'base',
+    'themeVariables': {
+      'primaryColor': '#9fe1ff',
+      'primaryTextColor': '#470044',
+      'primaryBorderColor': '#000000',
+      'lineColor': '#9158A2',
+      'secondaryColor': '#e79aff',
+      'tertiaryColor': '#fffc58'
+    }
+  }
+}%%
+
+flowchart TD
+    Local-1 --&gt;|**push**| Remote
+    Remote -.-&gt;|**pull**| Local-1
+    Remote -.-&gt;|**pull**| Local-2
+    Local-2 --&gt;|**push**| Remote
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:40%;">
+
+</div>
+</div>
+<ul>
+<li>You can use a remote repository to <strong>sync</strong> repositories across different machines</li>
+<li>For yourself, or for collaborators</li>
+</ul>
+</section>
+<section id="remote-git" class="level4">
+<h4 class="anchored" data-anchor-id="remote-git">Remote git</h4>
+<div data-fig-alt="A simple GitGraph chart illustrating git commits as points on a line that represents the working branch. Two branches diverge at different points from the 'main' branch, before re-merging.">
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">%%{
+  init: {
+    'theme': 'base',
+    'themeVariables': {
+      'primaryColor': '#9fe1ff',
+      'primaryTextColor': '#470044',
+      'primaryBorderColor': '#000000',
+      'lineColor': '#9158A2',
+      'secondaryColor': '#e79aff',
+      'tertiaryColor': '#fffc58'
+    },
+    'gitGraph': {
+      'showBranches': true,
+      'showCommitLabel': false,
+      'mainBranchName': 'main (remote)',
+      'mainBranchOrder': 2}
+  }
+}%%
+
+gitGraph
+   commit
+   commit
+   branch 'mmq-patch-01 (remote)' order: 1
+   branch 'mmq-patch-01 (local)' order: 0
+   checkout 'mmq-patch-01 (local)'
+   commit
+   commit
+   checkout 'mmq-patch-01 (remote)'
+   merge 'mmq-patch-01 (local)'
+   checkout 'main (remote)'
+   merge 'mmq-patch-01 (remote)'
+   branch 'pt-patch-01 (local)' order:4
+   branch 'pt-patch-01 (remote)' order:3
+   checkout 'pt-patch-01 (local)'
+   commit
+   commit
+   checkout 'pt-patch-01 (remote)'
+   merge 'pt-patch-01 (local)'
+   checkout 'main (remote)'
+   merge 'pt-patch-01 (remote)'
+
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</div>
+<p>This allows us to collaborate with others</p>
+</section>
+<section id="remote-git-1" class="level4">
+<h4 class="anchored" data-anchor-id="remote-git-1">Remote git</h4>
+<div data-fig-alt="A simple GitGraph chart illustrating git commits as points on a line that represents the working branch. Two branches diverge at different points from the 'main' branch, before re-merging.">
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">%%{
+  init: {
+    'theme': 'base',
+    'themeVariables': {
+      'primaryColor': '#9fe1ff',
+      'primaryTextColor': '#470044',
+      'primaryBorderColor': '#000000',
+      'lineColor': '#9158A2',
+      'secondaryColor': '#e79aff',
+      'tertiaryColor': '#fffc58'
+    },
+    'gitGraph': {
+      'showBranches': true,
+      'showCommitLabel': false,
+      'mainBranchName': 'main (remote)',
+      'mainBranchOrder': 2}
+  }
+}%%
+
+gitGraph
+   commit
+   commit
+   branch 'mmq-patch-01 (remote)' order: 1
+   branch 'mmq-patch-01 (local)' order: 0
+   checkout 'mmq-patch-01 (local)'
+   commit
+   commit
+   checkout 'mmq-patch-01 (remote)'
+   merge 'mmq-patch-01 (local)'
+   checkout 'main (remote)'
+   merge 'mmq-patch-01 (remote)'
+   branch 'pt-patch-01 (local)' order:4
+   branch 'pt-patch-01 (remote)' order:3
+   checkout 'pt-patch-01 (local)'
+   commit
+   commit
+   checkout 'pt-patch-01 (remote)'
+   merge 'pt-patch-01 (local)'
+   checkout 'main (remote)'
+   merge 'pt-patch-01 (remote)'
+   commit tag: 'v1.0.0'
+
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</div>
+<p>When using a cloud-based remote, we can mint a DOI for the <strong>release</strong> for a snapshot of the code</p>
+</section>
+<section id="remote-git-2" class="level4">
+<h4 class="anchored" data-anchor-id="remote-git-2">Remote git</h4>
+<ul>
+<li>If we compare version control to a tool such as a word processor</li>
+<li>Then <code>git</code> is Microsoft Word (but there are other options)</li>
+<li>And GitHub is Microsoft365 (and again, there are other options!)</li>
+</ul>
+<p>(funnily enough GitHub is owned by Microsoft)</p>
+</section>
+<section id="github" class="level4">
+<h4 class="anchored" data-anchor-id="github">GitHub</h4>
+<p>In the same way that we are focussing on Git, we are going to focus on GitHub for this course</p>
+<ul>
+<li>There are lots of things we can get GitHub to do that are not “version control” specific; we will look at these tomorrow!</li>
+<li>For now, lets think of it as a remote repository for <code>git</code>.</li>
+</ul>
+
+
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+
+<div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

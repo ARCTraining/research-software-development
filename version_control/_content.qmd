@@ -1,0 +1,1291 @@
+## What is version control? 
+
+::: {.incremental}
+- Often described as "track changes", although that's not *quite* right
+- A super-powerful "undo" button
+- A way of working collaboratively without over-writing each other's work
+- A way of [recording exactly what you did and when]{.extra}
+:::
+
+## What is version control? {background-color="white"}
+
+![One way of doing version control...](https://phdcomics.com/comics/archive/phd101212s.gif)
+
+## What is version control?
+
+- We're going to use `git`, which is a strangely named version control software
+- We'll use this to explain how version control works, and why it matters
+- There are lots of other ways to do version control, but `git` is very widely used
+    - If *version control* was *word processing*, `git` would be *Microsoft Word*
+
+# Part 1: local `git`
+
+## What does `git` do?
+
+- `git` allows you to bundle up changes to various files, and give the group of changes a unique [commit hash]{.extra} and an explanatory message.
+- `git` works on a project level, so you can make a bunch of changes to different files in a folder, and then [commit]{.extra} all those changes with a descriptive message
+- It's recorded that *you* made those changes, and there's a unique [commit hash]{.extra} that you can quote to point at the exact state of your folder when you added those changes.
+
+## What does `git` do?
+
+- `git` is a command line program
+- There are actually only a few commands you'll really use regularly
+- But before we move on to learning what commands are needed, let's try to build a [mental model]{.extra} of `git`
+- Hopefully this will be useful to those of you who are already using `git` too!
+
+## What does git do? {.smaller}
+
+
+::::: {.columns}
+
+::::{.column}
+
+Old version of `python-file.py`
+
+::: {.box-pb style="font-family:monospace; font-size:0.9em"}
+
+1 &#35; This is a comment
+
+2 import matplotlib.pyplot as plt
+
+3 x = [1, 2, 3, 4, 5]
+
+4 y = [3, 4, 5, 6, 7]
+
+5 plt.scatter(x, y)
+
+:::
+
+::::
+
+::::{.column}
+
+New version of `python-file.py`
+
+::: {.box-pb style="font-family:monospace; font-size:0.9em"}
+
+1 &#35; This is a comment
+
+2 import matplotlib.pyplot as plt
+
+[3 import numpy as np]{style="color:green"}
+
+4 x = [1, 2, 3, 4, 5]
+
+5 y = [3, 4, 5, 6, 7]
+
+[6 plt.scatter(x, y)]{style="color:red; text-decoration: underline wavy"}
+
+[6 plt.plot(x, y)]{style="color:green"}
+
+:::
+
+[Line 3 added,]{style="color:green"} [line 6 removed,]{style="color:red; text-decoration: underline wavy"}
+[line 6 added.]{style="color:green"}
+
+
+::::
+
+
+:::::
+
+## What does git do? {.smaller}
+
+
+::::: {.columns}
+
+::::{.column}
+
+New version of `python-file.py`
+
+::: {.box-pb style="font-family:monospace; font-size:0.9em"}
+
+1 &#35; This is a comment
+
+2 import matplotlib.pyplot as plt
+
+[3 import numpy as np]{style="color:green"}
+
+4 x = [1, 2, 3, 4, 5]
+
+5 y = [3, 4, 5, 6, 7]
+
+[6 plt.scatter(x, y)]{style="color:red; text-decoration: underline wavy"}
+
+[6 plt.plot(x, y)]{style="color:green"}
+
+:::
+
+[Line 3 added,]{style="color:green"} [line 6 removed,]{style="color:red; text-decoration: underline wavy"}
+[line 6 added.]{style="color:green"}
+
+
+::::
+
+::::{.column}
+
+Associated git commit
+
+::: {.box-ly style="font-family:monospace; font-size:0.9em"}
+
+File: python-file.py
+
+Commit hash: u87wy9o2
+
+Commit message: change plotting method
+
+[+++ 3 import numpy as np]{style="color:green"}
+
+[-&nbsp;-- 6 plt.scatter(x, y)]{style="color:red; text-decoration: underline wavy"}
+
+[+++ 6 plt.plot(x, y)]{style="color:green"}
+
+:::
+
+
+
+::::
+
+
+:::::
+
+## What does git do? {.smaller}
+
+- When we work with `git`, we bundle up changes in our project folder (/directory) and [commit]{.extra} our changes.
+- Each [commit]{.extra} (bundle of changes) gets a unique [id]{.extra} - a hexadecimal hash that's 40 digits long (we're just going to abbreviate to the first 7)
+- The [commits]{.extra} are made to a "branch" - pause any thinking for a moment
+
+::: {fig-alt="A simple GitGraph chart illustrating git commits as points on a line that represents the working branch. Two branches diverge at different points from the 'main' branch, before re-merging."}
+
+```{mermaid}
+
+%%{
+  init: {
+    'theme': 'base',
+    'themeVariables': {
+      'primaryColor': '#9fe1ff',
+      'primaryTextColor': '#470044',
+      'primaryBorderColor': '#000000',
+      'lineColor': '#9158A2',
+      'secondaryColor': '#e79aff',
+      'tertiaryColor': '#fffc58'
+    }
+  }
+}%%
+
+gitGraph
+   commit id: "a1b2c3d"
+```
+
+:::
+
+## What does git do? {.smaller}
+
+- When we work with `git`, we bundle up changes in our project folder (/directory) and [commit]{.extra} our changes.
+- Each [commit]{.extra} (bundle of changes) gets a unique [id]{.extra} - a hexadecimal hash that's 40 digits long (we're just going to abbreviate to the first 7)
+- The [commits]{.extra} are made to a "branch" - pause any thinking for a moment
+
+::: {fig-alt="A simple GitGraph chart illustrating git commits as points on a line that represents the working branch. Two branches diverge at different points from the 'main' branch, before re-merging."}
+
+```{mermaid}
+
+%%{
+  init: {
+    'theme': 'base',
+    'themeVariables': {
+      'primaryColor': '#9fe1ff',
+      'primaryTextColor': '#470044',
+      'primaryBorderColor': '#000000',
+      'lineColor': '#9158A2',
+      'secondaryColor': '#e79aff',
+      'tertiaryColor': '#fffc58'
+    }
+  }
+}%%
+
+gitGraph
+   commit id: "a1b2c3d"
+   commit id: "4e5f678"
+```
+
+:::
+
+## What does git do? {.smaller}
+
+::: {fig-alt="A simple GitGraph chart illustrating git commits as points on a line that represents the working branch. Two branches diverge at different points from the 'main' branch, before re-merging."}
+
+```{mermaid}
+
+%%{
+  init: {
+    'theme': 'base',
+    'themeVariables': {
+      'primaryColor': '#9fe1ff',
+      'primaryTextColor': '#470044',
+      'primaryBorderColor': '#000000',
+      'lineColor': '#9158A2',
+      'secondaryColor': '#e79aff',
+      'tertiaryColor': '#fffc58'
+    }
+  }
+}%%
+
+gitGraph
+   commit id: "a1b2c3d"
+```
+
+:::
+
+- Because each "bundle" of changes has been saved with a unique id, we can [roll back]{.extra} our changes to a previous version if we want
+
+## What does git do? {.smaller}
+
+::: {fig-alt="A simple GitGraph chart illustrating git commits as points on a line that represents the working branch. Two branches diverge at different points from the 'main' branch, before re-merging."}
+
+```{mermaid}
+
+%%{
+  init: {
+    'theme': 'base',
+    'themeVariables': {
+      'primaryColor': '#9fe1ff',
+      'primaryTextColor': '#470044',
+      'primaryBorderColor': '#000000',
+      'lineColor': '#9158A2',
+      'secondaryColor': '#e79aff',
+      'tertiaryColor': '#fffc58'
+    }
+  }
+}%%
+
+gitGraph
+   commit id: "a1b2c3d"
+   commit id: "4e5f678"
+```
+
+:::
+
+- But let's say we're happy with how our code is working, but we want to try out a different way of doing something
+- Or say we've written the conclusion section of our paper in a certain way, but our supervisor has some ideas for structuring it differently
+
+[How can we try this out without risking our current work that we're happy with?]{.extra}
+
+## What does git do? {.smaller}
+
+::: {fig-alt="A simple GitGraph chart illustrating git commits as points on a line that represents the working branch. Two branches diverge at different points from the 'main' branch, before re-merging."}
+
+```{mermaid}
+
+%%{
+  init: {
+    'theme': 'base',
+    'themeVariables': {
+      'primaryColor': '#9fe1ff',
+      'primaryTextColor': '#470044',
+      'primaryBorderColor': '#000000',
+      'lineColor': '#9158A2',
+      'secondaryColor': '#e79aff',
+      'tertiaryColor': '#fffc58'
+    }
+  }
+}%%
+
+gitGraph
+   commit id: "a1b2c3d"
+   commit id: "4e5f678"
+   branch experimental-1
+   checkout experimental-1
+   commit id: "90abcde"
+   commit id: "7835cd3"
+```
+
+:::
+
+**The answer is** [branching]{.extra}
+
+::: {.fragment}
+- We mentioned earlier that your bundled changes (*commits*) were on the [main branch]{.extra}
+:::
+
+::: {.fragment}
+- We can create other branches to try out experimental changes while keeping our [main branch]{.extra} safe
+:::
+
+## What does git do? {.smaller}
+
+::: {fig-alt="A simple GitGraph chart illustrating git commits as points on a line that represents the working branch. Two branches diverge at different points from the 'main' branch, before re-merging."}
+
+```{mermaid}
+
+%%{
+  init: {
+    'theme': 'base',
+    'themeVariables': {
+      'primaryColor': '#9fe1ff',
+      'primaryTextColor': '#470044',
+      'primaryBorderColor': '#000000',
+      'lineColor': '#9158A2',
+      'secondaryColor': '#e79aff',
+      'tertiaryColor': '#fffc58'
+    }
+  }
+}%%
+
+gitGraph
+   commit id: "a1b2c3d"
+   commit id: "4e5f678"
+   branch experimental-1
+   checkout experimental-1
+   commit id: "90abcde"
+   commit id: "7835cd3"
+```
+
+:::
+
+**The answer is** [branching]{.extra}
+
+- When we are happy with the changes we have made on the experimental branch, we can decide to mix them back in with our main branch
+- We can [merge]{.extra} the changes with the main branch
+
+## What does git do? {.smaller}
+
+::: {fig-alt="A simple GitGraph chart illustrating git commits as points on a line that represents the working branch. Two branches diverge at different points from the 'main' branch, before re-merging."}
+
+```{mermaid}
+
+%%{
+  init: {
+    'theme': 'base',
+    'themeVariables': {
+      'primaryColor': '#9fe1ff',
+      'primaryTextColor': '#470044',
+      'primaryBorderColor': '#000000',
+      'lineColor': '#9158A2',
+      'secondaryColor': '#e79aff',
+      'tertiaryColor': '#fffc58'
+    }
+  }
+}%%
+
+gitGraph
+   commit id: "a1b2c3d"
+   commit id: "4e5f678"
+   branch experimental-1
+   checkout experimental-1
+   commit id: "90abcde"
+   commit id: "7835cd3"
+   checkout main
+   merge experimental-1 id: "df37ba1"
+```
+
+:::
+
+**The answer is** [branching]{.extra}
+
+- When we are happy with the changes we have made on the experimental branch, we can decide to mix them back in with our main branch
+- We can [merge]{.extra} the changes with the main branch
+  - This [merge]{.extra} get's it's own unique id
+
+[Remember that you can always reverse to a previous commit, even across different branches!]{.extra}
+
+## What does git do? {.smaller}
+
+::: {fig-alt="A simple GitGraph chart illustrating git commits as points on a line that represents the working branch. Two branches diverge at different points from the 'main' branch, before re-merging."}
+
+```{mermaid}
+
+%%{
+  init: {
+    'theme': 'base',
+    'themeVariables': {
+      'primaryColor': '#9fe1ff',
+      'primaryTextColor': '#470044',
+      'primaryBorderColor': '#000000',
+      'lineColor': '#9158A2',
+      'secondaryColor': '#e79aff',
+      'tertiaryColor': '#fffc58'
+    }
+  }
+}%%
+
+gitGraph
+   commit id: "a1b2c3d"
+   commit id: "4e5f678"
+   branch experimental-1
+   checkout experimental-1
+   commit id: "90abcde"
+   commit id: "7835cd3"
+   checkout main
+   merge experimental-1 id: "df37ba1"
+   commit id: "34efc1a"
+   commit id: "32753bc"
+   branch experimental-2
+   checkout experimental-2
+   commit id: "cb45ad1"
+```
+
+:::
+
+- We can continue committing bundles of changes, and making new branches that support us taking risks with our work
+
+## What does git do? {.smaller}
+
+::: {fig-alt="A simple GitGraph chart illustrating git commits as points on a line that represents the working branch. Two branches diverge at different points from the 'main' branch, before re-merging."}
+
+```{mermaid}
+
+%%{
+  init: {
+    'theme': 'base',
+    'themeVariables': {
+      'primaryColor': '#9fe1ff',
+      'primaryTextColor': '#470044',
+      'primaryBorderColor': '#000000',
+      'lineColor': '#9158A2',
+      'secondaryColor': '#e79aff',
+      'tertiaryColor': '#fffc58'
+    }
+  }
+}%%
+
+gitGraph
+   commit id: "a1b2c3d"
+   commit id: "4e5f678"
+   branch experimental-1
+   checkout experimental-1
+   commit id: "90abcde"
+   commit id: "7835cd3"
+   checkout main
+   merge experimental-1 id: "df37ba1"
+   commit id: "34efc1a"
+   commit id: "32753bc"
+   branch experimental-2
+   checkout experimental-2
+   commit id: "cb45ad1"
+   branch experimental-3
+   checkout experimental-3
+   commit id: "456abc1"
+```
+
+:::
+
+- We can create branches *from* other branches, if we want to noodle around with changes
+
+## What does git do? {.smaller}
+
+::: {fig-alt="A simple GitGraph chart illustrating git commits as points on a line that represents the working branch. Two branches diverge at different points from the 'main' branch, before re-merging."}
+
+```{mermaid}
+
+%%{
+  init: {
+    'theme': 'base',
+    'themeVariables': {
+      'primaryColor': '#9fe1ff',
+      'primaryTextColor': '#470044',
+      'primaryBorderColor': '#000000',
+      'lineColor': '#9158A2',
+      'secondaryColor': '#e79aff',
+      'tertiaryColor': '#fffc58'
+    }
+  }
+}%%
+
+gitGraph
+   commit id: "a1b2c3d"
+   commit id: "4e5f678"
+   branch experimental-1
+   checkout experimental-1
+   commit id: "90abcde"
+   commit id: "7835cd3"
+   checkout main
+   merge experimental-1 id: "df37ba1"
+   commit id: "34efc1a"
+   commit id: "32753bc"
+   branch experimental-2
+   checkout experimental-2
+   commit id: "cb45ad1"
+   branch experimental-3
+   checkout experimental-3
+   commit id: "456abc1"
+   checkout experimental-2
+   commit id: "ad1cb45"
+```
+
+:::
+
+- We can create branches *from* other branches, if we want to noodle around with changes
+  - We can then abandon those branches if we realise we made terrible choices, and keep working on the original branch like nothing happened... 
+
+
+## What does git do? {.smaller}
+
+::: {fig-alt="A simple GitGraph chart illustrating git commits as points on a line that represents the working branch. Two branches diverge at different points from the 'main' branch, before re-merging."}
+
+```{mermaid}
+
+%%{
+  init: {
+    'theme': 'base',
+    'themeVariables': {
+      'primaryColor': '#9fe1ff',
+      'primaryTextColor': '#470044',
+      'primaryBorderColor': '#000000',
+      'lineColor': '#9158A2',
+      'secondaryColor': '#e79aff',
+      'tertiaryColor': '#fffc58'
+    }
+  }
+}%%
+
+gitGraph
+   commit id: "a1b2c3d"
+   commit id: "4e5f678"
+   branch experimental-1
+   checkout experimental-1
+   commit id: "90abcde"
+   commit id: "7835cd3"
+   checkout main
+   merge experimental-1 id: "df37ba1"
+   commit id: "34efc1a"
+   commit id: "32753bc"
+   branch experimental-2
+   checkout experimental-2
+   commit id: "cb45ad1"
+   branch experimental-3
+   checkout experimental-3
+   commit id: "456abc1"
+   checkout experimental-2
+   commit id: "ad1cb45"
+   checkout main
+   merge experimental-2 id: "be34af1"
+   commit id: "def134a"
+   commit id: "563bdef"
+```
+
+:::
+
+- And we usually bring everything back to the main branch once we are happy with it
+
+## What does git do? {.smaller}
+
+::: {fig-alt="A simple GitGraph chart illustrating git commits as points on a line that represents the working branch. Two branches diverge at different points from the 'main' branch, before re-merging."}
+
+```{mermaid}
+
+%%{
+  init: {
+    'theme': 'base',
+    'themeVariables': {
+      'primaryColor': '#9fe1ff',
+      'primaryTextColor': '#470044',
+      'primaryBorderColor': '#000000',
+      'lineColor': '#9158A2',
+      'secondaryColor': '#e79aff',
+      'tertiaryColor': '#fffc58'
+    }
+  }
+}%%
+
+gitGraph
+   commit id: "a1b2c3d"
+   commit id: "4e5f678"
+   branch experimental-1
+   checkout experimental-1
+   commit id: "90abcde"
+   commit id: "7835cd3"
+   checkout main
+   merge experimental-1 id: "df37ba1"
+   commit id: "34efc1a"
+   commit id: "32753bc" tag:"v0.1.0 - preprint" type: HIGHLIGHT
+   branch experimental-2
+   checkout experimental-2
+   commit id: "cb45ad1"
+   branch experimental-3
+   checkout experimental-3
+   commit id: "456abc1"
+   checkout experimental-2
+   commit id: "ad1cb45"
+   checkout main
+   merge experimental-2 id: "be34af1"
+   commit id: "def134a"
+   commit id: "563bdef" tag:"v1.0.0 - published paper" type: HIGHLIGHT
+```
+
+:::
+
+- We can also [tag]{.extra} specific commits if the code at that point in time is important!
+  - For example, the version of the code you used to generate results for a preprint or the final paper!
+
+
+## What does git do? {.smaller}
+
+::: {fig-alt="A simple GitGraph chart illustrating git commits as points on a line that represents the working branch. Two branches diverge at different points from the 'main' branch, before re-merging."}
+
+```{mermaid}
+
+%%{
+  init: {
+    'theme': 'base',
+    'themeVariables': {
+      'primaryColor': '#9fe1ff',
+      'primaryTextColor': '#470044',
+      'primaryBorderColor': '#000000',
+      'lineColor': '#9158A2',
+      'secondaryColor': '#e79aff',
+      'tertiaryColor': '#fffc58'
+    }
+  }
+}%%
+
+gitGraph
+   commit id: "a1b2c3d"
+   commit id: "4e5f678"
+   branch experimental-1
+   checkout experimental-1
+   commit id: "90abcde"
+   commit id: "7835cd3"
+   checkout main
+   merge experimental-1 id: "df37ba1"
+   commit id: "34efc1a"
+   commit id: "32753bc" tag:"v0.1.0 - preprint" type: HIGHLIGHT
+   branch experimental-2
+   checkout experimental-2
+   commit id: "cb45ad1"
+   branch experimental-3
+   checkout experimental-3
+   commit id: "456abc1"
+   checkout experimental-2
+   commit id: "ad1cb45"
+   checkout main
+   merge experimental-2 id: "be34af1"
+   commit id: "def134a"
+   commit id: "563bdef" tag:"v1.0.0 - published paper" type: HIGHLIGHT
+```
+
+:::
+
+- These [tags]{.extra} can also be called [releases]{.extra}: (hopefully!) fairly complete, working, *nice* versions of your code
+  - Commits in between releases (merged to the main branch) are like *patches* to video games
+  - The commit notes are like patch notes, telling you what's changed
+
+# Part 2: the `git` cycle
+
+## The `git` cycle {.smaller}
+
+So we've looked at the idea of bundling up changes as [commits]{.extra}, but what does that actually involve?
+
+I think of it like packing a picnic basket:
+
+:::: {.box-ly}
+
+::: {.incremental}
+1. I make a sandwich and wrap it up
+2. I add it to the basket
+3. I chop up some fruit and put it in a lunchbox
+4. I add *that* to the basket
+5. I make a smoothie and bottle it
+6. I add *that* to the basket too
+7. Finally, I close over the top of the picnic basket and secure the latch
+:::
+::::
+
+## The `git` cycle {.smaller}
+
+How does this have anything to do with `git`?
+
+:::: {.box-ly}
+1. I make a sandwich and wrap it up
+2. I add it to the basket
+3. I chop up some fruit and put it in a lunchbox
+4. I add *that* to the basket
+5. I make a smoothie and bottle it
+6. I add *that* to the basket too
+7. Finally, I close over the top of the picnic basket and secure the latch
+::::
+
+## The `git` cycle {.smaller}
+
+Let's introduce the concept of `add` as well as `commit`.
+
+:::: {.box-ly}
+1. I make a sandwich and wrap it up -> **I make some edits to files/create new files in my project folder**
+2. I add it to the basket -> **I `add` my changes**
+3. I chop up some fruit and put it in a lunchbox -> **I make some more edits to files**
+4. I add *that* to the basket  -> **I `add` my changes**
+5. I make a smoothie and bottle it -> **I make some more edits to files**
+6. I add *that* to the basket too -> **I `add` my changes**
+7. I close over the top of the picnic basket and secure the latch -> **I `commit` all these changes that I previously `added`**
+::::
+
+## The `git` cycle
+
+Let's introduce the concept of `add` as well as `commit`.
+
+:::{.incremental}
+- You create or edit files, *then*
+- You `add` those changes, *then*
+- You either create/edit more files and repeat `add` *or* you `commit` all the added changes with a little message
+:::
+
+:::: {.box-lp}
+I think of `git add` as like a quick save, whereas `git commit` is a full, proper save.
+::::
+
+## The `git` cycle
+
+[create/edit -> add -> commit]{.extra}
+
+:::::: {.columns}
+
+::::: {.column width="40%"}
+::::{.fragment}
+
+::: {fig-align="center" fig-alt="A simple diagram showing the git workflow loop of untracked files to staged files (using git add) to committed files (using git commit) back to untracked files (by editing or adding files)."}
+```{mermaid}
+%%{
+  init: {
+    'theme': 'base',
+    'themeVariables': {
+      'primaryColor': '#9fe1ff',
+      'primaryTextColor': '#470044',
+      'primaryBorderColor': '#000000',
+      'lineColor': '#9158A2',
+      'secondaryColor': '#e79aff',
+      'tertiaryColor': '#fffc58'
+    }
+  }
+}%%
+
+flowchart TD
+    Untracked -->|**git add**| Staged
+    Staged -->|**git commit**| Committed
+    Committed -.->|*edit files*| Untracked
+```
+:::
+::::
+:::::
+
+::: {.column width="60%"}
+:::{.fragment}
+- We need to `add` everything to our picnic basket
+- When we are happy with our bundle of changes, we close up the basket and `commit` the changes, and add a nice little label to it in the form of a commit message
+:::
+:::::
+
+::::::
+
+
+## The `git` cycle {.smaller}
+
+Some new jargon - the *state* of the files in your repository
+
+:::::: {.columns}
+
+::::: {.column width="40%"}
+::: {fig-align="center" fig-alt="A simple diagram showing the git workflow loop of untracked files to staged files (using git add) to committed files (using git commit) back to untracked files (by editing or adding files)."}
+```{mermaid}
+%%{
+  init: {
+    'theme': 'base',
+    'themeVariables': {
+      'primaryColor': '#9fe1ff',
+      'primaryTextColor': '#470044',
+      'primaryBorderColor': '#000000',
+      'lineColor': '#9158A2',
+      'secondaryColor': '#e79aff',
+      'tertiaryColor': '#fffc58'
+    }
+  }
+}%%
+
+flowchart TD
+    Untracked -->|**git add**| Staged
+    Staged -->|**git commit**| Committed
+    Committed -.->|*edit files*| Untracked
+```
+:::
+:::::
+
+::: {.column width="60%"}
+
+- [Untracked/modified]{.extra}: files that have been created or edited since the last cycle, that haven't been **added** or **committed**
+- [Staged]{.extra}: files that have been **added** (put in the basket) but **not committed** yet.
+- [Committed]{.extra}: files that have been **added and committed** and now have a unique id attached to their most recent changes (and have not been edited since the last commit)
+
+As well as being able to "undo" entire commits, you can undo different stages of this cycle (e.g. you can *unstage* files so they go from being [staged]{.extra} to [untracked]{.extra})
+:::::
+
+::::::
+
+## Where does the `git` cycle fit in? {.smaller}
+
+::::: {.columns}
+
+:::: {.column width="70%"}
+Every node on this graph...
+
+::: {fig-alt="A simple GitGraph chart illustrating git commits as points on a line that represents the working branch. Two branches diverge at different points from the 'main' branch, before re-merging."}
+
+```{mermaid}
+
+%%{
+  init: {
+    'theme': 'base',
+    'themeVariables': {
+      'primaryColor': '#9fe1ff',
+      'primaryTextColor': '#470044',
+      'primaryBorderColor': '#000000',
+      'lineColor': '#9158A2',
+      'secondaryColor': '#e79aff',
+      'tertiaryColor': '#fffc58'
+    }
+  }
+}%%
+
+gitGraph
+   commit id: "a1b2c3d"
+   commit id: "4e5f678"
+   branch experimental-1
+   checkout experimental-1
+   commit id: "90abcde"
+   commit id: "7835cd3"
+   checkout main
+   merge experimental-1 id: "df37ba1"
+   commit id: "34efc1a"
+   commit id: "32753bc" tag:"v0.1.0 - preprint" type: HIGHLIGHT
+   branch experimental-2
+   checkout experimental-2
+   commit id: "cb45ad1"
+   branch experimental-3
+   checkout experimental-3
+   commit id: "456abc1"
+   checkout experimental-2
+   commit id: "ad1cb45"
+   checkout main
+   merge experimental-2 id: "be34af1"
+   commit id: "def134a"
+   commit id: "563bdef" tag:"v1.0.0 - published paper" type: HIGHLIGHT
+```
+
+:::
+::::
+
+:::: {.column width="30%"}
+
+contains this cycle
+
+::: {fig-align="center" fig-alt="A simple diagram showing the git workflow loop of untracked files to staged files (using git add) to committed files (using git commit) back to untracked files (by editing or adding files)."}
+```{mermaid}
+%%{
+  init: {
+    'theme': 'base',
+    'themeVariables': {
+      'primaryColor': '#9fe1ff',
+      'primaryTextColor': '#470044',
+      'primaryBorderColor': '#000000',
+      'lineColor': '#9158A2',
+      'secondaryColor': '#e79aff',
+      'tertiaryColor': '#fffc58'
+    }
+  }
+}%%
+
+flowchart TD
+    Untracked -->|**git add**| Staged
+    Staged -->|**git commit**| Committed
+    Committed -.->|*edit files*| Untracked
+```
+:::
+::::
+
+:::::
+
+If you understand this, then actually *using* `git` is just a matter of googling the right commands.
+
+# Part 3: remote `git`
+
+## Back up your work!
+
+When doing research, or back in undergrad, we all heard the common refrain "back up your work!"
+
+:::{.incremental}
+- This sometimes involved floppy disks, usb sticks, external harddrives;
+- Also now likely to include cloud platforms and storage options (Dropbox, OneDrive, etc.)
+:::
+
+## Back up your work!
+
+So, we have the *history* of our work saved in our `git` repository (which is just the folder that our files are stored in) - but it's just as vulnerable to loss as any other files on our pc.
+
+We need a back-up!
+
+:::{.fragment}
+The "backup" of our *local git repository* is called a [remote repository]{.extra}.
+:::
+
+## Remote repository
+
+The [remote]{.extra} repository can be:
+
+- on a different computer
+- on an external harddrive
+- **on a cloud service** like GitHub
+
+## Remote repository {.smaller}
+
+::::: {.columns}
+
+:::: {.column width="20%"}
+
+::: {fig-align="center" fig-alt="A simple diagram showing the git workflow loop of untracked files to staged files (using git add) to committed files (using git commit) back to untracked files (by editing or adding files)."}
+```{mermaid}
+%%{
+  init: {
+    'theme': 'base',
+    'themeVariables': {
+      'primaryColor': '#9fe1ff',
+      'primaryTextColor': '#470044',
+      'primaryBorderColor': '#000000',
+      'lineColor': '#9158A2',
+      'secondaryColor': '#e79aff',
+      'tertiaryColor': '#fffc58'
+    }
+  }
+}%%
+
+flowchart TD
+    Untracked -->|**git add**| Staged
+    Staged -->|**git commit**| Committed
+    Committed -.->|*edit files*| Untracked
+```
+:::
+::::
+
+:::: {.column width="60%"}
+
+::: {fig-alt="A simple GitGraph chart illustrating git commits as points on a line that represents the working branch. Two branches diverge at different points from the 'main' branch, before re-merging."}
+
+```{mermaid}
+
+%%{
+  init: {
+    'theme': 'base',
+    'themeVariables': {
+      'primaryColor': '#9fe1ff',
+      'primaryTextColor': '#470044',
+      'primaryBorderColor': '#000000',
+      'lineColor': '#9158A2',
+      'secondaryColor': '#e79aff',
+      'tertiaryColor': '#fffc58'
+    }
+  }
+}%%
+
+gitGraph
+   commit id: "a1b2c3d"
+   commit id: "4e5f678"
+   branch experimental-1
+   checkout experimental-1
+   commit id: "90abcde"
+   commit id: "7835cd3"
+   checkout main
+   merge experimental-1 id: "df37ba1"
+   commit id: "34efc1a"
+   commit id: "32753bc" tag:"v0.1.0 - preprint" type: HIGHLIGHT
+   branch experimental-2
+   checkout experimental-2
+   commit id: "cb45ad1"
+   branch experimental-3
+   checkout experimental-3
+   commit id: "456abc1"
+   checkout experimental-2
+   commit id: "ad1cb45"
+   checkout main
+   merge experimental-2 id: "be34af1"
+   commit id: "def134a"
+   commit id: "563bdef" tag:"v1.0.0 - published paper" type: HIGHLIGHT
+```
+
+:::
+::::
+
+:::: {.column width="20%"}
+
+::: {fig-align="center" fig-alt="A simple diagram showing the git workflow loop of untracked files to staged files (using git add) to committed files (using git commit) back to untracked files (by editing or adding files)."}
+```{mermaid}
+%%{
+  init: {
+    'theme': 'base',
+    'themeVariables': {
+      'primaryColor': '#9fe1ff',
+      'primaryTextColor': '#470044',
+      'primaryBorderColor': '#000000',
+      'lineColor': '#9158A2',
+      'secondaryColor': '#e79aff',
+      'tertiaryColor': '#fffc58'
+    }
+  }
+}%%
+
+flowchart TD
+    Local -->|**git push**| Remote
+    Remote -.->|**pull**| Local
+```
+:::
+
+::::
+
+:::::
+
+- You can `push` bundles of commits to your [remote repository]{.extra}
+- You can also `pull` changes from the remote repository to your local...
+  - You can have different "local" repositories on different machines...
+
+## Remote repository
+
+::::: {.columns}
+
+:::: {.column width="40%"}
+
+::::
+
+:::: {.column width="20%"}
+
+::: {fig-align="center" fig-alt="A simple diagram showing the git workflow loop of untracked files to staged files (using git add) to committed files (using git commit) back to untracked files (by editing or adding files)."}
+```{mermaid}
+%%{
+  init: {
+    'theme': 'base',
+    'themeVariables': {
+      'primaryColor': '#9fe1ff',
+      'primaryTextColor': '#470044',
+      'primaryBorderColor': '#000000',
+      'lineColor': '#9158A2',
+      'secondaryColor': '#e79aff',
+      'tertiaryColor': '#fffc58'
+    }
+  }
+}%%
+
+flowchart TD
+    Local-1 -->|**push**| Remote
+    Remote -.->|**pull**| Local-1
+```
+:::
+
+::::
+
+:::: {.column width="40%"}
+
+::::
+
+:::::
+
+## Remote repository
+
+::::: {.columns}
+
+:::: {.column width="40%"}
+
+::::
+
+:::: {.column width="20%"}
+
+::: {fig-align="center" fig-alt="A simple diagram showing the git workflow loop of untracked files to staged files (using git add) to committed files (using git commit) back to untracked files (by editing or adding files)."}
+```{mermaid}
+%%{
+  init: {
+    'theme': 'base',
+    'themeVariables': {
+      'primaryColor': '#9fe1ff',
+      'primaryTextColor': '#470044',
+      'primaryBorderColor': '#000000',
+      'lineColor': '#9158A2',
+      'secondaryColor': '#e79aff',
+      'tertiaryColor': '#fffc58'
+    }
+  }
+}%%
+
+flowchart TD
+    Local-1 -->|**push**| Remote
+    Remote -.->|**pull**| Local-1
+    Remote -.->|**pull**| Local-2
+```
+:::
+
+::::
+
+:::: {.column width="40%"}
+
+::::
+
+:::::
+
+## Remote repository
+
+::::: {.columns}
+
+:::: {.column width="40%"}
+
+::::
+
+:::: {.column width="20%"}
+
+::: {fig-align="center" fig-alt="A simple diagram showing the git workflow loop of untracked files to staged files (using git add) to committed files (using git commit) back to untracked files (by editing or adding files)."}
+```{mermaid}
+%%{
+  init: {
+    'theme': 'base',
+    'themeVariables': {
+      'primaryColor': '#9fe1ff',
+      'primaryTextColor': '#470044',
+      'primaryBorderColor': '#000000',
+      'lineColor': '#9158A2',
+      'secondaryColor': '#e79aff',
+      'tertiaryColor': '#fffc58'
+    }
+  }
+}%%
+
+flowchart TD
+    Local-1 -->|**push**| Remote
+    Remote -.->|**pull**| Local-1
+    Remote -.->|**pull**| Local-2
+    Local-2 -->|**push**| Remote
+```
+:::
+
+::::
+
+:::: {.column width="40%"}
+
+::::
+
+:::::
+
+- You can use a remote repository to **sync** repositories across different machines
+- For yourself, or for collaborators
+
+## Remote git
+
+::: {fig-alt="A simple GitGraph chart illustrating git commits as points on a line that represents the working branch. Two branches diverge at different points from the 'main' branch, before re-merging."}
+
+```{mermaid}
+
+%%{
+  init: {
+    'theme': 'base',
+    'themeVariables': {
+      'primaryColor': '#9fe1ff',
+      'primaryTextColor': '#470044',
+      'primaryBorderColor': '#000000',
+      'lineColor': '#9158A2',
+      'secondaryColor': '#e79aff',
+      'tertiaryColor': '#fffc58'
+    },
+    'gitGraph': {
+      'showBranches': true,
+      'showCommitLabel': false,
+      'mainBranchName': 'main (remote)',
+      'mainBranchOrder': 2}
+  }
+}%%
+
+gitGraph
+   commit
+   commit
+   branch 'mmq-patch-01 (remote)' order: 1
+   branch 'mmq-patch-01 (local)' order: 0
+   checkout 'mmq-patch-01 (local)'
+   commit
+   commit
+   checkout 'mmq-patch-01 (remote)'
+   merge 'mmq-patch-01 (local)'
+   checkout 'main (remote)'
+   merge 'mmq-patch-01 (remote)'
+   branch 'pt-patch-01 (local)' order:4
+   branch 'pt-patch-01 (remote)' order:3
+   checkout 'pt-patch-01 (local)'
+   commit
+   commit
+   checkout 'pt-patch-01 (remote)'
+   merge 'pt-patch-01 (local)'
+   checkout 'main (remote)'
+   merge 'pt-patch-01 (remote)'
+
+```
+
+:::
+
+This allows us to collaborate with others
+
+## Remote git
+
+::: {fig-alt="A simple GitGraph chart illustrating git commits as points on a line that represents the working branch. Two branches diverge at different points from the 'main' branch, before re-merging."}
+
+```{mermaid}
+
+%%{
+  init: {
+    'theme': 'base',
+    'themeVariables': {
+      'primaryColor': '#9fe1ff',
+      'primaryTextColor': '#470044',
+      'primaryBorderColor': '#000000',
+      'lineColor': '#9158A2',
+      'secondaryColor': '#e79aff',
+      'tertiaryColor': '#fffc58'
+    },
+    'gitGraph': {
+      'showBranches': true,
+      'showCommitLabel': false,
+      'mainBranchName': 'main (remote)',
+      'mainBranchOrder': 2}
+  }
+}%%
+
+gitGraph
+   commit
+   commit
+   branch 'mmq-patch-01 (remote)' order: 1
+   branch 'mmq-patch-01 (local)' order: 0
+   checkout 'mmq-patch-01 (local)'
+   commit
+   commit
+   checkout 'mmq-patch-01 (remote)'
+   merge 'mmq-patch-01 (local)'
+   checkout 'main (remote)'
+   merge 'mmq-patch-01 (remote)'
+   branch 'pt-patch-01 (local)' order:4
+   branch 'pt-patch-01 (remote)' order:3
+   checkout 'pt-patch-01 (local)'
+   commit
+   commit
+   checkout 'pt-patch-01 (remote)'
+   merge 'pt-patch-01 (local)'
+   checkout 'main (remote)'
+   merge 'pt-patch-01 (remote)'
+   commit tag: 'v1.0.0'
+
+```
+
+:::
+
+When using a cloud-based remote, we can mint a DOI for the **release** for a snapshot of the code
+
+## Remote git
+
+- If we compare version control to a tool such as a word processor
+- Then `git` is Microsoft Word (but there are other options)
+- And GitHub is Microsoft365 (and again, there are other options!)
+
+(funnily enough GitHub is owned by Microsoft)
+
+## GitHub
+
+In the same way that we are focussing on Git, we are going to focus on GitHub for this course
+
+- There are lots of things we can get GitHub to do that are not "version control" specific; we will look at these tomorrow!
+- For now, lets think of it as a remote repository for `git`.

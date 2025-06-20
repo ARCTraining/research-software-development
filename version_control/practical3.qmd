@@ -1,0 +1,186 @@
+---
+title: "Practical 3: Writing pseudocode with version control"
+
+---
+
+## Activity Overview
+
+**Duration:** 50 minutes  
+**Goal:** Get to grips with using git and GitHub while drafting some pseudocode and documentation
+
+::: {.callout-tip collapse="true"}
+## git recap
+
+## What can we use git for?
+
+`git` works for any files that are in plaintext. This includes:
+
+- `.py`
+- `.txt`
+- `.ipynb`
+- `.csv`
+- `.json`
+- `.c`, `.cc`
+- `.tex`
+- `.bib`
+- `.md`
+
+and many, many more! Files that aren't plain text *might* work, but are likely to be a bit of a mess and not particularly easy to work with.
+
+## Our git workflow
+
+Remember our series of cycles:
+
+1. Our local git cycle:
+    - We create/modify/edit files
+    - We **add** our changes (once, twice, many times)
+    - We **commit** our bundle of changes
+    - We repeat this cycle!
+
+2. Our branch cycle
+    - We can create a new branch and swap to it 
+    - We can make commits on this branch (following the cycle above)
+    - When we are happy, we can **merge** this branch back to main
+
+3. Our remote repository cycle
+    - We can **clone** a remote repository locally, or upload a local repository to a **remote**
+    - We **push** bundles of **commits** (which themselves are bundles of *added** edits) to the remote
+
+
+### When do you do each step, and how often?
+
+- `git add`: I tend to do this regularly as I'm working on a file.
+- `git commit`: when I've reached a checkpoint in a file I want to record, or I've made changes across a few files (in related things), I **commit**. I do this about once an hour.
+- `git push`: I push my changes to my remote before I head out for lunch, and before the end of the day, but you can do this more often.
+
+:::
+
+## Round 1: Edit your README file
+
+We're going to use your README as an example to start working with `git`
+
+1. Click on the README file in the file browser on the left, or use the command `code README.md` to open it in the editor
+2. Use [Markdown](https://www.markdownguide.org/cheat-sheet/) to write a brief one-sentence description of what your project will do.
+3. Save the file
+4. Follow the "local git cycle" below
+5. Make another edit by adding your name and affiliation to the README, and follow the cycle again
+
+
+::: {.callout-tip collapse="true"}
+## Local git cycle
+
+- Create and edit files and folders
+- Run `git status` to check what changes you've made and to see the *state* of the files
+- Run `git add filename` to add the changes in a file
+    - You can add files in sub-folders too: `git add sub-folder/filename`
+    - You can also add multiple files: `git add filename1 filename2 filename3 subfolder/filename4`
+- Run `git status` to check the *state* of the files
+- Commit your bundle of files with a short message with `git commit -m "message goes here"`
+- You can also just run `git commit` and a text editor will open for you to write a commit message
+- Run `git status` to check the *state* of the files
+:::
+
+:::{.callout-note}
+## What makes a good commit message?
+
+Usually, `git` messages sound like instructions for what you've done, like you would have in a to-do list. In fact, I often have a detailed to-do list for my coding work, and when I've done something from the list, in addition to checking it off I also copy and paste it as my commit message!
+
+- "Add basic unit tests to the project"
+- "Spellcheck project description file"
+- "Fix error in flag type"
+
+Commit messages should be brief and descriptive.
+
+:::
+
+**Challenge:** what does the command `git diff filename` do?
+
+## Round 2: Start writing pseudocode
+
+We're going to use pseudocode as a place to start thinking about branching
+
+Follow the steps below to create a new branch called `initial-code`.
+
+::: {.callout-tip collapse="false"}
+## git branch cycle
+
+- Run `git status` to check the *state* of the files
+- Run `git branch` to see what branches already exist, and which one you are on
+- Run `git branch NAME` to create a new branch called NAME (try `git branch` again)
+- Run `git checkout NAME` to swap over to the branch called NAME (try `git branch` again)
+
+:::
+
+Now that you're on the correct branch, write some pseudocode in your Python files.
+
+::: {.callout-tip collapse="true"}
+## Tips for writing pseudocode
+
+Pseudocode simply means explaining the steps your code will take in plain language before writing the code
+
+- Use # TODO: or # PSEUDOCODE: headers - Clearly mark sections that need implementation
+- One comment per logical step - Break complex operations into simple, sequential thoughts
+- Use indentation to match code structure - Mirror your expected Python indentation in comments
+- You can use placeholder function names
+
+### Writing Style
+
+- Start with action verbs - "Load data", "Calculate average", "Filter results"
+- Be specific but not technical - "Sort by date" not "Use datetime.strptime() and sorted()"
+- Use plain language - Avoid programming jargon, write like you're explaining to a colleague
+- Include decision points - "If data is missing, use default value"
+
+### Example
+
+```python
+# PSEUDOCODE:
+# 1. Load the CSV file
+# 2. For each row:
+#    - Check if required columns exist
+#    - Convert date strings to datetime objects
+#    - Calculate derived metrics
+# 3. Save cleaned data to new file
+
+def process_data(filename):
+    # TODO: Implement data loading
+    pass
+```
+
+:::
+
+Once you have added some pseudocode, follow your [local git cycle](#round-1-edit-your-readme-file) to add and commit these changes to your current branch.
+
+Once you've created some commits on the branch, you can either **abandon** it or **merge** it.
+
+- To abandon the branch:
+    - Simply check that you've no untracked changes (`git status`) - if you have untracked changes, try `git stash` and see what happens!
+    - Then **checkout** the branch you want to return to: `git checkout main` and keep working!
+- To keep the changes:
+    - Check that you've no untracked changes (`git status`), and `git add`, `git commit -m "message!"` any that are untracked;
+    - Checkout the branch you want to merge with: `git checkout main` (or another branch instead of main!)
+    - Merge your branch called NAME *onto* main: `git merge NAME`
+
+
+:::{.callout-note}
+Branches, abandoned commits, and merges can all get very messy.
+
+Thankfully there are tools and plugins to help you visualise these, which tend to make it a bit easier!
+
+For example, try using the **GitGraph** plugin in your virtual machine!
+
+1. Click on the "extensions" tab on the sidebar (the icon is four blocks stacked) or use the shortcut `Ctrl + Shift + X`
+2. Search "GitGraph" and select the result published by "mhutchie".
+3. Read through the details and click "install" if you want this available.
+:::
+
+## Round 3: Push to your remote repository
+
+If you swap browser tabs back to your repository page, you won't see the changes that you've made in Codespaces (your virtual machine). This is because your virtual machine is acting as a *local repository*. You need to push your changes to the remote.
+
+Simply run `git push origin main` after completing your local git cycle.
+
+Check your repository GitHub page again, and you will see your changes.
+
+## Try this cycle again
+
+Try making further small changes to your files and practising these different cycles.

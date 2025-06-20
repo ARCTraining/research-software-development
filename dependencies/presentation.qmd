@@ -1,0 +1,10 @@
+---
+title: "Dependency management"
+subtitle: "Preventing dependency hell"
+bibliography: ../assets/refs.bib
+format:
+    revealjs:
+        theme: styles.scss
+---
+
+{{< include _content.qmd >}}

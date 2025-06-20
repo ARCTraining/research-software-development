@@ -1,0 +1,35 @@
+---
+title: "Introduction"
+subtitle: "Making research code reproducible, replicable, and reproducible"
+bibliography: ../assets/refs.bib
+---
+
+Each theory session will include a presentation, the presentation content all-in-one page for easier reading [(Presentation content)](#presentation-content), and a further reading section.
+
+:::{.callout-note}
+## Session Objectives
+
+- Introduce reproducibility, replicability, and reusability in the context of research code;
+- Introduce the format of this course;
+- Discuss requirements and planning code projects.
+:::
+
+[Open introduction presentation ↗](introduction-presentation.qmd){.btn .btn-outline-primary .btn role="button" data-toggle="tooltip" title="Open presentation in a new tab" target="_blank"}
+
+## Presentation content
+
+```{python}
+#| echo: false
+#| output: asis
+
+# Include and convert presentation content
+from heading_converter import include_and_convert
+result = include_and_convert('_content.qmd')
+print(result)
+```
+
+
+## Futher reading
+
+- [Utrecht University Computational Reproducibility Workshop](https://utrechtuniversity.github.io/workshop-computational-reproducibility/)
+- [Improving code reproducibility: Small steps with big impacts](https://communities.springernature.com/posts/improving-code-reproducibility-small-steps-with-big-impacts)

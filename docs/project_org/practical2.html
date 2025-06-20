@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Creating releases and automated workflows – Research Software Development in Python</title>
+<title>Practical 2: Folder organisation – Research Software Development in Python</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,24 +23,24 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/cookie-consent/cookie-consent.js"></script>
-<link href="site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-28c21cce639ebbb78e112ea75a22863f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-28c21cce639ebbb78e112ea75a22863f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -88,7 +88,7 @@ cookieconsent.run({
   
 
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-sidebar docked nav-fixed">
@@ -98,7 +98,7 @@ cookieconsent.run({
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Research Software Development in Python</span>
     </a>
   </div>
@@ -109,7 +109,7 @@ cookieconsent.run({
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./workflow.html" target="_blank"> 
+    <a class="nav-link" href="../workflow.html" target="_blank"> 
 <span class="menu-text">Project Workflow ↗</span></a>
   </li>  
   <li class="nav-item">
@@ -127,7 +127,7 @@ cookieconsent.run({
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./testing.html">2. Make your code robust</a></li><li class="breadcrumb-item"><a href="./releases.html">Creating releases and automated workflows</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../project_org/project_organisation.html">1. First Steps</a></li><li class="breadcrumb-item"><a href="../project_org/practical2.html">Practical 2: Folder organisation</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -150,19 +150,19 @@ cookieconsent.run({
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Course content</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./introduction/introduction.html" class="sidebar-item-text sidebar-link">
+  <a href="../introduction/introduction.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introduction</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./introduction/practical_1.html" class="sidebar-item-text sidebar-link">
+  <a href="../introduction/practical_1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Practical 1: Gathering Requirements</span></a>
   </div>
 </li>
@@ -170,40 +170,40 @@ cookieconsent.run({
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
  <span class="menu-text">1. First Steps</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./project_org/project_organisation.html" class="sidebar-item-text sidebar-link">
+  <a href="../project_org/project_organisation.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Organizing Your Research Coding Project</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./project_org/practical2.html" class="sidebar-item-text sidebar-link">
+  <a href="../project_org/practical2.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Practical 2: Folder organisation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./version_control/version_control.html" class="sidebar-item-text sidebar-link">
+  <a href="../version_control/version_control.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Version Control</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./version_control/practical3.html" class="sidebar-item-text sidebar-link">
+  <a href="../version_control/practical3.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Practical 3: Writing pseudocode with version control</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./dependencies/dependencies.html" class="sidebar-item-text sidebar-link">
+  <a href="../dependencies/dependencies.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Dependency management</span></a>
   </div>
 </li>
@@ -211,28 +211,28 @@ cookieconsent.run({
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
  <span class="menu-text">2. Make your code robust</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./testing.html" class="sidebar-item-text sidebar-link">
+  <a href="../testing.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Testing</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./releases.html" class="sidebar-item-text sidebar-link active">
+  <a href="../releases.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Creating releases and automated workflows</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./documentation.html" class="sidebar-item-text sidebar-link">
+  <a href="../documentation.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Documentation</span></a>
   </div>
 </li>
@@ -243,15 +243,29 @@ cookieconsent.run({
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#activity-overview" id="toc-activity-overview" class="nav-link active" data-scroll-target="#activity-overview">Activity Overview</a></li>
+  <li><a href="#our-project-structure" id="toc-our-project-structure" class="nav-link" data-scroll-target="#our-project-structure">Our project structure</a></li>
+  <li><a href="#round-1-pick-a-project-name-5-mins" id="toc-round-1-pick-a-project-name-5-mins" class="nav-link" data-scroll-target="#round-1-pick-a-project-name-5-mins">Round 1: Pick a project name (5 mins)</a></li>
+  <li><a href="#round-2-create-a-repository-5-mins" id="toc-round-2-create-a-repository-5-mins" class="nav-link" data-scroll-target="#round-2-create-a-repository-5-mins">Round 2: Create a repository (5 mins)</a></li>
+  <li><a href="#round-3-launch-virtual-machine-5-mins" id="toc-round-3-launch-virtual-machine-5-mins" class="nav-link" data-scroll-target="#round-3-launch-virtual-machine-5-mins">Round 3: Launch virtual machine (5 mins)</a></li>
+  <li><a href="#round-4-create-directory-structure-10-mins" id="toc-round-4-create-directory-structure-10-mins" class="nav-link" data-scroll-target="#round-4-create-directory-structure-10-mins">Round 4: Create directory structure (10 mins)</a>
+  <ul class="collapse">
+  <li><a href="#enter-your-project-name" id="toc-enter-your-project-name" class="nav-link" data-scroll-target="#enter-your-project-name">Enter your project name:</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./testing.html">2. Make your code robust</a></li><li class="breadcrumb-item"><a href="./releases.html">Creating releases and automated workflows</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../project_org/project_organisation.html">1. First Steps</a></li><li class="breadcrumb-item"><a href="../project_org/practical2.html">Practical 2: Folder organisation</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Creating releases and automated workflows</h1>
+<h1 class="title">Practical 2: Folder organisation</h1>
 </div>
 
 
@@ -268,8 +282,135 @@ cookieconsent.run({
 </header>
 
 
+<section id="activity-overview" class="level2">
+<h2 class="anchored" data-anchor-id="activity-overview">Activity Overview</h2>
+<p><strong>Duration:</strong> 20 minutes<br>
+<strong>Goal:</strong> Set up a sensible and tidy project folder structure</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The terms <strong>repository</strong>, <strong>directory</strong> and <strong>folder</strong> are used almost interchangeably in this course.</p>
+<p>In the context of reproducible code, we can define these terms more clearly:</p>
+<ul>
+<li><strong>Directory</strong> is just the term used for folders on Linux systems</li>
+<li><strong>Repository</strong> is just the term used for a folder or directory that has some form of <em>version control</em> working inside it - we will dive into that in a later session!</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="our-project-structure" class="level2">
+<h2 class="anchored" data-anchor-id="our-project-structure">Our project structure</h2>
+<p>We are going to create a project in a single folder.</p>
+<p>This folder will contain:</p>
+<ul>
+<li>A source code folder that will allow us to import the code as a library</li>
+<li>Folders for analysis and experimentation</li>
+<li>A testing suite</li>
+<li>Version control</li>
+</ul>
+<p>But for now, we simply want to create the folder structure.</p>
+</section>
+<section id="round-1-pick-a-project-name-5-mins" class="level2">
+<h2 class="anchored" data-anchor-id="round-1-pick-a-project-name-5-mins">Round 1: Pick a project name (5 mins)</h2>
+<p>We need a simple name for our project folder and the Python package we are going to create</p>
+<ul>
+<li>Folder and file names should contain <strong>no spaces</strong></li>
+<li>In general, projects often follow this convention:
+<ul>
+<li>The top level folder is called something with lowercase words separated by hyphens: <code>example-project</code></li>
+<li>The Python library inside is called the same but with underscores: <code>example_project</code> (as hyphens are read as subtraction by Python and can make things complicated for imports)</li>
+</ul></li>
+</ul>
+</section>
+<section id="round-2-create-a-repository-5-mins" class="level2">
+<h2 class="anchored" data-anchor-id="round-2-create-a-repository-5-mins">Round 2: Create a repository (5 mins)</h2>
+<ol type="1">
+<li>Go to <a href="https://github.com/">GitHub.com</a> and sign up or log in.</li>
+<li>Click the “+” button to <a href="https://github.com/new">Create a new repository</a>
+<ul>
+<li>No template</li>
+<li>Type your chosen project name in the “Repository name” box, using a hyphen to separate words</li>
+<li>You can tick “Add a README file” and skip the other options</li>
+<li>Click “Create repository” at the bottom of the page</li>
+</ul></li>
+<li>You’ll now be directed to your new repository page</li>
+</ol>
+</section>
+<section id="round-3-launch-virtual-machine-5-mins" class="level2">
+<h2 class="anchored" data-anchor-id="round-3-launch-virtual-machine-5-mins">Round 3: Launch virtual machine (5 mins)</h2>
+<ol type="1">
+<li><p>On your new repository page, click the green “&lt; &gt; Code” button, then select the sub-option “Codespaces”, and finally hit “Create codespace on main” or the “+” button.</p></li>
+<li><p>This will launch a new screen</p>
+<ul>
+<li>This is setting up a Linux machine in the cloud for you</li>
+<li>Just let it set itself up, it will take a minute: content will be displayed in the terminal as it installs software</li>
+</ul></li>
+<li><p>The interface is modelled on VSCode. You will have access to a terminal at the bottom of the screen (the prompt is highlighted with your username and a “$” symbol)</p></li>
+</ol>
+</section>
+<section id="round-4-create-directory-structure-10-mins" class="level2">
+<h2 class="anchored" data-anchor-id="round-4-create-directory-structure-10-mins">Round 4: Create directory structure (10 mins)</h2>
+<p>We’re going to create a repository structure that looks like this:</p>
+<pre class="text"><code>example-project/            The package git repository
+├── src/  
+│   └── example_project/     
+│       ├── __init__.py      Makes the folder a package.
+│       └── example.py       An example module.
+├── tests/
+|   ├── __init__.py          Sets up the test suite.
+│   └── test_source.py       A file containing tests for the code in source.py.
+├── README.md                README with information about the project.
+├── docs                     Package documentation
+├── pyproject.toml           Allows you to install this as a package and use elsewhere
+├── LICENSE                  License text to allow for reuse
+├── CITATION.cff             Citation file that makes it easy for people to cite you!
+├── data/                    For the sake of this example project
+|   ├── raw 
+│   └── results  
+├── notebooks
+└── reports                  For a manuscript source, e.g., LaTeX, Markdown, etc., or any project reports/notes
+</code></pre>
+<section id="enter-your-project-name" class="level3">
+<h3 class="anchored" data-anchor-id="enter-your-project-name">Enter your project name:</h3>
+<div class="observable">
+<p><label>Package name (remember: only letters and underscores): &nbsp; <input id="name" value="example_name" type="text" placeholder="example_name" pattern="[a-z0-9_]*" style="font-family:monospace;"></label></p>
+<section id="use-the-following-code-output-to-generate-the-file-structure" class="level3">
+<h3 class="anchored" data-anchor-id="use-the-following-code-output-to-generate-the-file-structure">Use the following code output to generate the file structure:</h3>
+<pre id="output" style="background-color: #f8f9fa; padding: 10px; border-radius: 5px; border-left: 4px solid #007acc;"></pre>
+<script>
+const name = document.getElementById('name');
+
+function updateOutput() {
+    sanitized = (name.value || "").replace(/[^a-z0-9_]/g, "")
+    output.textContent = 
+`mkdir -p tests src/${sanitized} data/raw data/results notebooks reports
+touch {pyproject.toml,environment.yml,README.md,CITATION.cff,src/${sanitized}/__init__.py,src/${sanitized}/example.py}
+echo -e 'import sys\nsys.path.append("src")' > tests/__init__.py
+`
+    }
+
+name.addEventListener('input', updateOutput);
+updateOutput();
+
+</script>
+</section>
+</div>
+<ul>
+<li>Copy and paste this block of code into the terminal from inside your project folder</li>
+<li>Check that the structure is as expected using the folder navigation on the left or the commands <code>cd folder-name</code> and <code>ls</code></li>
+</ul>
+<p>You should now have an organised folder structure in your virtual machine.</p>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

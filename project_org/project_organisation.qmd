@@ -1,0 +1,35 @@
+---
+title: "Organizing Your Research Coding Project"
+subtitle: "From Chaotic Scripts to Structured Science"
+---
+
+:::{.callout-note}
+## Session Objectives
+
+In this section, we will explore different ways of organising our code, data, and notes.
+
+After finishing this section, you should have an idea of:
+
+- Different ways to organise your project
+- Sensible ways to store/access your code
+
+:::
+
+
+[Open introduction presentation ↗](project_org_presentation.qmd){.btn .btn-outline-primary .btn role="button" data-toggle="tooltip" title="Open presentation in a new tab" target="_blank"}
+
+## Presentation content
+
+```{python}
+#| echo: false
+#| output: asis
+
+# Include and convert presentation content
+from heading_converter import include_and_convert
+result = include_and_convert('_content.qmd')
+print(result)
+```
+
+## Futher reading
+
+- [The Good Research Code Handbook](https://goodresearch.dev/)

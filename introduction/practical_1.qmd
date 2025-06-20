@@ -1,0 +1,199 @@
+---
+title: "Practical 1: Gathering Requirements"
+
+---
+
+## Activity Overview
+
+**Duration:** 30 minutes  
+**Goal:** Practice translating research needs into clear software requirements
+
+**Why Requirements Matter in Research:**
+- Prevents scope creep and endless revisions
+- Helps identify what you actually need vs. what would be "nice to have"
+- Makes collaboration with others much easier
+- Saves time by planning before coding
+
+---
+
+## Round 1: Pick a project (5 mins)
+
+*Pick one of these simple research-relevant projects to work with:*
+
+### Option A: Data File Processor
+A tool that takes raw data files (CSV/Excel) and produces standardized, cleaned versions for analysis.
+
+### Option B: Survey Response Analyzer  
+A simple tool that reads survey data and generates basic summary statistics and visualizations.
+
+### Option C: Literature Database Manager
+A command-line tool for managing a collection of research papers (titles, authors, keywords, notes).
+
+### Option D: Experimental Results Tracker
+A tool for logging and organizing results from repeated experiments or trials.
+
+## Round 2: Requirements Gathering (15 minutes)
+
+### Functional Requirements
+
+*What must the software DO?*
+
+**Core Functions:**
+1. 
+2. 
+3. 
+4. 
+
+**Input/Output Specifications:**
+
+- **Input formats:** 
+- **Output formats:** 
+- **Expected data size:** 
+
+### Non-Functional Requirements
+
+*How should it work/behave?*
+
+**Performance:**
+
+- How fast does it need to be? 
+- How much data should it handle?
+- Will it run on a laptop, desktop, HPC?
+
+**Usability:**
+
+- Who will use it? (just you, your lab, other researchers?)
+- What's their technical level? 
+- Command line or GUI? 
+
+**Reliability:**
+
+- How critical is accuracy? 
+- What happens if it crashes?
+
+
+### Constraints & Assumptions
+
+*What are the limitations and assumptions?*
+
+**Technical Constraints:**
+
+- Programming language: 
+- Dependencies/libraries: 
+- Operating system: 
+
+**Resource Constraints:**
+
+- Time to develop: 
+- Maintenance time: 
+- Budget for tools: 
+
+**Assumptions:**
+
+- About the data: 
+- About users: 
+- About usage patterns: 
+
+## Round 3: Prioritization & Planning (5 minutes)
+
+### MoSCoW Method
+
+*Categorize each requirement:*
+
+**Must Have** (Essential for basic functionality):
+
+- 
+- 
+
+**Should Have** (Important but not critical):
+
+- 
+- 
+
+**Could Have** (Nice to have if time allows):
+
+- 
+- 
+
+**Won't Have This Time** (Explicitly out of scope):
+
+- 
+- 
+
+## Notes for discussion
+
+With research code, you're often the developer and user all on your lonesome. While development of research code is very different to that in industry, it's still useful to follow certain design patterns.
+
+Below are some notes on gathering code requirements, limitations, and issues that may arise. Where questions are listed, these are useful to ask yourself, or of your collaborators, supervisor, or research group.
+
+### Common Research Code Requirements Patterns
+
+#### Data Processing Projects
+
+**Typical requirements:**
+
+- Handle multiple file formats
+- Validate data quality
+- Generate processing logs
+- Export results in standard formats
+
+**Questions to ask:**
+
+- What data validation is needed?
+- How should errors be handled?
+- What metadata needs to be preserved?
+
+#### Analysis Tools
+
+**Typical requirements:**
+
+- Configurable parameters
+- Reproducible results
+- Statistical summaries
+- Visualization outputs
+
+**Questions to ask:**
+
+- What parameters need to be adjustable?
+- How should results be documented?
+- What statistical methods are needed?
+
+#### Workflow Automation
+
+**Typical requirements:**
+
+- Batch processing capabilities
+- Progress tracking
+- Error recovery
+- Integration with existing tools
+
+**Questions to ask:**
+
+- What steps are currently manual?
+- Where do errors typically occur?
+- What tools are already in use?
+
+
+### Requirements Red Flags for Research Code
+
+It's good to recognise issues that could cause you pain down the line. Of course, research is ever evolving and things will change as you discover new things, but it's still good to be aware and plan for these.
+
+Particularly for PhD students, it's key to be aware of projects expanding beyond your time limits. For the questions below, if might often be a case of you deciding on an answer and checking in with your supervisor that it's a sensible suggestion.
+
+**🚩 Vague Requirements:**
+
+- "Make it flexible" → Specify what needs to be configurable
+- "Handle all data types" → Define supported formats explicitly
+- "Make it fast" → Quantify performance needs
+
+**🚩 Scope Creep Indicators:**
+
+- "While we're at it, let's also..."
+- "It would be cool if it could..."
+- "Eventually we might want to..."
+
+**🚩 Missing Context:**
+
+- No mention of who will use it
+- No specification of data size/volume
+- No discussion of error handling

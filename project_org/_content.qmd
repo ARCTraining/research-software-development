@@ -1,0 +1,260 @@
+
+---
+
+## Keeping your projects tidy
+
+- It's not always obvious the best way of keeping your code, notes, and data nice and tidy
+- Research tends to be very fluid and experimental, creating lots of scripts and notebooks that can easily become a tangled mess
+- We want to be able to easily find the right piece of code, the write snippet of notes!
+
+# Why Project Organization Matters
+
+---
+
+## Your future self will thank you when you can:
+
+- Find your analysis code from 6 months ago
+- Understand what each script actually does
+- Reproduce your results without panic
+- Share your work with collaborators confidently
+- Build on your previous work instead of starting over
+
+---
+
+## Poor organization leads to:
+
+- Lost time searching for the "final" version
+- Irreproducible results, mistakes, and embarrassing retractions
+- Collaboration nightmares and frustrated colleagues
+- Thesis chapters that can't be verified
+
+---
+
+## A Well-Organized Research Project {.smaller}
+
+Essential Components:
+
+- 📁 Clear directory structure - Everything has a logical place
+- 📄 Comprehensive documentation - README files that actually help
+- 🔄 Version control - Git tracks every change and decision
+- 🧪 Organized data workflow - Raw → Processed → Results
+- ✅ Testing framework - Confidence that your code works correctly
+- 📦 Dependency management - Reproducible computational environment
+
+# The first step: 📁 Clear directory structure
+
+---
+
+## Research data {.smaller}
+
+**Where should it live?**
+
+- On backed-up University Storage (appropriate for its tier) mounted on your workstation
+- (Temporarily) on `$SCRATCH` storage on HPC systems
+- *Not* mixed in with your code!
+    - Lots of project structure templates online suggest having a `data` sub-folder
+    - In general, it's often better practise to keep your data in a separate folder:
+        - It may be sensitive data, but you want your code to be shareable
+        - It may be far too large to store on your desktop permanently alongside your code
+        - It will cause issues when version-controlling your code
+
+---
+
+## Research data rules
+
+**1. Raw data is read-only:**
+
+- Never edit original data files directly
+- All modifications happen through documented code
+- Keep multiple backups of irreplaceable data
+
+---
+
+## Research data rules
+
+**2. Document data provenance:**
+
+- Where did each dataset come from?
+- What processing steps were applied?
+- What are the known limitations or biases?
+
+---
+
+## Research data rules
+
+**3. Separate processing stages:**
+
+- Raw → Cleaned → Analysis-ready → Results
+- Each stage produces documented intermediate files
+- Clear scripts connect each transformation step
+
+---
+
+## Research data
+
+**Where should it live?**
+
+```text
+data/
+├── raw/
+├── processed/
+└── results/
+```
+
+You can set the permissions on the `data/raw/` directory to read and execute only: `chmod -R 500 raw/`
+
+- Make sure to pick the correct permissions: [chmod command](https://chmodcommand.com/)
+- You can always undo these later
+
+---
+
+## Research data
+
+**Where should it live?**
+
+We will talk later in more depth about releasing and sharing code, but open data should be saved and shared in a data repository if at all possible:
+
+- Your funder may have specific repositories for research data
+- Publications may have requirements about sharing output data
+- Use the University's data deposit service
+
+---
+
+## Research code
+
+- There are lots of different ways of organising your research code 
+- There is no one "correct" way
+
+---
+
+## Single Folder Layout
+
+```text
+my-research-project/
+├── README.md                # Project overview and setup
+├── environment.yml          # Dependencies
+├── data/                    # Possibly some minor output data
+├── src/                     # Your source code
+│   ├── data_processing/
+│   ├── analysis/
+│   └── visualization/
+├── tests/                   # Unit tests for your functions
+├── notebooks/               # Jupyter notebooks for exploration
+├── results/                 # Figures, tables, model outputs
+├── docs/                    # Additional documentation
+└── scripts/                 # Standalone utility scripts
+
+```
+
+- This is one way of keeping your code organised
+- The source code (in `src`) and analysis, notes, and notebooks are all in the same high-level project folder
+
+---
+
+## Two Folder Layout
+
+Often research work involves:
+
+1. Building some form of numerical model, analysis pipeline, or other code that is somewhat generic or modular
+2. Applying that model to specific parameters and testing various inputs and outputs, using tools like Jupyter notebooks to explore output and write notes
+
+---
+
+## Two Folder Layout {.smaller}
+
+>I tended to bump into a few questions or problems that I didn't see an obvious solution to:
+>
+> - I want to keep my codebase nice and tidy and comprehensible, but I also tend to produce lots and lots of analysis scripts, notebooks and figures as I analyse my results;
+> - I want to compare my models to analytical cases to check their validity, again producing lots of various outputs, figures etc.;
+> - I don't want to accidentally modify some of my numerical model code when trying to analyse my results at a later stage;
+> - I want to update my core code, fix some problems and add some functionality; how do I keep track of what results I produced with which version of my code?
+> - Other people would probably be able to use my model, or adapt it for their own projects, but they won't want to sift through all my iterative work in the meantime.
+
+---
+
+## Two Folder Layout
+
+Sometimes a single project folder can become unwieldy:
+
+- It can be difficult to separate out your methods and core code from various experiments and tests
+- Important information and code snippets can go missing in Jupyter Notebooks
+- One folder for "core code"; the functions you will re-use
+- One folder for the "application" - whether that's running experiments, writing a paper or a thesis chapter, etc.
+
+
+---
+
+##  Folder 1: the "core code" or "package" folder
+
+```text
+planet-evolution/            
+├── src/  
+│   └── planet_evolution/     
+│       ├── __init__.py      Makes the folder a package.
+│       └── source.py        An example module containing source code.
+├── tests/
+|   ├── __init__.py          Sets up the test suite.
+│   └── test_source.py       A file containing tests for the code in source.py.
+├── README.md                README with information about the project.
+├── docs                     Package documentation
+├── pyproject.toml           Allows me to install this as a package
+├── LICENSE                  License text to allow for reuse
+└── CITATION.cff             Citation file that makes it easy for people to cite you!
+```
+
+This will contain the code that you will import as a library in your project!
+
+---
+
+## Folder 2: the "application" repository
+
+```text
+pallasite-parent-body-evolution/    
+├── LICENSE
+├── README.md
+├── env.yml or requirements.txt     The libraries I need for analysis (including planet_evolution!)
+├── data                            I usually load in large data from storage elsewhere
+│   ├── interim                     But sometimes do keep small summary datafiles in the repository
+│   ├── processed
+│   └── raw
+├── docs                            Notes on analysis, process etc.
+├── notebooks                       Jupyter notebooks used for analysis
+├── reports                         For a manuscript source, e.g., LaTeX, Markdown, etc., or any project reports
+│   └── figures                     Figures for the manuscript or reports
+├── src                             Source code for this project
+│   ├── data                        Scripts and programs to process data
+│   ├── tools                       Any helper scripts go here
+│   └── visualization               Scripts for visualisation of your results, e.g., matplotlib, ggplot2 related.
+└── tests                           Test code for this project, benchmarking, comparison to analytical models
+
+```
+
+---
+
+## Deciding on a folder layout
+
+If you opt for a single folder layout, but keep it tidy and organised, it is easy to split it into two separate directories at a later point!
+
+- In this course, we're going to stick with a single folder set-up since we are building a basic project
+- It's less important to choose the perfect layout, and more important to be intentional, tidy, and consistent about where you save things!
+
+---
+
+## Common pitfalls {.smaller}
+
+**The "I'll organize it later" trap:**
+
+- Start with basic structure from day one
+- Organization gets harder as projects grow
+- Good habits compound over time
+
+**The "only I will use this" fallacy:**
+
+- You are your most important collaborator
+- Future you has forgotten current you's logic
+- A clear and tidy directory structure will help you down the line
+
+## Preparing for practical 2
+
+- We are going to set up a virtual machine on GitHub codespaces
+- We are going to use our *project workflow* to set up a coding environment

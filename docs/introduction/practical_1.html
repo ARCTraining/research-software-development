@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>project_organisation – Research Software Development in Python</title>
+<title>Practical 1: Gathering Requirements – Research Software Development in Python</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,24 +23,24 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/cookie-consent/cookie-consent.js"></script>
-<link href="site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-28c21cce639ebbb78e112ea75a22863f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-28c21cce639ebbb78e112ea75a22863f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -88,7 +88,7 @@ cookieconsent.run({
   
 
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-sidebar docked nav-fixed">
@@ -98,7 +98,7 @@ cookieconsent.run({
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Research Software Development in Python</span>
     </a>
   </div>
@@ -109,7 +109,7 @@ cookieconsent.run({
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./workflow.html" target="_blank"> 
+    <a class="nav-link" href="../workflow.html" target="_blank"> 
 <span class="menu-text">Project Workflow ↗</span></a>
   </li>  
   <li class="nav-item">
@@ -127,7 +127,7 @@ cookieconsent.run({
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./project_organisation.html">1. First Steps</a></li><li class="breadcrumb-item"><a href="./project_organisation.html">Project organisation and layout</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../index.html">0. Introduction</a></li><li class="breadcrumb-item"><a href="../introduction/practical_1.html">Practical 1: Gathering Requirements</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -141,52 +141,70 @@ cookieconsent.run({
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">0. Introduction</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Course content</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./introduction.html" class="sidebar-item-text sidebar-link">
+  <a href="../introduction/introduction.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introduction</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../introduction/practical_1.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Practical 1: Gathering Requirements</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
  <span class="menu-text">1. First Steps</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./project_organisation.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Project organisation and layout</span></a>
+  <a href="../project_org/project_organisation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Organizing Your Research Coding Project</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./version_control.html" class="sidebar-item-text sidebar-link">
+  <a href="../project_org/practical2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practical 2: Folder organisation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../version_control/version_control.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Version Control</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./dependencies.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Dependency Management</span></a>
+  <a href="../version_control/practical3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practical 3: Writing pseudocode with version control</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../dependencies/dependencies.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Dependency management</span></a>
   </div>
 </li>
       </ul>
@@ -202,19 +220,19 @@ cookieconsent.run({
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./testing.html" class="sidebar-item-text sidebar-link">
+  <a href="../testing.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Testing</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./releases.html" class="sidebar-item-text sidebar-link">
+  <a href="../releases.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Creating releases and automated workflows</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./documentation.html" class="sidebar-item-text sidebar-link">
+  <a href="../documentation.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Documentation</span></a>
   </div>
 </li>
@@ -230,37 +248,245 @@ cookieconsent.run({
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#project-organisation-and-layout" id="toc-project-organisation-and-layout" class="nav-link active" data-scroll-target="#project-organisation-and-layout">Project organisation and layout</a></li>
+  <li><a href="#activity-overview" id="toc-activity-overview" class="nav-link active" data-scroll-target="#activity-overview">Activity Overview</a></li>
+  <li><a href="#round-1-pick-a-project-5-mins" id="toc-round-1-pick-a-project-5-mins" class="nav-link" data-scroll-target="#round-1-pick-a-project-5-mins">Round 1: Pick a project (5 mins)</a>
+  <ul class="collapse">
+  <li><a href="#option-a-data-file-processor" id="toc-option-a-data-file-processor" class="nav-link" data-scroll-target="#option-a-data-file-processor">Option A: Data File Processor</a></li>
+  <li><a href="#option-b-survey-response-analyzer" id="toc-option-b-survey-response-analyzer" class="nav-link" data-scroll-target="#option-b-survey-response-analyzer">Option B: Survey Response Analyzer</a></li>
+  <li><a href="#option-c-literature-database-manager" id="toc-option-c-literature-database-manager" class="nav-link" data-scroll-target="#option-c-literature-database-manager">Option C: Literature Database Manager</a></li>
+  <li><a href="#option-d-experimental-results-tracker" id="toc-option-d-experimental-results-tracker" class="nav-link" data-scroll-target="#option-d-experimental-results-tracker">Option D: Experimental Results Tracker</a></li>
+  </ul></li>
+  <li><a href="#round-2-requirements-gathering-15-minutes" id="toc-round-2-requirements-gathering-15-minutes" class="nav-link" data-scroll-target="#round-2-requirements-gathering-15-minutes">Round 2: Requirements Gathering (15 minutes)</a>
+  <ul class="collapse">
+  <li><a href="#functional-requirements" id="toc-functional-requirements" class="nav-link" data-scroll-target="#functional-requirements">Functional Requirements</a></li>
+  <li><a href="#non-functional-requirements" id="toc-non-functional-requirements" class="nav-link" data-scroll-target="#non-functional-requirements">Non-Functional Requirements</a></li>
+  <li><a href="#constraints-assumptions" id="toc-constraints-assumptions" class="nav-link" data-scroll-target="#constraints-assumptions">Constraints &amp; Assumptions</a></li>
+  </ul></li>
+  <li><a href="#round-3-prioritization-planning-5-minutes" id="toc-round-3-prioritization-planning-5-minutes" class="nav-link" data-scroll-target="#round-3-prioritization-planning-5-minutes">Round 3: Prioritization &amp; Planning (5 minutes)</a>
+  <ul class="collapse">
+  <li><a href="#moscow-method" id="toc-moscow-method" class="nav-link" data-scroll-target="#moscow-method">MoSCoW Method</a></li>
+  </ul></li>
+  <li><a href="#notes-for-discussion" id="toc-notes-for-discussion" class="nav-link" data-scroll-target="#notes-for-discussion">Notes for discussion</a>
+  <ul class="collapse">
+  <li><a href="#common-research-code-requirements-patterns" id="toc-common-research-code-requirements-patterns" class="nav-link" data-scroll-target="#common-research-code-requirements-patterns">Common Research Code Requirements Patterns</a></li>
+  <li><a href="#requirements-red-flags-for-research-code" id="toc-requirements-red-flags-for-research-code" class="nav-link" data-scroll-target="#requirements-red-flags-for-research-code">Requirements Red Flags for Research Code</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./project_organisation.html">1. First Steps</a></li><li class="breadcrumb-item"><a href="./project_organisation.html">Project organisation and layout</a></li></ol></nav></header>
+<main class="content" id="quarto-document-content">
 
-
-
-
-<section id="project-organisation-and-layout" class="level1">
-<h1>Project organisation and layout</h1>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../index.html">0. Introduction</a></li><li class="breadcrumb-item"><a href="../introduction/practical_1.html">Practical 1: Gathering Requirements</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Practical 1: Gathering Requirements</h1>
 </div>
-<div class="callout-title-container flex-fill">
-Key Point
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>In this section, we will explore different ways of organising our code, data, and notes.</p>
-<p>After finishing this section, you should have an idea of:</p>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="activity-overview" class="level2">
+<h2 class="anchored" data-anchor-id="activity-overview">Activity Overview</h2>
+<p><strong>Duration:</strong> 30 minutes<br>
+<strong>Goal:</strong> Practice translating research needs into clear software requirements</p>
+<p><strong>Why Requirements Matter in Research:</strong> - Prevents scope creep and endless revisions - Helps identify what you actually need vs.&nbsp;what would be “nice to have” - Makes collaboration with others much easier - Saves time by planning before coding</p>
+<hr>
+</section>
+<section id="round-1-pick-a-project-5-mins" class="level2">
+<h2 class="anchored" data-anchor-id="round-1-pick-a-project-5-mins">Round 1: Pick a project (5 mins)</h2>
+<p><em>Pick one of these simple research-relevant projects to work with:</em></p>
+<section id="option-a-data-file-processor" class="level3">
+<h3 class="anchored" data-anchor-id="option-a-data-file-processor">Option A: Data File Processor</h3>
+<p>A tool that takes raw data files (CSV/Excel) and produces standardized, cleaned versions for analysis.</p>
+</section>
+<section id="option-b-survey-response-analyzer" class="level3">
+<h3 class="anchored" data-anchor-id="option-b-survey-response-analyzer">Option B: Survey Response Analyzer</h3>
+<p>A simple tool that reads survey data and generates basic summary statistics and visualizations.</p>
+</section>
+<section id="option-c-literature-database-manager" class="level3">
+<h3 class="anchored" data-anchor-id="option-c-literature-database-manager">Option C: Literature Database Manager</h3>
+<p>A command-line tool for managing a collection of research papers (titles, authors, keywords, notes).</p>
+</section>
+<section id="option-d-experimental-results-tracker" class="level3">
+<h3 class="anchored" data-anchor-id="option-d-experimental-results-tracker">Option D: Experimental Results Tracker</h3>
+<p>A tool for logging and organizing results from repeated experiments or trials.</p>
+</section>
+</section>
+<section id="round-2-requirements-gathering-15-minutes" class="level2">
+<h2 class="anchored" data-anchor-id="round-2-requirements-gathering-15-minutes">Round 2: Requirements Gathering (15 minutes)</h2>
+<section id="functional-requirements" class="level3">
+<h3 class="anchored" data-anchor-id="functional-requirements">Functional Requirements</h3>
+<p><em>What must the software DO?</em></p>
+<p><strong>Core Functions:</strong> 1. 2. 3. 4.</p>
+<p><strong>Input/Output Specifications:</strong></p>
 <ul>
-<li>Different ways to organise your project;</li>
+<li><strong>Input formats:</strong></li>
+<li><strong>Output formats:</strong></li>
+<li><strong>Expected data size:</strong></li>
 </ul>
-</div>
-</div>
+</section>
+<section id="non-functional-requirements" class="level3">
+<h3 class="anchored" data-anchor-id="non-functional-requirements">Non-Functional Requirements</h3>
+<p><em>How should it work/behave?</em></p>
+<p><strong>Performance:</strong></p>
+<ul>
+<li>How fast does it need to be?</li>
+<li>How much data should it handle?</li>
+<li>Will it run on a laptop, desktop, HPC?</li>
+</ul>
+<p><strong>Usability:</strong></p>
+<ul>
+<li>Who will use it? (just you, your lab, other researchers?)</li>
+<li>What’s their technical level?</li>
+<li>Command line or GUI?</li>
+</ul>
+<p><strong>Reliability:</strong></p>
+<ul>
+<li>How critical is accuracy?</li>
+<li>What happens if it crashes?</li>
+</ul>
+</section>
+<section id="constraints-assumptions" class="level3">
+<h3 class="anchored" data-anchor-id="constraints-assumptions">Constraints &amp; Assumptions</h3>
+<p><em>What are the limitations and assumptions?</em></p>
+<p><strong>Technical Constraints:</strong></p>
+<ul>
+<li>Programming language:</li>
+<li>Dependencies/libraries:</li>
+<li>Operating system:</li>
+</ul>
+<p><strong>Resource Constraints:</strong></p>
+<ul>
+<li>Time to develop:</li>
+<li>Maintenance time:</li>
+<li>Budget for tools:</li>
+</ul>
+<p><strong>Assumptions:</strong></p>
+<ul>
+<li>About the data:</li>
+<li>About users:</li>
+<li>About usage patterns:</li>
+</ul>
+</section>
+</section>
+<section id="round-3-prioritization-planning-5-minutes" class="level2">
+<h2 class="anchored" data-anchor-id="round-3-prioritization-planning-5-minutes">Round 3: Prioritization &amp; Planning (5 minutes)</h2>
+<section id="moscow-method" class="level3">
+<h3 class="anchored" data-anchor-id="moscow-method">MoSCoW Method</h3>
+<p><em>Categorize each requirement:</em></p>
+<p><strong>Must Have</strong> (Essential for basic functionality):</p>
+<ul>
+<li></li>
+<li></li>
+</ul>
+<p><strong>Should Have</strong> (Important but not critical):</p>
+<ul>
+<li></li>
+<li></li>
+</ul>
+<p><strong>Could Have</strong> (Nice to have if time allows):</p>
+<ul>
+<li></li>
+<li></li>
+</ul>
+<p><strong>Won’t Have This Time</strong> (Explicitly out of scope):</p>
+<ul>
+<li></li>
+<li></li>
+</ul>
+</section>
+</section>
+<section id="notes-for-discussion" class="level2">
+<h2 class="anchored" data-anchor-id="notes-for-discussion">Notes for discussion</h2>
+<p>With research code, you’re often the developer and user all on your lonesome. While development of research code is very different to that in industry, it’s still useful to follow certain design patterns.</p>
+<p>Below are some notes on gathering code requirements, limitations, and issues that may arise. Where questions are listed, these are useful to ask yourself, or of your collaborators, supervisor, or research group.</p>
+<section id="common-research-code-requirements-patterns" class="level3">
+<h3 class="anchored" data-anchor-id="common-research-code-requirements-patterns">Common Research Code Requirements Patterns</h3>
+<section id="data-processing-projects" class="level4">
+<h4 class="anchored" data-anchor-id="data-processing-projects">Data Processing Projects</h4>
+<p><strong>Typical requirements:</strong></p>
+<ul>
+<li>Handle multiple file formats</li>
+<li>Validate data quality</li>
+<li>Generate processing logs</li>
+<li>Export results in standard formats</li>
+</ul>
+<p><strong>Questions to ask:</strong></p>
+<ul>
+<li>What data validation is needed?</li>
+<li>How should errors be handled?</li>
+<li>What metadata needs to be preserved?</li>
+</ul>
+</section>
+<section id="analysis-tools" class="level4">
+<h4 class="anchored" data-anchor-id="analysis-tools">Analysis Tools</h4>
+<p><strong>Typical requirements:</strong></p>
+<ul>
+<li>Configurable parameters</li>
+<li>Reproducible results</li>
+<li>Statistical summaries</li>
+<li>Visualization outputs</li>
+</ul>
+<p><strong>Questions to ask:</strong></p>
+<ul>
+<li>What parameters need to be adjustable?</li>
+<li>How should results be documented?</li>
+<li>What statistical methods are needed?</li>
+</ul>
+</section>
+<section id="workflow-automation" class="level4">
+<h4 class="anchored" data-anchor-id="workflow-automation">Workflow Automation</h4>
+<p><strong>Typical requirements:</strong></p>
+<ul>
+<li>Batch processing capabilities</li>
+<li>Progress tracking</li>
+<li>Error recovery</li>
+<li>Integration with existing tools</li>
+</ul>
+<p><strong>Questions to ask:</strong></p>
+<ul>
+<li>What steps are currently manual?</li>
+<li>Where do errors typically occur?</li>
+<li>What tools are already in use?</li>
+</ul>
+</section>
+</section>
+<section id="requirements-red-flags-for-research-code" class="level3">
+<h3 class="anchored" data-anchor-id="requirements-red-flags-for-research-code">Requirements Red Flags for Research Code</h3>
+<p>It’s good to recognise issues that could cause you pain down the line. Of course, research is ever evolving and things will change as you discover new things, but it’s still good to be aware and plan for these.</p>
+<p>Particularly for PhD students, it’s key to be aware of projects expanding beyond your time limits. For the questions below, if might often be a case of you deciding on an answer and checking in with your supervisor that it’s a sensible suggestion.</p>
+<p><strong>🚩 Vague Requirements:</strong></p>
+<ul>
+<li>“Make it flexible” → Specify what needs to be configurable</li>
+<li>“Handle all data types” → Define supported formats explicitly</li>
+<li>“Make it fast” → Quantify performance needs</li>
+</ul>
+<p><strong>🚩 Scope Creep Indicators:</strong></p>
+<ul>
+<li>“While we’re at it, let’s also…”</li>
+<li>“It would be cool if it could…”</li>
+<li>“Eventually we might want to…”</li>
+</ul>
+<p><strong>🚩 Missing Context:</strong></p>
+<ul>
+<li>No mention of who will use it</li>
+<li>No specification of data size/volume</li>
+<li>No discussion of error handling</li>
+</ul>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

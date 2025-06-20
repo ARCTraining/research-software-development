@@ -1,0 +1,8 @@
+---
+title: "Introduction: Research Software Development in Python"
+bibliography: ../assets/refs.bib
+format:
+    revealjs
+---
+
+{{< include _content.qmd >}}

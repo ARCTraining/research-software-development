@@ -1,0 +1,31 @@
+---
+title: "Version Control"
+subtitle: "Your digital lab notebook"
+format:
+  html:
+    theme:
+      - default
+      - styles.scss
+---
+
+:::{.callout-note}
+## Session Objectives
+
+In this section, we will learn about version control, and using git with GitHub to track our research.
+
+:::
+
+
+[Open introduction presentation ↗](presentation.qmd){.btn .btn-outline-primary .btn role="button" data-toggle="tooltip" title="Open presentation in a new tab" target="_blank"}
+
+## Presentation content
+
+```{python}
+#| echo: false
+#| output: asis
+
+# Include and convert presentation content
+from heading_converter import include_and_convert
+result = include_and_convert('_content.qmd')
+print(result)
+```

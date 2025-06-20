@@ -1,0 +1,121 @@
+---
+title: "Practical 2: Folder organisation"
+
+---
+
+## Activity Overview
+
+**Duration:** 20 minutes  
+**Goal:** Set up a sensible and tidy project folder structure
+
+:::{.callout-note}
+
+The terms **repository**, **directory** and **folder** are used almost interchangeably in this course.
+
+In the context of reproducible code, we can define these terms more clearly:
+
+- **Directory** is just the term used for folders on Linux systems
+- **Repository** is just the term used for a folder or directory that has some form of *version control* working inside it - we will dive into that in a later session!
+
+:::
+
+## Our project structure
+
+We are going to create a project in a single folder.
+
+This folder will contain:
+
+- A source code folder that will allow us to import the code as a library
+- Folders for analysis and experimentation
+- A testing suite
+- Version control
+
+But for now, we simply want to create the folder structure.
+
+## Round 1: Pick a project name (5 mins)
+
+We need a simple name for our project folder and the Python package we are going to create
+
+- Folder and file names should contain **no spaces**
+- In general, projects often follow this convention:
+    - The top level folder is called something with lowercase words separated by hyphens: `example-project`
+    - The Python library inside is called the same but with underscores: `example_project` (as hyphens are read as subtraction by Python and can make things complicated for imports)
+
+## Round 2: Create a repository (5 mins)
+
+1. Go to [GitHub.com](https://github.com/) and sign up or log in.
+2. Click the "+" button to [Create a new repository](https://github.com/new)
+    - No template
+    - Type your chosen project name in the "Repository name" box, using a hyphen to separate words
+    - You can tick "Add a README file" and skip the other options
+    - Click "Create repository" at the bottom of the page
+3. You'll now be directed to your new repository page
+
+## Round 3: Launch virtual machine (5 mins)
+
+1. On your new repository page, click the green "< > Code" button, then select the sub-option "Codespaces", and finally hit "Create codespace on main" or the "+" button.
+
+2. This will launch a new screen
+    - This is setting up a Linux machine in the cloud for you
+    - Just let it set itself up, it will take a minute: content will be displayed in the terminal as it installs software
+
+3. The interface is modelled on VSCode. You will have access to a terminal at the bottom of the screen (the prompt is highlighted with your username and a "$" symbol)
+
+## Round 4: Create directory structure (10 mins)
+
+We're going to create a repository structure that looks like this:
+
+```text
+example-project/            The package git repository
+├── src/  
+│   └── example_project/     
+│       ├── __init__.py      Makes the folder a package.
+│       └── example.py       An example module.
+├── tests/
+|   ├── __init__.py          Sets up the test suite.
+│   └── test_source.py       A file containing tests for the code in source.py.
+├── README.md                README with information about the project.
+├── docs                     Package documentation
+├── pyproject.toml           Allows you to install this as a package and use elsewhere
+├── LICENSE                  License text to allow for reuse
+├── CITATION.cff             Citation file that makes it easy for people to cite you!
+├── data/                    For the sake of this example project
+|   ├── raw 
+│   └── results  
+├── notebooks
+└── reports                  For a manuscript source, e.g., LaTeX, Markdown, etc., or any project reports/notes
+
+```
+
+### Enter your project name:
+
+::: { .observable }
+<label>Package name (remember: only letters and underscores): &nbsp; <input id="name" value="example_name" type="text" placeholder="example_name" pattern="[a-z0-9_]*" style="font-family:monospace;"></label>
+
+### Use the following code output to generate the file structure:
+
+<pre id="output" style="background-color: #f8f9fa; padding: 10px; border-radius: 5px; border-left: 4px solid #007acc;"></pre>
+
+
+<script>
+const name = document.getElementById('name');
+
+function updateOutput() {
+    sanitized = (name.value || "").replace(/[^a-z0-9_]/g, "")
+    output.textContent = 
+`mkdir -p tests src/${sanitized} data/raw data/results notebooks reports
+touch {pyproject.toml,environment.yml,README.md,CITATION.cff,src/${sanitized}/__init__.py,src/${sanitized}/example.py}
+echo -e 'import sys\nsys.path.append("src")' > tests/__init__.py
+`
+    }
+
+name.addEventListener('input', updateOutput);
+updateOutput();
+
+</script>
+:::
+
+- Copy and paste this block of code into the terminal from inside your project folder
+- Check that the structure is as expected using the folder navigation on the left or the commands `cd folder-name` and `ls`
+
+You should now have an organised folder structure in your virtual machine.

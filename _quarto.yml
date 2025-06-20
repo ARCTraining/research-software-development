@@ -13,12 +13,15 @@ website:
       contents:
       - href: index.qmd
         text: Course content
-      - introduction.qmd
+      - introduction/introduction.qmd
+      - introduction/practical_1.qmd
     - section: "1. First Steps"
       contents:
-      - project_organisation.qmd
-      - version_control.qmd
-      - dependencies.qmd
+      - project_org/project_organisation.qmd
+      - project_org/practical2.qmd
+      - version_control/version_control.qmd
+      - version_control/practical3.qmd
+      - dependencies/dependencies.qmd
     - section: "2. Make your code robust"
       contents:
       - testing.qmd

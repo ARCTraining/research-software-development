@@ -156,8 +156,14 @@ cookieconsent.run({
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./introduction.html" class="sidebar-item-text sidebar-link">
+  <a href="./introduction/introduction.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introduction</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./introduction/practical_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practical 1: Gathering Requirements</span></a>
   </div>
 </li>
       </ul>
@@ -173,20 +179,32 @@ cookieconsent.run({
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./project_organisation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Project organisation and layout</span></a>
+  <a href="./project_org/project_organisation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Organizing Your Research Coding Project</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./version_control.html" class="sidebar-item-text sidebar-link">
+  <a href="./project_org/practical2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practical 2: Folder organisation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./version_control/version_control.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Version Control</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./dependencies.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Dependency Management</span></a>
+  <a href="./version_control/practical3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practical 3: Writing pseudocode with version control</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./dependencies/dependencies.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Dependency management</span></a>
   </div>
 </li>
       </ul>
@@ -274,14 +292,36 @@ cookieconsent.run({
 <li><p>Brainstorm and gather requirements</p></li>
 <li><p>Create your project directory structure in a repository</p></li>
 </ol>
+<p><label>Project name: &nbsp; <input id="name" value="example_name" type="text" placeholder="example_name" pattern="[a-z0-9_]*" style="font-family:monospace;"></label></p>
 <div class="tabset-margin-container"></div><div class="panel-tabset" data-group="workflow">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">Single directory project</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">Dual directory project</a></li></ul>
 <div class="tab-content" data-group="workflow">
 <div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
-<p>Content</p>
+<pre id="output_a" style="background-color: #f8f9fa; padding: 10px; border-radius: 5px; border-left: 4px solid #007acc;"></pre>
 </div>
 <div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
-<p>Content</p>
+<pre id="output" style="background-color: #f8f9fa; padding: 10px; border-radius: 5px; border-left: 4px solid #007acc;"></pre>
+<script>
+const name = document.getElementById('name');
+
+function updateOutput() {
+    sanitized = (name.value || "").replace(/[^a-z0-9_]/g, "")
+    output.textContent = 
+`mkdir -p tests src/${sanitized}
+touch {pyproject.toml,environment.yml,README.md,CITATION.cff,src/${sanitized}/__init__.py,src/${sanitized}/example.py}
+echo -e 'import sys\nsys.path.append("src")' > tests/__init__.py
+`
+   output_a.textContent = 
+`mkdir -p tests src/${sanitized} data/raw data/results notebooks reports
+touch {pyproject.toml,environment.yml,README.md,CITATION.cff,src/${sanitized}/__init__.py,src/${sanitized}/example.py}
+echo -e 'import sys\nsys.path.append("src")' > tests/__init__.py
+`
+    }
+
+name.addEventListener('input', updateOutput);
+updateOutput();
+
+</script>
 </div>
 </div>
 </div>

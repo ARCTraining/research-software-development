@@ -1,0 +1,35 @@
+---
+title: "Dependency management"
+subtitle: "Preventing dependency hell"
+bibliography: ../assets/refs.bib
+format:
+  html:
+    theme:
+      - default
+      - styles.scss
+---
+
+:::{.callout-note}
+## Session Objectives
+
+- Introduce dependency management
+- Discuss using Conda as a way of managing dependencies
+:::
+
+[Open introduction presentation ↗](presentation.qmd){.btn .btn-outline-primary .btn role="button" data-toggle="tooltip" title="Open presentation in a new tab" target="_blank"}
+
+## Presentation content
+
+```{python}
+#| echo: false
+#| output: asis
+
+# Include and convert presentation content
+from heading_converter import include_and_convert
+result = include_and_convert('_content.qmd')
+print(result)
+```
+
+## Further reading
+
+- [HPC2 course notes on Conda](https://arctraining.github.io/hpc2-software/course/conda.html)

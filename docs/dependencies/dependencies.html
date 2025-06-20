@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.39">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Dependency management – Research Software Development in Python</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-b7f89880cdd1b89d7a091c93646a2531.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+<script type="text/javascript" charset="UTF-8">
+document.addEventListener('DOMContentLoaded', function () {
+cookieconsent.run({
+  "notice_banner_type":"simple",
+  "consent_type":"implied",
+  "palette":"light",
+  "language":"en",
+  "page_load_consent_levels":["strictly-necessary","functionality","tracking","targeting"],
+  "notice_banner_reject_button_hide":false,
+  "preferences_center_close_button_hide":false,
+  "website_name":""
+  ,
+"language":"en"
+  });
+});
+</script> 
+  
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-sidebar docked nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Research Software Development in Python</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../workflow.html" target="_blank"> 
+<span class="menu-text">Project Workflow ↗</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://arctraining.github.io/glossary-swd3/" target="_blank"> 
+<span class="menu-text">Glossary ↗</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../project_org/project_organisation.html">1. First Steps</a></li><li class="breadcrumb-item"><a href="../dependencies/dependencies.html">Dependency management</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+ <span class="menu-text">0. Introduction</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Course content</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../introduction/introduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../introduction/practical_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practical 1: Gathering Requirements</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">1. First Steps</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../project_org/project_organisation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Organizing Your Research Coding Project</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../project_org/practical2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practical 2: Folder organisation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../version_control/version_control.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Version Control</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../version_control/practical3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practical 3: Writing pseudocode with version control</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../dependencies/dependencies.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Dependency management</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">2. Make your code robust</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../testing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Testing</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../releases.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Creating releases and automated workflows</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../documentation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Documentation</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#presentation-content" id="toc-presentation-content" class="nav-link active" data-scroll-target="#presentation-content">Presentation content</a>
+  <ul class="collapse">
+  <li><a href="#where-to-begin" id="toc-where-to-begin" class="nav-link" data-scroll-target="#where-to-begin">Where to begin?</a></li>
+  <li><a href="#conda" id="toc-conda" class="nav-link" data-scroll-target="#conda">Conda</a></li>
+  <li><a href="#yaml-files-the-solution-to-all-your-problems" id="toc-yaml-files-the-solution-to-all-your-problems" class="nav-link" data-scroll-target="#yaml-files-the-solution-to-all-your-problems">Yaml files: the solution to all your problems</a></li>
+  <li><a href="#in-conclusion" id="toc-in-conclusion" class="nav-link" data-scroll-target="#in-conclusion">In Conclusion</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../project_org/project_organisation.html">1. First Steps</a></li><li class="breadcrumb-item"><a href="../dependencies/dependencies.html">Dependency management</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Dependency management</h1>
+<p class="subtitle lead">Preventing dependency hell</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Session Objectives
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Introduce dependency management</li>
+<li>Discuss using Conda as a way of managing dependencies</li>
+</ul>
+</div>
+</div>
+<p><a href="../dependencies/presentation.html" class="btn btn-outline-primary" role="button" data-toggle="tooltip" title="Open presentation in a new tab" target="_blank">Open introduction presentation ↗</a></p>
+<section id="presentation-content" class="level2">
+<h2 class="anchored" data-anchor-id="presentation-content">Presentation content</h2>
+<!-- Content included and converted from _content.qmd -->
+<section id="what-are-dependencies" class="level4 smaller">
+<h4 class="smaller anchored" data-anchor-id="what-are-dependencies">What are dependencies?</h4>
+<p>Dependencies are the versions of various different modules, packages, or software that your research code depends on: all of your imports.</p>
+<div class="columns">
+<div class="column" style="width:70%;">
+<p><img src="https://jhudatascience.org/Reproducibility_in_Cancer_Informatics/resources/images/06-package-management_files/figure-html/1LMurysUhCjZb7DVF6KS9QmJ5NBjwWVjRn40MS9f2noE_gf62875ddf7_0_404.png" class="img-fluid" alt="Ruby has a particular computing environment she has developed her code from. This computing environment is represented as a bubble above her computer with various hexagons with version numbers as well as Rstudio and R installed on her computer. Her code ran just fine on her particular computing environment. Avi attempted to run Ruby’s code on his very different local computing environment and got an error. His computer runs the same code but came up with a different result!"></p>
+</div><div class="column" style="width:30%;">
+<p>Don’t be like Ruby and Avi! Record your dependencies.</p>
+<div class="small">
+<p>Image CC BY Candace Savonen, retrieved from <a href="https://jhudatascience.org/Reproducibility_in_Cancer_Informatics/managing-package-versions.html">Reproducibility in Cancer Informatics</a>.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="general-rules-for-dependencies" class="level4 smaller">
+<h4 class="smaller anchored" data-anchor-id="general-rules-for-dependencies">General Rules for Dependencies</h4>
+<p>Managing dependencies is something many, many people find complicated and difficult. Let’s start with some key ideas to simplify things.</p>
+<p><a href="https://guides.nyu.edu/software-reproducibility/dependencies">NYU Libraries</a> provide some straightforward guidance that is language agnostic:</p>
+<ol type="1">
+<li><span class="extra">Use dependencies wisely and sparingly:</span> don’t import dependencies you don’t actually use, and try to stick to libraries that have robust and stable releases.</li>
+<li><span class="extra">Use a package manager of some form:</span> package management software, virtual environments and containers help to avoid conflicts and incompatibility errors between packages.</li>
+<li><span class="extra">Record your dependencies in a metadata file:</span> package managers will often do this automatically for you; this file should be both human and machine readable.</li>
+</ol>
+</section>
+<section id="where-to-begin" class="level3 section">
+<h3 class="section anchored" data-anchor-id="where-to-begin">Where to begin?</h3>
+<section id="package-management-software" class="level4 smaller">
+<h4 class="smaller anchored" data-anchor-id="package-management-software">Package management software</h4>
+<p>Package management software usually:</p>
+<div class="small">
+<ul>
+<li>Provides a way for you to create an <span class="extra">environment</span>:
+<ul>
+<li>A code project <em>environment</em> will contain a selection of relevant libraries, with specific versions.</li>
+<li>This is kept separate from other project <em>environments</em>.</li>
+<li>This allows you to use different versions of libraries for different projects.</li>
+</ul></li>
+<li>Provides a way for you to <span class="extra">export your environment</span>:
+<ul>
+<li>This allows you to specify the exact libraries and library versions that were used to generate a set of results.</li>
+<li>This makes it easier for others to use your work and built on it, and <em>reproduce</em> your code environment.</li>
+<li>This saves you having to manually record library versions that you are using.</li>
+</ul></li>
+</ul>
+</div>
+<hr>
+</section>
+<section id="section" class="level4 smaller">
+<h4 class="smaller anchored" data-anchor-id="section"></h4>
+<p>Package management software <em>might also</em>:</p>
+<div class="small">
+<ul>
+<li>Help you to solve <span class="extra">dependency conflicts</span>:
+<ul>
+<li>Conflicts can arise when different packages depend on different versions of other packages in the background.</li>
+<li>This can be tricky to resolve.</li>
+<li>Remember the guideline <span class="extra">“use dependencies wisely and sparingly”</span> to minimise this issue.</li>
+</ul></li>
+<li>Provide a way for you to package your own code into a library:
+<ul>
+<li>In addition to helping you juggle external dependencies, some package management solutions also provide a framework for turning your code into an installable package.</li>
+</ul></li>
+</ul>
+</div>
+<hr>
+<p>Depending on the language you are using, there may be many different options available. For example, for Python, you may have heard of:</p>
+<ul>
+<li><span class="outline-b"><strong>pip</strong></span></li>
+<li><span class="outline-o"><strong>conda</strong></span></li>
+<li><span class="outline-b"><strong>pixi</strong></span></li>
+<li><span class="outline-o"><strong>uv</strong></span></li>
+<li><span class="outline-b"><strong>poetry</strong></span></li>
+</ul>
+</section>
+<section id="how-do-you-pick" class="level4">
+<h4 class="anchored" data-anchor-id="how-do-you-pick">How do you pick?</h4>
+<section id="license" class="level5">
+<h5 class="anchored" data-anchor-id="license">1. License</h5>
+<ul>
+<li>Does the package manager have an open-source license?</li>
+</ul>
+</section>
+<section id="community" class="level5">
+<h5 class="anchored" data-anchor-id="community">2. Community</h5>
+<ul>
+<li>What solution does your research group use? Does your supervisor have suggestions?</li>
+<li>What option can you find support for?</li>
+<li>What do researchers in your field use?</li>
+</ul>
+<hr>
+</section>
+<section id="documentation" class="level5">
+<h5 class="anchored" data-anchor-id="documentation">3. Documentation</h5>
+<ul>
+<li>Does the package manager have easy-to-understand instructions and tutorials available?</li>
+</ul>
+</section>
+<section id="use-case" class="level5">
+<h5 class="anchored" data-anchor-id="use-case">4. Use-case</h5>
+<ul>
+<li>Are you managing all external libraries, or are you building your own packages?</li>
+<li>Are you going to be pinning dependencies (like for a web-app)?</li>
+</ul>
+</section>
+</section>
+</section>
+<section id="conda" class="level3">
+<h3 class="anchored" data-anchor-id="conda">Conda</h3>
+<hr>
+<section id="what-is-conda" class="level4">
+<h4 class="anchored">What is conda?</h4>
+<ul>
+<li><h3 id="conda-is-a-widely-used-package-management-system" class="anchored" data-anchor-id="what-is-conda">Conda is a widely used package management system</h3></li>
+<li>This allows you to isolate different Python “environments” from each other, allowing you to use different versions of libraries or modules for different projects.</li>
+<li>However, mismanagement of packages can lead to <a href="https://xkcd.com/1987/">dependency hell</a> with tangled environments and incompatible versions of different modules.</li>
+</ul>
+</section>
+<section id="dependency-hell" class="level4" data-background-color="white">
+<h4 data-background-color="white" class="anchored" data-anchor-id="dependency-hell">Dependency hell</h4>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://imgs.xkcd.com/comics/python_environment.png" class="img-fluid figure-img"></p>
+<figcaption>Python dependencies can get very messy…</figcaption>
+</figure>
+</div>
+</section>
+<section id="installing-conda-fun-licensing-details" class="level4 smaller">
+<h4 class="smaller anchored" data-anchor-id="installing-conda-fun-licensing-details">Installing conda: fun licensing details</h4>
+<div class="box-pb">
+<p>In order to use conda on your machine, I recommend you use the <a href="https://conda-forge.org/download/">MiniForge installer</a>, which by default loads packages from <code>conda-forge</code>.</p>
+</div>
+<p>If you are using Anaconda (provided by Anaconda.com), ensure you are not using the <code>defaults</code> channel to install packages as this falls under the <a href="https://www.datacamp.com/blog/navigating-anaconda-licensing?dc_referrer=https%3A%2F%2Fwww.google.com%2F">recent Anaconda repository licensing changes</a>.</p>
+<div class="box-lb">
+<p>Tl;dr: stick to open source to avoid licensing issues, by using a tool such as Miniforge which by default downloads packages from <code>conda-forge</code> and not proprietary channels.</p>
+</div>
+</section>
+</section>
+<section id="yaml-files-the-solution-to-all-your-problems" class="level3">
+<h3 class="anchored" data-anchor-id="yaml-files-the-solution-to-all-your-problems">Yaml files: the solution to all your problems</h3>
+<section id="the-key-to-conda-the-.yml-file" class="level4">
+<h4 class="anchored" data-anchor-id="the-key-to-conda-the-.yml-file">The key to conda: the <code>.yml</code> file</h4>
+<ul>
+<li>Despite the fact conda is very widely used, especially in research, science, and data science fields, people often neglect the real magic of the system: the <code>environment.yml</code> file.</li>
+<li>This file is the recipe or configuration for your environment.</li>
+</ul>
+<div class="box-pb">
+<p>Who here regularly uses <code>environment.yml</code> files in their workflow?</p>
+</div>
+</section>
+<section id="whats-yaml-or-yml" class="level4">
+<h4 class="anchored" data-anchor-id="whats-yaml-or-yml">What’s Yaml or yml?</h4>
+<ul>
+<li><p>YAML is a <span class="extra">human readable</span> format for plain text files (usually with the file ending <code>.yml</code>), often used for <span class="extra">configuration</span> of other programs.</p></li>
+<li><p>It’s the format <code>environment.yml</code> files are written in.</p></li>
+</ul>
+</section>
+<section id="whats-in-a-yml-file" class="level4">
+<h4 class="anchored" data-anchor-id="whats-in-a-yml-file">What’s in a <code>yml</code> file?</h4>
+<p>What does a <code>.yml</code> file look like?</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode yml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">name</span><span class="kw">:</span><span class="at"> my-env-name</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dependencies</span><span class="kw">:</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> python=3.12</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> pytest</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> setuptools</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> blackd</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> isort</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> numpy</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> matplotlib</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> pandas</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>We just need to create a plain text file called <code>environment.yml</code> or something else sensible, and list the packages we need!</p>
+</section>
+<section id="create-a-new-environment" class="level4">
+<h4 class="anchored" data-anchor-id="create-a-new-environment">Create a new environment</h4>
+<p>We can then turn this into a conda environment:</p>
+<ul>
+<li>Open up the terminal in the folder with our <code>environment.yml</code> file</li>
+<li>run the following command:</li>
+</ul>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env create <span class="at">-f</span> environment.yml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You’ll get a lot of output, as it finds the various packages online and goes about solving all your dependencies in the background.</p>
+</section>
+<section id="why-use-a-.yml-file" class="level4">
+<h4 class="anchored" data-anchor-id="why-use-a-.yml-file">Why use a <code>.yml</code> file?</h4>
+<p>Can’t I just create a fresh environment from the command line like this?</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> create <span class="at">-n</span> ENV-NAME python=3.12 numpy</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>And then activate it and add dependencies like this?</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> install pytest</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You absolutely can, but theres a few reasons why you <em>shouldn’t</em>.</p>
+</section>
+<section id="why-not" class="level4">
+<h4 class="anchored" data-anchor-id="why-not">Why not?</h4>
+<ol type="1">
+<li>Things you install later (e.g.&nbsp;<code>pytest</code> on the last slide) will be pinned by the versions of libraries installed at an earlier stage (so the base <code>python</code> version and <code>numpy</code>), which can lead to dependency conflicts.</li>
+<li>You can end up with a lot of crud and old unneeded libraries that you no longer used bloating your environment.</li>
+<li>You don’t have a nice, tidy record of what you installed and when.</li>
+</ol>
+</section>
+<section id="so-how-do-we-add-things" class="level4 smaller">
+<h4 class="smaller anchored" data-anchor-id="so-how-do-we-add-things">So how <em>do</em> we add things?</h4>
+<p>If you want to add a new package that you didn’t include in your original <code>environment.yml</code> file, or pin a package to a specific version, you can go and do so within the <code>environment.yml</code>.</p>
+<ul>
+<li>Just add any new packages to the list of dependencies, and pin libraries with the <code>=</code> notation as in the first example.</li>
+<li>Once your <code>environment.yml</code> file is up to date, you can apply the changes to your conda environment:</li>
+</ul>
+<div class="big">
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env update <span class="at">--file</span> environment.yml <span class="at">--prune</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><br></p>
+<div class="box-pb">
+<p>The <code>--prune</code> argument here clears out old unused libraries and is key to keeping your <code>.conda</code> folder a reasonable size.</p>
+</div>
+</section>
+<section id="why-does-this-work" class="level4">
+<h4 class="anchored" data-anchor-id="why-does-this-work">Why does this work?</h4>
+<ul>
+<li>Running <code>conda install package-name</code> from within your environment can lead to dependency conflicts (say your env has an older version of <code>numpy</code> and you’ve tried to <code>conda install</code> another package that can’t support this)</li>
+<li>Updating the environment from the <code>.yml</code> file allows the solver to work through the dependencies at the same time. There may still be conflicts, but many easily avoidable issues will disappear.</li>
+</ul>
+</section>
+<section id="myth-the-env.yml-is-too-prescriptive" class="level4">
+<h4 class="anchored" data-anchor-id="myth-the-env.yml-is-too-prescriptive">Myth: the <code>env.yml</code> is too prescriptive</h4>
+<ul>
+<li>You may have struggled building a conda environment from a yml file before</li>
+<li>This yml file may have had lots of <span class="extra">pinned</span> dependencies that don’t work on the system you are trying to install on</li>
+<li>This leads people to think that environment files are too prescriptive/restrictive and not useful for sharing environments</li>
+<li>This conda environment file may have been built with the <code>conda env export</code> command - let’s learn about it!</li>
+</ul>
+</section>
+<section id="exporting-a-conda-env" class="level4">
+<h4 class="anchored" data-anchor-id="exporting-a-conda-env">Exporting a conda env</h4>
+<p>Say you have a conda environment file similar to the one shown below, with very minimal pinned dependencies. For the sake of <strong>reproducibility</strong>, you want a better record of exactly what libraries you used, right?</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode yml code-with-copy"><code class="sourceCode yaml"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">name</span><span class="kw">:</span><span class="at"> my-env-name</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dependencies</span><span class="kw">:</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> python=3.12</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> pytest</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> setuptools</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> blackd</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> isort</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> numpy</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> matplotlib</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> pandas</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="exporting-a-conda-env-1" class="level4">
+<h4 class="anchored" data-anchor-id="exporting-a-conda-env-1">Exporting a conda env</h4>
+<p>This is where the <em>export</em> option comes in. From inside your active environment, simply run:</p>
+<div class="big">
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env export <span class="op">&gt;</span> env-record.yml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="small">
+<ul>
+<li>The command above will export an extremely detailed list of everything in your environment (including background dependencies and their exact version numbers) to the file <code>env-record.yml</code>.</li>
+<li>Sometimes, you might find it appropriate to export this to a filename with the date, for example <code>2024-11-27-env-record.yml</code>.</li>
+</ul>
+</div>
+</section>
+<section id="env.yml-files-being-restrictive" class="level4 smaller">
+<h4 class="smaller anchored" data-anchor-id="env.yml-files-being-restrictive"><code>env.yml</code> files being restrictive</h4>
+<p>This is where the myth of the conda <code>env.yml</code> being prohibitively restrictive comes in:</p>
+<ul>
+<li>people often try to use this exported file to build a replica of the same environment on a different machine</li>
+<li>however this exported file contains specific details of backends and builds that will likely not be transferrable across different computers.</li>
+</ul>
+<p>This is why I prefer to export it into a file name like <em>env-record</em> instead of just <em>environment</em>: it makes it very obvious this is recording the state of the environment as opposed to building a recipe to rebuild it.</p>
+</section>
+<section id="exporting-conda-environments" class="level4 smaller">
+<h4 class="smaller anchored" data-anchor-id="exporting-conda-environments">Exporting conda environments</h4>
+<ul>
+<li><p><strong>This exported environment file is mainly useful as a record for the sake of reproducibility, not for <em>reusability</em>.</strong></p></li>
+<li><p>If you produce results with your code that are being used in some form of research output (e.g.&nbsp;a paper), export your environment at the time when the results are being generated, so you have a record of the versions of different libraries you used.</p></li>
+</ul>
+<div class="box-pb">
+<p>This is why I said it is good to build and update your environment from your <code>environment.yml</code> file: that way you have a <span class="extra">reusable recipe</span> that you can share and use to rebuild your environment, but you can also use <code>export</code> to get a super detailed snapshot for any sets of results!</p>
+</div>
+</section>
+<section id="more-exporting" class="level4 smaller">
+<h4 class="smaller anchored" data-anchor-id="more-exporting">More exporting</h4>
+<p>If you ignored all my advice about not building a haphazard environment incrementally with <code>conda install</code>, there is still hope: you can use the <code>--from-history</code> flag comes in to play:</p>
+<div class="big">
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env export <span class="at">--from-history</span> <span class="op">&gt;</span> environment.yml <span class="co"># again, from inside the activated env</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This will produce a clean conda environment file similar to the example we gave at the start of this post, listing only the packages directly explicitly installed (without background dependencies or build details).</p>
+<p>However, things will get messy if you start adding in <code>pip</code> dependencies…</p>
+</section>
+<section id="mixing-in-pip" class="level4">
+<h4 class="anchored" data-anchor-id="mixing-in-pip">Mixing in pip</h4>
+<p>Using a conda <code>environment.yml</code> makes working with pip and conda together less painful.</p>
+<ul>
+<li>You will have heard (or experienced first hand) that once you install pip in a conda env, everything from that point on must be pip, or you will break the environment.</li>
+<li>This is true, but you can get around this by adding your pip dependencies to your <code>environment.yml</code> file.</li>
+</ul>
+</section>
+<section id="mixing-in-pip-1" class="level4">
+<h4 class="anchored" data-anchor-id="mixing-in-pip-1">Mixing in pip</h4>
+<p>Just add your <code>pip</code> dependencies to your environment file, then run <code>conda env update --file environment.yml --prune</code> as previously described:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode yml code-with-copy"><code class="sourceCode yaml"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">name</span><span class="kw">:</span><span class="at"> env-with-pip-dependencies</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dependencies</span><span class="kw">:</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co">### Whatever packages you need for your project</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> python=3.12</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> numpy</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> matplotlib</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> pandas</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> pip</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">pip</span><span class="kw">:</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> black</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> https://github.com/YOUR-USERNAME/YOUR-REPO-NAME/releases/download/YOUR-VERSION-NAME/PACKAGENAME-VERSION.tar.gz</span><span class="co"> # you can even install your own packages that you host on GitHub</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You can update this as described above.</p>
+</section>
+<section id="exporting-with-pip" class="level4">
+<h4 class="anchored" data-anchor-id="exporting-with-pip">Exporting with pip</h4>
+<p>Exporting the full record works the same if you have pip dependencies:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env export <span class="op">&gt;</span> env-record.yml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>However, <code>--from-history</code> will not include pip dependencies…</p>
+</section>
+<section id="exporting-with-pip---advanced" class="level4 scrollable">
+<h4 class="scrollable anchored" data-anchor-id="exporting-with-pip---advanced">Exporting with pip - advanced</h4>
+<p>However, <code>--from-history</code> will not include pip dependencies…</p>
+<p>If you’ve followed our advice until now (and built your conda environment from a file), this won’t be an issue.</p>
+<p>But if you ignored us or are trying to salvage old code, thankfully, there are a few different workarounds!</p>
+<p>This is outside of the scope of the talk today, but the instructions for exporting are here:</p>
+<p>Modified from this <a href="https://github.com/conda/conda/issues/9628#issuecomment-1608913117">conversation on GitHub</a>, this code snippet will export your conda and pip dependencies without version numbers (so that the <code>environment.yml</code> file can be used to build a new environment):</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">### Extract installed pip packages</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="va">pip_packages</span><span class="op">=</span><span class="va">$(</span><span class="ex">conda</span> env export <span class="kw">|</span> <span class="fu">grep</span> <span class="at">-A9999</span> <span class="st">".*- pip:"</span> <span class="kw">|</span> <span class="fu">grep</span> <span class="at">-v</span> <span class="st">"^prefix: "</span> <span class="kw">|</span> <span class="fu">cut</span> <span class="at">-f1</span> <span class="at">-d</span><span class="st">"="</span><span class="va">)</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co">### Export conda environment without builds, and append pip packages</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env export <span class="at">--from-history</span> <span class="kw">|</span> <span class="fu">grep</span> <span class="at">-v</span> <span class="st">"^prefix: "</span> <span class="op">&gt;</span> new-environment.yml</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"</span><span class="va">$pip_packages</span><span class="st">"</span> <span class="op">&gt;&gt;</span> new-environment.yml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>But remember: it is better to keep your <code>environment.yml</code> file current, and update your conda env <em>from</em> this file, as opposed to adding packages using <code>conda install</code> and then trying to export details to your environment file to track these changes.</p>
+</section>
+<section id="a-general-workflow" class="level4">
+<h4 class="anchored" data-anchor-id="a-general-workflow">A general workflow</h4>
+<ol type="1">
+<li>Create your conda environment from an environment file, and update/add packages to your environment by using this file. You can keep this environment file <span class="extra">version controlled with git</span> alongside your code.</li>
+<li>Export your conda environment to a record file when you change it and produce results with it. You can keep this environment record file <span class="extra">version controlled with git</span> alongside your results.</li>
+</ol>
+</section>
+<section id="reproducibility-vs-reusability" class="level4 smaller">
+<h4 class="smaller anchored" data-anchor-id="reproducibility-vs-reusability">Reproducibility vs reusability</h4>
+<p>Remember that for reusability, you want:</p>
+<ul>
+<li>An easy-to install conda environment, that works across different computers.</li>
+<li>You can share this with your code to make your work more <span class="extra">open</span></li>
+</ul>
+<p>For reproducibility, you need the code to be reusable, but also:</p>
+<ul>
+<li>You want an <em>exact</em> record of the environment as it was when you produced your results.</li>
+</ul>
+<p>Environments should be treated as disposable and easily rebuildable, we can use <span class="extra">version control</span> and <span class="extra">tests</span> to make sure that’s true.</p>
+</section>
+</section>
+<section id="in-conclusion" class="level3 box-pb">
+<h3 class="anchored" data-anchor-id="in-conclusion">In Conclusion</h3>
+<ul>
+<li>If you are using conda, use your conda <code>environment.yml</code> to keep control of the packages you have installed.</li>
+<li>Use <code>conda env export &gt; env-record.yml</code> to export records of your environments for reproducibility, but use the <code>--from-history</code> tag to make it more reusable.</li>
+</ul>
+</section>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+
+<div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

@@ -1,0 +1,10 @@
+---
+title: "Practical 4: WInstalling and using Conda with Miniforge"
+
+---
+
+## Activity Overview
+
+**Duration:** 50 minutes  
+**Goal:** Get set up with Conda on your virtual machine and create a Conda environment to run Python scripts
+

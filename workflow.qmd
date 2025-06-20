@@ -19,15 +19,45 @@ If you select this tab, the instructions below will show information relevant to
 
 2. Create your project directory structure in a repository
 
-::: {.panel-tabset group="workflow"}
+<label>Project name: &nbsp; <input id="name" value="example_name" type="text" placeholder="example_name" pattern="[a-z0-9_]*" style="font-family:monospace;"></label>
+
+:::: {.panel-tabset group="workflow"}
 ## Single directory project
 
-Content
+
+<pre id="output_a" style="background-color: #f8f9fa; padding: 10px; border-radius: 5px; border-left: 4px solid #007acc;"></pre>
+
 
 ## Dual directory project
 
-Content
-:::
+
+<pre id="output" style="background-color: #f8f9fa; padding: 10px; border-radius: 5px; border-left: 4px solid #007acc;"></pre>
+
+
+<script>
+const name = document.getElementById('name');
+
+function updateOutput() {
+    sanitized = (name.value || "").replace(/[^a-z0-9_]/g, "")
+    output.textContent = 
+`mkdir -p tests src/${sanitized}
+touch {pyproject.toml,environment.yml,README.md,CITATION.cff,src/${sanitized}/__init__.py,src/${sanitized}/example.py}
+echo -e 'import sys\nsys.path.append("src")' > tests/__init__.py
+`
+   output_a.textContent = 
+`mkdir -p tests src/${sanitized} data/raw data/results notebooks reports
+touch {pyproject.toml,environment.yml,README.md,CITATION.cff,src/${sanitized}/__init__.py,src/${sanitized}/example.py}
+echo -e 'import sys\nsys.path.append("src")' > tests/__init__.py
+`
+    }
+
+name.addEventListener('input', updateOutput);
+updateOutput();
+
+</script>
+
+
+::::
 
 3. Create a development environment
 

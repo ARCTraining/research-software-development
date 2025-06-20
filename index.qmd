@@ -1,5 +1,5 @@
 ---
-title: "Home page: Research Software Development"
+title: "Course Content: Research Software Development"
 ---
 
 This resource is intended to support researchers in embedding good software engineering practices into their workflows to make their computational research easier to manage, more reproducible, more reusable and sharable, and more robust.
@@ -69,12 +69,12 @@ This course introduces a [reproducible project workflow](workflow.qmd) that you 
 | Session | Approximate duration | Key objectives |
 |---|---|---|
 | Introduction | 30 mins | Introduce reproducibility, replicability, and reusability in the context of research code. |
-| Practical 1 | 20 mins | Define requirements for a small example project as a group. |
+| Practical 1 | 30 mins | Define requirements for a small example project as a group. |
 | Project organisation | 30 mins | Discuss ways of managing data files, code, scripts, results, and notes in a research project. |
 | Practical 2 | 20 mins | Set up a directory structure for the example project |
 | Version control | 50 mins | Introduce version control with git |
 | Practical 3 | 50 mins | Explore drafting pseudocode, notes, and comments, while using version control |
-| Dependency management | 30 mins | Introduce dependency management with Conda |
+| Dependency management | 50 mins | Introduce dependency management with Conda |
 | Practical 4 | 50 mins | Set up Python environment and begin drafting code |
 
 

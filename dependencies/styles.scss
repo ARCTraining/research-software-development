@@ -1,0 +1,41 @@
+/*-- scss:defaults --*/
+
+// Colors
+$white: #ffffff;
+$purple1:#e79aff;
+$yellow: #fffc58;
+$pale-yellow: #fffec0;
+$pale-pink: #f7d8fc;
+$orange: #ffa135;
+$purple2: #9158A2;
+$light-blue: #9fe1ff;
+$pale-blue: #d2f1ff;
+$dark-grey: #1f292e;
+$navy: #2d3369;
+$dark-purple: #470044;
+$red: #ff3535;
+$red-orange: #ff6e35;
+
+/*-- scss:rules --*/
+
+.box-ly {
+color: $dark-grey;
+background-color: $pale-yellow;
+padding-top: 10px;
+padding-bottom: 10px;
+padding-right: 10px;
+padding-left: 10px;
+border-radius: 2px;
+border: 1.5px solid $dark-grey;
+}
+
+.box-pb {
+color: $dark-grey;
+background-color: $pale-blue;
+padding-top: 10px;
+padding-bottom: 10px;
+padding-right: 10px;
+padding-left: 10px;
+border-radius: 2px;
+border: 1.5px solid $dark-grey;
+}

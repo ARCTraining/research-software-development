@@ -1,0 +1,9 @@
+---
+title: "Organizing Your Research Coding Project"
+subtitle: "From Chaotic Scripts to Structured Science"
+bibliography: ../assets/refs.bib
+format:
+    revealjs
+---
+
+{{< include _content.qmd >}}

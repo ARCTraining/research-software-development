@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>version_control – Research Software Development in Python</title>
+<title>Organizing Your Research Coding Project – Research Software Development in Python</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,24 +23,24 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/cookie-consent/cookie-consent.js"></script>
-<link href="site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-28c21cce639ebbb78e112ea75a22863f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-28c21cce639ebbb78e112ea75a22863f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -88,7 +88,7 @@ cookieconsent.run({
   
 
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-sidebar docked nav-fixed">
@@ -98,7 +98,7 @@ cookieconsent.run({
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Research Software Development in Python</span>
     </a>
   </div>
@@ -109,7 +109,7 @@ cookieconsent.run({
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./workflow.html" target="_blank"> 
+    <a class="nav-link" href="../workflow.html" target="_blank"> 
 <span class="menu-text">Project Workflow ↗</span></a>
   </li>  
   <li class="nav-item">
@@ -127,7 +127,7 @@ cookieconsent.run({
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./project_organisation.html">1. First Steps</a></li><li class="breadcrumb-item"><a href="./version_control.html">Version Control</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../project_org/project_organisation.html">1. First Steps</a></li><li class="breadcrumb-item"><a href="../project_org/project_organisation.html">Organizing Your Research Coding Project</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -150,14 +150,20 @@ cookieconsent.run({
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Course content</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./introduction.html" class="sidebar-item-text sidebar-link">
+  <a href="../introduction/introduction.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introduction</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../introduction/practical_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practical 1: Gathering Requirements</span></a>
   </div>
 </li>
       </ul>
@@ -173,20 +179,32 @@ cookieconsent.run({
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./project_organisation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Project organisation and layout</span></a>
+  <a href="../project_org/project_organisation.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Organizing Your Research Coding Project</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./version_control.html" class="sidebar-item-text sidebar-link active">
+  <a href="../project_org/practical2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practical 2: Folder organisation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../version_control/version_control.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Version Control</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./dependencies.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Dependency Management</span></a>
+  <a href="../version_control/practical3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practical 3: Writing pseudocode with version control</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../dependencies/dependencies.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Dependency management</span></a>
   </div>
 </li>
       </ul>
@@ -202,19 +220,19 @@ cookieconsent.run({
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./testing.html" class="sidebar-item-text sidebar-link">
+  <a href="../testing.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Testing</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./releases.html" class="sidebar-item-text sidebar-link">
+  <a href="../releases.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Creating releases and automated workflows</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./documentation.html" class="sidebar-item-text sidebar-link">
+  <a href="../documentation.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Documentation</span></a>
   </div>
 </li>
@@ -230,18 +248,325 @@ cookieconsent.run({
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#version-control" id="toc-version-control" class="nav-link active" data-scroll-target="#version-control">Version Control</a></li>
+  <li><a href="#presentation-content" id="toc-presentation-content" class="nav-link active" data-scroll-target="#presentation-content">Presentation content</a>
+  <ul class="collapse">
+  <li><a href="#why-project-organization-matters" id="toc-why-project-organization-matters" class="nav-link" data-scroll-target="#why-project-organization-matters">Why Project Organization Matters</a></li>
+  <li><a href="#the-first-step-clear-directory-structure" id="toc-the-first-step-clear-directory-structure" class="nav-link" data-scroll-target="#the-first-step-clear-directory-structure">The first step: 📁 Clear directory structure</a></li>
+  </ul></li>
+  <li><a href="#futher-reading" id="toc-futher-reading" class="nav-link" data-scroll-target="#futher-reading">Futher reading</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./project_organisation.html">1. First Steps</a></li><li class="breadcrumb-item"><a href="./version_control.html">Version Control</a></li></ol></nav></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../project_org/project_organisation.html">1. First Steps</a></li><li class="breadcrumb-item"><a href="../project_org/project_organisation.html">Organizing Your Research Coding Project</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Organizing Your Research Coding Project</h1>
+<p class="subtitle lead">From Chaotic Scripts to Structured Science</p>
+</div>
 
 
 
+<div class="quarto-title-meta">
 
-<section id="version-control" class="level1">
-<h1>Version Control</h1>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Session Objectives
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In this section, we will explore different ways of organising our code, data, and notes.</p>
+<p>After finishing this section, you should have an idea of:</p>
+<ul>
+<li>Different ways to organise your project</li>
+<li>Sensible ways to store/access your code</li>
+</ul>
+</div>
+</div>
+<p><a href="../project_org/project_org_presentation.html" class="btn btn-outline-primary" role="button" data-toggle="tooltip" title="Open presentation in a new tab" target="_blank">Open introduction presentation ↗</a></p>
+<section id="presentation-content" class="level2">
+<h2 class="anchored" data-anchor-id="presentation-content">Presentation content</h2>
+<!-- Content included and converted from _content.qmd -->
+<hr>
+<section id="keeping-your-projects-tidy" class="level4">
+<h4 class="anchored" data-anchor-id="keeping-your-projects-tidy">Keeping your projects tidy</h4>
+<ul>
+<li>It’s not always obvious the best way of keeping your code, notes, and data nice and tidy</li>
+<li>Research tends to be very fluid and experimental, creating lots of scripts and notebooks that can easily become a tangled mess</li>
+<li>We want to be able to easily find the right piece of code, the write snippet of notes!</li>
+</ul>
+</section>
+<section id="why-project-organization-matters" class="level3">
+<h3 class="anchored" data-anchor-id="why-project-organization-matters">Why Project Organization Matters</h3>
+<hr>
+<section id="your-future-self-will-thank-you-when-you-can" class="level4">
+<h4 class="anchored" data-anchor-id="your-future-self-will-thank-you-when-you-can">Your future self will thank you when you can:</h4>
+<ul>
+<li>Find your analysis code from 6 months ago</li>
+<li>Understand what each script actually does</li>
+<li>Reproduce your results without panic</li>
+<li>Share your work with collaborators confidently</li>
+<li>Build on your previous work instead of starting over</li>
+</ul>
+<hr>
+</section>
+<section id="poor-organization-leads-to" class="level4">
+<h4 class="anchored" data-anchor-id="poor-organization-leads-to">Poor organization leads to:</h4>
+<ul>
+<li>Lost time searching for the “final” version</li>
+<li>Irreproducible results, mistakes, and embarrassing retractions</li>
+<li>Collaboration nightmares and frustrated colleagues</li>
+<li>Thesis chapters that can’t be verified</li>
+</ul>
+<hr>
+</section>
+<section id="a-well-organized-research-project" class="level4 smaller">
+<h4 class="smaller anchored" data-anchor-id="a-well-organized-research-project">A Well-Organized Research Project</h4>
+<p>Essential Components:</p>
+<ul>
+<li>📁 Clear directory structure - Everything has a logical place</li>
+<li>📄 Comprehensive documentation - README files that actually help</li>
+<li>🔄 Version control - Git tracks every change and decision</li>
+<li>🧪 Organized data workflow - Raw → Processed → Results</li>
+<li>✅ Testing framework - Confidence that your code works correctly</li>
+<li>📦 Dependency management - Reproducible computational environment</li>
+</ul>
+</section>
+</section>
+<section id="the-first-step-clear-directory-structure" class="level3">
+<h3 class="anchored" data-anchor-id="the-first-step-clear-directory-structure">The first step: 📁 Clear directory structure</h3>
+<hr>
+<section id="research-data" class="level4 smaller">
+<h4 class="smaller anchored" data-anchor-id="research-data">Research data</h4>
+<p><strong>Where should it live?</strong></p>
+<ul>
+<li>On backed-up University Storage (appropriate for its tier) mounted on your workstation</li>
+<li>(Temporarily) on <code>$SCRATCH</code> storage on HPC systems</li>
+<li><em>Not</em> mixed in with your code!
+<ul>
+<li>Lots of project structure templates online suggest having a <code>data</code> sub-folder</li>
+<li>In general, it’s often better practise to keep your data in a separate folder:
+<ul>
+<li>It may be sensitive data, but you want your code to be shareable</li>
+<li>It may be far too large to store on your desktop permanently alongside your code</li>
+<li>It will cause issues when version-controlling your code</li>
+</ul></li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="research-data-rules" class="level4">
+<h4 class="anchored" data-anchor-id="research-data-rules">Research data rules</h4>
+<p><strong>1. Raw data is read-only:</strong></p>
+<ul>
+<li>Never edit original data files directly</li>
+<li>All modifications happen through documented code</li>
+<li>Keep multiple backups of irreplaceable data</li>
+</ul>
+<hr>
+</section>
+<section id="research-data-rules-1" class="level4">
+<h4 class="anchored" data-anchor-id="research-data-rules-1">Research data rules</h4>
+<p><strong>2. Document data provenance:</strong></p>
+<ul>
+<li>Where did each dataset come from?</li>
+<li>What processing steps were applied?</li>
+<li>What are the known limitations or biases?</li>
+</ul>
+<hr>
+</section>
+<section id="research-data-rules-2" class="level4">
+<h4 class="anchored" data-anchor-id="research-data-rules-2">Research data rules</h4>
+<p><strong>3. Separate processing stages:</strong></p>
+<ul>
+<li>Raw → Cleaned → Analysis-ready → Results</li>
+<li>Each stage produces documented intermediate files</li>
+<li>Clear scripts connect each transformation step</li>
+</ul>
+<hr>
+</section>
+<section id="research-data-1" class="level4">
+<h4 class="anchored" data-anchor-id="research-data-1">Research data</h4>
+<p><strong>Where should it live?</strong></p>
+<pre class="text"><code>data/
+├── raw/
+├── processed/
+└── results/</code></pre>
+<p>You can set the permissions on the <code>data/raw/</code> directory to read and execute only: <code>chmod -R 500 raw/</code></p>
+<ul>
+<li>Make sure to pick the correct permissions: <a href="https://chmodcommand.com/">chmod command</a></li>
+<li>You can always undo these later</li>
+</ul>
+<hr>
+</section>
+<section id="research-data-2" class="level4">
+<h4 class="anchored" data-anchor-id="research-data-2">Research data</h4>
+<p><strong>Where should it live?</strong></p>
+<p>We will talk later in more depth about releasing and sharing code, but open data should be saved and shared in a data repository if at all possible:</p>
+<ul>
+<li>Your funder may have specific repositories for research data</li>
+<li>Publications may have requirements about sharing output data</li>
+<li>Use the University’s data deposit service</li>
+</ul>
+<hr>
+</section>
+<section id="research-code" class="level4">
+<h4 class="anchored" data-anchor-id="research-code">Research code</h4>
+<ul>
+<li>There are lots of different ways of organising your research code</li>
+<li>There is no one “correct” way</li>
+</ul>
+<hr>
+</section>
+<section id="single-folder-layout" class="level4">
+<h4 class="anchored" data-anchor-id="single-folder-layout">Single Folder Layout</h4>
+<pre class="text"><code>my-research-project/
+├── README.md                # Project overview and setup
+├── environment.yml          # Dependencies
+├── data/                    # Possibly some minor output data
+├── src/                     # Your source code
+│   ├── data_processing/
+│   ├── analysis/
+│   └── visualization/
+├── tests/                   # Unit tests for your functions
+├── notebooks/               # Jupyter notebooks for exploration
+├── results/                 # Figures, tables, model outputs
+├── docs/                    # Additional documentation
+└── scripts/                 # Standalone utility scripts
+</code></pre>
+<ul>
+<li>This is one way of keeping your code organised</li>
+<li>The source code (in <code>src</code>) and analysis, notes, and notebooks are all in the same high-level project folder</li>
+</ul>
+<hr>
+</section>
+<section id="two-folder-layout" class="level4">
+<h4 class="anchored" data-anchor-id="two-folder-layout">Two Folder Layout</h4>
+<p>Often research work involves:</p>
+<ol type="1">
+<li>Building some form of numerical model, analysis pipeline, or other code that is somewhat generic or modular</li>
+<li>Applying that model to specific parameters and testing various inputs and outputs, using tools like Jupyter notebooks to explore output and write notes</li>
+</ol>
+<hr>
+</section>
+<section id="two-folder-layout-1" class="level4 smaller">
+<h4 class="smaller anchored" data-anchor-id="two-folder-layout-1">Two Folder Layout</h4>
+<blockquote class="blockquote">
+<p>I tended to bump into a few questions or problems that I didn’t see an obvious solution to:</p>
+<ul>
+<li>I want to keep my codebase nice and tidy and comprehensible, but I also tend to produce lots and lots of analysis scripts, notebooks and figures as I analyse my results;</li>
+<li>I want to compare my models to analytical cases to check their validity, again producing lots of various outputs, figures etc.;</li>
+<li>I don’t want to accidentally modify some of my numerical model code when trying to analyse my results at a later stage;</li>
+<li>I want to update my core code, fix some problems and add some functionality; how do I keep track of what results I produced with which version of my code?</li>
+<li>Other people would probably be able to use my model, or adapt it for their own projects, but they won’t want to sift through all my iterative work in the meantime.</li>
+</ul>
+</blockquote>
+<hr>
+</section>
+<section id="two-folder-layout-2" class="level4">
+<h4 class="anchored" data-anchor-id="two-folder-layout-2">Two Folder Layout</h4>
+<p>Sometimes a single project folder can become unwieldy:</p>
+<ul>
+<li>It can be difficult to separate out your methods and core code from various experiments and tests</li>
+<li>Important information and code snippets can go missing in Jupyter Notebooks</li>
+<li>One folder for “core code”; the functions you will re-use</li>
+<li>One folder for the “application” - whether that’s running experiments, writing a paper or a thesis chapter, etc.</li>
+</ul>
+<hr>
+</section>
+<section id="folder-1-the-core-code-or-package-folder" class="level4">
+<h4 class="anchored" data-anchor-id="folder-1-the-core-code-or-package-folder">Folder 1: the “core code” or “package” folder</h4>
+<pre class="text"><code>planet-evolution/            
+├── src/  
+│   └── planet_evolution/     
+│       ├── __init__.py      Makes the folder a package.
+│       └── source.py        An example module containing source code.
+├── tests/
+|   ├── __init__.py          Sets up the test suite.
+│   └── test_source.py       A file containing tests for the code in source.py.
+├── README.md                README with information about the project.
+├── docs                     Package documentation
+├── pyproject.toml           Allows me to install this as a package
+├── LICENSE                  License text to allow for reuse
+└── CITATION.cff             Citation file that makes it easy for people to cite you!</code></pre>
+<p>This will contain the code that you will import as a library in your project!</p>
+<hr>
+</section>
+<section id="folder-2-the-application-repository" class="level4">
+<h4 class="anchored" data-anchor-id="folder-2-the-application-repository">Folder 2: the “application” repository</h4>
+<pre class="text"><code>pallasite-parent-body-evolution/    
+├── LICENSE
+├── README.md
+├── env.yml or requirements.txt     The libraries I need for analysis (including planet_evolution!)
+├── data                            I usually load in large data from storage elsewhere
+│   ├── interim                     But sometimes do keep small summary datafiles in the repository
+│   ├── processed
+│   └── raw
+├── docs                            Notes on analysis, process etc.
+├── notebooks                       Jupyter notebooks used for analysis
+├── reports                         For a manuscript source, e.g., LaTeX, Markdown, etc., or any project reports
+│&nbsp;&nbsp; └── figures                     Figures for the manuscript or reports
+├── src                             Source code for this project
+│   ├── data                        Scripts and programs to process data
+│   ├── tools                       Any helper scripts go here
+│   └── visualization               Scripts for visualisation of your results, e.g., matplotlib, ggplot2 related.
+└── tests                           Test code for this project, benchmarking, comparison to analytical models
+</code></pre>
+<hr>
+</section>
+<section id="deciding-on-a-folder-layout" class="level4">
+<h4 class="anchored" data-anchor-id="deciding-on-a-folder-layout">Deciding on a folder layout</h4>
+<p>If you opt for a single folder layout, but keep it tidy and organised, it is easy to split it into two separate directories at a later point!</p>
+<ul>
+<li>In this course, we’re going to stick with a single folder set-up since we are building a basic project</li>
+<li>It’s less important to choose the perfect layout, and more important to be intentional, tidy, and consistent about where you save things!</li>
+</ul>
+<hr>
+</section>
+<section id="common-pitfalls" class="level4 smaller">
+<h4 class="smaller anchored" data-anchor-id="common-pitfalls">Common pitfalls</h4>
+<p><strong>The “I’ll organize it later” trap:</strong></p>
+<ul>
+<li>Start with basic structure from day one</li>
+<li>Organization gets harder as projects grow</li>
+<li>Good habits compound over time</li>
+</ul>
+<p><strong>The “only I will use this” fallacy:</strong></p>
+<ul>
+<li>You are your most important collaborator</li>
+<li>Future you has forgotten current you’s logic</li>
+<li>A clear and tidy directory structure will help you down the line</li>
+</ul>
+</section>
+<section id="preparing-for-practical-2" class="level4">
+<h4 class="anchored" data-anchor-id="preparing-for-practical-2">Preparing for practical 2</h4>
+<ul>
+<li>We are going to set up a virtual machine on GitHub codespaces</li>
+<li>We are going to use our <em>project workflow</em> to set up a coding environment</li>
+</ul>
+</section>
+</section>
+</section>
+<section id="futher-reading" class="level2">
+<h2 class="anchored" data-anchor-id="futher-reading">Futher reading</h2>
+<ul>
+<li><a href="https://goodresearch.dev/">The Good Research Code Handbook</a></li>
+</ul>
 
 
 </section>
