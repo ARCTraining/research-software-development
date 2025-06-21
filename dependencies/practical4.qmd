@@ -1,5 +1,5 @@
 ---
-title: "Practical 4: WInstalling and using Conda with Miniforge"
+title: "Practical 4: Installing and using Conda with Miniforge"
 
 ---
 
@@ -8,3 +8,184 @@ title: "Practical 4: WInstalling and using Conda with Miniforge"
 **Duration:** 50 minutes  
 **Goal:** Get set up with Conda on your virtual machine and create a Conda environment to run Python scripts
 
+### Step 1: Installing Conda via Miniforge
+
+You can follow the [instructions here](https://github.com/conda-forge/miniforge):
+
+```bash
+wget "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"
+
+bash Miniforge3-$(uname)-$(uname -m).sh
+```
+
+Now try a `git status`: we *don't* want the Conda installer saved in our repo, so let's create a `.gitignore` file (if we weren't using this cloud machine we would put this installer somewhere else):
+
+```bash
+code .gitignore
+```
+
+Add the following line to the `.gitignore`:
+
+```bash
+*.sh
+```
+
+- This will prevent any files ending in `.sh` (essentially the equivalent of a Windows `.exe`) from being tracked with version control
+- Try your local git cycle again to add this change to the repository
+
+### Step 2: Install the Python extension for VSCode
+
+This isn't essential, but makes working with Python a bit easier, with syntax highlighting. You can find the extensions menu in the left sidebar.
+
+### Step 3: Creating a development environment
+
+Next, we need to add libraries to our conda environment:
+
+```bash
+code environment.yml
+```
+
+You will see the following template that we generated back during the folder organisation step:
+
+```yml
+name: my-env-name
+
+channels:
+  - conda-forge
+  - nodefaults
+
+dependencies:
+  - python=3.13
+  - pytest
+  - blackd
+  - isort
+
+  # remove/modify these as needed
+  - numpy
+  - pandas
+
+  # keep this to install your Python package locally
+  - pip
+  - pip:
+    - --editable .
+```
+
+- We need to modify this to work for our project.
+- Add any additional dependencies you might need: don't worry, we can edit this later.
+
+:::{.callout-note}
+## What does `pip: --editable .` mean?
+
+The final line in the conda environment file above means to install the Python package in the local directory (`.` means *this* directory) as an *editable* package. This means your code will be available in this environment, but also you can continue to edit your code.
+
+The `__init__.py` file inside the package, along with the `pyproject.toml` file we created during the folder set up, make this possible.
+:::
+
+
+:::{.callout-note collapse="true"}
+## Why install your local Python package?
+
+Why bother with installing your Python package rather than just importing scripts?
+
+- Installing your package decouples it from the file structure:
+    - If you have scripts in various different folders in the overall project folder, it can become difficult to keep track of relative filepaths in order to import things; this keeps your scripts much tidier.
+    - If you move a file that relies on filepaths to your Python modules, suddenly things can break; this can become especially annoying when trying to migrate your work to a HPC system.
+- It makes it essentially no extra work to allow others (or yourself) to install it from GitHub, making your code much more reusable.
+
+:::
+
+:::{.callout-note collapse="true"}
+## The `pyproject.toml` file
+During the folder structure organisation stage, we created a `pyproject.toml` file. This provides the information pip needs to install our Python package:
+
+```toml
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "amazing_project"
+version = "0.1.0"
+description = "Brief description"
+authors = [{name = "Your Name"}]
+requires-python = ">=3.13"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+```
+
+For now, we're not going to touch this; we just need to know it's there.
+
+:::
+
+Now we just need to create the Conda environment from the file:
+
+```bash
+conda env create -f environment.yml
+```
+
+### Step 4: Activate and test the environment
+
+After the environment has been created, you'll need to activate it:
+
+```bash
+conda activate <your-env-name>
+```
+
+replacing `<your-env-name>` with the name you provided in the `environment.yml` file.
+
+You may need to launch a new terminal. Test that the environment works by launching python and trying to import one of the installed libraries:
+
+```bash
+python
+```
+
+and then
+
+```python
+import numpy as np
+```
+
+### Step 5: Update the environment
+
+Next, we're going to add an additional library to the environment to see hwo that works:
+
+```yml
+name: my-env-name
+
+channels:
+  - conda-forge
+  - nodefaults
+
+dependencies:
+  - python=3.13
+  - pytest
+  - blackd
+  - isort
+
+  # remove/modify these as needed
+  - numpy
+  - pandas
+
+  # keep this to install your Python package locally
+  - pip
+  - pip:
+    - marimo # add this line
+    - --editable .
+```
+
+This is a notebook tool similar to Jupyter that we will use for some quick prototyping. You could also install Jupyter with Jupytext (to improve version controlling of your notebooks) if you prefer that interface.
+
+To update the environment with this new library, we run:
+
+```bash
+conda env update --file environment.yaml --prune
+```
+
+### Step 6: Set VSCode to recognise your environment
+
+Use the VSCode shortcut `Ctrl Shift P` to open the command prompt. Start typing *select interpreter* and it should autosuggest the "Python: Select Interpreter" option. Choose your Conda environment from the list. Now you'll be able to run Python files from the VSCode interface using the correct environment.
+
+## Further reading
+
+- [How to Manage Python Projects With pyproject.toml](https://realpython.com/python-pyproject-toml/)

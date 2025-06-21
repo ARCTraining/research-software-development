@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Practical 2: Folder organisation – Research Software Development in Python</title>
+<title>Practical 4: Installing and using Conda with Miniforge – Research Software Development in Python</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -127,7 +161,7 @@ cookieconsent.run({
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../project_org/project_organisation.html">1. First Steps</a></li><li class="breadcrumb-item"><a href="../project_org/practical2.html">Practical 2: Folder organisation</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../project_org/project_organisation.html">1. First Steps</a></li><li class="breadcrumb-item"><a href="../dependencies/practical4.html">Practical 4: Installing and using Conda with Miniforge</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -185,7 +219,7 @@ cookieconsent.run({
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../project_org/practical2.html" class="sidebar-item-text sidebar-link active">
+  <a href="../project_org/practical2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Practical 2: Folder organisation</span></a>
   </div>
 </li>
@@ -209,7 +243,7 @@ cookieconsent.run({
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../dependencies/practical4.html" class="sidebar-item-text sidebar-link">
+  <a href="../dependencies/practical4.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Practical 4: Installing and using Conda with Miniforge</span></a>
   </div>
 </li>
@@ -254,24 +288,25 @@ cookieconsent.run({
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#activity-overview" id="toc-activity-overview" class="nav-link active" data-scroll-target="#activity-overview">Activity Overview</a></li>
-  <li><a href="#our-project-structure" id="toc-our-project-structure" class="nav-link" data-scroll-target="#our-project-structure">Our project structure</a></li>
-  <li><a href="#round-1-pick-a-project-name-5-mins" id="toc-round-1-pick-a-project-name-5-mins" class="nav-link" data-scroll-target="#round-1-pick-a-project-name-5-mins">Round 1: Pick a project name (5 mins)</a></li>
-  <li><a href="#round-2-create-a-repository-5-mins" id="toc-round-2-create-a-repository-5-mins" class="nav-link" data-scroll-target="#round-2-create-a-repository-5-mins">Round 2: Create a repository (5 mins)</a></li>
-  <li><a href="#round-3-launch-virtual-machine-5-mins" id="toc-round-3-launch-virtual-machine-5-mins" class="nav-link" data-scroll-target="#round-3-launch-virtual-machine-5-mins">Round 3: Launch virtual machine (5 mins)</a></li>
-  <li><a href="#round-4-create-directory-structure-10-mins" id="toc-round-4-create-directory-structure-10-mins" class="nav-link" data-scroll-target="#round-4-create-directory-structure-10-mins">Round 4: Create directory structure (10 mins)</a>
+  <li><a href="#activity-overview" id="toc-activity-overview" class="nav-link active" data-scroll-target="#activity-overview">Activity Overview</a>
   <ul class="collapse">
-  <li><a href="#enter-your-project-name" id="toc-enter-your-project-name" class="nav-link" data-scroll-target="#enter-your-project-name">Enter your project name:</a></li>
+  <li><a href="#step-1-installing-conda-via-miniforge" id="toc-step-1-installing-conda-via-miniforge" class="nav-link" data-scroll-target="#step-1-installing-conda-via-miniforge">Step 1: Installing Conda via Miniforge</a></li>
+  <li><a href="#step-2-install-the-python-extension-for-vscode" id="toc-step-2-install-the-python-extension-for-vscode" class="nav-link" data-scroll-target="#step-2-install-the-python-extension-for-vscode">Step 2: Install the Python extension for VSCode</a></li>
+  <li><a href="#step-3-creating-a-development-environment" id="toc-step-3-creating-a-development-environment" class="nav-link" data-scroll-target="#step-3-creating-a-development-environment">Step 3: Creating a development environment</a></li>
+  <li><a href="#step-4-activate-and-test-the-environment" id="toc-step-4-activate-and-test-the-environment" class="nav-link" data-scroll-target="#step-4-activate-and-test-the-environment">Step 4: Activate and test the environment</a></li>
+  <li><a href="#step-5-update-the-environment" id="toc-step-5-update-the-environment" class="nav-link" data-scroll-target="#step-5-update-the-environment">Step 5: Update the environment</a></li>
+  <li><a href="#step-6-set-vscode-to-recognise-your-environment" id="toc-step-6-set-vscode-to-recognise-your-environment" class="nav-link" data-scroll-target="#step-6-set-vscode-to-recognise-your-environment">Step 6: Set VSCode to recognise your environment</a></li>
   </ul></li>
+  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further reading</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../project_org/project_organisation.html">1. First Steps</a></li><li class="breadcrumb-item"><a href="../project_org/practical2.html">Practical 2: Folder organisation</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../project_org/project_organisation.html">1. First Steps</a></li><li class="breadcrumb-item"><a href="../dependencies/practical4.html">Practical 4: Installing and using Conda with Miniforge</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Practical 2: Folder organisation</h1>
+<h1 class="title">Practical 4: Installing and using Conda with Miniforge</h1>
 </div>
 
 
@@ -290,165 +325,177 @@ cookieconsent.run({
 
 <section id="activity-overview" class="level2">
 <h2 class="anchored" data-anchor-id="activity-overview">Activity Overview</h2>
-<p><strong>Duration:</strong> 20 minutes<br>
-<strong>Goal:</strong> Set up a sensible and tidy project folder structure</p>
+<p><strong>Duration:</strong> 50 minutes<br>
+<strong>Goal:</strong> Get set up with Conda on your virtual machine and create a Conda environment to run Python scripts</p>
+<section id="step-1-installing-conda-via-miniforge" class="level3">
+<h3 class="anchored" data-anchor-id="step-1-installing-conda-via-miniforge">Step 1: Installing Conda via Miniforge</h3>
+<p>You can follow the <a href="https://github.com/conda-forge/miniforge">instructions here</a>:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="st">"https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-</span><span class="va">$(</span><span class="fu">uname</span><span class="va">)</span><span class="st">-</span><span class="va">$(</span><span class="fu">uname</span> <span class="at">-m</span><span class="va">)</span><span class="st">.sh"</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> Miniforge3-<span class="va">$(</span><span class="fu">uname</span><span class="va">)</span>-<span class="va">$(</span><span class="fu">uname</span> <span class="at">-m</span><span class="va">)</span>.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Now try a <code>git status</code>: we <em>don’t</em> want the Conda installer saved in our repo, so let’s create a <code>.gitignore</code> file (if we weren’t using this cloud machine we would put this installer somewhere else):</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">code</span> .gitignore</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Add the following line to the <code>.gitignore</code>:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">*.sh</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>This will prevent any files ending in <code>.sh</code> (essentially the equivalent of a Windows <code>.exe</code>) from being tracked with version control</li>
+<li>Try your local git cycle again to add this change to the repository</li>
+</ul>
+</section>
+<section id="step-2-install-the-python-extension-for-vscode" class="level3">
+<h3 class="anchored" data-anchor-id="step-2-install-the-python-extension-for-vscode">Step 2: Install the Python extension for VSCode</h3>
+<p>This isn’t essential, but makes working with Python a bit easier, with syntax highlighting. You can find the extensions menu in the left sidebar.</p>
+</section>
+<section id="step-3-creating-a-development-environment" class="level3">
+<h3 class="anchored" data-anchor-id="step-3-creating-a-development-environment">Step 3: Creating a development environment</h3>
+<p>Next, we need to add libraries to our conda environment:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">code</span> environment.yml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You will see the following template that we generated back during the folder organisation step:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode yml code-with-copy"><code class="sourceCode yaml"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">name</span><span class="kw">:</span><span class="at"> my-env-name</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">channels</span><span class="kw">:</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> conda-forge</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> nodefaults</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="fu">dependencies</span><span class="kw">:</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> python=3.13</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> pytest</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> blackd</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> isort</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="co">  # remove/modify these as needed</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> numpy</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> pandas</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="co">  # keep this to install your Python package locally</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> pip</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">pip</span><span class="kw">:</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> --editable .</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>We need to modify this to work for our project.</li>
+<li>Add any additional dependencies you might need: don’t worry, we can edit this later.</li>
+</ul>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+What does <code>pip: --editable .</code> mean?
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The terms <strong>repository</strong>, <strong>directory</strong> and <strong>folder</strong> are used almost interchangeably in this course.</p>
-<p>In the context of reproducible code, we can define these terms more clearly:</p>
+<p>The final line in the conda environment file above means to install the Python package in the local directory (<code>.</code> means <em>this</em> directory) as an <em>editable</em> package. This means your code will be available in this environment, but also you can continue to edit your code.</p>
+<p>The <code>__init__.py</code> file inside the package, along with the <code>pyproject.toml</code> file we created during the folder set up, make this possible.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Why install your local Python package?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Why bother with installing your Python package rather than just importing scripts?</p>
 <ul>
-<li><strong>Directory</strong> is just the term used for folders on Linux systems</li>
-<li><strong>Repository</strong> is just the term used for a folder or directory that has some form of <em>version control</em> working inside it - we will dive into that in a later session!</li>
+<li>Installing your package decouples it from the file structure:
+<ul>
+<li>If you have scripts in various different folders in the overall project folder, it can become difficult to keep track of relative filepaths in order to import things; this keeps your scripts much tidier.</li>
+<li>If you move a file that relies on filepaths to your Python modules, suddenly things can break; this can become especially annoying when trying to migrate your work to a HPC system.</li>
+</ul></li>
+<li>It makes it essentially no extra work to allow others (or yourself) to install it from GitHub, making your code much more reusable.</li>
 </ul>
 </div>
 </div>
-</section>
-<section id="our-project-structure" class="level2">
-<h2 class="anchored" data-anchor-id="our-project-structure">Our project structure</h2>
-<p>We are going to create a project in a single folder.</p>
-<p>This folder will contain:</p>
-<ul>
-<li>A source code folder that will allow us to import the code as a library</li>
-<li>Folders for analysis and experimentation</li>
-<li>A testing suite</li>
-<li>Version control</li>
-</ul>
-<p>But for now, we simply want to create the folder structure.</p>
-</section>
-<section id="round-1-pick-a-project-name-5-mins" class="level2">
-<h2 class="anchored" data-anchor-id="round-1-pick-a-project-name-5-mins">Round 1: Pick a project name (5 mins)</h2>
-<p>We need a simple name for our project folder and the Python package we are going to create</p>
-<ul>
-<li>Folder and file names should contain <strong>no spaces</strong></li>
-<li>In general, projects often follow this convention:
-<ul>
-<li>The top level folder is called something with lowercase words separated by hyphens: <code>example-project</code></li>
-<li>The Python library inside is called the same but with underscores: <code>example_project</code> (as hyphens are read as subtraction by Python and can make things complicated for imports)</li>
-</ul></li>
-</ul>
-</section>
-<section id="round-2-create-a-repository-5-mins" class="level2">
-<h2 class="anchored" data-anchor-id="round-2-create-a-repository-5-mins">Round 2: Create a repository (5 mins)</h2>
-<ol type="1">
-<li>Go to <a href="https://github.com/">GitHub.com</a> and sign up or log in.</li>
-<li>Click the “+” button to <a href="https://github.com/new">Create a new repository</a>
-<ul>
-<li>No template</li>
-<li>Type your chosen project name in the “Repository name” box, using a hyphen to separate words</li>
-<li>You can tick “Add a README file” and skip the other options</li>
-<li>Click “Create repository” at the bottom of the page</li>
-</ul></li>
-<li>You’ll now be directed to your new repository page</li>
-</ol>
-</section>
-<section id="round-3-launch-virtual-machine-5-mins" class="level2">
-<h2 class="anchored" data-anchor-id="round-3-launch-virtual-machine-5-mins">Round 3: Launch virtual machine (5 mins)</h2>
-<ol type="1">
-<li><p>On your new repository page, click the green “&lt; &gt; Code” button, then select the sub-option “Codespaces”, and finally hit “Create codespace on main” or the “+” button.</p></li>
-<li><p>This will launch a new screen</p>
-<ul>
-<li>This is setting up a Linux machine in the cloud for you</li>
-<li>Just let it set itself up, it will take a minute: content will be displayed in the terminal as it installs software</li>
-</ul></li>
-<li><p>The interface is modelled on VSCode. You will have access to a terminal at the bottom of the screen (the prompt is highlighted with your username and a “$” symbol)</p></li>
-</ol>
-</section>
-<section id="round-4-create-directory-structure-10-mins" class="level2">
-<h2 class="anchored" data-anchor-id="round-4-create-directory-structure-10-mins">Round 4: Create directory structure (10 mins)</h2>
-<p>We’re going to create a repository structure that looks like this:</p>
-<pre class="text"><code>example-project/            The package git repository
-├── src/  
-│   └── example_project/     
-│       ├── __init__.py      Makes the folder a package.
-│       └── example.py       An example module.
-├── tests/
-|   ├── __init__.py          Sets up the test suite.
-│   └── test_source.py       A file containing tests for the code in source.py.
-├── README.md                README with information about the project.
-├── docs                     Package documentation
-├── pyproject.toml           Allows you to install this as a package and use elsewhere
-├── LICENSE                  License text to allow for reuse
-├── CITATION.cff             Citation file that makes it easy for people to cite you!
-├── data/                    For the sake of this example project
-|   ├── raw 
-│   └── results  
-├── notebooks
-└── reports                  For a manuscript source, e.g., LaTeX, Markdown, etc., or any project reports/notes
-</code></pre>
-<p>There will be some useful template filler in some of the files, that we will discuss in the relevant sections.</p>
-<section id="enter-your-project-name" class="level3">
-<h3 class="anchored" data-anchor-id="enter-your-project-name">Enter your project name:</h3>
-<div class="observable">
-<p><label>Package name (remember: only letters and underscores): &nbsp; <input id="name" value="example_name" type="text" placeholder="example_name" pattern="[a-z0-9_]*" style="font-family:monospace;"></label></p>
-<section id="use-the-following-code-output-to-generate-the-file-structure" class="level3">
-<h3 class="anchored" data-anchor-id="use-the-following-code-output-to-generate-the-file-structure">Use the following code output to generate the file structure:</h3>
-<pre id="output" style="background-color: #f8f9fa; padding: 10px; border-radius: 5px; border-left: 4px solid #007acc;"></pre>
-<script>
-const name = document.getElementById('name');
-
-function updateOutput() {
-    sanitized = (name.value || "").replace(/[^a-z0-9_]/g, "")
-    output.textContent = 
-`mkdir -p tests src/${sanitized} data/raw data/results notebooks reports
-touch {pyproject.toml,environment.yml,README.md,CITATION.cff,src/${sanitized}/__init__.py,src/${sanitized}/example.py}
-echo -e 'import sys\nsys.path.append("src")' > tests/__init__.py
-echo -e 'name: ${sanitized}-env
-
-channels:
-  - conda-forge
-  - nodefaults
-
-dependencies:
-  - python=3.13
-  - pytest
-  - blackd
-  - isort
-
-  # remove/modify these as needed
-  - numpy
-  - pandas
-
-  # keep this to install your Python package locally
-  - pip
-  - pip:
-    - --editable .' > environment.yml
-echo -e '[build-system]
-requires = ["setuptools", "wheel"]
-build-backend = "setuptools.build_meta"
-
-[project]
-name = "${sanitized}"
-version = "0.1.0"
-description = "Brief description"
-authors = [{name = "Your Name"}]
-requires-python = ">=3.13"
-
-[tool.setuptools.packages.find]
-where = ["src"]' > pyproject.toml`
-    }
-
-name.addEventListener('input', updateOutput);
-updateOutput();
-
-</script>
-</section>
 </div>
-<ul>
-<li>Copy and paste this block of code into the terminal from inside your project folder</li>
-<li>Check that the structure is as expected using the folder navigation on the left or the commands <code>cd folder-name</code> and <code>ls</code></li>
-</ul>
-<p>You should now have an organised folder structure in your virtual machine.</p>
-
-
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+The <code>pyproject.toml</code> file
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>During the folder structure organisation stage, we created a <code>pyproject.toml</code> file. This provides the information pip needs to install our Python package:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode toml code-with-copy"><code class="sourceCode toml"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">[build-system]</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="dt">requires</span> <span class="op">=</span> <span class="op">[</span><span class="st">"setuptools"</span><span class="op">,</span> <span class="st">"wheel"</span><span class="op">]</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="dt">build-backend</span> <span class="op">=</span> <span class="st">"setuptools.build_meta"</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="kw">[project]</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="dt">name</span> <span class="op">=</span> <span class="st">"amazing_project"</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="dt">version</span> <span class="op">=</span> <span class="st">"0.1.0"</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="dt">description</span> <span class="op">=</span> <span class="st">"Brief description"</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="dt">authors</span> <span class="op">=</span> <span class="op">[{</span><span class="dt">name</span><span class="op"> =</span> <span class="st">"Your Name"</span><span class="op">}]</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="dt">requires-python</span> <span class="op">=</span> <span class="st">"&gt;=3.13"</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="kw">[tool.setuptools.packages.find]</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="dt">where</span> <span class="op">=</span> <span class="op">[</span><span class="st">"src"</span><span class="op">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>For now, we’re not going to touch this; we just need to know it’s there.</p>
+</div>
+</div>
+</div>
+<p>Now we just need to create the Conda environment from the file:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env create <span class="at">-f</span> environment.yml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
+<section id="step-4-activate-and-test-the-environment" class="level3">
+<h3 class="anchored" data-anchor-id="step-4-activate-and-test-the-environment">Step 4: Activate and test the environment</h3>
+<p>After the environment has been created, you’ll need to activate it:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate <span class="op">&lt;</span>your-env-name<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>replacing <code>&lt;your-env-name&gt;</code> with the name you provided in the <code>environment.yml</code> file.</p>
+<p>You may need to launch a new terminal. Test that the environment works by launching python and trying to import one of the installed libraries:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>and then</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="step-5-update-the-environment" class="level3">
+<h3 class="anchored" data-anchor-id="step-5-update-the-environment">Step 5: Update the environment</h3>
+<p>Next, we’re going to add an additional library to the environment to see hwo that works:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode yml code-with-copy"><code class="sourceCode yaml"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">name</span><span class="kw">:</span><span class="at"> my-env-name</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">channels</span><span class="kw">:</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> conda-forge</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> nodefaults</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="fu">dependencies</span><span class="kw">:</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> python=3.13</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> pytest</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> blackd</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> isort</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="co">  # remove/modify these as needed</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> numpy</span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> pandas</span></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a><span class="co">  # keep this to install your Python package locally</span></span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> pip</span></span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">pip</span><span class="kw">:</span></span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> marimo</span><span class="co"> # add this line</span></span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> --editable .</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This is a notebook tool similar to Jupyter that we will use for some quick prototyping. You could also install Jupyter with Jupytext (to improve version controlling of your notebooks) if you prefer that interface.</p>
+<p>To update the environment with this new library, we run:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env update <span class="at">--file</span> environment.yaml <span class="at">--prune</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="step-6-set-vscode-to-recognise-your-environment" class="level3">
+<h3 class="anchored" data-anchor-id="step-6-set-vscode-to-recognise-your-environment">Step 6: Set VSCode to recognise your environment</h3>
+<p>Use the VSCode shortcut <code>Ctrl Shift P</code> to open the command prompt. Start typing <em>select interpreter</em> and it should autosuggest the “Python: Select Interpreter” option. Choose your Conda environment from the list. Now you’ll be able to run Python files from the VSCode interface using the correct environment.</p>
+</section>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further reading</h2>
+<ul>
+<li><a href="https://realpython.com/python-pyproject-toml/">How to Manage Python Projects With pyproject.toml</a></li>
+</ul>
+
+
 </section>
 
 </main> <!-- /main -->

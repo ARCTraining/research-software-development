@@ -87,6 +87,8 @@ example-project/            The package git repository
 
 ```
 
+There will be some useful template filler in some of the files, that we will discuss in the relevant sections.
+
 ### Enter your project name:
 
 ::: { .observable }
@@ -106,7 +108,39 @@ function updateOutput() {
 `mkdir -p tests src/${sanitized} data/raw data/results notebooks reports
 touch {pyproject.toml,environment.yml,README.md,CITATION.cff,src/${sanitized}/__init__.py,src/${sanitized}/example.py}
 echo -e 'import sys\nsys.path.append("src")' > tests/__init__.py
-`
+echo -e 'name: ${sanitized}-env
+
+channels:
+  - conda-forge
+  - nodefaults
+
+dependencies:
+  - python=3.13
+  - pytest
+  - blackd
+  - isort
+
+  # remove/modify these as needed
+  - numpy
+  - pandas
+
+  # keep this to install your Python package locally
+  - pip
+  - pip:
+    - --editable .' > environment.yml
+echo -e '[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "${sanitized}"
+version = "0.1.0"
+description = "Brief description"
+authors = [{name = "Your Name"}]
+requires-python = ">=3.13"
+
+[tool.setuptools.packages.find]
+where = ["src"]' > pyproject.toml`
     }
 
 name.addEventListener('input', updateOutput);

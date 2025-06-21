@@ -22,6 +22,7 @@ website:
       - version_control/version_control.qmd
       - version_control/practical3.qmd
       - dependencies/dependencies.qmd
+      - dependencies/practical4.qmd
     - section: "2. Make your code robust"
       contents:
       - testing.qmd

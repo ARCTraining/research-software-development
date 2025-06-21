@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -207,6 +241,12 @@ cookieconsent.run({
  <span class="menu-text">Dependency management</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./dependencies/practical4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practical 4: Installing and using Conda with Miniforge</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -248,8 +288,23 @@ cookieconsent.run({
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#part-one-building-the-core-code" id="toc-part-one-building-the-core-code" class="nav-link active" data-scroll-target="#part-one-building-the-core-code">Part One: building the core code</a></li>
-  <li><a href="#part-two-using-the-core-code" id="toc-part-two-using-the-core-code" class="nav-link" data-scroll-target="#part-two-using-the-core-code">Part two: using the core code</a></li>
+  <li><a href="#part-one-building-the-core-code" id="toc-part-one-building-the-core-code" class="nav-link active" data-scroll-target="#part-one-building-the-core-code">Part One: building the core code</a>
+  <ul class="collapse">
+  <li><a href="#brainstorm-and-gather-requirements" id="toc-brainstorm-and-gather-requirements" class="nav-link" data-scroll-target="#brainstorm-and-gather-requirements">1. Brainstorm and gather requirements</a></li>
+  <li><a href="#create-your-project-directory-structure-in-a-repository" id="toc-create-your-project-directory-structure-in-a-repository" class="nav-link" data-scroll-target="#create-your-project-directory-structure-in-a-repository">2. Create your project directory structure in a repository</a></li>
+  <li><a href="#create-a-development-environment" id="toc-create-a-development-environment" class="nav-link" data-scroll-target="#create-a-development-environment">3. Create a development environment</a></li>
+  <li><a href="#write-your-pseudocode-comments-and-code" id="toc-write-your-pseudocode-comments-and-code" class="nav-link" data-scroll-target="#write-your-pseudocode-comments-and-code">4. Write your pseudocode, comments, and code</a></li>
+  <li><a href="#write-a-test-suite" id="toc-write-a-test-suite" class="nav-link" data-scroll-target="#write-a-test-suite">5. Write a test suite</a></li>
+  <li><a href="#write-documentation" id="toc-write-documentation" class="nav-link" data-scroll-target="#write-documentation">6. Write documentation</a></li>
+  </ul></li>
+  <li><a href="#part-two-using-the-core-code" id="toc-part-two-using-the-core-code" class="nav-link" data-scroll-target="#part-two-using-the-core-code">Part two: using the core code</a>
+  <ul class="collapse">
+  <li><a href="#setting-up-your-folder-structure" id="toc-setting-up-your-folder-structure" class="nav-link" data-scroll-target="#setting-up-your-folder-structure">1. Setting up your folder structure</a></li>
+  <li><a href="#creating-a-research-environment" id="toc-creating-a-research-environment" class="nav-link" data-scroll-target="#creating-a-research-environment">2. Creating a research environment</a></li>
+  <li><a href="#do-your-research" id="toc-do-your-research" class="nav-link" data-scroll-target="#do-your-research">3. Do your research!</a></li>
+  <li><a href="#export-your-environment" id="toc-export-your-environment" class="nav-link" data-scroll-target="#export-your-environment">4. Export your environment</a></li>
+  <li><a href="#create-a-release-synced-with-zenodo" id="toc-create-a-release-synced-with-zenodo" class="nav-link" data-scroll-target="#create-a-release-synced-with-zenodo">5. Create a release, synced with zenodo</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -288,11 +343,24 @@ cookieconsent.run({
 </div>
 <section id="part-one-building-the-core-code" class="level2">
 <h2 class="anchored" data-anchor-id="part-one-building-the-core-code">Part One: building the core code</h2>
-<ol type="1">
-<li><p>Brainstorm and gather requirements</p></li>
-<li><p>Create your project directory structure in a repository</p></li>
-</ol>
+<section id="brainstorm-and-gather-requirements" class="level3">
+<h3 class="anchored" data-anchor-id="brainstorm-and-gather-requirements">1. Brainstorm and gather requirements</h3>
+</section>
+<section id="create-your-project-directory-structure-in-a-repository" class="level3">
+<h3 class="anchored" data-anchor-id="create-your-project-directory-structure-in-a-repository">2. Create your project directory structure in a repository</h3>
 <p><label>Project name: &nbsp; <input id="name" value="example_name" type="text" placeholder="example_name" pattern="[a-z0-9_]*" style="font-family:monospace;"></label></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+View commands to create structure
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <div class="tabset-margin-container"></div><div class="panel-tabset" data-group="workflow">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">Single directory project</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">Dual directory project</a></li></ul>
 <div class="tab-content" data-group="workflow">
@@ -310,12 +378,77 @@ function updateOutput() {
 `mkdir -p tests src/${sanitized}
 touch {pyproject.toml,environment.yml,README.md,CITATION.cff,src/${sanitized}/__init__.py,src/${sanitized}/example.py}
 echo -e 'import sys\nsys.path.append("src")' > tests/__init__.py
-`
+echo -e 'name: ${sanitized}-env
+
+channels:
+  - conda-forge
+  - nodefaults
+
+dependencies:
+  - python=3.13
+  - pytest
+  - blackd
+  - isort
+
+  # remove/modify these as needed
+  - numpy
+  - pandas
+
+  # keep this to install your Python package locally
+  - pip
+  - pip:
+    - --editable .' > environment.yml
+echo -e '[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "${sanitized}"
+version = "0.1.0"
+description = "Brief description"
+authors = [{name = "Your Name"}]
+requires-python = ">=3.13"
+
+[tool.setuptools.packages.find]
+where = ["src"]' > pyproject.toml`
+
    output_a.textContent = 
 `mkdir -p tests src/${sanitized} data/raw data/results notebooks reports
 touch {pyproject.toml,environment.yml,README.md,CITATION.cff,src/${sanitized}/__init__.py,src/${sanitized}/example.py}
 echo -e 'import sys\nsys.path.append("src")' > tests/__init__.py
-`
+echo -e 'name: ${sanitized}-env
+
+channels:
+  - conda-forge
+  - nodefaults
+
+dependencies:
+  - python=3.13
+  - pytest
+  - blackd
+  - isort
+
+  # remove/modify these as needed
+  - numpy
+  - pandas
+
+  # keep this to install your Python package locally
+  - pip
+  - pip:
+    - --editable .' > environment.yml
+echo -e '[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "${sanitized}"
+version = "0.1.0"
+description = "Brief description"
+authors = [{name = "Your Name"}]
+requires-python = ">=3.13"
+
+[tool.setuptools.packages.find]
+where = ["src"]' > pyproject.toml`
     }
 
 name.addEventListener('input', updateOutput);
@@ -325,12 +458,23 @@ updateOutput();
 </div>
 </div>
 </div>
-<ol start="3" type="1">
-<li><p>Create a development environment</p></li>
-<li><p>Write your pseudocode, comments, and code</p></li>
-<li><p>Write a test suite</p></li>
-<li><p>Write documentation</p></li>
-</ol>
+</div>
+</div>
+</div>
+</section>
+<section id="create-a-development-environment" class="level3">
+<h3 class="anchored" data-anchor-id="create-a-development-environment">3. Create a development environment</h3>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env create <span class="at">-f</span> environment.yml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env update <span class="at">--file</span> environment.yaml <span class="at">--prune</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="write-your-pseudocode-comments-and-code" class="level3">
+<h3 class="anchored" data-anchor-id="write-your-pseudocode-comments-and-code">4. Write your pseudocode, comments, and code</h3>
+</section>
+<section id="write-a-test-suite" class="level3">
+<h3 class="anchored" data-anchor-id="write-a-test-suite">5. Write a test suite</h3>
+</section>
+<section id="write-documentation" class="level3">
+<h3 class="anchored" data-anchor-id="write-documentation">6. Write documentation</h3>
 <div class="tabset-margin-container"></div><div class="panel-tabset" data-group="workflow">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">Single directory project</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">Dual directory project</a></li></ul>
 <div class="tab-content" data-group="workflow">
@@ -343,11 +487,11 @@ updateOutput();
 </div>
 </div>
 </section>
+</section>
 <section id="part-two-using-the-core-code" class="level2">
 <h2 class="anchored" data-anchor-id="part-two-using-the-core-code">Part two: using the core code</h2>
-<ol type="1">
-<li>Setting up your folder structure</li>
-</ol>
+<section id="setting-up-your-folder-structure" class="level3">
+<h3 class="anchored" data-anchor-id="setting-up-your-folder-structure">1. Setting up your folder structure</h3>
 <div class="tabset-margin-container"></div><div class="panel-tabset" data-group="workflow">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true">Single directory project</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false">Dual directory project</a></li></ul>
 <div class="tab-content" data-group="workflow">
@@ -359,9 +503,9 @@ updateOutput();
 </div>
 </div>
 </div>
-<ol start="2" type="1">
-<li>Creating a research environment</li>
-</ol>
+</section>
+<section id="creating-a-research-environment" class="level3">
+<h3 class="anchored" data-anchor-id="creating-a-research-environment">2. Creating a research environment</h3>
 <div class="tabset-margin-container"></div><div class="panel-tabset" data-group="workflow">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true">Single directory project</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-2" role="tab" aria-controls="tabset-5-2" aria-selected="false">Dual directory project</a></li></ul>
 <div class="tab-content" data-group="workflow">
@@ -373,9 +517,9 @@ updateOutput();
 </div>
 </div>
 </div>
-<ol start="3" type="1">
-<li>Do your research!</li>
-</ol>
+</section>
+<section id="do-your-research" class="level3">
+<h3 class="anchored" data-anchor-id="do-your-research">3. Do your research!</h3>
 <p>Advice on imports, advice on jupyter notebooks</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset" data-group="workflow">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-6-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-1" role="tab" aria-controls="tabset-6-1" aria-selected="true">Single directory project</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-2" role="tab" aria-controls="tabset-6-2" aria-selected="false">Dual directory project</a></li></ul>
@@ -389,12 +533,15 @@ updateOutput();
 </div>
 </div>
 <p>Advice on updating core code, and re-running all output</p>
-<ol start="4" type="1">
-<li><p>Export your environment</p></li>
-<li><p>Create a release, synced with zenodo</p></li>
-</ol>
+</section>
+<section id="export-your-environment" class="level3">
+<h3 class="anchored" data-anchor-id="export-your-environment">4. Export your environment</h3>
+</section>
+<section id="create-a-release-synced-with-zenodo" class="level3">
+<h3 class="anchored" data-anchor-id="create-a-release-synced-with-zenodo">5. Create a release, synced with zenodo</h3>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

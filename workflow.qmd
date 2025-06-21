@@ -15,11 +15,14 @@ If you select this tab, the instructions below will show information relevant to
 
 ## Part One: building the core code
 
-1. Brainstorm and gather requirements
+### 1. Brainstorm and gather requirements
 
-2. Create your project directory structure in a repository
+### 2. Create your project directory structure in a repository
 
 <label>Project name: &nbsp; <input id="name" value="example_name" type="text" placeholder="example_name" pattern="[a-z0-9_]*" style="font-family:monospace;"></label>
+
+:::::{.callout-note collapse="true"}
+## View commands to create structure
 
 :::: {.panel-tabset group="workflow"}
 ## Single directory project
@@ -43,12 +46,77 @@ function updateOutput() {
 `mkdir -p tests src/${sanitized}
 touch {pyproject.toml,environment.yml,README.md,CITATION.cff,src/${sanitized}/__init__.py,src/${sanitized}/example.py}
 echo -e 'import sys\nsys.path.append("src")' > tests/__init__.py
-`
+echo -e 'name: ${sanitized}-env
+
+channels:
+  - conda-forge
+  - nodefaults
+
+dependencies:
+  - python=3.13
+  - pytest
+  - blackd
+  - isort
+
+  # remove/modify these as needed
+  - numpy
+  - pandas
+
+  # keep this to install your Python package locally
+  - pip
+  - pip:
+    - --editable .' > environment.yml
+echo -e '[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "${sanitized}"
+version = "0.1.0"
+description = "Brief description"
+authors = [{name = "Your Name"}]
+requires-python = ">=3.13"
+
+[tool.setuptools.packages.find]
+where = ["src"]' > pyproject.toml`
+
    output_a.textContent = 
 `mkdir -p tests src/${sanitized} data/raw data/results notebooks reports
 touch {pyproject.toml,environment.yml,README.md,CITATION.cff,src/${sanitized}/__init__.py,src/${sanitized}/example.py}
 echo -e 'import sys\nsys.path.append("src")' > tests/__init__.py
-`
+echo -e 'name: ${sanitized}-env
+
+channels:
+  - conda-forge
+  - nodefaults
+
+dependencies:
+  - python=3.13
+  - pytest
+  - blackd
+  - isort
+
+  # remove/modify these as needed
+  - numpy
+  - pandas
+
+  # keep this to install your Python package locally
+  - pip
+  - pip:
+    - --editable .' > environment.yml
+echo -e '[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "${sanitized}"
+version = "0.1.0"
+description = "Brief description"
+authors = [{name = "Your Name"}]
+requires-python = ">=3.13"
+
+[tool.setuptools.packages.find]
+where = ["src"]' > pyproject.toml`
     }
 
 name.addEventListener('input', updateOutput);
@@ -58,14 +126,23 @@ updateOutput();
 
 
 ::::
+:::::
 
-3. Create a development environment
+### 3. Create a development environment
 
-4. Write your pseudocode, comments, and code 
+```bash
+conda env create -f environment.yml
+```
 
-5. Write a test suite
+```bash
+conda env update --file environment.yaml --prune
+```
 
-6. Write documentation
+### 4. Write your pseudocode, comments, and code 
+
+### 5. Write a test suite
+
+### 6. Write documentation
 
 ::: {.panel-tabset group="workflow"}
 ## Single directory project
@@ -79,7 +156,7 @@ Content - including a `pyproject.toml`
 
 ## Part two: using the core code
 
-1. Setting up your folder structure
+### 1. Setting up your folder structure
 
 ::: {.panel-tabset group="workflow"}
 ## Single directory project
@@ -91,7 +168,7 @@ Content - You've already done this bit
 Content
 :::
 
-2. Creating a research environment
+### 2. Creating a research environment
 
 ::: {.panel-tabset group="workflow"}
 ## Single directory project
@@ -103,7 +180,7 @@ Content
 Content
 :::
 
-3. Do your research!
+### 3. Do your research!
 
 Advice on imports, advice on jupyter notebooks
 
@@ -119,6 +196,6 @@ Content
 
 Advice on updating core code, and re-running all output
 
-4. Export your environment
+### 4. Export your environment
 
-5. Create a release, synced with zenodo
+### 5. Create a release, synced with zenodo
