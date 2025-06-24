@@ -1,0 +1,31 @@
+---
+title: "Testing"
+subtitle: "Confidence that your code works correctly"
+format:
+  html:
+    theme:
+      - default
+      - styles.scss
+---
+
+:::{.callout-note}
+## Session Objectives
+
+In this section, we will learn about the importance of testing, how to create a test suite for our code, and how to implement test-driven-development.
+
+:::
+
+
+[Open introduction presentation ↗](presentation.qmd){.btn .btn-outline-primary .btn role="button" data-toggle="tooltip" title="Open presentation in a new tab" target="_blank"}
+
+## Presentation content
+
+```{python}
+#| echo: false
+#| output: asis
+
+# Include and convert presentation content
+from heading_converter import include_and_convert
+result = include_and_convert('_content.qmd')
+print(result)
+```

@@ -25,9 +25,10 @@ website:
       - dependencies/practical4.qmd
     - section: "2. Make your code robust"
       contents:
-      - testing.qmd
-      - releases.qmd
-      - documentation.qmd
+      - testing/testing.qmd
+      - testing/practical5.qmd
+      - releases/releases.qmd
+      - releases/practical6.qmd
   navbar:
     left:
       - href: workflow.qmd

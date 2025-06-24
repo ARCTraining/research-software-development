@@ -1,0 +1,415 @@
+---
+title: "Practical 5: Testing"
+
+---
+
+## Activity Overview
+
+**Duration:**  30 mins
+
+**Goal:** Write a simple test suite for your code using Pytest
+
+
+## Step 1: Write unit tests for your existing code 
+
+When we run through an example case, we are going to be using `pytest`, which is already installed in your environment in your devcontainer. The `pytest` documentation suggests that each test has four parts:
+
+1. Arrange: you set the test up; you define variables/example data.
+2. Act: you run the functions you want to test.
+3. Assert: you check the answers to these functions are expected.
+4. Clean-up: you wipe the board clean and delete any variables or outputs.
+
+These tests will go into your `test` directory, in a Python file that begins with `test_`, and are essentially functions who's names also begin with `test_` - this means that pytest will be able to find and identify them as tests. Whew, the word "test" has almost lost meaning by now.
+
+```python
+def test_example(self):
+    '''Test for the example function'''
+
+    # Arrange
+    test_variable_1 = 0
+    test_variable_2 = 1
+    expected_output = 7
+
+    # Act
+    output = your_function(test_variable_1, test_variable_2)
+
+    # Assert
+    assert output == expected_output
+
+    # No cleanup needed
+```
+
+You can see that testing in Python depends heavily on [assert statements](https://realpython.com/python-assert-statement/).
+
+- You can use a basic assert statement to check if output is identical, eg. `assert one == 1`.
+- For floating point numbers of values where tolerance is required, you can use the `pytest.approx()` function — see [documentation here](https://docs.pytest.org/en/latest/reference/reference.html#pytest.approx); remember that this will require an import statement like `from pytest import approx` at the beginning of your test script. You can define tolerance to suit your approach.
+- The math library also includes a `isclose()` function — see [documentation here](https://docs.python.org/3/library/math.html#math.isclose).
+- The `numpy.testing` module contains many different assert statements for arrays — see [documentation here](https://numpy.org/doc/stable/reference/routines.testing.html).
+
+Once you've written your tests, you can run `pytest` from the conda env where it's installed, in the top-level directory (where your `src/` and `tests/` directories are). See [details on running `pytest` here](https://docs.pytest.org/en/7.1.x/how-to/usage.html#usage).
+
+
+## Step 2: Try Test-Driven Development (TDD) for other functions
+
+For functions that you haven't built yet (that are just pseudocode), try building the functions using Test Driven Development: write the unit test first, then the function!
+
+### Create a failing test
+
+We want to build a test that checks that our not-yet-written function does exactly what we want.
+
+:::: {.columns}
+
+::: {.column}
+
+File: `src/my_package/my_module.py`
+
+```python
+# function to process strings into filepath
+    # TODO: Read in strings and id number
+    # TODO: Concatenate into file path
+    # TODO: return filepath
+```
+
+:::
+
+::: {.column}
+
+File: `tests/test_my_module.py`
+
+```python
+import my_package.my_module
+
+def test_create_filepath():
+
+    # Arrange
+    example_input = "folder-1", "folder-2", "filename-prefix", "filename-suffix", 23
+    expected_output = "folder-1/folder-2/filename-prefix_filename-suffix_23.txt"
+
+    # Act
+    real_output = my_package.my_module.create_filepath(expected_output)
+
+    # Assert
+    assert real_output == expected_output
+
+```
+
+:::
+
+::::
+
+Now, from the main project directory, run `pytest`: check that it captures and runs your test, and fails (because there is no `my_package.my_module.create_filepath()` function)
+
+### Create function stub and re-run
+
+:::: {.columns}
+
+::: {.column}
+
+File: `src/my_package/my_module.py`
+
+```python
+# function to process strings into filepath
+def create_filepath():
+    # TODO: Read in strings and id number
+    # TODO: Concatenate into file path
+    # TODO: return filepath
+    pass
+
+```
+
+:::
+
+::: {.column}
+
+File: `tests/test_my_module.py`
+
+```python
+import my_package.my_module
+
+def test_create_filepath():
+
+    # Arrange
+    example_input = "folder-1", "folder-2", "filename-prefix", "filename-suffix", 23
+    expected_output = "folder-1/folder-2/filename-prefix_filename-suffix_23.txt"
+
+    # Act
+    real_output = my_package.my_module.create_filepath(example_input)
+
+    # Assert
+    assert real_output == expected_output
+
+```
+
+:::
+
+::::
+
+Now, you should get a different pytest error!
+
+### Keep iterating until you have a working function and a passing test!
+
+This can be a useful way of working through complex functions: sometimes writing the test first helps to solidify exactly what you want the function to do.
+
+## Step 3: Start writing integration tests
+
+Once you have created unit tests for each of your individual functions, it's time to start thinking about "integration tests" that tie these together.
+
+Sometimes the "integration" happens in your module, as below, and so the "integration test" just looks very similar to a unit test:
+
+:::: {.columns}
+
+::: {.column}
+
+File: `src/my_package/my_module.py`
+
+```python
+
+def function_1(...):
+    ...
+
+def function_2(...):
+    ...
+
+def function_3(...):
+    ...
+
+def function_4(...):
+    ...
+
+def big_function_1(x, y):
+    a = function_1(x)
+    b = function_2(y)
+    c = function_3(a, b)
+    d = function_4(a, b, c)
+    return d
+
+```
+
+:::
+
+::: {.column}
+
+File: `tests/test_my_module.py`
+
+```python
+import my_package.my_module
+
+def test_big_function_1():
+
+    # Arrange
+    example_input = 15, 23
+    expected_output = 777
+
+    # Act
+    real_output = my_package.my_module.big_function_1(example_input)
+
+    # Assert
+    assert real_output == expected_output
+
+```
+
+:::
+
+::::
+
+But sometimes the "integration" happens in the test file:
+
+:::: {.columns}
+
+::: {.column}
+
+File: `src/my_package/my_module.py`
+
+```python
+
+def function_1(...):
+    ...
+
+def function_2(...):
+    ...
+
+def function_3(...):
+    ...
+
+def function_4(...):
+    ...
+
+def big_function_1(x, y):
+    a = function_1(x)
+    b = function_2(y)
+    c = function_3(a, b)
+    d = function_4(a, b, c)
+    return d
+
+```
+
+:::
+
+::: {.column}
+
+File: `tests/test_my_module.py`
+
+```python
+import my_package.my_module
+
+def test_big_function_1():
+
+    # Arrange
+    example_input_x = 15
+    example_input_y = 23
+    
+
+    expected_output = 777
+
+    # Act
+    a = my_package.my_module.function_1(example_input_x)
+    b = my_package.my_module.function_2(example_input_y)
+    c = my_package.my_module.function_3(a, b)
+    real_output = my_package.my_module.function_4(a, b, c)
+
+    # Assert
+    assert real_output == expected_output
+
+```
+
+:::
+
+::::
+
+## Step 4: Set up automated testing workflows
+
+One of the powerful tools that GitHub provides is the ability to run "actions" which are workflows run on a virtual machine, when you do something specific with your repository (for example, every time you push to the `main` branch).
+
+### Push all changes to your remote repository
+
+Ensure your remote repository is up to date with all changes, and that your suite of tests are all passing when you run Pytest.
+
+### Visit the remote repository GitHub page and find the actions tab
+
+From the repository page, you can find a top navigation bar including the tab "Actions".
+
+### Search the Actions templates for Python tests
+
+Search "Python" and "test" in the search console, and select the suggested option "Python Package using Anaconda". After this course, open and compare the other action templates.
+
+Click "configure" on the "Python Package using Anaconda" action. 
+
+### Configure the action
+
+Not much needs to change in this action file.
+
+The key configurations are:
+
+1. Update the Python version to the version you have used in your package.
+
+Replace:
+
+```yaml
+    - name: Set up Python 3.10
+      uses: actions/setup-python@v3
+      with:
+        python-version: '3.10'
+```
+
+with
+
+```yaml
+    - name: Set up Python 3.13
+      uses: actions/setup-python@v3
+      with:
+        python-version: '3.13'
+```
+
+(or with whatever version is relevant).
+
+2. Change the run criteria.
+
+We can replace:
+
+```yaml
+on: [push]
+```
+
+with:
+
+```yaml
+on: [push, workflow_dispatch]
+```
+
+so that we can manually trigger the test run.
+
+Once you've edited the file, click the green "Commit changes" button.
+
+### Check the action is working
+
+Click on the "Actions" tab again to see the workflow run process. Under the !All workflows" header, you should see a table of workflow runs.
+
+Currently in-progress runs will have an orange circle symbol, which successful runs will have a green tick symbol.
+
+On the left-hand sidebar, you can see the name of the workflow run we created for testing: "Python Package using Conda". If you click on this, you'll see a table again showing the workflow runs. The "Run workflow" button gives you the option to rerun the tests.
+
+### Pull your remote changes
+
+Back in Codespaces, you'll want to pull down any changes made to the remote (like adding a workflow action file) back to your local version. From bash, run:
+
+```bash
+git pull origin main
+```
+
+and you should see the workflow file appear in your directory.
+
+## Further notes on testing
+
+### Alternatives to `==`
+
+You can see that testing in Python depends heavily on [assert statements](https://realpython.com/python-assert-statement/).
+
+- You can use a basic assert statement to check if output is identical, eg. `assert one == 1`.
+- For floating point numbers of values where tolerance is required, you can use the `pytest.approx()` function -- see [documentation here](https://docs.pytest.org/en/latest/reference/reference.html#pytest.approx); remember that this will require an import statement like `from pytest import approx` at the beginning of your test script. You can define tolerance to suit your approach.
+- The `math` library also includes a `isclose()` function -- see [documentation here](https://docs.python.org/3/library/math.html#math.isclose).
+- The `numpy.testing` module contains many different assert statements for arrays -- see [documentation here](https://numpy.org/doc/stable/reference/routines.testing.html).
+
+### Testing for Machine Learning
+
+Machine learning testing can be complex due to the stochastic processes involved; however, good code writing practises and diligent unit testing can ensure that your code is behaving as intended.
+
+#### Make your code modular and break it into small functions
+
+Making sure your code is made up of small simple functions that fit together in a modular way makes it far easier to write unit tests, and separates out any training/ML algorithms from easier-to-test code.
+
+#### Build unit tests for all your functions
+
+In addition to your actual machine learning algorithms, you will presumably have multiple preprocessing and data cleaning stages, and other calculations before you train a model. Ensure that all these stages are covered by your unit testing suite. 
+
+#### Test your modelling functions
+
+You should test that your modelling function produces the correct coefficients. In [this tutorial](https://medium.com/@ydmarinb/simplifying-unit-testing-in-machine-learning-with-python-df9b9c1a3300#:~:text=Unit%20tests%20are%20small%20tests,processing%20to%20model%20performance%20evaluation.), the author uses the `assert` statement in conjunction with the `hasattr` function to check that the model has actually been trained:
+
+```python
+def test_model_training():
+    X, y = make_classification(n_samples=100, n_features=2, random_state=42)
+    model = LogisticRegression(random_state=42)
+    model.fit(X, y)
+    assert hasattr(model, "coef_"), "The model should have attributes after training"
+```
+
+#### Integration tests and example outputs
+
+It's important to test that your model outputs results within specified bounds. This can be done by creating an example or model dataset that is expected when the model is trained with certain parameters and input data. Depending on your model, the example output may be coefficients or an entire data array (possibly saved as a csv file) that you are confident in: the results make scientific sense, compare favourable to existing analytical or numerical models, or are within a certain error envelope of a known result.
+
+As machine learning algorithms usually produce a similar but non-identical output, you can set up your test in a number of ways to allow comparison of slightly differing results:
+- Fix the random seed (if applicable) to allow for closer comparison;
+- Use libraries such as `numpy.testing` to compare numbers and arrays with specified tolerances;
+- Use post-processing functions in your library/package/workflow that reduce the data down to certain derived values to compare to example saved values (also ensure these post-processing functions have unit tests).
+
+#### Test your code as it will be used
+
+Do not include argument flags like `"testing"` to alter the behaviour of your functions when running tests; this can lead to problematic behaviour being missed by your testing suite. If you feel you *must* do this in order to run your tests, you instead need to rewrite and reorganise your code so that robust and accurate tests can be run.
+
+#### Further information and resources
+
+- [Simplifying Unit Testing in Machine Learning with Python](https://medium.com/@ydmarinb/simplifying-unit-testing-in-machine-learning-with-python-df9b9c1a3300#:~:text=Unit%20tests%20are%20small%20tests,processing%20to%20model%20performance%20evaluation.)
+- [How to unit test machine learning code](https://thenerdstation.medium.com/how-to-unit-test-machine-learning-code-57cf6fd81765)
+- [How to test ML code](https://medium.com/marvelous-mlops/how-to-test-ml-code-f9483829c72a#:~:text=Most%20ML%20codebases%20typically%20include,ensure%20they%20operate%20as%20intended.)
+
+

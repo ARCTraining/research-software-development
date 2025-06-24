@@ -1,0 +1,9 @@
+---
+title: "Testing"
+bibliography: ../assets/refs.bib
+format:
+    revealjs:
+        theme: styles.scss
+---
+
+{{< include _content.qmd >}}

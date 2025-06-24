@@ -5,7 +5,7 @@ title: "Practical 2: Folder organisation"
 
 ## Activity Overview
 
-**Duration:** 20 minutes  
+**Duration:** 15 minutes  
 **Goal:** Set up a sensible and tidy project folder structure
 
 :::{.callout-note}
@@ -32,7 +32,7 @@ This folder will contain:
 
 But for now, we simply want to create the folder structure.
 
-## Round 1: Pick a project name (5 mins)
+## Round 1: Pick a project name
 
 We need a simple name for our project folder and the Python package we are going to create
 
@@ -41,7 +41,7 @@ We need a simple name for our project folder and the Python package we are going
     - The top level folder is called something with lowercase words separated by hyphens: `example-project`
     - The Python library inside is called the same but with underscores: `example_project` (as hyphens are read as subtraction by Python and can make things complicated for imports)
 
-## Round 2: Create a repository (5 mins)
+## Round 2: Create a repository
 
 1. Go to [GitHub.com](https://github.com/) and sign up or log in.
 2. Click the "+" button to [Create a new repository](https://github.com/new)
@@ -51,7 +51,7 @@ We need a simple name for our project folder and the Python package we are going
     - Click "Create repository" at the bottom of the page
 3. You'll now be directed to your new repository page
 
-## Round 3: Launch virtual machine (5 mins)
+## Round 3: Launch virtual machine
 
 1. On your new repository page, click the green "< > Code" button, then select the sub-option "Codespaces", and finally hit "Create codespace on main" or the "+" button.
 
@@ -61,7 +61,7 @@ We need a simple name for our project folder and the Python package we are going
 
 3. The interface is modelled on VSCode. You will have access to a terminal at the bottom of the screen (the prompt is highlighted with your username and a "$" symbol)
 
-## Round 4: Create directory structure (10 mins)
+## Round 4: Create directory structure
 
 We're going to create a repository structure that looks like this:
 

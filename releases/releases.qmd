@@ -1,0 +1,30 @@
+---
+title: "Creating releases and automated workflows"
+subtitle: "Making your research truly reproducible *and* reusable"
+---
+
+:::{.callout-note}
+## Session Objectives
+
+In this section, we will explore how to create a tagged release for your code, how to mint a DOI for this release, and how to archive and reference your code appropriately.
+
+:::
+
+
+[Open introduction presentation ↗](presentation.qmd){.btn .btn-outline-primary .btn role="button" data-toggle="tooltip" title="Open presentation in a new tab" target="_blank"}
+
+## Presentation content
+
+```{python}
+#| echo: false
+#| output: asis
+
+# Include and convert presentation content
+from heading_converter import include_and_convert
+result = include_and_convert('_content.qmd')
+print(result)
+```
+
+## Futher reading
+
+- [The Good Research Code Handbook](https://goodresearch.dev/)

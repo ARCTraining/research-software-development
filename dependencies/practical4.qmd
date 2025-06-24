@@ -1,12 +1,12 @@
 ---
-title: "Practical 4: Installing and using Conda with Miniforge"
+title: "Practical 4: Installing and using Conda with Miniforge, and writing some code"
 
 ---
 
 ## Activity Overview
 
 **Duration:** 50 minutes  
-**Goal:** Get set up with Conda on your virtual machine and create a Conda environment to run Python scripts
+**Goal:** Get set up with Conda on your virtual machine and create a Conda environment to run Python scripts. Write one function, and create a docstring for this function.
 
 ### Step 1: Installing Conda via Miniforge
 
@@ -146,6 +146,18 @@ and then
 import numpy as np
 ```
 
+When you install your package locally, Conda will build the required files: you'll see something weird in your `src/` folder called something like `<your-package-name>.egg-info`. You can add a line to your `.gitignore` file to keep this binary out of your version control:
+
+```.gitinore
+*.egg-info
+```
+
+You can also keep any Python cache files out with this line:
+
+```.gitignore
+src/<your-package-name>/__pycache__/*
+```
+
 ### Step 5: Update the environment
 
 Next, we're going to add an additional library to the environment to see hwo that works:
@@ -185,6 +197,155 @@ conda env update --file environment.yaml --prune
 ### Step 6: Set VSCode to recognise your environment
 
 Use the VSCode shortcut `Ctrl Shift P` to open the command prompt. Start typing *select interpreter* and it should autosuggest the "Python: Select Interpreter" option. Choose your Conda environment from the list. Now you'll be able to run Python files from the VSCode interface using the correct environment.
+
+
+### Step 7: Start turning pseudocode into code
+
+Turn your comments on step-by-step processes into *function stubs*:
+
+```python
+# function to process data
+def process_data():
+    # TODO: Implement data loading
+    pass
+```
+
+Then, start adding your inputs and outputs:
+
+```python
+# function to process data
+def process_data(filename):
+    # TODO: Implement data loading
+    return dataframe
+```
+
+You can flesh out your pseudocode as you work:
+
+```python
+# function to process data
+def process_data(filename):
+    # TODO: Implement data loading (csv file)
+    # TODO: Create dataframe
+    # TODO: Check for any invalid data
+    # TODO: Replace NaN values with zero
+    # TODO: Check format of headers: replace " " with "_"
+    return dataframe
+```
+
+Replace pseudocode with code:
+
+```python
+import pandas as pd
+
+# function to process data
+def process_data(filename):
+    df = pd.read_csv(filename, sep=',')
+
+    # TODO: Check for any invalid data
+    # TODO: Replace NaN values with zero
+    # TODO: Check format of headers: replace " " with "_"
+    return dataframe
+```
+
+And continue until you have a full function.
+
+### Step 8: Write DocStrings for your code
+
+Like everything in Python, there are multiple different ways of doing things, and multiple different formats that documentation can be written in. We will discuss your README.md in more detail later, but for now we will focus on function and module documentation.
+
+#### What is a docstring?
+
+A docstring is the very first piece of text inside a module or function (or class, or method) that acts as documentation for the following code.
+
+##### 1. One-liners
+
+For very simple modules or functions, the docstring might only be a single line:
+
+```python
+def very_basic_function():
+    """Here's a single line docstring"""
+    pass
+```
+
+The single line should succinctly explain what the function does, and be wrapped in triple quotes (`"""`)
+
+##### 2. Multi-liners
+
+Many modules or functions will be more complex and need more detailed docstrings.
+
+```python
+def a_more_complicated_function(input_1=0.0, input_2="string"):
+    """A single line summery followed by a blank line
+
+    Keyword arguments:
+    input_1 -- explanation (default 0.0)
+    input_1 -- explanation (default "string")
+    """
+    pass
+```
+
+For more information, please read the [official docstring guidance](https://peps.python.org/pep-0257/).
+
+##### 3. Style and formatting guides
+
+There are a number of different ways to organise multi-line comments; one very popular way is the [Google Style Guide](https://github.com/google/styleguide/blob/gh-pages/pyguide.md#s3.8.1-comments-in-doc-strings).
+
+They provide the following example of a module-level docstring (so at the top of a `.py` file):
+
+```python
+"""A one-line summary of the module or program, terminated by a period.
+
+Leave one blank line.  The rest of this docstring should contain an
+overall description of the module or program.  Optionally, it may also
+contain a brief description of exported classes and functions and/or usage
+examples.
+
+Typical usage example:
+
+  foo = ClassFoo()
+  bar = foo.function_bar()
+"""
+```
+
+and this example of a complex multi-line docstring for a function:
+
+```python
+def fetch_smalltable_rows(
+    table_handle: smalltable.Table,
+    keys: Sequence[bytes | str],
+    require_all_keys: bool = False,
+) -> Mapping[bytes, tuple[str, ...]]:
+    """Fetches rows from a Smalltable.
+
+    Retrieves rows pertaining to the given keys from the Table instance
+    represented by table_handle.  String keys will be UTF-8 encoded.
+
+    Args:
+        table_handle: An open smalltable.Table instance.
+        keys: A sequence of strings representing the key of each table
+          row to fetch.  String keys will be UTF-8 encoded.
+        require_all_keys: If True only rows with values set for all keys will be
+          returned.
+
+    Returns:
+        A dict mapping keys to the corresponding table row data
+        fetched. Each row is represented as a tuple of strings. For
+        example:
+
+        {b'Serak': ('Rigel VII', 'Preparer'),
+         b'Zim': ('Irk', 'Invader'),
+         b'Lrrr': ('Omicron Persei 8', 'Emperor')}
+
+        Returned keys are always bytes.  If a key from the keys argument is
+        missing from the dictionary, then that row was not found in the
+        table (and require_all_keys must have been False).
+    """
+```
+
+##### 4. Using a plugin to help speed up docstring creation
+
+Extension like autoDocstring help you to write better and more consistent documentation by providing you with a preformatted template to fill in, that by default follows the [Google DocString guide](https://github.com/google/styleguide/blob/gh-pages/pyguide.md#s3.8.1-comments-in-doc-strings). You can read the [autoDocstring guidance here](https://marketplace.visualstudio.com/items?itemName=njpwerner.autodocstring).
+
 
 ## Further reading
 

@@ -1287,5 +1287,9 @@ When using a cloud-based remote, we can mint a DOI for the **release** for a sna
 
 In the same way that we are focussing on Git, we are going to focus on GitHub for this course
 
-- There are lots of things we can get GitHub to do that are not "version control" specific; we will look at these tomorrow!
+- There are lots of things we can get GitHub to do that are not "version control" specific; we will link to these in the "extended reading" section at the end of the course.
 - For now, lets think of it as a remote repository for `git`.
+
+## Learn by doing
+
+The best way to get used to using git is by actually using it, which brings us on to our next practical...

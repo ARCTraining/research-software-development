@@ -5,7 +5,7 @@ title: "Practical 1: Gathering Requirements"
 
 ## Activity Overview
 
-**Duration:** 30 minutes  
+**Duration:** 15 minutes  
 **Goal:** Practice translating research needs into clear software requirements
 
 **Why Requirements Matter in Research:**
@@ -16,7 +16,7 @@ title: "Practical 1: Gathering Requirements"
 
 ---
 
-## Round 1: Pick a project (5 mins)
+## Round 1: Pick a project
 
 *Pick one of these simple research-relevant projects to work with:*
 
@@ -32,7 +32,7 @@ A command-line tool for managing a collection of research papers (titles, author
 ### Option D: Experimental Results Tracker
 A tool for logging and organizing results from repeated experiments or trials.
 
-## Round 2: Requirements Gathering (15 minutes)
+## Round 2: Requirements Gathering
 
 ### Functional Requirements
 
@@ -94,7 +94,7 @@ A tool for logging and organizing results from repeated experiments or trials.
 - About users: 
 - About usage patterns: 
 
-## Round 3: Prioritization & Planning (5 minutes)
+## Round 3: Prioritization & Planning
 
 ### MoSCoW Method
 

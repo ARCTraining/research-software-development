@@ -1,0 +1,196 @@
+## What do we mean by testing?
+
+Running your code with a set of input parameters, where you already know what the output should be - and checking that your code output and “model answers” match
+
+- You probably already informally do this!
+
+A more structured testing suite…
+- Ensures code doesn’t slip through the cracks
+- Makes sure that the code still works every time it is updated
+- Can be integrated with other tools (such as GitHub)
+
+---
+
+## If you’re not testing your code, you’re not following the scientific method
+
+---
+
+## How do tests work? Example: Python
+
+Example function:
+
+```python
+def CrankNicolsonSolver(arg1, arg2, arg3, arg4):
+	“““Your Docstring Goes Here”””
+	amazingly complex math goes here
+	return(output1, output2, output3)
+```
+
+How do we test this?
+
+---
+
+## `assert` statements!
+
+In general, Python tests rely on assert statements, comparing example data outputs with the return values of one of your functions.
+
+Essentially:
+
+```python
+def test_CrankNicolsonSolver():
+	example_input = [ex_in1, ex_in2, ex_in3, ex_in4]
+	example_output = [ex_out1, ex_out2, ex_out3]
+	test_output = CrankNicolsonSolver(example_input)
+	assert test_output == example_output
+
+```
+
+This test will **pass** (nothing will happen) if the test output matched the expected example output, and will fail and throw an error if there’s a difference
+
+---
+
+## When will `==` cause problems?
+
+If your test output and your expected example output are not both integers or identical strings!
+
+With scientific code, it’s very likely that the output will be…
+- Floating point numbers
+- Arrays of floating point numbers
+
+This is when functions such as `pytest.approx()` (and equivalent functions in `numpy` and other libraries which allow comparison of arrays), which allow you to build in a tolerance to your tests, are used.
+
+It’s likely you’ll rarely use the pure equal-to operator.
+
+---
+
+## Testing your computational research... {.smaller}
+
+:::: {.columns}
+
+::: {.column width="45%"}
+
+Testing the code…
+
+- Unit Tests: test each function/each small atomic section of your code for a range of different input parameters
+- Integration Tests: test how the different functions/parts fit and work together
+
+Ensure that the code is doing what you think it’s doing:
+
+- Catch bugs quickly
+- Catch silent errors, where the code still runs but outputs different results
+
+:::
+
+::: {.column width="10%"}
+
+:::
+
+::: {.column width="45%"}
+
+Testing the science…
+
+- Are the results sensible? Do they make physical sense?
+- How to the results compare to evidence/data/analytical solutions/other models?
+- What assumptions have been made?
+- Accuracy, precision, stability of numerical models
+
+:::
+
+::::
+
+---
+
+## Test Driven Development
+
+Build the test first!
+
+- Create a test for a planned function that will just fail by default
+- Include expected outputs for comparison against the non-existent test outputs
+
+---
+
+## Start with the test!
+
+First, build your test - imagine the Crank-Nicolson solver function doesn’t exist yet!
+
+Essentially:
+
+```python
+def test_CrankNicolsonSolver():
+	example_input = [ex_in1, ex_in2, ex_in3, ex_in4]
+	example_output = [ex_out1, ex_out2, ex_out3]
+	test_output = CrankNicolsonSolver(example_input)
+	assert test_output == example_output
+```
+
+This test will fail because an error will be thrown because `test_CrankNicolsonSolver()` doesn’t exist yet!
+
+---
+
+## Test Driven Development
+
+- Build the test first!
+    - Create a test for a planned function that will just fail by default
+    - Include expected outputs for comparison against the non-existent test outputs
+- Put together the scaffolding of the function
+    - Have it take the correct input but not do anything
+
+---
+
+## Start to build the function
+
+Example function scaffolding:
+
+```python
+def CrankNicolsonSolver(arg1, arg2, arg3, arg4):
+	“““Your Docstring Goes Here”””
+	pass
+```
+
+If you run the test function, it will fail, with a different error this time: the function now exists, but it has no output.
+
+---
+
+## Test Driven Development
+
+- Build the test first!
+    - Create a test for a planned function that will just fail by default
+    - Include expected outputs for comparison against the non-existent test outputs
+- Put together the scaffolding of the function
+    - Have it take the correct input but not do anything
+- Continue to build the function until you have a passing test
+
+---
+
+## Running the tests automatically
+
+If you call all of your test functions `test_something()`,
+and if you put all your tests in a file called `test_something.py`,
+and if you put any test scripts/files in a folder called tests
+in the main project folder…
+
+You can create/use a conda environment with `pytest` installed, and simply run:
+
+`pytest`
+
+from the terminal; it will collect and run any test functions in the tests folder.
+
+---
+
+## Test workflow
+
+Test suites using `pytest` can be incorporated into your repository.
+
+You can create a GitHub action that will:
+
+- Run all of your tests when changes are made to a specific branch
+- Stop merging of other branches with main if they do not pass the tests
+- Allow collaborators to quickly run the tests on their new contributed code to save you the hassle of testing it manually.
+
+---
+
+## Putting this into action
+
+Testing can feel complex and scary until you try implementing it!
+
+Start testing your code in the next practical.

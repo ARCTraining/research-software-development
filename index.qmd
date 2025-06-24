@@ -64,18 +64,28 @@ Everyone learns in different styles and in different ways; everyone brings diffe
 
 ## Course Content
 
-This course introduces a [reproducible project workflow](workflow.qmd) that you can take and use for any future coding project.
+This course introduces a [reproducible project workflow](workflow.qmd) that you can take and use for any future coding project. The below provides suggested durations for each session, with a timetable provided for synchronous courses.
 
-| Session | Approximate duration | Key objectives |
-|---|---|---|
-| Introduction | 30 mins | Introduce reproducibility, replicability, and reusability in the context of research code. |
-| Practical 1 | 30 mins | Define requirements for a small example project as a group. |
-| Project organisation | 30 mins | Discuss ways of managing data files, code, scripts, results, and notes in a research project. |
-| Practical 2 | 20 mins | Set up a directory structure for the example project |
-| Version control | 50 mins | Introduce version control with git |
-| Practical 3 | 50 mins | Explore drafting pseudocode, notes, and comments, while using version control |
-| Dependency management | 50 mins | Introduce dependency management with Conda |
-| Practical 4 | 50 mins | Set up Python environment and begin drafting code |
+If you are attending a synchronous course, please revise the material between sessions.
+
+| Session | Approximate duration | Key objectives | Start time (taking breaks into account) |
+|---|---|---|---|
+| Day 1 |
+| Presentation: Introduction | 15 mins | Introduce reproducibility, replicability, and reusability in the context of research code. | 10 am |
+| Practical 1 | 15 mins | Define requirements for a small example project as a group. | 10.15 am |
+| Presentation: Project organisation | 20 mins | Discuss ways of managing data files, code, scripts, results, and notes in a research project. | 10.30 am (followed by 10 min break) |
+| Practical 2 | 15 mins | Set up a directory structure for the example project | 11 am |
+| Presentation: Version control | 30 mins | Introduce version control with git | 11.15 am (followed by 5 min break) |
+| Practical 3 | 30 mins | Explore drafting pseudocode, notes, and comments, while using version control | 11.50 |
+| Presentation: Dependency management | 30 mins | Introduce dependency management with Conda | 12.20 pm |
+| Q&A *or* headstart on Practical 4 | 10 mins | Last ten minutes of day 1 | 12.50 pm |
+| Day 2 |
+| Practical 4 | 40 mins | Set up Python environment and begin drafting code | 10 am |
+| Presentation: Testing | 20 mins | Introduce testing workflows | 10.20 am (followed by 5 min break) |
+| Practical 5 | 30 mins | Write a basic testing suite | 10.45 am |
+| Presentation: Releasing and archiving your code | 30 mins | Discuss the importance of creating releases and minting DOIs for your code; discuss exporting record of environment alongside results | 11.15 am (followed by 10 min break) |
+| Practical 6 | 30 mins | Releasing and archiving your code for reproducibility | |
+|   |  |  | |
 
 
 ## Author's Note

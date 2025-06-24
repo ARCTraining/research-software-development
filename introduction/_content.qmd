@@ -168,7 +168,7 @@ Reusability oftentimes gets sidelined to let reproducibility take the main stage
 
 Reproducibility, replicability and reusability are all interlinked.
 
-![](assets/reproducibility_cycle.png){fig-alt="A cyclical graph with three equal-sized segments, and arrows cycling between them. The segments read 'Reproducibility', 'Replicability', and 'Reusability', showing how these concepts are linked"}
+![](../assets/reproducibility_cycle.png){fig-alt="A cyclical graph with three equal-sized segments, and arrows cycling between them. The segments read 'Reproducibility', 'Replicability', and 'Reusability', showing how these concepts are linked"}
 
 When we discuss reproducibility more broadly (for example, with the "reproducibility crisis"), it's often implied that reusability and replicability are also included under this umbrella.
 
