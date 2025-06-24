@@ -2,7 +2,7 @@ name: Build and Deploy Quarto Site
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, master ]
   workflow_dispatch:
 
 permissions:
@@ -22,29 +22,24 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
     
-    - name: Set up Pixi
-      uses: prefix-dev/setup-pixi@v0.8.1
+    - name: Set up Python
+      uses: actions/setup-python@v5
       with:
-        pixi-version: v0.28.2
-        cache: true
+        python-version: '3.11'
     
-    - name: Install dependencies and local package
+    - name: Install local package
       run: |
-        # Install dependencies from pixi.toml in heading_converter
         cd heading_converter
-        pixi install
+        pip install -e .
+        pip install jupyter
         cd ..
-        
-        # Install the local package in development mode
-        pixi run -C heading_converter pip install -e heading_converter/
     
     - name: Set up Quarto
       uses: quarto-dev/quarto-actions/setup@v2
     
     - name: Render Quarto document
       run: |
-        # Use the pixi environment from heading_converter directory
-        pixi run -C heading_converter quarto render ../ --output-dir ../docs
+        quarto render --output-dir docs
     
     - name: Setup Pages
       uses: actions/configure-pages@v4
