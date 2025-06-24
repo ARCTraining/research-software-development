@@ -1,4 +1,5 @@
 /.quarto/
+docs/*
 
 # pixi environments
 .pixi
