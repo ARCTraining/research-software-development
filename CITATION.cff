@@ -3,7 +3,12 @@ title: "Research Software Development in Python"
 version: 0.1.0
 license: "CC-BY-NC-SA-4.0"
 type: "website"
+identifiers:
+  - description: This is the collection of archived snapshots of all versions of Research Software Development in Python
+    type: doi
+    value: "10.5281/zenodo.15739463"
 abstract: "Course presentations, notes, and practical tutorials."
+date-released: "2025-06-25"
 message: "If you use this software, please cite it as below."
 authors:
   - given-names: Maeve
