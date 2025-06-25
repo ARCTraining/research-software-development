@@ -5,8 +5,6 @@ title: "Practical 5: Testing"
 
 ## Activity Overview
 
-**Duration:**  30 mins
-
 **Goal:** Write a simple test suite for your code using Pytest
 
 

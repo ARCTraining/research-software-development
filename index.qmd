@@ -7,6 +7,7 @@ date: 2025-06-24
 author:
   - name: Maeve Murphy Quinlan
     affiliation: University of Leeds
+    orcid: 0000-0003-2958-1008
     affiliation-url: https://arc.leeds.ac.uk/profiles/maeve-murphy-quinlan/
 citation:
   url: https://murphyqm.github.io/research-software-development/
@@ -95,8 +96,27 @@ Note that this is an intensive course that covers a lot of content. If you are a
 | Presentation: Testing | 20 mins | Introduce testing workflows | 10.20 am (followed by 5 min break) |
 | Practical 5 | 30 mins | Write a basic testing suite | 10.45 am |
 | Presentation: Releasing and archiving your code | 30 mins | Discuss the importance of creating releases and minting DOIs for your code; discuss exporting record of environment alongside results | 11.15 am (followed by 10 min break) |
-| Practical 6 | 30 mins | Releasing and archiving your code for reproducibility | |
-|   |  |  | |
+| Practical 6 | 30 mins | Releasing and archiving your code for reproducibility | 11.55 am |
+| Summary and Q&A | 35 mins | Reviewing material covered | 12.25 pm |
+
+:::{.callout-tip collapse="true"}
+## Delivery guidance
+
+This is a challenging course to deliver, as there are many tools involved. The following notes have been compiled over the iterations of deliveries of previous versions:
+
+- In advance of the course, run through the practical material to ensure everything still works. Updates etc. can lead to unexpected errors
+  - Don't make things more difficult for yourself by improvising and trying out new things in front of a classroom for the first time...
+  - But equally, it's perfectly valid (and a good idea) to model *not* knowing things: it's better to offer to find an answer and post it somewhere shared at a later point, rather than making people sit through you live debugging.
+- Prioritise delivering the presentations and answering questions and discussion points; it's ok to ask attendees to complete a practical *after* the session.
+  - The practicals build on each other so you can't skip an earlier practical and then do a later one and expect this to work. HIghlight this to students when assigning "homework".
+- **Live coding** does **not** work:
+  - It's inaccessible, ineffective, and stressful for both the person delivering and the audience.
+  - It's ok to run through examples live on the screen as a recap or summary, or in response to a specific question, or when demonstrating steps in the practical, but it's important to note:
+    - Your typing on the screen should **never** be the *only* information source for important or key steps in the process: anything you do on screen should be also documented in the notes.
+    - The attendees should be given time to work through the practical sessions while you provide support, rather than sitting transcribing/copying what you are doing on screen.
+- Note any errors in an issue on the GitHub repository for this website immediately after the course: you will likely forget if you leave it until you have time to update the materials.
+
+:::
 
 
 ## Author's Note

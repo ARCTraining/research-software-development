@@ -1,0 +1,30 @@
+---
+title: "Summary"
+subtitle: "Making your research truly reproducible *and* reusable"
+---
+
+:::{.callout-note}
+## Session Objectives
+
+In this section, we will wrap up the content covered during this course and point you towards further learning.
+
+:::
+
+
+[Open introduction presentation ↗](presentation.qmd){.btn .btn-outline-primary .btn role="button" data-toggle="tooltip" title="Open presentation in a new tab" target="_blank"}
+
+## Presentation content
+
+```{python}
+#| echo: false
+#| output: asis
+
+# Include and convert presentation content
+from heading_converter import include_and_convert
+result = include_and_convert('_content.qmd')
+print(result)
+```
+
+## Futher reading
+
+- [The Good Research Code Handbook](https://goodresearch.dev/)

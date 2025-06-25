@@ -5,7 +5,6 @@ title: "Practical 1: Gathering Requirements"
 
 ## Activity Overview
 
-**Duration:** 15 minutes  
 **Goal:** Practice translating research needs into clear software requirements
 
 **Why Requirements Matter in Research:**

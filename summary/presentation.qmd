@@ -1,0 +1,9 @@
+---
+title: "Summary"
+subtitle: "Making your research truly reproducible *and* reusable"
+bibliography: ../assets/refs.bib
+format:
+    revealjs
+---
+
+{{< include _content.qmd >}}

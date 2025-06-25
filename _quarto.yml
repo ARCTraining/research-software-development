@@ -6,7 +6,7 @@ website:
   announcement: 
     icon: info-circle
     dismissable: true
-    content: "**Alert** - this is a pre-release draft; please excuse errors or typos."
+    content: "**Alert** - this is a pre-release development version; please excuse errors or typos."
     type: primary
     position: below-navbar
   title: "Research Software Development in Python"
@@ -44,6 +44,9 @@ website:
       contents:
       - releases/releases.qmd
       - releases/practical6.qmd
+    - section: "6. Conclusion"
+      contents:
+      - summary/summary.qmd
     - href: index.qmd#citation_1
       text: "<b>Cite this material</b>"
     - href: https://www.leeds.ac.uk/about/doc/accessibility-statement

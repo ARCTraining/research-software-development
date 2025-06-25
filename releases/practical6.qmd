@@ -5,7 +5,6 @@ title: "Practical 6: Archiving a release"
 
 ## Activity Overview
 
-**Duration:** 20 minutes  
 **Goal:** Create a release
 
 :::{.callout-note}
@@ -181,3 +180,9 @@ On your main repository page:
 
 - Your README should now have a correctly formatted badge with a DOI, linking to your Zenodo repository;
 - There should now be a section on the sidebar linking to your release, your license, and a "Cite this repository" shortcut.
+
+:::{.callout-note}
+## Well done! You've created your first release!
+
+Now you have a citable piece of software with a DOI. It's a good idea to now go back to your CITATION.cff file and add in your DOI there!
+:::

@@ -5,7 +5,6 @@ title: "Practical 3: Writing pseudocode with version control"
 
 ## Activity Overview
 
-**Duration:** 50 minutes  
 **Goal:** Get to grips with using git and GitHub while drafting some pseudocode and documentation
 
 ::: {.callout-tip collapse="true"}

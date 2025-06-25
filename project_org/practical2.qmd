@@ -5,7 +5,6 @@ title: "Practical 2: Folder organisation"
 
 ## Activity Overview
 
-**Duration:** 15 minutes  
 **Goal:** Set up a sensible and tidy project folder structure
 
 :::{.callout-note}
