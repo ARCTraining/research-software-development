@@ -58,6 +58,9 @@ website:
 
 
   navbar:
+    tools:
+      - icon: github
+        href: https://github.com/ARCTraining/research-software-development
     left:
       - href: workflow.qmd
         text: "Project Workflow ↗"
@@ -65,6 +68,7 @@ website:
       - href: https://arc.leeds.ac.uk/
         text: "Advanced Research Computing @ Leeds ↗"
         target: "_blank"
+        
       # - href: https://arctraining.github.io/glossary-swd3/
       #   text: "Glossary ↗"
       #   target: "_blank"
