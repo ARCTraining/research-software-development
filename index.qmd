@@ -11,6 +11,7 @@ author:
     affiliation-url: https://arc.leeds.ac.uk/profiles/maeve-murphy-quinlan/
 citation:
   url: https://arctraining.github.io/research-software-development/
+  doi: https://doi.org/10.5281/zenodo.15739463
 ---
 
 This resource is intended to support researchers in embedding good software engineering practices into their workflows to make their computational research easier to manage, more reproducible, more reusable and sharable, and more robust.
