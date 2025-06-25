@@ -62,7 +62,7 @@ website:
       - href: workflow.qmd
         text: "Project Workflow ↗"
         target: "_blank"
-    - href: https://arc.leeds.ac.uk/
+      - href: https://arc.leeds.ac.uk/
         text: "Advanced Research Computing @ Leeds ↗"
         target: "_blank"
       # - href: https://arctraining.github.io/glossary-swd3/
