@@ -3,40 +3,63 @@ project:
   output-dir: docs
 
 website:
+  announcement: 
+    icon: info-circle
+    dismissable: true
+    content: "**Alert** - this is a pre-release draft; please excuse errors or typos."
+    type: primary
+    position: below-navbar
   title: "Research Software Development in Python"
+  repo-url: https://murphyqm.github.io/research-software-development/
+  repo-actions: [edit, source, issue]
+  page-footer: "© 2025 University of Leeds <br> [Update cookie preferences]{#open_preferences_center .btn .btn-outline-primary}" 
   cookie-consent: true
   sidebar:
     style: "docked"
     collapse-level: 1
     contents:
-    - section: "0. Introduction"
+    - href: index.qmd
+      text: Home page and course content
+    - section: "1. Introduction"
       contents:
-      - href: index.qmd
-        text: Course content
       - introduction/introduction.qmd
       - introduction/practical_1.qmd
-    - section: "1. First Steps"
+    - section: "2. Organising your project"
       contents:
       - project_org/project_organisation.qmd
       - project_org/practical2.qmd
+    - section: "3. Version Control"
+      contents:
       - version_control/version_control.qmd
       - version_control/practical3.qmd
+    - section: "4. Dependencies"
+      contents:
       - dependencies/dependencies.qmd
       - dependencies/practical4.qmd
-    - section: "2. Make your code robust"
+    - section: "5. Testing"
       contents:
       - testing/testing.qmd
       - testing/practical5.qmd
+    - section: "6. Releases"
+      contents:
       - releases/releases.qmd
       - releases/practical6.qmd
+    - href: index.qmd#citation_1
+      text: "<b>Cite this material</b>"
+    - href: https://www.leeds.ac.uk/about/doc/accessibility-statement
+      text: "<b>Accessibility Statement</b>"
+    - href: privacy_and_cookies.qmd
+      text: "<b>Privacy and Cookies Policy</b>"
+
+
   navbar:
     left:
       - href: workflow.qmd
         text: "Project Workflow ↗"
         target: "_blank"
-      - href: https://arctraining.github.io/glossary-swd3/
-        text: "Glossary ↗"
-        target: "_blank"
+      # - href: https://arctraining.github.io/glossary-swd3/
+      #   text: "Glossary ↗"
+      #   target: "_blank"
 
 format:
   html:

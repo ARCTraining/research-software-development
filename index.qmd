@@ -1,5 +1,15 @@
 ---
-title: "Course Content: Research Software Development"
+title: "Research Software Development in Python"
+description: |
+  Workshop notes introducing reproducible, replicable and reusable software workflows for research coding.
+
+date: 2025-06-24
+author:
+  - name: Maeve Murphy Quinlan
+    affiliation: University of Leeds
+    affiliation-url: https://arc.leeds.ac.uk/profiles/maeve-murphy-quinlan/
+citation:
+  url: https://murphyqm.github.io/research-software-development/
 ---
 
 This resource is intended to support researchers in embedding good software engineering practices into their workflows to make their computational research easier to manage, more reproducible, more reusable and sharable, and more robust.
@@ -66,7 +76,7 @@ Everyone learns in different styles and in different ways; everyone brings diffe
 
 This course introduces a [reproducible project workflow](workflow.qmd) that you can take and use for any future coding project. The below provides suggested durations for each session, with a timetable provided for synchronous courses.
 
-If you are attending a synchronous course, please revise the material between sessions.
+Note that this is an intensive course that covers a lot of content. If you are attending a synchronous course, please revise the material between sessions. If sessions take longer on Day 1 of the course and not all the scheduled material is covered, **please read through the presentations ahead of the next session**. They will be put into use in the first practical so there will be a chance to review.
 
 | Session | Approximate duration | Key objectives | Start time (taking breaks into account) |
 |---|---|---|---|
@@ -78,9 +88,10 @@ If you are attending a synchronous course, please revise the material between se
 | Presentation: Version control | 30 mins | Introduce version control with git | 11.15 am (followed by 5 min break) |
 | Practical 3 | 30 mins | Explore drafting pseudocode, notes, and comments, while using version control | 11.50 |
 | Presentation: Dependency management | 30 mins | Introduce dependency management with Conda | 12.20 pm |
-| Q&A *or* headstart on Practical 4 | 10 mins | Last ten minutes of day 1 | 12.50 pm |
+| Q&A or headstart on Practical 4 | 10 mins | Last ten minutes of day 1 | 12.50 pm |
+| **Note:** If sessions take longer on this day, please complete outstanding practicals as homework | 
 | Day 2 |
-| Practical 4 | 40 mins | Set up Python environment and begin drafting code | 10 am |
+| Practical 4 | 40 mins | Brief review of dependencies. Set up Python environment and begin drafting code | 10 am |
 | Presentation: Testing | 20 mins | Introduce testing workflows | 10.20 am (followed by 5 min break) |
 | Practical 5 | 30 mins | Write a basic testing suite | 10.45 am |
 | Presentation: Releasing and archiving your code | 30 mins | Discuss the importance of creating releases and minting DOIs for your code; discuss exporting record of environment alongside results | 11.15 am (followed by 10 min break) |
@@ -90,26 +101,25 @@ If you are attending a synchronous course, please revise the material between se
 
 ## Author's Note
 
-This material is an evolution of the original [SWD3: Software development practices for Research](https://arctraining.github.io/swd3-dev/welcome.html) course run by Research Computing at the University of Leeds, but has been extensively reworked and updated. 
+This material is an evolution of the original [SWD3: Software development practices for Research](https://arctraining.github.io/swd3-dev/welcome.html) course, written by [Dr Patricia Ternes](https://arc.leeds.ac.uk/profiles/patricia-ternes/) and run by Research Computing at the University of Leeds, but has been extensively reworked and updated. 
 
 This material is licensed under the [Creative Commons Attribution-NonCommercial 4.0 International Public License](https://creativecommons.org/licenses/by-nc/4.0/), and is copyrighted by the University of Leeds.
+
+### Contribution guidelines
+
+Please feel free to open issues or suggest edits to this material via our GitHub repository (see links in the sidebar). Note that when the changes you have made have been merged with the main branch, you may not see an update to the live website until a new release is made.
+
+Please read the [contributing guidelines](#) on the repository.
+
+#### Contributors
+
+Below is a list of contributors (in chronological order of addition) with associated Contributor Role Taxonomy (CRediT) roles. Please see the [CRediT website](https://credit.niso.org/) for definitions of roles.
+
+- Maeve Murphy Quinlan: conceptualization, writing (original draft), writing (review and editing), data curation, methodology.
+  - Creation of website, Python workflows, GitHub actions.
+  - Redesign of course.
 
 ### Citation
 
 If you use or reference this material, please cite it.
 
-**BibTeX citation:**
-
-```text
-@online{murphy_quinlan2025,
-  author = {Murphy Quinlan, Maeve},
-  title = {Reproducibility, {Replicability,} \& {Reusability}},
-  date = {2025-06-16},
-  url = {https://url-here},
-  langid = {en}
-}
-```
-
-**Plain text citation:**
-
-Murphy Quinlan, Maeve. 2025. “Research Software Development in Python [Course materials]” June 16, 2025. https://url-here.

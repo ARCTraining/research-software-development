@@ -2,6 +2,8 @@
 title: "Research code workflow"
 ---
 
+This page is designed to be a quick reference for the stages in building a research coding project. Please refer back to the main text for detailed guidance for any of these steps or stages.
+
 ::: {.panel-tabset group="workflow"}
 ## Single directory project
 
@@ -16,6 +18,10 @@ If you select this tab, the instructions below will show information relevant to
 ## Part One: building the core code
 
 ### 1. Brainstorm and gather requirements
+
+- Functional requirements: what must the software do?
+- Non-functional requirements: how should it work/behave?
+- Constraints: what are the limitations or assumptions?
 
 ### 2. Create your project directory structure in a repository
 
@@ -138,20 +144,62 @@ conda env create -f environment.yml
 conda env update --file environment.yaml --prune
 ```
 
-### 4. Write your pseudocode, comments, and code 
+### 4. Write your pseudocode, comments, and code
+
+- Write code for yourself in a year: name variables and functions sensibly, and use comments to add context
 
 ### 5. Write a test suite
+
+Create your tests in a folder called `test`. Call the file `test_<YOUR-PYTHON-MODULE-NAME>.py`, and define the functions inside it as `def test_<YOUR-FUNCTION-NAME>():`.
+
+Use this format:
+
+```python
+def test_example():
+    '''Test for the example function'''
+
+    # Arrange
+    test_variable_1 = 0
+    test_variable_2 = 1
+    expected_output = 7
+
+    # Act
+    output = your_function(test_variable_1, test_variable_2)
+
+    # Assert
+    assert output == expected_output
+
+    # No cleanup needed
+```
+
+All functions in your core code package should be tested.
 
 ### 6. Write documentation
 
 ::: {.panel-tabset group="workflow"}
 ## Single directory project
 
-Content
+You'll want to add:
+
+- Module and function level docstrings
+- A README.md file
+- A `pyproject.toml` file to document your core Python package
+- Possibly some example notebooks running the code
 
 ## Dual directory project
 
-Content - including a `pyproject.toml`
+In your core code/package repository:
+
+- Module and function level docstrings
+- A README.md file
+- A `pyproject.toml` file to document your core Python package
+
+In your analysis/application file:
+
+- Module and function level docstrings of code
+- Example notebooks
+- Instructions in your README.md on how to use the code in the package repository.
+
 :::
 
 ## Part two: using the core code
@@ -161,11 +209,32 @@ Content - including a `pyproject.toml`
 ::: {.panel-tabset group="workflow"}
 ## Single directory project
 
-Content - You've already done this bit
+You've already sorted this back in [Step 2](#setting-up-your-folder-structure)
 
 ## Dual directory project
 
-Content
+This is more flexible, but it's generally still a good idea to keep things organised. This folder might look like this:
+
+```text
+pallasite-parent-body-evolution/    The project git repository
+├── LICENSE
+├── README.md
+├── environment.yml                 The libraries I need for analysis (including the package from our package repository)
+├── data                            I usually load in large data from storage elsewhere
+│   ├── interim                     But sometimes do keep small summary datafiles in the repository
+│   ├── processed
+│   └── raw
+├── docs                            Notes on analysis, process etc.
+├── notebooks                       Jupyter notebooks used for analysis
+├── reports                         For a manuscript source, e.g., LaTeX, Markdown, etc., or any project reports
+│   └── figures                     Figures for the manuscript or reports
+├── src                             Source code for this project
+│   ├── data                        Scripts and programs to process data
+│   ├── tools                       Any helper scripts go here
+│   └── visualization               Scripts for visualisation of your results, e.g., matplotlib, ggplot2 related.
+└── tests                           Test code for this project, benchmarking, comparison to analytical models
+```
+
 :::
 
 ### 2. Creating a research environment
@@ -173,29 +242,108 @@ Content
 ::: {.panel-tabset group="workflow"}
 ## Single directory project
 
-Content
+We have already done this back in [Step 3](#create-a-development-environment).
 
 ## Dual directory project
 
-Content
+You have a few options:
+
+### Just keep using your development environment from Step 3
+
+As you have installed your package, you can continue to use your development environment from [Step 3](#create-a-development-environment) across your system, in other folders.
+
+### Create a new environment and hardlink local package
+
+Take the development environment you created in [Step 3](#create-a-development-environment), and copy it into the analysis folder, and replace the following lines:
+
+```yaml
+  # keep this to install your Python package locally
+  - pip
+  - pip:
+    - --editable .
+```
+
+with:
+
+```yaml
+  # keep this to install your Python package locally
+  - pip
+  - pip:
+    - --editable /absolute/path/to/package-repo
+```
+
+This is still not easily reusable, but at least it's now more obvious what environment you're using, and you can still easily make changes to the package as you work.
+
+### Install your package via GitHub
+
+Take the development environment you created in [Step 3](#create-a-development-environment), and copy it into the analysis folder, and replace the following lines:
+
+```yaml
+  # keep this to install your Python package locally
+  - pip
+  - pip:
+    - --editable .
+```
+
+with:
+
+```yaml
+  # keep this to install your Python package locally
+  - pip
+  - pip:
+    - <PACKAGE_NAME>@git+https://github.com/<USER_NAME>/<REPO_NAME>
+```
+
+Replacing the variables `<In angled brackets>` with the appropriate values. 
+
+This can be a bit tricky when you're in the early stages of the project and need to frequently update your core code package (as you'll need to push the package changes to GitHub and then update your environment file every time); I often leave this until my package code is fairly stable. You'll definitely want to do this before releasing your code.
+
 :::
 
 ### 3. Do your research!
 
-Advice on imports, advice on jupyter notebooks
+#### Reloading libraries
+
+When working with an editable install, you may need to force reload the module after changing it to ensure the changes carry through.
+
+Let's say I have updated my package `amazing_project`, and it's installed in my current Conda environment as an editable install. I don't need to update my environment, but if you're using a notebook, you will have to force reload the module. This is very easy using `importlib` (this is included in the core Python library, so doesn't need to be added to your environment):
+
+```python
+import amazing_project as ap
+import importlib
+importlib.reload(ap)
+```
+
+#### Using notebooks
+
+Jupyter notebooks can be tricky when it comes to version control: they are filled html formatting that updates when you rerun cells, and this can obscure actual code changes. There are a few different options if you are keep to use notebooks:
+
+- [Jupytext](https://jupytext.readthedocs.io/en/latest/index.html): creating Jupyter notebooks in plain `.py` files
+- [Marimo notebooks](https://marimo.io/): an alternative notebook framework, again in plain `.py`.
+
+### 4. Export a record of your environment
 
 ::: {.panel-tabset group="workflow"}
 ## Single directory project
 
-Content
+When you've created a "batch" of results that you're happy with, you should record your exact dependencies at that point:
+
+```bash
+conda env export > env-record.yml # from inside the activated env
+```
 
 ## Dual directory project
 
-Content
+When you've created a "batch" of results that you're happy with, you should record your exact dependencies in the environment used to produce those results at that point (so your [research environment from Step 2](#creating-a-research-environment)), and save this in your analysis folder:
+
+```bash
+conda env export > env-record.yml # from inside the activated env
+```
+
+It's often a good idea to create a release of your package (see [Step 5 below](#create-a-release-synced-with-zenodo)) and install it properly using the version number and the GitHub url in your research environment, and *then* do your final analysis and export your research environment.
+
 :::
 
-Advice on updating core code, and re-running all output
-
-### 4. Export your environment
-
 ### 5. Create a release, synced with zenodo
+
+Add your DOI to your citation file!

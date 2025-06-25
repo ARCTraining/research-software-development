@@ -22,7 +22,7 @@ When we run through an example case, we are going to be using `pytest`, which is
 These tests will go into your `test` directory, in a Python file that begins with `test_`, and are essentially functions who's names also begin with `test_` - this means that pytest will be able to find and identify them as tests. Whew, the word "test" has almost lost meaning by now.
 
 ```python
-def test_example(self):
+def test_example():
     '''Test for the example function'''
 
     # Arrange

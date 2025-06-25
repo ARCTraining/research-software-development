@@ -1,0 +1,243 @@
+---
+title: Privacy Notice
+---
+<p>Privacy notice for <a href="https://murphyqm.github.io/research-software-development/">murphyqm.github.io/research-software-development/</a>.</p>
+
+<p>This privacy notice has been updated in line with the General Data Protection Regulation.&nbsp;</p>
+
+[Update cookie preferences]{#open_preferences_center .btn .btn-outline-primary .btn role="button" data-toggle="tooltip" title="Open cookie preference modal"}
+
+<h2>1. Purpose of this Notice</h2>
+
+<p>This Notice tells you how the University of Leeds (University) will collect and use your personal data when you access this website. The University is a &#39;controller&#39; of this personal data for the purposes of the data protection legislation.<br />
+Note that additional information will be provided where you are requested to enter personal information and this will vary between our various websites. (Information will be provided through the relevant privacy notice for that website).</p>
+
+<p>It is important that you read this Notice together with any other privacy notice we provide on specific occasions when we are collecting or processing personal data about you so that you are fully aware of how and why we are using your data.&nbsp; This Notice supplements the other notices and is not intended to override them.</p>
+
+<h2>2. Changes to this Notice</h2>
+
+<p>We keep the information provided in this Notice under review. This Notice may be updated from time to time. If we make any substantial updates, we will draw these to your attention.</p>
+
+<p>We will not use your personal data in any manner that is incompatible with the purpose for which the data were collected originally, unless we have obtained your consent to that additional use.</p>
+
+<h2>3. Anything you are not clear about</h2>
+
+<p>If there is anything you are unclear about, please contact our Data Protection Officer, who will be happy to answer any queries you may have concerning this Notice or the way in which we process your personal data.</p>
+
+<p>The Data Protection Officer&#39;s contact details are provided at the end of this Notice in section 11.</p>
+
+<h2>4. Purpose of processing your data</h2>
+
+<p>Where we request personal data from you on our website you will be informed at that time of the purpose for which the data will be processed and how it will be processed, its legal basis for processing as well as any transfers to third parties.</p>
+
+<h2>5. Purpose of processing - automated collection of personal information</h2>
+
+<p>When you access our web pages certain information your browser provides, including your IP address at the time, browser type, and potentially the address of the page you last visited, will be automatically recorded by the University. This data may be used to aid detection in the event of a security breach. The legal basis for this processing is a necessity to pursue our legitimate interests to keep our website secure. The University retains this data in a form from which you may be identifiable for a period of up to one month.</p>
+
+<h2>6. Third-party access</h2>
+
+<p>The personal data that you have provided will not routinely be sent to third parties (unless notified - see section 4).</p>
+
+<h3>Exception: 100% online distance learning postgraduate courses</h3>
+
+<p>The University works with third party partners (Boundless Learning and Coursera) who handle admissions enquiries and recruitment for some of our 100% online distance learning postgraduate courses. If you submit an enquiry through the online form published on the associated course pages, our partner organisation will use your personal data to respond to your enquiry, and provide you with information on relation opportunities, if you opt-in to receive them. If you choose to apply for the course, your data will be entered into the University&rsquo;s application system so we can consider your application. These partners are only allowed to use your data in accordance with the strict instructions of the University. Neither partner will use your data in any other way nor will they share it with any other organisation.</p>
+
+<h2>7. Data retention</h2>
+
+<p>The University&rsquo;s policies on retaining data for prospective and current students, staff and job applicants are detailed in our <a href="https://dataprotection.leeds.ac.uk/gdpr/the-university-of-leeds-records-retention-schedule/">Data Retention Schedule</a>.</p>
+
+<p>In other cases, for example, if you subscribe to news or events, any retention of data will be made clear at the point of collection.</p>
+
+<h2>8. Cookies</h2>
+
+<p>You can&nbsp;use the cookie settings pop-up &mdash; the &lsquo;review cooking settings&rsquo; button on this page &mdash; to manage your cookies.</p>
+
+<p>Cookies are small text files that are placed on your device by websites that you visit.</p>
+
+<p>We use cookies for the following purposes:</p>
+
+<ul>
+	<li>Essential: To help our website function</li>
+	<li>Performance tracking: Track how our website is used and help us make improvements</li>
+	<li>Marketing: To inform targeted advertising.</li>
+</ul>
+
+<h3>See a full list of the cookies and help on managing cookies</h3>
+
+<h4>Essential cookies</h4>
+
+<p>These cookies help our website function:</p>
+
+<h5>NetScaler Appliance session cookie</h5>
+
+<table>
+	<thead>
+		<tr>
+			<th>Cookie</th>
+			<th>Purpose</th>
+			<th>Information</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>NSC*</td>
+			<td>These cookies are set by our Citrix NetScaler appliance and are used to ensure your browsing session remains on the same web server. It is deleted when you close your browser.</td>
+			<td><a href="http://www.citrix.com">Citrix</a></td>
+		</tr>
+		<tr>
+			<td>PHPSESSID</td>
+			<td>This cookie stores a unique ID assigned by the web server. It is used to enable some site functionality to work properly. It is deleted when you close your browser.</td>
+			<td><a href="http://www.php.net/manual/en/intro.session.php">PHP sessions</a></td>
+		</tr>
+	</tbody>
+</table>
+
+<h5>Cookie consent</h5>
+
+<table>
+	<thead>
+		<tr>
+			<th>Cookie</th>
+			<th>Purpose</th>
+			<th>Information</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>CC_analytics and disallow_google</td>
+			<td>Cookie assigned to remember your cookie preferences for performance and analytics components. Contains a simple yes or no.</td>
+			<td>Persistent cookie. Expires after 12 months.</td>
+		</tr>
+		<tr>
+			<td>cc_necessary</td>
+			<td>Cookie assigned to remember your cookie preferences for necessary site functionality. Contains a simple yes or no.</td>
+			<td>Persistent cookie. Expires after 12 months.</td>
+		</tr>
+		<tr>
+			<td>cc_social and disallow_facebook</td>
+			<td>Cookie assigned to remember your cookie preferences for third-party social media components. Contains a simple yes or no.</td>
+			<td>Persistent cookie. Expires after 12 months.</td>
+		</tr>
+	</tbody>
+</table>
+
+<h4>Performance and advertising cookies</h4>
+
+<h5>Google Analytics, Google Tag Manager, AdWords, Facebook and LinkedIn re-marketing</h5>
+
+<table>
+	<thead>
+		<tr>
+			<th>Cookie</th>
+			<th>Purpose</th>
+			<th>Information</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>__utma<br />
+			__utmb<br />
+			__utmc<br />
+			__utmv<br />
+			__utmz<br />
+			__ga<br />
+			__gat<br />
+			__nid</td>
+			<td>These cookies are used to collect information about how visitors use our website. We use the information to compile reports and to help us improve the site. These cookies are also used to track users&rsquo; interests and then provide targeted advertising on other websites. The cookies collect information in an anonymous form, including the number of visitors to the site, where visitors have come to the site from and the pages they visited.</td>
+			<td><a href="https://policies.google.com/privacy?hl=en-GB&gl=uk#infocollect">Google privacy policy</a><br />
+			<a href="http://www.google.com/analytics/learn/privacy.html">Google analytics</a><br />
+			<a href="http://www.google.com/intl/en_uk/analytics/tos.html">Google analytics terms of service</a><br />
+			<a href="https://www.google.com/analytics/tag-manager/use-policy/">Google tag manager terms of service</a><br />
+			<a href="https://tools.google.com/dlpage/gaoptout">Universal Analytics opt-out browser add-on</a></td>
+		</tr>
+	</tbody>
+</table>
+
+<h5>YouTube</h5>
+
+<table>
+	<thead>
+		<tr>
+			<th>Cookie</th>
+			<th>Purpose</th>
+			<th>Information</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>PREF*<br />
+			VSC*<br />
+			VISITOR_INFO1_LIVE*<br />
+			remote_sid*</td>
+			<td>We embed videos from our official YouTube channel using YouTube&rsquo;s privacy-enhanced mode. This mode may set cookies on your computer once you click on the YouTube video player, but YouTube will not store personally-identifiable cookie information for playbacks of embedded videos using the privacy-enhanced mode.</td>
+			<td>Read more about&nbsp;<a href="https://support.google.com/youtube/answer/171780?hl=en-GB">YouTube&rsquo;s embedding videos</a>.</td>
+		</tr>
+	</tbody>
+</table>
+
+<h5>Hotjar</h5>
+
+<table>
+	<thead>
+		<tr>
+			<th>Cookie</th>
+			<th>Purpose</th>
+			<th>Information</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>_hjIncludedInSample</td>
+			<td>This service helps us track use of the website and make improvements.</td>
+			<td>Find out more on&nbsp;<a href="https://help.hotjar.com/hc/en-us/articles/115011789248-Hotjar-Cookies">Hotjar&#39;s website</a>.</td>
+		</tr>
+	</tbody>
+</table>
+
+<h4><strong>Third party cookies and tracking</strong></h4>
+
+<p>If you share content from our website through other websites, for example Facebook or X, cookies or a form of tracking may be used by these services and you need to manage your privacy via your account (and not through our site).</p>
+
+<h4><strong>Manage your cookies and privacy</strong></h4>
+
+<p>You can opt out of non-essential cookies:&nbsp;use the cookie settings pop-up &mdash; the &lsquo;review cooking settings&rsquo; button on this page &mdash; to manage your choices.</p>
+
+<p>You can also manage your privacy settings, including cookies, through your browser settings.</p>
+
+<p>Further information about cookies can be found on the&nbsp;<a href="https://ico.org.uk/for-organisations/direct-marketing-and-privacy-and-electronic-communications/guide-to-pecr/cookies-and-similar-technologies/">Information Commissioner&#39;s Office website</a>.</p>
+
+<h2>9. Your duty to inform us of changes</h2>
+
+<p>It is important that the personal data the University holds about you is accurate and current. Please keep us informed if the personal data you have provided to us needs to be updated.</p>
+
+<p><a href="https://www.leeds.ac.uk/about/doc/about-contact-us">Contact details for the University</a>.</p>
+
+<h2>10. Your rights as a data subject</h2>
+
+<p>Under the <abbr title="General Data Protection Regulation">GDPR</abbr>, in certain circumstances, you have the right to:</p>
+
+<ul>
+	<li>withdraw your consent to our processing of your personal data where that is the legal basis for such processing</li>
+	<li>access any of your personal data which we hold</li>
+	<li>have your personal data which we hold corrected if it is inaccurate</li>
+	<li>have any of your personal data which we hold erased</li>
+	<li>restrict the ways in which we process your personal data</li>
+	<li>object to our processing of your personal data</li>
+	<li>receive a copy of any of your personal data which we hold in a structured and commonly used machine-readable format</li>
+	<li>in certain cases not be subject to a decision based solely on automated decision making</li>
+	<li>lodge a complaint with a supervisory authority.</li>
+</ul>
+
+<h2>11. Queries and complaints</h2>
+
+<p>If you have any queries or concerns relating to this privacy notice or the way your data is being processed through this website then please contact the University&rsquo;s Data Protection Officer, Rebecca Messenger-Clark.</p>
+
+<ul>
+	<li>Phone:&nbsp;<a href="tel:+441132431751">+44 (0) 113 2431751</a></li>
+	<li>&nbsp;<a href="mailto:dpo@leeds.ac.uk" title="Email the Data Protection Officer">Email the Data Protection Officer: dpo@leeds.ac.uk</a></li>
+	<li>Address: University of Leeds, 11.72 EC Stoner Building, Leeds LS2 9JT, UK.</li>
+</ul>
+
+<p>The UK&rsquo;s regulator for the Data Protection Act (DPA) and <abbr title="General Data Protection Regulation">GDPR</abbr> is the Information Commissioner&rsquo;s Office (ICO). The University is registered as a Data Controller with the <abbr title="Information Commissioner’s Office">ICO</abbr>.</p>
+
+<p>Should you be dissatisfied with our handling of your concerns you have the right to complain to a supervisory authority. In the case of the UK this is the <a href="https://ico.org.uk">Information Commissioner&rsquo;s Office</a>.</p>
