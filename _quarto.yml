@@ -10,7 +10,7 @@ website:
     type: primary
     position: below-navbar
   title: "Research Software Development in Python"
-  repo-url: https://murphyqm.github.io/research-software-development/
+  repo-url: https://github.com/ARCTraining/research-software-development
   repo-actions: [edit, source, issue]
   page-footer: "© 2025 University of Leeds  <br> [Update cookie preferences]{#open_preferences_center .btn .btn-outline-primary}" 
   cookie-consent: true
@@ -61,6 +61,9 @@ website:
     left:
       - href: workflow.qmd
         text: "Project Workflow ↗"
+        target: "_blank"
+    - href: https://arc.leeds.ac.uk/
+        text: "Advanced Research Computing @ Leeds ↗"
         target: "_blank"
       # - href: https://arctraining.github.io/glossary-swd3/
       #   text: "Glossary ↗"
