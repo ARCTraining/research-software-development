@@ -2,7 +2,7 @@
 
 SWD3: Research Software Development documentation and course notes.
 
-[![DOI](https://zenodo.org/badge/<GITHUB_ID>.svg)](https://zenodo.org/badge/latestdoi/<GITHUB_ID>)
+[![DOI](https://zenodo.org/badge/1008390809.svg)](https://zenodo.org/badge/latestdoi/1008390809)
 
 ## Building instructions
 
