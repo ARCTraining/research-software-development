@@ -12,7 +12,7 @@ website:
   title: "Research Software Development in Python"
   repo-url: https://murphyqm.github.io/research-software-development/
   repo-actions: [edit, source, issue]
-  page-footer: "© 2025 University of Leeds <br> [Update cookie preferences]{#open_preferences_center .btn .btn-outline-primary}" 
+  page-footer: "© 2025 University of Leeds  <br> [Update cookie preferences]{#open_preferences_center .btn .btn-outline-primary}" 
   cookie-consent: true
   sidebar:
     style: "docked"
@@ -53,6 +53,8 @@ website:
       text: "<b>Accessibility Statement</b>"
     - href: privacy_and_cookies.qmd
       text: "<b>Privacy and Cookies Policy</b>"
+    - href: https://creativecommons.org/licenses/by-nc-sa/4.0/
+      text: <b>CC BY-NC-SA 4.0</b>
 
 
   navbar:
@@ -69,6 +71,3 @@ format:
     theme: cosmo
     css: styles.css
     toc: true
-
-
-
