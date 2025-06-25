@@ -36,7 +36,21 @@ Below is a list of contributors (in chronological order of addition) with associ
 
 ## Citation instructions
 
-Please use the suggested citation in the sidebar (under "Cite this repository"), or view the CITATION.cff file.
+Plain text citation:
+
+Murphy Quinlan, Maeve. 2025. “Research Software Development in Python.” June 24, 2025. https://arctraining.github.io/research-software-development/.
+
+BibTex citaton:
+
+```
+@online{murphy_quinlan2025,
+  author = {Murphy Quinlan, Maeve},
+  title = {Research {Software} {Development} in {Python}},
+  date = {2025-06-24},
+  url = {https://arctraining.github.io/research-software-development/},
+  langid = {en}
+}
+```
 
 ## License
 
