@@ -142,3 +142,5 @@ Below is a list of contributors (in chronological order of addition) with associ
 ### Citation
 
 If you use or reference this material, please cite it.
+
+[![DOI](https://zenodo.org/badge/1008390809.svg)](https://zenodo.org/badge/latestdoi/1008390809)
