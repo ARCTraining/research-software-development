@@ -13,17 +13,17 @@ You can use pip to install the package `heading_container` to run the scripts in
 Install the most recent development version (may not be stable):
 
 ```bash
-pip install <PACKAGE_NAME>@git+https://github.com/<USER_NAME>/<REPO_NAME>
+pip install heading_container@git+https://github.com/ARCTraining/research-software-development
 ```
 
 Or install a specific version (version 0.1.0 in this example; please check the releases page):
 
 ```bash
-pip install https://github.com/<USER_NAME>/<REPO_NAME>/archive/refs/tags/v0.1.0.tar.gz
+pip install https://github.com/ARCTraining/research-software-development/archive/refs/tags/v0.1.0.tar.gz
 
 # or
 
-pip install <PACKAGE_NAME>@git+https://github.com/m<USER_NAME>/<REPO_NAME>@v0.1.0
+pip install heading_container@git+https://github.com/ARCTraining/research-software-development@v0.1.0
 ```
 
 ## Author
