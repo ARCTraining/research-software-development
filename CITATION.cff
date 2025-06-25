@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+title: "Research Software Development in Python"
+version: 0.1.0
+license: "CC-BY-NC-SA-4.0"
+type: "website"
+abstract: "Course presentations, notes, and practical tutorials."
+message: "If you use this software, please cite it as below."
+authors:
+  - given-names: Maeve
+    family-names: Murphy Quinlan
+    affiliation: University of Leeds
+    orcid: "https://orcid.org/0000-0003-2958-1008"
+keywords:
+  - research software development
+  - sustainable software
+  - reproducibility

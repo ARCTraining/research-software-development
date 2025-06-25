@@ -123,13 +123,13 @@ This is a challenging course to deliver, as there are many tools involved. The f
 
 This material is an evolution of the original [SWD3: Software development practices for Research](https://arctraining.github.io/swd3-dev/welcome.html) course, written by [Dr Patricia Ternes](https://arc.leeds.ac.uk/profiles/patricia-ternes/) and run by Research Computing at the University of Leeds, but has been extensively reworked and updated. 
 
-This material is licensed under the [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International Public License](https://creativecommons.org/licenses/by-nc-sa/4.0/){.target="_blank"}, and is copyrighted by the University of Leeds.
+This material is licensed under the [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International Public License](https://creativecommons.org/licenses/by-nc-sa/4.0/), and is copyrighted by the University of Leeds.
 
 ### Contribution guidelines
 
 Please feel free to open issues or suggest edits to this material via our GitHub repository (see links in the sidebar). Note that when the changes you have made have been merged with the main branch, you may not see an update to the live website until a new release is made.
 
-Please read the [contributing guidelines](#) on the repository.
+Please read the [GitHub community guidelines](https://docs.github.com/en/site-policy/github-terms/github-community-guidelines) before contributing.
 
 #### Contributors
 
