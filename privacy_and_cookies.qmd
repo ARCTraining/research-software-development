@@ -1,7 +1,7 @@
 ---
 title: Privacy Notice
 ---
-<p>Privacy notice for <a href="https://murphyqm.github.io/research-software-development/">murphyqm.github.io/research-software-development/</a>.</p>
+<p>Privacy notice for <a href="https://arctraining.github.io/research-software-development/">arctraining.github.io/research-software-development/</a>.</p>
 
 <p>This privacy notice has been updated in line with the General Data Protection Regulation.&nbsp;</p>
 
