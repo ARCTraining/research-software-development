@@ -2,6 +2,8 @@
 
 SWD3: Research Software Development documentation and course notes.
 
+Shortened link to this material: bit.ly/swd3-python
+
 [![DOI](https://zenodo.org/badge/1008390809.svg)](https://zenodo.org/badge/latestdoi/1008390809)
 
 ## Building instructions
