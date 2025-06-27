@@ -1,0 +1,226 @@
+---
+title: "Useful code snippets"
+subtitle: "Key commands and code for research software development"
+---
+
+## Essential linux/bash commands
+
+These commands will be useful if you are using the Linux Codespace machine, or if you are working locally on your machine either via GitBash for Windows, or using Terminal on Mac.
+
+```bash
+cd # change directory to home
+cd /workspaces # return to the /workspaces directory
+cd .. # go up a level in the directory structure
+ls # list the contents of the current directory
+pwd # get the path to the current working directory
+```
+
+## Essential git commands
+
+We will use git and a GitHub remote to track our changes. You can use git in the same way you would from your local machine.
+
+If you want to use git on your machine, [install git here](https://git-scm.com/). When you create a new repository on GitHub, instead of launching a Codespace, instead follow the directions on your new repository page to set up a git repository on your machine.
+
+```bash
+git status # check on status of current git repo
+git branch NAME # create a branch called NAME
+git checkout NAME # swap over to the branch called NAME
+git add NAME # stage FILE for commit
+git commit # commit the staged files (this will open your text editor to create a commit message)
+git push origin NAME # push local commits to the remote branch tracking the branch NAME
+
+# Added something unintentional?
+git reset --soft HEAD^ # undo a git commit
+git reset # undo git add
+git restore --staged FILE # undo git add to specific file
+git restore FILE # undo all changes to an unstaged file since last commit
+
+# after merging a pull request
+git fetch -p  # delete branches that no longer exist in the remote
+
+# go back to an old version and put it on a branch
+git checkout -b NEW-BRANCH-NAME-FOR-OLD-VERSION git-hash-here
+```
+
+## Essential conda commands
+
+We recommend you use [Miniforge](https://github.com/conda-forge/miniforge) to set up an open-source version of Conda on your machine.
+
+To install on Linux (on your virtual Codespaces machine), follow these commands:
+
+```bash
+wget -O Miniforge3.sh "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"
+
+bash Miniforge3.sh -b -p "${HOME}/conda"
+
+source "${HOME}/conda/etc/profile.d/conda.sh"
+```
+
+See the Miniforge link above for installation instructions for other operating systems.
+
+```bash
+# from terminal/outside a conda env
+conda env list # list built environments
+conda env create --file PATH/TO/A/FILE # build a conda env from a file
+conda env create --file environment.yml # build a conda env from a file in the current directory
+conda env update --file environment.yml --prune # update a conda env from file and remove unused libraries
+conda activate ENV-NAME  # activate the environment ENV-NAME
+
+# from inside a conda env (after activating the env)
+conda list # lists installed packages in the env
+conda env export --no-builds > exported-env.yml # exports all packages in the env
+conda env export --from-history  > exported-env.yml # exports the packages that were explicitly installed
+```
+
+Export your conda and pip dependencies from the active environment without version numbers (so that the resulting `environment.yml` file can be used to build a new environment):
+
+```bash
+### Extract installed pip packages
+pip_packages=$(conda env export | grep -A9999 ".*- pip:" | grep -v "^prefix: " | cut -f1 -d"=")
+
+### Export conda environment without builds, and append pip packages
+conda env export --from-history | grep -v "^prefix: " > new-environment.yml
+echo "$pip_packages" >> new-environment.yml
+```
+
+Conda environment file template:
+
+```yml
+name: my-env-name
+
+channels:
+  - conda-forge
+  - nodefaults
+
+dependencies:
+  - python=3.13
+  - pytest
+  - blackd
+  - isort
+
+  # remove/modify these as needed
+  - numpy
+  - pandas
+
+  # keep this to install your Python package locally
+  - pip
+  - pip:
+    - --editable .
+```
+
+## Pyproject.toml
+
+In order to install your package in your environment, you need to have a TOML file in your project directory.
+
+```toml
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "amazing_project"
+version = "0.1.0"
+description = "Brief description"
+authors = [{name = "Your Name"}]
+requires-python = ">=3.13"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+```
+
+## Essential pytest hints
+
+Add the following to the `__init__.py` file in your `tests/` directory:
+
+```python
+import sys
+
+sys.path.append("src")
+```
+
+You can then run `pytest` from the main repo directory.
+
+Basic test format:
+
+```python
+def test_example():
+    '''Test for the example function'''
+
+    # Arrange
+    test_variable_1 = 0
+    test_variable_2 = 1
+    expected_output = 7
+
+    # Act
+    output = your_function(test_variable_1, test_variable_2)
+
+    # Assert
+    assert output == expected_output
+
+    # No cleanup needed
+```
+
+## Using Python notebooks
+
+### Working with editable installs
+
+The benefit of editable installs is you can modify your source code, and don't need to reinstall your environment. However, if you are working in a Jupyter notebook or similar, you will have to force reload your module.
+
+Where your locally installed package is called `amazing_project`:
+
+```python
+import amazing_project as ap
+import importlib
+importlib.reload(ap)
+```
+
+Just re-running the line `import amazing_project as ap` will not update the module.
+
+### Version control with notebooks
+
+Because Jupyter notebooks are not plain Python,. and include information about the rendering of the page you see in your browser, they can be messy when using version control. Additionally, as you can run cells out of order, they can occasionally lead to non-reproducible workflows.
+
+If you only use notebooks for prototyping or showcasing results, and move all your important functional code to plain `.py` files as soon as you can, this might not be too annoying an issue for you. However, if notebooks are an integral part of your process, you might want to look at ways to make them work better for reproducibility and version control.
+
+#### Working with Jupytext
+
+Here's the [Jupytext documentation](https://jupytext.readthedocs.io/en/latest/index.html).
+
+Create a conda env with Jupyter and Jupytext installed, and add the Jupyter extension to VSCode.
+
+To "pair" a notebook (e.g. create a `.py` plaintext version that can be version controlled), use the Jupytext CLI:
+
+```
+jupytext --set-formats ipynb,py:percent notebook.ipynb
+```
+
+Now you can add `.ipynb` files to your `.gitignore` and only track the `.py` version.
+
+You can sync these notebooks:
+```
+jupytext --sync notebook.ipynb
+```
+
+If you download the code to another machine (`git clone` the repository), you should only have the `.py` files.
+
+You can get `jupytext` to generate the notebook output:
+
+```
+jupytext --sync notebook.py
+```
+
+You can also just work from the `jupytext` Python file (the Juptyer VSCode extension will allow sections of it to run as a notebook) and not use the `.ipynb` format file at all.
+
+#### Working with Marimo
+
+Here's the [Marimo documentation](https://docs.marimo.io/).
+
+Create a conda env with Marimo installed. You can launch the Marimo tutorial with `marimo tutorial intro` from inside the active environment.
+
+While technically Marimo notebooks ate `.py` files, you can easily strip them of extra Marimo-related formatting (used to create cells):
+
+```bash
+marimo export script notebook.py -o notebook.script.py
+```
+
+This is useful when migrating your prototyping work from a notebook to your source code or Python package.

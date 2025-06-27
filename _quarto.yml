@@ -6,7 +6,7 @@ website:
   announcement: 
     icon: info-circle
     dismissable: true
-    content: "**Alert** - this is a pre-release development version; please excuse errors or typos."
+    content: "Please feel free to leave feedback on these materials on our [discussion board](https://github.com/ARCTraining/research-software-development/discussions/categories/ideas-and-feedback)!"
     type: primary
     position: below-navbar
   title: "Research Software Development in Python"
@@ -47,7 +47,9 @@ website:
     - section: "6. Conclusion"
       contents:
       - summary/summary.qmd
-    - href: index.qmd#citation_1
+    - href: key_code.qmd
+      text: "Useful code snippets"
+    - href: index.qmd#citation
       text: "<b>Cite this material</b>"
     - href: https://www.leeds.ac.uk/about/doc/accessibility-statement
       text: "<b>Accessibility Statement</b>"

@@ -4,7 +4,7 @@ dependencies = []
 description = "Add a short description here"
 name = "heading_converter"
 requires-python = ">= 3.11"
-version = "0.1.0"
+version = "0.1.1"
 
 [build-system]
 build-backend = "hatchling.build"
