@@ -9,7 +9,7 @@ website:
     content: "Please feel free to leave feedback on these materials on our [discussion board](https://github.com/ARCTraining/research-software-development/discussions/categories/ideas-and-feedback)!"
     type: primary
     position: below-navbar
-  title: "Research Software Development in Python"
+  title: "SWD3: Research Software Development in Python"
   repo-url: https://github.com/ARCTraining/research-software-development
   repo-actions: [edit, source, issue]
   page-footer: "© 2025 University of Leeds  <br> [Update cookie preferences]{#open_preferences_center .btn .btn-outline-primary}" 
