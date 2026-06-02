@@ -6,7 +6,7 @@ Dependencies are the versions of various different modules, packages, or softwar
 
 ::: {.column width="70%"}
 
-![](https://jhudatascience.org/Reproducibility_in_Cancer_Informatics/resources/images/06-package-management_files/figure-html/1LMurysUhCjZb7DVF6KS9QmJ5NBjwWVjRn40MS9f2noE_gf62875ddf7_0_404.png){fig-alt="Ruby has a particular computing environment she has developed her code from. This computing environment is represented as a bubble above her computer with various hexagons with version numbers as well as Rstudio and R installed on her computer. Her code ran just fine on her particular computing environment. Avi attempted to run Ruby’s code on his very different local computing environment and got an error. His computer runs the same code but came up with a different result!"}
+![](https://jhudatascience.org/Reproducibility_in_Cancer_Informatics/06-package-management_files/figure-html/1LMurysUhCjZb7DVF6KS9QmJ5NBjwWVjRn40MS9f2noE_gf62875ddf7_0_404.png){fig-alt="Ruby has a particular computing environment she has developed her code from. This computing environment is represented as a bubble above her computer with various hexagons with version numbers as well as Rstudio and R installed on her computer. Her code ran just fine on her particular computing environment. Avi attempted to run Ruby’s code on his very different local computing environment and got an error. His computer runs the same code but came up with a different result!"}
 
 
 :::
